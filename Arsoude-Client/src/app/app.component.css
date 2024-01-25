@@ -1,0 +1,38 @@
+.formBoite{
+
+        background-color: lightblue;
+
+display: flex;
+flex-direction: column;
+align-items: center;
+
+}
+
+
+.boiteInput {
+
+    width: 300px;
+  
+
+}
+
+.submitBtn{
+
+    width: 300px;
+    margin-top: 20px;
+
+}
+
+.LabelInputBox{
+
+display: flex;
+flex-direction: column;
+
+}
+.simlarInfoBox{
+
+    display: flex;
+    gap: 20px;
+    margin: 10px;
+
+}
