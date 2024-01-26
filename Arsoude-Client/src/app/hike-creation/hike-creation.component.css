@@ -1,0 +1,51 @@
+.form-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eef7ed; /* Light green background */
+  }
+  
+  .hike-card {
+    padding: 16px;
+    background-color: #ffffff; /* White background for the card */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  }
+  
+  .form-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  /* Styling for inputs and buttons */
+  input.mat-input, textarea.mat-input {
+    background-color: #f5f9f5; /* Light green input background */
+  }
+  
+  .mat-error {
+    color: #d32f2f; /* Red color for error messages */
+  }
+  
+  button.mat-raised-button {
+    background-color: #4caf50; /* Green button background */
+    color: #ffffff; /* White button text */
+  }
+  
+  button.mat-raised-button:hover {
+    background-color: #388e3c; /* Darker green on hover */
+  }
+  
+  button.mat-raised-button:disabled {
+    background-color: #a5d6a7; /* Light green for disabled state */
+  }
+  
+  .required {
+    color: red;
+  }
+  
