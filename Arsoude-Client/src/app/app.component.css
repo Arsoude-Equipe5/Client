@@ -2,18 +2,16 @@
 .signUpBox{
   display: flex;
   margin-top: 40px;
-  padding-right: 120px;
-  padding-left: 120px;
   
- border-radius: 100px ;
-background-color: ;
- 
+
+
+
 }
 
 .leftBox{
 
   width: 30%;
-  background-color: green;
+  background-color: #347352;
 }
 .rightbox{
 
@@ -22,27 +20,90 @@ background-color: ;
 }
 
 
+.firstRow{
 
+
+  display: flex;
+  gap: 20px;
+}
+
+.secondRow{
+
+
+  display: flex;
+  gap: 20px;
+}
+
+
+.nameBox
+{
+  width: 150px;
+  border-radius: 10px;
+  border-color: #347352;
+  padding: 10px;
+  
+}
+
+.adressBox{
+
+  width: 150px;
+  border-radius: 10px;
+  border-color: #347352;
+  padding: 10px;
+  
+
+}
+
+.postalCodeBox{
+
+
+  width: 70px;
+  border-radius: 10px;
+  border-color: #347352;
+  padding: 10px;
+
+}
+input::placeholder{
+
+font-size: 11px;
+font-weight: 600;
+opacity: 80%;
+
+}
 
 .formBoite {
-  background-color: lightblue;
+  background-color: lightgray;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .boiteInput {
-  width: 300px;
+  width: 340px;
+  border-radius: 10px;
+  border-color: #347352;
+  padding: 12px;
 }
 
+
+
 .submitBtn {
-  width: 300px;
+  width: auto;
   margin-top: 20px;
+  background-color: #379271;
+  padding: 12px;
+margin-bottom: 20px;
+  border-radius: 10px;
+  border: none 10px;
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
 }
 
 .LabelInputBox {
   display: flex;
   flex-direction: column;
+  border-style: none;
 }
 .simlarInfoBox {
   display: flex;
@@ -50,10 +111,24 @@ background-color: ;
   margin: 10px;
 }
 
-.example-month-picker .mat-calendar-period-button {
-  pointer-events: none;
+.inputPassword{
+
+  width: 340px;
+  border-radius: 10px;
+  border-color: #347352;
+  padding: 12px;
+  
 }
 
-.example-month-picker .mat-calendar-arrow {
-  display: none;
+label{
+
+font-size: 12px;
+}
+
+.dateBox{
+
+  width: 110px;
+  border-radius: 10px;
+  border-color: #347352;
+  padding: 12px;
 }

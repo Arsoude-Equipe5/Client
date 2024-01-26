@@ -1,20 +1,22 @@
 <div class="signUpBox">
 <div class="leftBox">
-
 </div>
 
 <div class="rightbox">
 
 <form [formGroup]="formRegister" (ngSubmit)="onSubmit()" class="formBoite">
-  <h2>Register</h2>
+  <h2>Create an account</h2>
 
-  <div class="simlarInfoBox">
-    <div class="LabelInputBox">
-      <label for="firstName">First Name: </label>
+    <div class="contentBox">
+    <div class="firstRow">
+
+ <div class="LabelInputBox">
+      <label for="firstName">First Name</label>
       <input
-        class="boiteInput"
+        class="nameBox"
         id="firstName"
         type="text"
+        placeholder="Hugo"
         formControlName="firstName"
       />
 
@@ -43,12 +45,14 @@
         First Name must be 40 characters maximum.
       </mat-error>
     </div>
+
     <div class="LabelInputBox">
-      <label for="lastName">Last Name: </label>
+      <label for="lastName">Last Name </label>
       <input
-        class="boiteInput"
+        class="nameBox"
         id="lastName"
         type="text"
+        placeholder="Otth"
         formControlName="lastName"
       />
 
@@ -78,40 +82,27 @@
         First Name must be 40 characters maximum.
       </mat-error>
     </div>
-  </div>
 
-  <div class="simlarInfoBox">
     <div class="LabelInputBox">
-      <label for="email">Email: </label>
+      <label for="adresse">Adresse </label>
       <input
-        class="boiteInput"
-        id="email"
-        type="email"
-        formControlName="email"
+      placeholder="123 Bader St"
+        class="adressBox"
+        id="adresse"
+        type="text"
+        formControlName="adresse"
       />
-      <mat-error
-        *ngIf="
-          formRegister.get('email')?.hasError('required') &&
-          formRegister.get('email')?.touched
-        "
-      >
-        This field is required.</mat-error
-      >
-      <mat-error
-        *ngIf="
-          formRegister.get('email')?.hasError('pattern') &&
-          formRegister.get('email')?.touched
-        "
-      >
-        Please enter a valid email format.
-      </mat-error>
+   <h5>Optionnal</h5>
+  
+  
     </div>
-
+    
     <div class="LabelInputBox">
-      <label for="postalCode">Code Postal: </label>
+      <label for="postalCode">Code Postal </label>
       <input
-        class="boiteInput"
-        id="postalCode"
+        class="postalCodeBox"
+        id="postalCodeBox"
+        placeholder="H3N 1F5"
         type="text"
         formControlName="postalCode"
       />
@@ -130,15 +121,110 @@
         >Please enter a valid postal code.
       </mat-error>
     </div>
-  </div>
 
-  <div class="simlarInfoBox">
-    <div class="LabelInputBox">
+    </div>
+    <div class="secondRow">
+
+      <div class="LabelInputBox">
+        <label for="email">Email </label>
+        <input
+          class="boiteInput"
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="example@email.com"
+        />
+        <mat-error
+          *ngIf="
+            formRegister.get('email')?.hasError('required') &&
+            formRegister.get('email')?.touched
+          "
+        >
+          This field is required.</mat-error
+        >
+        <mat-error
+          *ngIf="
+            formRegister.get('email')?.hasError('pattern') &&
+            formRegister.get('email')?.touched
+          "
+        >
+          Please enter a valid email format.
+        </mat-error>
+      </div>
+      <div class="LabelInputBox">
+        <label for="dateOfBirth"> Date of birth </label>
+    <input  type="date" class="dateBox" formControlName="dateOfBirth" placeholder="2024-02-03">
+
+<!-- 
+        <mat-form-field>
+          <mat-label>2024/01/01</mat-label>
+          <input matInput [matDatepicker]="picker"  formControlName="dateOfBirth">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker panelClass="datepickerOne" ></mat-datepicker>
+        </mat-form-field> -->
+
+
+
+
+      
+         
+     
+    
+      
+        <mat-error
+        *ngIf="
+          formRegister.get('dateOfBirth')?.hasError('required') &&
+          formRegister.get('dateOfBirth')?.touched
+        "
+      >
+        The date is required</mat-error
+      >
+    
+        <mat-error
+        *ngIf="
+          formRegister.get('dateOfBirth')?.hasError('pastDate') &&
+          formRegister.get('dateOfBirth')?.touched
+        "
+      >
+       Please enter a valid date</mat-error
+      >
+    
+      
+        <!-- <mat-error
+        *ngIf="
+          formRegister.get('dateOfBirth')?.hasError('invalidDate') &&
+          formRegister.get('dateOfBirth')?.touched
+        "
+      >
+        invalid date format</mat-error
+      >
+       -->
+    
+    
+    
+      <mat-error
+      *ngIf="
+        formRegister.get('dateOfBirth')?.hasError('futureDate') &&
+        formRegister.get('dateOfBirth')?.touched
+      "
+    >
+    Date cannot be more than 2 years in the future.</mat-error
+    >
+    
+    
+    
+      </div>
+    
+    </div>
+    <div class="thirdRow">   
+      <div class="LabelInputBox">
       <label for="password">Password: </label>
       <input
-        class="boiteInput"
+        class="inputPassword"
         id="password"
-        type="text"
+        type="password"
+        placeholder="***********"
         formControlName="password"
       />
       <mat-error
@@ -171,107 +257,35 @@
         The password must be shorter than 100 characters.
       </mat-error>
     </div>
-
-    <div class="LabelInputBox">
-      <label for="password2">Confirm Password: </label>
-      <input
-        class="boiteInput"
-        id="password2"
-        type="text"
-        formControlName="password2"
-      />
-      <mat-error
-        *ngIf="
-          formRegister.get('password2')?.hasError('required') &&
-          formRegister.get('password2')?.touched
-        "
-      >
-        This field is required.</mat-error
-      >
-      <mat-error
-        *ngIf="!formRegister.get('password2')?.hasError('required') && formRegister.errors?.['passwordMismatch'] && formRegister.get('password2')?.touched "
-      >
-        Passwords are not matching</mat-error
-      >
-    </div>
-  </div>
-
-
-  <div class="simlarInfoBox">
-  <div class="LabelInputBox">
-    <label for="adresse">Adresse: </label>
-    <input
-   
-      class="boiteInput"
-      id="adresse"
-      type="text"
-      formControlName="adresse"
-    />
- <h5>Optionnal</h5>
-
-
-  </div>
-
-  <div class="LabelInputBox">
-    <label for="dateOfBirth"> Date of birth </label>
-    <!-- <mat-form-field>
-      <input matInput [matDatepicker]="dp" placeholder=" datepicker" formControlName="dateOfBirth" >
-      <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-      <mat-datepicker #dp></mat-datepicker>
-    </mat-form-field> -->
-    <mat-form-field>
-      <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-  
-    <mat-error
-    *ngIf="
-      formRegister.get('dateOfBirth')?.hasError('required') &&
-      formRegister.get('dateOfBirth')?.touched
-    "
-  >
-    The date is required</mat-error
-  >
-
-    <mat-error
-    *ngIf="
-      formRegister.get('dateOfBirth')?.hasError('pastDate') &&
-      formRegister.get('dateOfBirth')?.touched
-    "
-  >
-   Please enter a valid date</mat-error
-  >
-
-  
-    <!-- <mat-error
-    *ngIf="
-      formRegister.get('dateOfBirth')?.hasError('invalidDate') &&
-      formRegister.get('dateOfBirth')?.touched
-    "
-  >
-    invalid date format</mat-error
-  >
-   -->
-
-
-
-  <mat-error
-  *ngIf="
-    formRegister.get('dateOfBirth')?.hasError('futureDate') &&
-    formRegister.get('dateOfBirth')?.touched
-  "
->
-Date cannot be more than 2 years in the future.</mat-error
->
-
-
-
-  </div>
 </div>
+    <div class="forthRow">
+      <div class="LabelInputBox">
+        <label for="password2">Confirm Password: </label>
+        <input
+          class="inputPassword"
+          id="password2"
+          type="text"
+          formControlName="password2"
+        />
+        <mat-error
+          *ngIf="
+            formRegister.get('password2')?.hasError('required') &&
+            formRegister.get('password2')?.touched
+          "
+        >
+          This field is required.</mat-error
+        >
+        <mat-error
+          *ngIf="!formRegister.get('password2')?.hasError('required') && formRegister.errors?.['passwordMismatch'] && formRegister.get('password2')?.touched "
+        >
+          Passwords are not matching</mat-error
+        >
+      </div>
+   </div>
+      
+    </div>
+
+ 
 
 <div>
 
@@ -281,7 +295,7 @@ Date cannot be more than 2 years in the future.</mat-error
 
 
 
-  <button type="submit" class="submitBtn" >Submit</button>
+  <button type="submit" class="submitBtn" >CREATE MY ACCOUNT</button>
   <!-- <button type="submit" class="submitBtn" [disabled]="formRegister.invalid">Submit</button> -->
 
 <!-- 
