@@ -1,3 +1,29 @@
+
+.signUpBox{
+  display: flex;
+  margin-top: 40px;
+  padding-right: 120px;
+  padding-left: 120px;
+  
+ border-radius: 100px ;
+background-color: ;
+ 
+}
+
+.leftBox{
+
+  width: 30%;
+  background-color: green;
+}
+.rightbox{
+
+  width: 70%;
+  background-color: green;
+}
+
+
+
+
 .formBoite {
   background-color: lightblue;
   display: flex;
@@ -22,4 +48,12 @@
   display: flex;
   gap: 20px;
   margin: 10px;
+}
+
+.example-month-picker .mat-calendar-period-button {
+  pointer-events: none;
+}
+
+.example-month-picker .mat-calendar-arrow {
+  display: none;
 }

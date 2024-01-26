@@ -1,3 +1,10 @@
+<div class="signUpBox">
+<div class="leftBox">
+
+</div>
+
+<div class="rightbox">
+
 <form [formGroup]="formRegister" (ngSubmit)="onSubmit()" class="formBoite">
   <h2>Register</h2>
 
@@ -182,16 +189,112 @@
         This field is required.</mat-error
       >
       <mat-error
-        *ngIf="formRegister.errors?.['passwordMismatch'] && formRegister.get('password2')?.touched "
+        *ngIf="!formRegister.get('password2')?.hasError('required') && formRegister.errors?.['passwordMismatch'] && formRegister.get('password2')?.touched "
       >
         Passwords are not matching</mat-error
       >
     </div>
   </div>
 
-  <button type="submit" class="submitBtn">Submit</button>
 
+  <div class="simlarInfoBox">
+  <div class="LabelInputBox">
+    <label for="adresse">Adresse: </label>
+    <input
+   
+      class="boiteInput"
+      id="adresse"
+      type="text"
+      formControlName="adresse"
+    />
+ <h5>Optionnal</h5>
+
+
+  </div>
+
+  <div class="LabelInputBox">
+    <label for="dateOfBirth"> Date of birth </label>
+    <!-- <mat-form-field>
+      <input matInput [matDatepicker]="dp" placeholder=" datepicker" formControlName="dateOfBirth" >
+      <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+      <mat-datepicker #dp></mat-datepicker>
+    </mat-form-field> -->
+    <mat-form-field>
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+  
+    <mat-error
+    *ngIf="
+      formRegister.get('dateOfBirth')?.hasError('required') &&
+      formRegister.get('dateOfBirth')?.touched
+    "
+  >
+    The date is required</mat-error
+  >
+
+    <mat-error
+    *ngIf="
+      formRegister.get('dateOfBirth')?.hasError('pastDate') &&
+      formRegister.get('dateOfBirth')?.touched
+    "
+  >
+   Please enter a valid date</mat-error
+  >
+
+  
+    <!-- <mat-error
+    *ngIf="
+      formRegister.get('dateOfBirth')?.hasError('invalidDate') &&
+      formRegister.get('dateOfBirth')?.touched
+    "
+  >
+    invalid date format</mat-error
+  >
+   -->
+
+
+
+  <mat-error
+  *ngIf="
+    formRegister.get('dateOfBirth')?.hasError('futureDate') &&
+    formRegister.get('dateOfBirth')?.touched
+  "
+>
+Date cannot be more than 2 years in the future.</mat-error
+>
+
+
+
+  </div>
+</div>
+
+<div>
+
+
+    
+</div>
+
+
+
+  <button type="submit" class="submitBtn" >Submit</button>
+  <!-- <button type="submit" class="submitBtn" [disabled]="formRegister.invalid">Submit</button> -->
+
+<!-- 
   <pre>form value : {{ formRegister.value | json }}</pre>
   <pre>form status : {{ formRegister.status }}</pre>
-  <pre>form errors: {{ formRegister.errors | json }}</pre>
+  <pre>form errors: {{ formRegister.errors | json }}</pre> -->
+
+
+
+
 </form>
+
+
+</div>
+
+</div>
