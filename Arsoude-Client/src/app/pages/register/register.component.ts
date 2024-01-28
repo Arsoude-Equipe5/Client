@@ -29,14 +29,13 @@ export class RegisterComponent {
         Validators.required,
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
       ]),
-      password: new FormControl('', [
+      password: new FormControl('Redeemed450514$', [
         Validators.required,
         Validators.maxLength(100),
         Validators.minLength(6),
         Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z]).*$'),
       ]),
-      passwordconfirm: new FormControl('', Validators.required),
-
+      passwordconfirm: new FormControl('Redeemed450514$', Validators.required),
       firstName: new FormControl('', [
         Validators.required,
         Validators.minLength(2),
@@ -47,7 +46,10 @@ export class RegisterComponent {
         Validators.minLength(2),
         Validators.maxLength(40),
       ]),
-      postalCode: new FormControl('', [Validators.required]),
+      postalCode: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[ABCDE]+$/),
+      ]),
       adresse: new FormControl(''),
       dateOfBirth: new FormControl('', [
         Validators.required,
@@ -60,12 +62,6 @@ export class RegisterComponent {
   async onSubmit() {
     console.log(this.formRegister.value);
 
-    console.log(
-      this.formRegister
-        .get('dateOfBirth')
-        ?.patchValue(this.formatDate(new Date()))
-    );
-
     const {
       email,
       password,
@@ -74,7 +70,6 @@ export class RegisterComponent {
       firstName,
       lastName,
       dateOfBirth,
-      adresse,
     } = this.formRegister.value;
 
     console.log(dateOfBirth);
@@ -107,29 +102,6 @@ export class RegisterComponent {
         });
     }
   }
-
-  date = new FormControl(moment());
-
-  setMonthAndYear(
-    normalizedMonthAndYear: Moment,
-    datepicker: MatDatepicker<Moment>
-  ) {
-    const ctrlValue = this.date.value ?? moment();
-    ctrlValue.month(normalizedMonthAndYear.month());
-    ctrlValue.year(normalizedMonthAndYear.year());
-    this.date.setValue(ctrlValue);
-    datepicker.close();
-  }
-
-  private formatDate(date: any) {
-    const d = new Date(date);
-    let month = '' + (d.getMonth() + 1);
-    let day = '' + d.getDate();
-    const year = d.getFullYear();
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-    return [month, year].join('-');
-  }
 }
 
 const passwordValidator: ValidatorFn = (
@@ -139,16 +111,6 @@ const passwordValidator: ValidatorFn = (
   const p2 = form.get('passwordconfirm');
   return p1?.value !== p2?.value ? { passwordMismatch: true } : null;
 };
-
-export class DateValidator {
-  static LessThanToday(control: FormControl): ValidationErrors | null {
-    let today: Date = new Date();
-
-    if (new Date(control.value) > today) return { LessThanToday: true };
-
-    return null;
-  }
-}
 
 export function customDateValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {

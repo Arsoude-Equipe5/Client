@@ -16,7 +16,6 @@
               placeholder="Hugo"
               formControlName="firstName"
             />
-
             <mat-error
               *ngIf="
                 formRegister.get('firstName')?.hasError('required') &&
@@ -52,7 +51,6 @@
               placeholder="Otth"
               formControlName="lastName"
             />
-
             <mat-error
               *ngIf="
                 formRegister.get('lastName')?.hasError('required') &&
@@ -108,13 +106,13 @@
               "
               >This field is required.</mat-error
             >
-            <!-- <mat-error
+            <mat-error
               *ngIf="
                 formRegister.get('postalCode')?.hasError('pattern') &&
                 formRegister.get('postalCode')?.touched
               "
               >Please enter a valid postal code.
-            </mat-error> -->
+            </mat-error>
           </div>
         </div>
         <div class="secondRow">
@@ -228,7 +226,7 @@
             <input
               class="inputPassword"
               id="passwordconfirm"
-              type="text"
+              type="password"
               placeholder="***********"
               formControlName="passwordconfirm"
             />
@@ -255,10 +253,9 @@
         CREATE MY ACCOUNT
       </button>
 
-      <!-- 
-    <pre>form value : {{ formRegister.value | json }}</pre>
-    <pre>form status : {{ formRegister.status }}</pre>
-    <pre>form errors: {{ formRegister.errors | json }}</pre> -->
+      <pre>form value : {{ formRegister.value | json }}</pre>
+      <pre>form status : {{ formRegister.status }}</pre>
+      <pre>form errors: {{ formRegister.errors | json }}</pre>
     </form>
   </div>
 </div>
