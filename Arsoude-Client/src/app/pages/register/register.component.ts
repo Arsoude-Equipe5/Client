@@ -35,7 +35,7 @@ export class RegisterComponent {
         Validators.minLength(6),
         Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z]).*$'),
       ]),
-      password2: new FormControl('', Validators.required),
+      passwordconfirm: new FormControl('', Validators.required),
 
       firstName: new FormControl('', [
         Validators.required,
@@ -47,12 +47,7 @@ export class RegisterComponent {
         Validators.minLength(2),
         Validators.maxLength(40),
       ]),
-      postalCode: new FormControl('', [
-        Validators.required,
-        Validators.pattern(
-          '/^[ABCEGHJ-NPRSTVXY]d[ABCEGHJ-NPRSTV-Z][ -]?d[ABCEGHJ-NPRSTV-Z]d$/i'
-        ),
-      ]),
+      postalCode: new FormControl('', [Validators.required]),
       adresse: new FormControl(''),
       dateOfBirth: new FormControl('', [
         Validators.required,
@@ -74,6 +69,7 @@ export class RegisterComponent {
     const {
       email,
       password,
+      passwordconfirm,
       postalCode,
       firstName,
       lastName,
@@ -83,9 +79,23 @@ export class RegisterComponent {
 
     console.log(dateOfBirth);
 
-    if (email && password && postalCode && firstName && lastName) {
+    if (
+      email &&
+      password &&
+      passwordconfirm &&
+      postalCode &&
+      firstName &&
+      lastName
+    ) {
       this.auth
-        .register(email, password, postalCode, firstName, lastName)
+        .register(
+          email,
+          password,
+          passwordconfirm,
+          postalCode,
+          firstName,
+          lastName
+        )
         .subscribe({
           next: (res) => {
             //TODO : handle response accordingly
@@ -126,7 +136,7 @@ const passwordValidator: ValidatorFn = (
   form: AbstractControl
 ): ValidationErrors | null => {
   const p1 = form.get('password');
-  const p2 = form.get('password2');
+  const p2 = form.get('passwordconfirm');
   return p1?.value !== p2?.value ? { passwordMismatch: true } : null;
 };
 

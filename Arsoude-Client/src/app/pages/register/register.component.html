@@ -1,4 +1,3 @@
-<p>register works!</p>
 <div class="signUpBox">
   <div class="leftBox"></div>
 
@@ -109,13 +108,13 @@
               "
               >This field is required.</mat-error
             >
-            <mat-error
+            <!-- <mat-error
               *ngIf="
                 formRegister.get('postalCode')?.hasError('pattern') &&
                 formRegister.get('postalCode')?.touched
               "
               >Please enter a valid postal code.
-            </mat-error>
+            </mat-error> -->
           </div>
         </div>
         <div class="secondRow">
@@ -225,24 +224,24 @@
         </div>
         <div class="forthRow">
           <div class="LabelInputBox">
-            <label for="password2">Confirm Password: </label>
+            <label for="passwordconfirm">Confirm Password: </label>
             <input
               class="inputPassword"
-              id="password2"
+              id="passwordconfirm"
               type="text"
               placeholder="***********"
-              formControlName="password2"
+              formControlName="passwordconfirm"
             />
             <mat-error
               *ngIf="
-                formRegister.get('password2')?.hasError('required') &&
-                formRegister.get('password2')?.touched
+                formRegister.get('passwordconfirm')?.hasError('required') &&
+                formRegister.get('passwordconfirm')?.touched
               "
             >
               This field is required.</mat-error
             >
             <mat-error
-              *ngIf="!formRegister.get('password2')?.hasError('required') && formRegister.errors?.['passwordMismatch'] && formRegister.get('password2')?.touched "
+              *ngIf="!formRegister.get('passwordconfirm')?.hasError('required') && formRegister.errors?.['passwordMismatch'] && formRegister.get('passwordconfirm')?.touched "
             >
               Passwords are not matching</mat-error
             >
@@ -255,7 +254,6 @@
       <button type="submit" [disabled]="formRegister.invalid" class="submitBtn">
         CREATE MY ACCOUNT
       </button>
-      <!-- <button type="submit" class="submitBtn" [disabled]="formRegister.invalid">Submit</button> -->
 
       <!-- 
     <pre>form value : {{ formRegister.value | json }}</pre>
