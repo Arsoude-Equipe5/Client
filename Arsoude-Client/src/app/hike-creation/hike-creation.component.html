@@ -1,10 +1,13 @@
-<div class="form-container">
+<div class="container">
+  <div class="form-container">
     <mat-card class="hike-card">
       <form [formGroup]="hikeForm" (ngSubmit)="onSubmit()">
+        <!-- Form fields -->
+      <div class="form-field">
         <div class="form-title">
           <span class="required">*</span>&nbsp;Nom de la randonnée
         </div>
-        <mat-form-field class="form-field">
+        <mat-form-field>
           <input matInput type="text" formControlName="nomRandonnee">
           <mat-error *ngIf="nomRandonnee?.invalid && (nomRandonnee?.dirty || nomRandonnee?.touched)">
             <span *ngIf="nomRandonnee?.errors?.['required']">Le nom de la randonnée est requis</span>
@@ -12,35 +15,42 @@
             <span *ngIf="nomRandonnee?.errors?.['maxlength']">Le nom de la randonnée ne peut pas dépasser 70 caractères</span>
           </mat-error>
         </mat-form-field>
-  
+      </div>
+
+      <!-- Image upload -->
+      <div class="form-field">
         <div class="form-title">
           <span class="required">*</span>&nbsp;Image
         </div>
-        <div class="form-field">
-          <img *ngIf="imagePreview && !image?.invalid" [src]="imagePreview" alt="Selected Image" style="width: 100px; height: 75px;">
-          <input type="file" accept="image/*" (change)="displayImage($event)">
-          <mat-error *ngIf="imageSelected && image?.invalid">
-            <span *ngIf="image?.errors?.['required']">L'image est requise</span>
-            <span *ngIf="image?.errors?.['invalidFileType']">Format de fichier non pris en charge. Veuillez sélectionner une image.</span>
-            <span *ngIf="image?.errors?.['invalidFileContent']">Fichier non valide. Veuillez sélectionner une image valide.</span>
-          </mat-error>          
-        </div>
-  
+        <img *ngIf="imagePreview && !image?.invalid" [src]="imagePreview" alt="Selected Image" class="preview-image">
+        <input type="file" accept="image/*" (change)="displayImage($event)">
+        <mat-error *ngIf="imageSelected && image?.invalid">
+          <span *ngIf="image?.errors?.['required']">L'image est requise</span>
+          <span *ngIf="image?.errors?.['invalidFileType']">Format de fichier non pris en charge. Veuillez sélectionner une image.</span>
+          <span *ngIf="image?.errors?.['invalidFileContent']">Fichier non valide. Veuillez sélectionner une image valide.</span>
+        </mat-error>
+      </div>
+
+      <!-- Description -->
+      <div class="form-field">
         <div class="form-title">
           Description
         </div>
-        <mat-form-field class="form-field">
+        <mat-form-field>
           <textarea matInput formControlName="description"></textarea>
           <mat-hint>{{ description?.value?.length }}/255</mat-hint>
           <mat-error *ngIf="description?.invalid && (description?.dirty || description?.touched)">
             La description ne peut pas dépasser 255 caractères
           </mat-error>
         </mat-form-field>
-  
+      </div>
+
+      <!-- Type (Vélo ou pied) -->
+      <div class="form-field">
         <div class="form-title">
           <span class="required">*</span>&nbsp;Type (Vélo ou pied)
         </div>
-        <mat-form-field class="form-field">
+        <mat-form-field>
           <mat-select formControlName="type">
             <mat-option *ngFor="let type of hikeTypes" [value]="type">{{ type }}</mat-option>
           </mat-select>
@@ -48,28 +58,55 @@
             Le type est requis
           </mat-error>
         </mat-form-field>
-  
+      </div>
+
+            <!-- Location -->
+      <div class="form-field">
         <div class="form-title">
-          <span class="required">*</span>&nbsp;Point de départ
+          Location
         </div>
-        <mat-form-field class="form-field">
-          <input matInput type="text" formControlName="pointDepart">
-          <mat-error *ngIf="pointDepart?.invalid && (pointDepart?.dirty || pointDepart?.touched)">
-            Le point de départ est requis et doit être un nombre
-          </mat-error>
+        <mat-form-field>
+          <input matInput type="text" formControlName="location">
         </mat-form-field>
-  
-        <div class="form-title">
-          <span class="required">*</span>&nbsp;Point d'arrivée
-        </div>
-        <mat-form-field class="form-field">
-          <input matInput type="text" formControlName="pointArrivee">
-          <mat-error *ngIf="pointArrivee?.invalid && (pointArrivee?.dirty || pointArrivee?.touched)">
-            Le point d'arrivée est requis et doit être un nombre
-          </mat-error>
-        </mat-form-field>
-  
-        <button mat-raised-button color="primary" type="submit" [disabled]="!hikeForm.valid">Enregistrer</button>
+      </div>
+
+
       </form>
+
+      <!-- Toggle buttons for selecting points A and B -->
+      <div class="button-container">
+        <button (click)="choosePoint('A')" [class.selected]="selectedPoint === 'A'">Choose Point A</button>
+        <button (click)="choosePoint('B')" [class.selected]="selectedPoint === 'B'">Choose Point B</button>
+      </div>
+
+      <!-- Display latitude and longitude for selected points -->
+      <div class="point-info" *ngIf="pointALatitude !== null && pointALongitude !== null">
+        <p>Point A Latitude: {{ pointALatitude }}</p>
+        <p>Point A Longitude: {{ pointALongitude }}</p>
+      </div>
+      <div class="point-info" *ngIf="pointBLatitude !== null && pointBLongitude !== null">
+        <p>Point B Latitude: {{ pointBLatitude }}</p>
+        <p>Point B Longitude: {{ pointBLongitude }}</p>
+      </div>
     </mat-card>
+
+       <!-- Submit Button -->
+       <div class="button-container">
+        <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!hikeForm.valid || markers.length < 2">
+          Create Randonnée
+        </button>
+      </div>
+      
+
+  </div>
+
+  <!-- Map section -->
+  <div class="map-container">
+    <div class="map-section">
+      <!-- Removed map title -->
+      <google-map #mapAB [center]="center" [zoom]="zoom" (mapClick)="placeMarker($event)">
+        <map-marker *ngFor="let marker of markers" [position]="marker.position"></map-marker>
+      </google-map>
+    </div>
+  </div>
 </div>

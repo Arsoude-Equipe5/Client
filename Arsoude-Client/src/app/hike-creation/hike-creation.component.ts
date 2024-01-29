@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { GoogleMap } from "@angular/google-maps";
+import { HikeDTO, hikeType } from '../models/HikeDTO';
+import { HikeCoordinatesDTO } from '../models/HikeCoordinatesDTO'; 
 
 @Component({
   selector: 'app-hike-creation',
@@ -11,6 +14,16 @@ export class HikeCreationComponent implements OnInit {
   hikeTypes: string[] = ['vélo', 'marche']; // Define hikeTypes array
   imagePreview: string | undefined; // Variable to store the image preview data URL
   imageSelected: boolean = false;
+  center: google.maps.LatLngLiteral = { lat: 42, lng: -4 };
+  zoom = 5;
+  markers: { position: google.maps.LatLngLiteral, point: 'A' | 'B' }[] = [];
+  pointALatitude: number | null = null;
+  pointALongitude: number | null = null;
+  pointBLatitude: number | null = null;
+  pointBLongitude: number | null = null;
+  selectedPoint: 'A' | 'B' | null = null;
+
+  @ViewChild('mapAB') mapAB!: GoogleMap;
 
   constructor(private fb: FormBuilder) { }
 
@@ -21,13 +34,13 @@ export class HikeCreationComponent implements OnInit {
   createForm(): void {
     this.hikeForm = this.fb.group({
       nomRandonnee: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(70)]],
-      image: [null, [Validators.required, this.imageTypeValidator.bind(this)]], // Add image type validator
+      image: [null, [Validators.required, this.imageTypeValidator.bind(this)]],
       description: ['', Validators.maxLength(255)],
-      type: ['', Validators.required], // Ensure type form control is defined
-      pointDepart: ['', [Validators.required, Validators.pattern(/^-?\d*\.?\d+$/)]],
-      pointArrivee: ['', [Validators.required, Validators.pattern(/^-?\d*\.?\d+$/)]]
+      type: ['', Validators.required],
+      location: [''], 
     });
   }
+  
 
   // Custom validator function to check if image is selected and is of valid type
   imageTypeValidator(control: any) {
@@ -59,8 +72,8 @@ export class HikeCreationComponent implements OnInit {
   // Check if the provided header matches any of the valid image headers
   private isValidImageHeader(header: string): boolean {
     return header.startsWith('ffd8') || // JPEG
-           header.startsWith('89504e47') || // PNG
-           header.startsWith('47494638');   // GIF
+      header.startsWith('89504e47') || // PNG
+      header.startsWith('47494638');   // GIF
   }
 
   //to display the image from the user's files
@@ -86,26 +99,79 @@ export class HikeCreationComponent implements OnInit {
       this.hikeForm.get('image')?.markAsDirty();
     }
   }
-  
-  //what happens when the form gets submitted
+
+  // Toggle Buttons: Toggle the selected point button
+  choosePoint(point: 'A' | 'B') {
+    if (this.selectedPoint === point) {
+      this.selectedPoint = null; // Toggle off
+    } else {
+      this.selectedPoint = point;
+    }
+  }
+
+  // Place Marker: Place markers on the map for selected points
+  placeMarker(event: google.maps.MapMouseEvent) {
+    if (!this.selectedPoint) {
+      return;
+    }
+
+    const position: google.maps.LatLngLiteral = { lat: event.latLng!.lat(), lng: event.latLng!.lng() };
+
+    if (this.selectedPoint === 'A') {
+      this.pointALatitude = position.lat;
+      this.pointALongitude = position.lng;
+    } else if (this.selectedPoint === 'B') {
+      this.pointBLatitude = position.lat;
+      this.pointBLongitude = position.lng;
+    }
+
+    // Remove existing marker for the selected point
+    const existingMarkerIndex = this.markers.findIndex(marker => marker.point === this.selectedPoint);
+    if (existingMarkerIndex !== -1) {
+      this.markers.splice(existingMarkerIndex, 1);
+    }
+
+    // Place new marker
+    this.markers.push({ position, point: this.selectedPoint });
+  }
+
   onSubmit(): void {
-    if (this.hikeForm.valid) {
-      // Trim the values of description and nomRandonnee
-      const trimmedValues = {
-        ...this.hikeForm.value,
-        description: this.hikeForm.value.description.trim(),
-        nomRandonnee: this.hikeForm.value.nomRandonnee.trim()
+    if (this.hikeForm.valid && this.markers.length === 2) {
+      const { nomRandonnee, image, description, type, location } = this.hikeForm.value;
+    
+      const startPoint: HikeCoordinatesDTO = {
+        latitude: this.markers[0].position.lat,
+        longitude: this.markers[0].position.lng,
+        Time: new Date()
       };
-  
-      console.log('Form submitted successfully!', trimmedValues);
-      // Here you can send the trimmedValues object to the server
+    
+      const endPoint: HikeCoordinatesDTO = {
+        latitude: this.markers[1].position.lat,
+        longitude: this.markers[1].position.lng,
+        Time: new Date()
+      };
+    
+      const hikeData: HikeDTO = new HikeDTO(
+        nomRandonnee,
+        location, // Use the location value obtained from the form
+        description,
+        image,
+        type === 'vélo' ? hikeType.bike : hikeType.walk,
+        startPoint,
+        endPoint
+      );
+    
+      console.log('Hike data sent to server:', hikeData);
     } else {
       this.hikeForm.markAllAsTouched();
     }
   }
   
+  
 
-  //gets for the Reactiveforms
+  
+
+  // Getters for Reactiveforms
   get nomRandonnee() {
     return this.hikeForm.get('nomRandonnee');
   }
@@ -122,11 +188,7 @@ export class HikeCreationComponent implements OnInit {
     return this.hikeForm.get('type');
   }
 
-  get pointDepart() {
-    return this.hikeForm.get('pointDepart');
-  }
-
-  get pointArrivee() {
-    return this.hikeForm.get('pointArrivee');
+  get location(){
+    return this.hikeForm.get('location');
   }
 }

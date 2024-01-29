@@ -9,6 +9,7 @@ import { HikeCreationComponent } from './hike-creation/hike-creation.component';
 import { MatCardModule } from '@angular/material/card'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 
@@ -25,9 +26,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     MatSelectModule,
     MatCardModule ,
     BrowserAnimationsModule,
-    NoopAnimationsModule
-
-  ],
+    NoopAnimationsModule,
+    GoogleMapsModule 
+   ],
   providers: [],
   bootstrap: [AppComponent]
 })
