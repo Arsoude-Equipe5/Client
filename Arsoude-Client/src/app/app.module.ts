@@ -25,6 +25,7 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { InputComponent } from './components/input/input.component';
 
 const MY_DATE_FORMAT = {
   parse: {
@@ -39,7 +40,7 @@ const MY_DATE_FORMAT = {
 };
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, HomeComponent, NavbarComponent],
+  declarations: [AppComponent, RegisterComponent, HomeComponent, NavbarComponent, InputComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

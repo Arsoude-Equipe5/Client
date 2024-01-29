@@ -35,7 +35,10 @@ export class RegisterComponent {
         Validators.minLength(6),
         Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z]).*$'),
       ]),
-      passwordconfirm: new FormControl('Redeemed450514$', Validators.required),
+      confirmedPassword: new FormControl(
+        'Redeemed450514$',
+        Validators.required
+      ),
       firstName: new FormControl('', [
         Validators.required,
         Validators.minLength(2),
@@ -67,7 +70,7 @@ export class RegisterComponent {
     const {
       email,
       password,
-      passwordconfirm,
+      confirmedPassword,
       postalCode,
       firstName,
       lastName,
@@ -79,7 +82,7 @@ export class RegisterComponent {
     if (
       email &&
       password &&
-      passwordconfirm &&
+      confirmedPassword &&
       postalCode &&
       firstName &&
       lastName
@@ -88,7 +91,7 @@ export class RegisterComponent {
         .register(
           email,
           password,
-          passwordconfirm,
+          confirmedPassword,
           postalCode,
           firstName,
           lastName
