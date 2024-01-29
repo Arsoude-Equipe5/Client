@@ -22,6 +22,8 @@ export class RegisterComponent {
   title = 'Arsoude-Client';
   msgRecu: string = '';
 
+  date = new Date().toISOString().slice(0,10);
+
   formRegister = new FormGroup(
     {
       email: new FormControl('', [

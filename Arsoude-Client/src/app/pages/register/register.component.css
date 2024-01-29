@@ -28,6 +28,13 @@
  
 }
 
+.labelRequired{
+
+display: flex;
+
+
+}
+
 .formInput {
   border-radius: 10px;
   border-style: solid;
@@ -129,6 +136,18 @@ margin: 30px 0 40px 0;
 #textLogIn{
   color: #379271;
   text-decoration: none;
+
+
+}
+
+#requiredSymbol{
+
+  margin-left: auto;
+}
+
+:host mat-error{
+
+width: 150px;
 
 
 }
