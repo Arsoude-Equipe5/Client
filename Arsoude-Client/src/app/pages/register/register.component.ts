@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import {
-  FormGroup,
-  FormControl,
-  Validators,
   AbstractControl,
+  FormControl,
+  FormGroup,
   ValidationErrors,
   ValidatorFn,
+  Validators,
 } from '@angular/forms';
-import { MatDatepicker } from '@angular/material/datepicker';
-import * as moment from 'moment';
-import { Moment } from 'moment';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -18,7 +17,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private router: Router,private toastr: ToastrService) {}
 
   title = 'Arsoude-Client';
   msgRecu: string = '';
@@ -99,8 +98,13 @@ export class RegisterComponent {
         )
         .subscribe({
           next: (res) => {
-            //TODO : handle response accordingly
+            //handle response accordingly
             console.log(res);
+            this.router.navigate(['/signin'])
+            // window.alert('Account created successfully!')
+            this.toastr.success('Account created successfully!')
+           
+
           },
           error: (res) => {
             console.log(res);
