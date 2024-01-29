@@ -25,38 +25,38 @@ export class RegisterComponent {
 
   formRegister = new FormGroup(
     {
-      email: new FormControl('ghiles_94@hotmail.com', [
+      email: new FormControl('', [
         Validators.required,
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
       ]),
-      password: new FormControl('Ghiles123$', [
+      password: new FormControl('', [
         Validators.required,
         Validators.maxLength(100),
         Validators.minLength(6),
         Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z]).*$'),
       ]),
       confirmedPassword: new FormControl(
-        'Ghiles123$',
+        '',
         Validators.required
       ),
-      firstName: new FormControl('Ghiles', [
+      firstName: new FormControl('', [
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(40),
       ]),
-      lastName: new FormControl('Kouaou', [
+      lastName: new FormControl('', [
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(40),
       ]),
-      postalCode: new FormControl('j4j 1n2', [
+      postalCode: new FormControl('', [
         Validators.required,
         Validators.pattern(
           /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i
 
         ),
       ]),
-      adresse: new FormControl('123 Bader St'),
+      adresse: new FormControl(''),
       dateOfBirth: new FormControl('', [
         Validators.required,
         customDateValidator(),
