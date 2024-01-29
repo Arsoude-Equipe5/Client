@@ -1,0 +1,312 @@
+<div class="container">
+  <div class="leftBox"></div>
+
+  <div class="rightbox">
+    <form [formGroup]="formRegister" (ngSubmit)="onSubmit()" class="formBoite">
+      <h2 style="text-align: center" id="titleCreate">Create an account</h2>
+      <div class="row">
+        <div class="formInputContainer">
+          <div>
+          <label for="firstName">First Name</label>
+          <span style="color: red;"> *</span></div>
+          <input
+            class="formInput"
+            id="firstName"
+            type="text"
+            placeholder="Hugo"
+            formControlName="firstName"
+          />
+          <mat-error
+            *ngIf="
+              formRegister.get('firstName')?.hasError('required') &&
+              formRegister.get('firstName')?.touched
+            "
+          >
+            This field is required
+          </mat-error>
+          <mat-error
+            *ngIf="
+              formRegister.get('firstName')?.hasError('minlength') &&
+              formRegister.get('firstName')?.touched
+            "
+          >
+            First Name must be 2 characters minimum.
+          </mat-error>
+          <mat-error
+            *ngIf="
+              formRegister.get('firstName')?.hasError('maxlength') &&
+              formRegister.get('firstName')?.touched
+            "
+          >
+            First Name must be 40 characters maximum.
+          </mat-error>
+        </div>
+
+        <div class="formInputContainer">
+    
+
+          <div>
+            <label for="lastName">Last Name </label>
+            <span style="color: red;"> *</span></div>
+
+          <input
+            class="formInput"
+            id="lastName"
+            type="text"
+            placeholder="Otth"
+            formControlName="lastName"
+          />
+          <mat-error
+            *ngIf="
+              formRegister.get('lastName')?.hasError('required') &&
+              formRegister.get('lastName')?.touched
+            "
+          >
+            This field is required
+          </mat-error>
+
+          <mat-error
+            *ngIf="
+              formRegister.get('lastName')?.hasError('minlength') &&
+              formRegister.get('lastName')?.touched
+            "
+          >
+            First Name must be 2 characters minimum.
+          </mat-error>
+          <mat-error
+            *ngIf="
+              formRegister.get('lastName')?.hasError('maxlength') &&
+              formRegister.get('lastName')?.touched
+            "
+          >
+            First Name must be 40 characters maximum.
+          </mat-error>
+        </div>
+
+        <div class="formInputContainer">
+          <label for="adresse">Adresse </label>
+          <input
+            placeholder="123 Bader St"
+            class="formInput"
+            id="adresse"
+            type="text"
+            formControlName="adresse"
+          />
+        </div>
+
+        <div class="formInputContainer">
+        
+
+          
+          <div>
+            <label for="postalCode">Code Postal </label>
+            <span style="color: red;"> *</span></div>
+
+
+
+          <input
+            class="formInput"
+            id="postalCode"
+            placeholder="H3N 1F5"
+            type="text"
+            formControlName="postalCode"
+          />
+          <mat-error
+            *ngIf="
+              formRegister.get('postalCode')?.hasError('required') &&
+              formRegister.get('postalCode')?.touched
+            "
+            >This field is required.</mat-error
+          >
+          <mat-error
+            *ngIf="
+              formRegister.get('postalCode')?.hasError('pattern') &&
+              formRegister.get('postalCode')?.touched
+            "
+            >Please enter a valid postal code.
+          </mat-error>
+        </div>
+      </div>
+      <div class="row">
+        <div class="formInputContainer">
+       
+
+          <div>
+            <label for="email">Email </label>
+            <span style="color: red;"> *</span></div>
+
+
+          <input
+            class="formInput"
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="example@email.com"
+          />
+          <mat-error
+            *ngIf="
+              formRegister.get('email')?.hasError('required') &&
+              formRegister.get('email')?.touched
+            "
+          >
+            This field is required.</mat-error
+          >
+          <mat-error
+            *ngIf="
+              formRegister.get('email')?.hasError('pattern') &&
+              formRegister.get('email')?.touched
+            "
+          >
+            Please enter a valid email format.
+          </mat-error>
+        </div>
+        <div class="formInputContainer">
+          
+
+          <div>
+            <label for="dateOfBirth"> Date of birth </label>
+
+            <span style="color: red;"> *</span></div>
+
+
+          <input
+            type="date"
+            class="formInput"
+            id="date"
+            formControlName="dateOfBirth"
+            placeholder="2024-02-03"
+            max="{{this.date}}"
+           
+          />
+
+          <mat-error
+            *ngIf="
+              formRegister.get('dateOfBirth')?.hasError('required') &&
+              formRegister.get('dateOfBirth')?.touched
+            "
+          >
+            The date is required</mat-error
+          >
+
+          <mat-error
+            *ngIf="
+              formRegister.get('dateOfBirth')?.hasError('pastDate') &&
+              formRegister.get('dateOfBirth')?.touched
+            "
+          >
+            Please enter a valid date</mat-error
+          >
+
+          <mat-error
+            *ngIf="
+              formRegister.get('dateOfBirth')?.hasError('futureDate') &&
+              formRegister.get('dateOfBirth')?.touched
+            "
+          >
+            Please enter a valid</mat-error
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="formInputContainer">
+
+
+          <div>
+            <label for="password">Password </label>
+
+            <span style="color: red;"> *</span></div>
+
+
+          <input
+            class="formInput"
+            id="password"
+            type="password"
+            placeholder="***********"
+            formControlName="password"
+          />
+          <mat-error
+            *ngIf="
+              formRegister.get('password')?.hasError('required') &&
+              formRegister.get('password')?.touched
+            "
+          >
+            This field is required.</mat-error
+          >
+
+          <mat-error
+            *ngIf="
+              formRegister.get('password')?.hasError('pattern') ||
+              (formRegister.get('password')?.hasError('minlength') &&
+                formRegister.get('password')?.touched)
+            "
+          >
+            The password must contain atleast 6 characters, including at least 1
+            number
+          </mat-error>
+
+          <mat-error
+            *ngIf="
+              formRegister.get('password')?.hasError('maxlength') &&
+              !formRegister.get('password')?.hasError('pattern') &&
+              formRegister.get('password')?.touched
+            "
+          >
+            The password must be shorter than 100 characters.
+          </mat-error>
+        </div>
+      </div>
+      <div class="row">
+        <div class="formInputContainer">
+
+
+
+          <div>
+            <label for="confirmedPassword">Confirm Password: </label>
+
+
+            <span style="color: red;"> *</span></div>
+
+
+          <input
+            class="formInput"
+            id="confirmedPassword"
+            type="password"
+            placeholder="***********"
+            formControlName="confirmedPassword"
+          />
+          <mat-error
+            *ngIf="
+              formRegister.get('confirmedPassword')?.hasError('required') &&
+              formRegister.get('confirmedPassword')?.touched
+            "
+          >
+            This field is required.</mat-error
+          >
+          <mat-error
+            *ngIf="!formRegister.get('confirmedPassword')?.hasError('required') && formRegister.errors?.['passwordMismatch'] && formRegister.get('confirmedPassword')?.touched "
+          >
+            Passwords are not matching</mat-error
+          >
+        </div>
+      </div>
+
+      <div class="row flex-center">
+        <div class="content">
+          <button
+            type="submit"
+            [disabled]="formRegister.invalid"
+            class="submitBtn"
+          >
+            CREATE MY ACCOUNT
+          </button>
+
+          <p id="textSignIn">Already have an account? <a routerLink="/signin" id="textLogIn">Log in</a></p>
+        </div>
+      </div>
+
+      <!-- <pre>form value : {{ formRegister.value | json }}</pre>
+      <pre>form status : {{ formRegister.status }}</pre>
+      <pre>form errors: {{ formRegister.errors | json }}</pre> -->
+    </form>
+  </div>
+</div>

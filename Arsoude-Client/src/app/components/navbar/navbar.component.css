@@ -1,0 +1,14 @@
+.navbarContainer{
+
+    background-color: white;
+    padding: 6px;
+    margin: 20px 0 50px 0;
+}
+
+
+.navItemsContainer{
+
+    display: flex;
+    gap: 20px;
+    list-style-type: none;
+}
