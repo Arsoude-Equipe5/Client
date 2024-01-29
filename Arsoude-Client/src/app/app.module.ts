@@ -27,6 +27,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { InputComponent } from './components/input/input.component';
 import { SigninComponent } from './pages/signin/signin.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 const MY_DATE_FORMAT = {
@@ -56,11 +57,13 @@ const MY_DATE_FORMAT = {
     MatButtonModule,
     MatButtonToggleModule,
     MatNativeDateModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'outline' },
+      
     },
     {
       provide: DateAdapter,
