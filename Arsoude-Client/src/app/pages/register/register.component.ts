@@ -48,7 +48,9 @@ export class RegisterComponent {
       ]),
       postalCode: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^[ABCDE]+$/),
+        Validators.pattern(
+          /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i
+        ),
       ]),
       adresse: new FormControl(''),
       dateOfBirth: new FormControl('', [
