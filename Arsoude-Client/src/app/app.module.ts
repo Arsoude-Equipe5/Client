@@ -26,6 +26,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { InputComponent } from './components/input/input.component';
+import { SigninComponent } from './pages/signin/signin.component';
+
 
 const MY_DATE_FORMAT = {
   parse: {
@@ -40,7 +42,7 @@ const MY_DATE_FORMAT = {
 };
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, HomeComponent, NavbarComponent, InputComponent],
+  declarations: [AppComponent, RegisterComponent, HomeComponent, NavbarComponent, InputComponent, SigninComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

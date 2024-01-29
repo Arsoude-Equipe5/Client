@@ -16,7 +16,7 @@ export class AuthService {
     firstName: string,
     lastName: string
   ) {
-    return this.http.post(`${environment}/api/users/register`, {
+    return this.http.post(`${environment.apiUrl}/api/users/register`, {
       email: email,
       password: password,
       passwordconfirm: passwordconfirm,

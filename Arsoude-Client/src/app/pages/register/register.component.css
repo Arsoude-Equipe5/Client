@@ -5,21 +5,27 @@
 }
 
 .leftBox {
-  width: 40%;
+  width: 45%;
   background-color: #347352;
   border-radius: 30px 0 0 30px;
 }
 .rightbox {
   width: 60%;
-  padding: 40px 90px;
+  display: flex;
+  justify-content: center;
+  padding: 30px 0 0 0;
+
+
   background-color: white;
   border-radius: 0 30px 30px 0;
+  
 }
 
 .row {
   display: flex;
   gap: 20px;
   margin-bottom: 25px;
+ 
 }
 
 .formInput {
@@ -42,6 +48,9 @@
 label {
   font-size: 14px;
   margin-bottom: 5px;
+  font-weight: 400;
+
+
 }
 
 .formInput::placeholder {
@@ -54,17 +63,31 @@ label {
   width: auto;
   margin-top: 20px;
   background-color: #379271;
-  padding: 12px;
+  padding: 13px;
   margin-bottom: 20px;
   border-radius: 10px;
   border: none 10px;
   color: white;
   font-weight: 500;
   font-size: 15px;
+  
+}
+
+.submitBtn:disabled, .submitBtn[disabled] {
+ 
+  background-color: #bae2d0;
+
+  
 }
 
 .flex-center {
   justify-content: center;
+}
+
+#titleCreate{
+
+margin: 30px 0 40px 0;
+
 }
 
 #date {
@@ -72,23 +95,39 @@ label {
 }
 
 #firstName {
-  width: 180px;
+  width: 130px;
 }
 #lastName {
-  width: 180px;
+  width: 130px;
 }
 #adresse {
-  width: 270px;
+  width: 210px;
 }
 #postalCode {
-  width: 80px;
+  width: 60px;
 }
 #email {
-  width: 405px;
+  width: 305px;
 }
 #password {
-  width: 405px;
+  width: 305px;
 }
 #confirmedPassword {
-  width: 405px;
+  width: 305px;
+}
+
+#textSignIn{
+  color: #000000;
+  font-size: 10px;
+  text-align: center;
+  margin-top:-10px;
+  font-weight: 500;
+
+}
+
+
+#textLogIn{
+  color: #379271;
+
+
 }
