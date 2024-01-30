@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GoogleMap } from "@angular/google-maps";
 import { HikeDTO, hikeType } from '../models/HikeDTO';
 import { HikeCoordinatesDTO } from '../models/HikeCoordinatesDTO'; 
 import { HikeService } from '../serivces/HikeServices';
+import { Storage, ref, uploadBytesResumable } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-hike-creation',
@@ -11,6 +12,9 @@ import { HikeService } from '../serivces/HikeServices';
   styleUrls: ['./hike-creation.component.css']
 })
 export class HikeCreationComponent implements OnInit {
+
+  private storage: Storage = inject(Storage);
+
   hikeForm!: FormGroup;
   hikeTypes: string[] = ['vélo', 'marche'];
   imagePreview: string | undefined;
@@ -31,6 +35,20 @@ export class HikeCreationComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
   }
+
+  uploadFile(input: HTMLInputElement) {
+    if (!input.files) return
+
+    const files: FileList = input.files;
+
+    for (let i = 0; i < files.length; i++) {
+        const file = files.item(i);
+        if (file) {
+            const storageRef = ref(this.storage, file.name);
+            uploadBytesResumable(storageRef, file);
+        }
+    }
+}
 
   createForm(): void {
     this.hikeForm = this.fb.group({
