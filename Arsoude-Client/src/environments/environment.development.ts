@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
   env: 'dev',
-  apiUrl: 'http://localhost:5020',
+  apiUrl: 'https://arsoude-equipe5.azurewebsites.net',
 };
