@@ -12,6 +12,7 @@
             type="email"
             formControlName="email"
             placeholder="example@email.com"
+             
           />
           <mat-error
             *ngIf="
@@ -42,11 +43,14 @@
           >
         </div>
 
+        <p style="text-align: center; color: red;">{{this.requestResponse}}</p>
+
         <div class="btnText">
           <button
             type="submit"
-            [disabled]="loginForm.invalid"
+            [disabled]="loginForm.invalid || isWaiting"
             class="submitBtn"
+       
           >
             Sign In
           </button>
