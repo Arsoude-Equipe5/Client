@@ -26,8 +26,11 @@ export class AuthService {
     });
   }
 
-  login() {
-    throw new Error('Methode not implemented');
+  login(email: string, password: string) {
+    return this.http.post(`${environment.apiUrl}/api/users/login`, {
+      email,
+      password,
+    });
   }
 
   logout() {

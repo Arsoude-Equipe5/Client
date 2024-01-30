@@ -1,96 +1,78 @@
-.container{
-
-    display: flex;
-    justify-content: center;
+.container {
+  display: flex;
+  justify-content: center;
 }
 
-
-.leftBox{
-
-
-width: 20%;
-height: 600px;
-background-image: linear-gradient(  #347352,#193D2A);
-border-radius: 30px 0 0 30px;
-
-
+.leftBox {
+  width: 20%;
+  height: 600px;
+  background-image: linear-gradient(#347352, #193d2a);
+  border-radius: 30px 0 0 30px;
 }
 
-
-
-.rightBox{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-align-items: center;
-width: 35%;
-height: 600px;
-background-color: white;
-border-radius: 0 30px 30px 0;
-
-
+.rightBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+  height: 600px;
+  background-color: white;
+  border-radius: 0 30px 30px 0;
 }
 
 .formInputContainer {
-    display: flex;
-    flex-direction: column;
-    border-style: none;
-  }
-
-  .formInput {
-    border-radius: 10px;
-    border-style: solid;
-    border-color: #193d2a;
-    padding: 12px;
-
-
-  }
-
-  .submitBtn {
-    width: auto;
-    margin-top: 20px;
-    background-color: #379271;
-    padding: 13px 45px 13px 45px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    border: none 10px;
-    color: white;
-    font-weight: 500;
-    font-size: 15px;
-  
-  }
-
-.btnText{
-
-display: flex;
-flex-direction: column;
-align-items: center;
-
+  display: flex;
+  flex-direction: column;
+  border-style: none;
+  margin-bottom: 15px;
 }
 
+.formInput {
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #193d2a;
+  padding: 12px;
+}
 
-  #email,#password{
+.submitBtn {
+  width: auto;
+  margin-top: 20px;
+  background-color: #379271;
+  padding: 13px 45px 13px 45px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: none 10px;
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
+}
 
+.btnText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    width: 300px;
-    margin-bottom: 25px;
-  }
+#email,
+#password {
+  width: 300px;
+}
 
-  #textSignIn{
-    color: #000000;
-    font-size: 9px;
-    text-align: center;
-    margin-top:-10px;
-    font-weight: 500;
-  
-  }
-  
-  
-  #textLogIn{
-    color: #379271;
-    text-decoration: none;
-  
-  
-  }
+#textSignIn {
+  color: #000000;
+  font-size: 9px;
+  text-align: center;
+  margin-top: -10px;
+  font-weight: 500;
+}
 
-  
+#textLogIn {
+  color: #379271;
+  text-decoration: none;
+}
+
+.submitBtn:disabled,
+.submitBtn[disabled] {
+  background-color: #bae2d0;
+}
