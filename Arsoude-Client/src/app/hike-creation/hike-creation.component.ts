@@ -1,8 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GoogleMap } from "@angular/google-maps";
 import { HikeDTO, hikeType } from '../models/HikeDTO';
 import { HikeCoordinatesDTO } from '../models/HikeCoordinatesDTO'; 
+import { HikeService } from '../serivces/HikeServices';
+import { Storage, ref, uploadBytesResumable } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-hike-creation',
@@ -10,9 +12,12 @@ import { HikeCoordinatesDTO } from '../models/HikeCoordinatesDTO';
   styleUrls: ['./hike-creation.component.css']
 })
 export class HikeCreationComponent implements OnInit {
+
+  private storage: Storage = inject(Storage);
+
   hikeForm!: FormGroup;
-  hikeTypes: string[] = ['vélo', 'marche']; // Define hikeTypes array
-  imagePreview: string | undefined; // Variable to store the image preview data URL
+  hikeTypes: string[] = ['vélo', 'marche'];
+  imagePreview: string | undefined;
   imageSelected: boolean = false;
   center: google.maps.LatLngLiteral = { lat: 42, lng: -4 };
   zoom = 5;
@@ -25,11 +30,25 @@ export class HikeCreationComponent implements OnInit {
 
   @ViewChild('mapAB') mapAB!: GoogleMap;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private hikeService: HikeService) { }
 
   ngOnInit(): void {
     this.createForm();
   }
+
+  uploadFile(input: HTMLInputElement) {
+    if (!input.files) return
+
+    const files: FileList = input.files;
+
+    for (let i = 0; i < files.length; i++) {
+        const file = files.item(i);
+        if (file) {
+            const storageRef = ref(this.storage, file.name);
+            uploadBytesResumable(storageRef, file);
+        }
+    }
+}
 
   createForm(): void {
     this.hikeForm = this.fb.group({
@@ -39,9 +58,7 @@ export class HikeCreationComponent implements OnInit {
       location: [''], 
     });
   }
-  
 
-  // Custom validator function to check if image is selected and is of valid type
   imageTypeValidator(control: any) {
     const file = control.value;
     if (file) {
@@ -49,7 +66,6 @@ export class HikeCreationComponent implements OnInit {
       if (!allowedTypes.includes(file.type)) {
         return { invalidFileType: true };
       }
-      // Check for magic numbers (BINARY oOo) to ensure file content is actually an image
       const reader = new FileReader();
       reader.onloadend = (e: any) => {
         const arr = new Uint8Array(e.target.result);
@@ -68,29 +84,26 @@ export class HikeCreationComponent implements OnInit {
     return null;
   }
 
-  // Check if the provided header matches any of the valid image headers
   private isValidImageHeader(header: string): boolean {
-    return header.startsWith('ffd8') || // JPEG
-      header.startsWith('89504e47') || // PNG
-      header.startsWith('47494638');   // GIF
+    return header.startsWith('ffd8') || 
+      header.startsWith('89504e47') || 
+      header.startsWith('47494638');   
   }
 
-  //to display the image from the user's files
   displayImage(event: any): void {
-    this.imageSelected = true; // Set the flag to true when an image is selected
+    this.imageSelected = true; 
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.imagePreview = e.target.result; // Set image preview data URL
+        this.imagePreview = e.target.result; 
         this.hikeForm.patchValue({
-          image: file // Store the file object itself, not the data URL
+          image: file 
         });
-        this.hikeForm.get('image')?.markAsDirty(); // Mark control as dirty to trigger validation
+        this.hikeForm.get('image')?.markAsDirty(); 
       };
       reader.readAsDataURL(file);
     } else {
-      // If no file selected, reset the image control value and image preview
       this.imagePreview = undefined;
       this.hikeForm.patchValue({
         image: null
@@ -99,16 +112,14 @@ export class HikeCreationComponent implements OnInit {
     }
   }
 
-  // Toggle Buttons: Toggle the selected point button
   choosePoint(point: 'A' | 'B') {
     if (this.selectedPoint === point) {
-      this.selectedPoint = null; // Toggle off
+      this.selectedPoint = null; 
     } else {
       this.selectedPoint = point;
     }
   }
 
-  // Place Marker: Place markers on the map for selected points
   placeMarker(event: google.maps.MapMouseEvent) {
     if (!this.selectedPoint) {
       return;
@@ -124,13 +135,11 @@ export class HikeCreationComponent implements OnInit {
       this.pointBLongitude = position.lng;
     }
 
-    // Remove existing marker for the selected point
     const existingMarkerIndex = this.markers.findIndex(marker => marker.point === this.selectedPoint);
     if (existingMarkerIndex !== -1) {
       this.markers.splice(existingMarkerIndex, 1);
     }
 
-    // Place new marker
     this.markers.push({ position, point: this.selectedPoint });
   }
 
@@ -158,7 +167,7 @@ export class HikeCreationComponent implements OnInit {
     
       const hikeData: HikeDTO = new HikeDTO(
         nomRandonnee,
-        location, // Use the location value obtained from the form
+        location,
         description,
         image,
         type === 'vélo' ? hikeType.bike : hikeType.walk,
@@ -166,17 +175,21 @@ export class HikeCreationComponent implements OnInit {
         endPoint
       );
     
-      console.log('Hike data sent to server:', hikeData);
+      this.hikeService.createHike(hikeData).subscribe(
+        (response: any) => {
+          console.log('Hike created successfully:', response);
+          // Optionally, you can perform any additional actions here after hike creation
+        },
+        (error: any) => {
+          console.error('Error creating hike:', error);
+          // Optionally, you can handle the error here
+        }
+      );
     } else {
       this.hikeForm.markAllAsTouched();
     }
   }
-  
-  
 
-  
-
-  // Getters for Reactiveforms
   get nomRandonnee() {
     return this.hikeForm.get('nomRandonnee');
   }

@@ -23,6 +23,11 @@
         </div>
       </div>
 
+      <h1>Storage</h1>
+        <label for="fileUpload">Choose a File</label>
+        <input id="fileUpload" type="file" #upload>
+        <button (click)="uploadFile(upload)">Upload</button>
+
       <!-- Image upload -->
       <div class="form-field">
         <div class="form-title">
@@ -120,12 +125,12 @@
         End Point
       </button>
       <div class="point-info" *ngIf="pointALatitude !== null && pointALongitude !== null">
-        <p>Point A Latitude: {{ pointALatitude }}</p>
-        <p>Point A Longitude: {{ pointALongitude }}</p>
+        <p>Point de départ Latitude: {{ pointALatitude }}</p>
+        <p>Point de départ Longitude: {{ pointALongitude }}</p>
       </div>
       <div class="point-info" *ngIf="pointBLatitude !== null && pointBLongitude !== null">
-        <p>Point B Latitude: {{ pointBLatitude }}</p>
-        <p>Point B Longitude: {{ pointBLongitude }}</p>
+        <p>Point d'arrivée Latitude: {{ pointBLatitude }}</p>
+        <p>Point d'arrivée Longitude: {{ pointBLongitude }}</p>
       </div>
     </div>
     <div class="map-section">

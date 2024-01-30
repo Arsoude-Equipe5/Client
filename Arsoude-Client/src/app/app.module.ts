@@ -11,6 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NavComponent } from './nav/nav.component';
+import { HttpClientModule } from '@angular/common/http';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 
 
@@ -29,7 +32,18 @@ import { NavComponent } from './nav/nav.component';
     MatCardModule ,
     BrowserAnimationsModule,
     NoopAnimationsModule,
-    GoogleMapsModule 
+    GoogleMapsModule,
+    HttpClientModule,
+    provideFirebaseApp(() => initializeApp(
+      {"projectId":"arsoudeimages",
+      "appId":"1:872033534476:web:40ebd03f0a00218c42a429",
+      "storageBucket":"arsoudeimages.appspot.com",
+      "apiKey":"AIzaSyAG5qz6MN9xj1io_wrYtMFuqfguJURJUuQ",
+      "authDomain":"arsoudeimages.firebaseapp.com",
+      "messagingSenderId":"872033534476"}
+      )),
+    provideStorage(() => getStorage()),
+  
    ],
   providers: [],
   bootstrap: [AppComponent]
