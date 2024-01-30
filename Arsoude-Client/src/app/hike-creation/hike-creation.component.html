@@ -1,3 +1,6 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+
 <app-nav></app-nav>
 <div class="container">
   <div class="form-container">
@@ -25,8 +28,14 @@
         <div class="form-title">
           <p>Image</p>
         </div>
-        <img *ngIf="imagePreview && !image?.invalid" [src]="imagePreview" alt="Selected Image" class="preview-image">
-        <input type="file" accept="image/*" (change)="displayImage($event)">
+        <div class="dropzone">
+          <h3>Drag and drop file here</h3>
+          <h3>or</h3>
+          <br>
+          <label for="fileDropRef">Browse for file</label>
+          <input type="file" accept="image/*" (change)="displayImage($event)">
+          <img class="preview-image" *ngIf="imagePreview && !image?.invalid" [src]="imagePreview" alt="Selected Image" class="preview-image">
+        </div>
         <mat-error *ngIf="imageSelected && image?.invalid">
           <span *ngIf="image?.errors?.['required']">L'image est requise</span>
           <span *ngIf="image?.errors?.['invalidFileType']">Format de fichier non pris en charge. Veuillez sélectionner une image.</span>
@@ -64,6 +73,16 @@
         <div class="form-title">
           <p>Type</p>
         </div>
+        
+        <div class="button-group">
+          <button [ngClass]="{'selected': hikeType === 'walk'}" (click)="setHikeType('walk')">
+            <i class="fas fa-walking"></i>
+          </button>
+          <button [ngClass]="{'selected': hikeType === 'bike'}" (click)="setHikeType('bike')">
+            <i class="fas fa-bicycle"></i>
+          </button>
+        </div>
+        <!--
         <mat-form-field appearance="outline">
           <mat-select formControlName="type">
             <mat-option *ngFor="let type of hikeTypes" [value]="type">{{ type }}</mat-option>
@@ -71,19 +90,35 @@
           <mat-error *ngIf="type?.invalid && (type?.dirty || type?.touched)">
             Le type est requis
           </mat-error>
-        </mat-form-field>
+        </mat-form-field>-->
       </div>
+
 
 
       </form>
 
       <!-- Toggle buttons for selecting points A and B -->
-      <div class="button-container">
-        <button (click)="choosePoint('A')" [class.selected]="selectedPoint === 'A'">Choose Point A</button>
-        <button (click)="choosePoint('B')" [class.selected]="selectedPoint === 'B'">Choose Point B</button>
-      </div>
+      
 
       <!-- Display latitude and longitude for selected points -->
+      
+    </div>
+  </div>
+
+  <!-- Map section -->
+  <div class="map-container">
+    <div class="btnSend" (click)="onSubmit()">
+      Create Hike
+    </div>
+    <div class="button-container">
+      <button (click)="choosePoint('A')" [class.selected]="selectedPoint === 'A'">
+        <i class="fas fa-play"></i><br>
+        Start Point
+      </button>
+      <button (click)="choosePoint('B')" [class.selected]="selectedPoint === 'B'">
+        <i class="fas fa-flag-checkered"></i><br>
+        End Point
+      </button>
       <div class="point-info" *ngIf="pointALatitude !== null && pointALongitude !== null">
         <p>Point A Latitude: {{ pointALatitude }}</p>
         <p>Point A Longitude: {{ pointALongitude }}</p>
@@ -93,21 +128,8 @@
         <p>Point B Longitude: {{ pointBLongitude }}</p>
       </div>
     </div>
-
-       <!-- Submit Button -->
-       <div class="button-container">
-        <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!hikeForm.valid || markers.length < 2">
-          Create Randonnée
-        </button>
-      </div>
-      
-
-  </div>
-
-  <!-- Map section -->
-  <div class="map-container">
     <div class="map-section">
-      <google-map #mapAB [center]="center" [zoom]="zoom" (mapClick)="placeMarker($event)">
+      <google-map id="map" #mapAB [center]="center" [zoom]="zoom" (mapClick)="placeMarker($event)" [width]="'100%'" [height]="'100%'">
         <map-marker *ngFor="let marker of markers" [position]="marker.position" height="100%"></map-marker>
       </google-map>
     </div>

@@ -36,7 +36,6 @@ export class HikeCreationComponent implements OnInit {
       nomRandonnee: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(70)]],
       image: [null, [Validators.required, this.imageTypeValidator.bind(this)]],
       description: ['', Validators.maxLength(255)],
-      type: ['', Validators.required],
       location: [''], 
     });
   }
@@ -133,6 +132,12 @@ export class HikeCreationComponent implements OnInit {
 
     // Place new marker
     this.markers.push({ position, point: this.selectedPoint });
+  }
+
+
+  hikeType: string = '';
+  setHikeType(type: string) {
+    this.hikeType = type;
   }
 
   onSubmit(): void {
