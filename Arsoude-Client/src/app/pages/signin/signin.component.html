@@ -1,60 +1,62 @@
 <div class="container">
-
-<div class="leftBox"></div>
-<div class="rightBox">
- <div class="signinContainer">
-
-       <h2 style="text-align: center; ">Sign In</h2>
+  <div class="leftBox"></div>
+  <div class="rightBox">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="signinContainer">
+        <h2 style="text-align: center">Sign In</h2>
         <div class="formInputContainer">
           <label for="email">Email </label>
           <input
             class="formInput"
             id="email"
             type="email"
-        
+            formControlName="email"
             placeholder="example@email.com"
           />
-        
-        
-   
+          <mat-error
+            *ngIf="
+              loginForm.get('email')?.hasError('required') &&
+              loginForm.get('email')?.touched
+            "
+          >
+            This field is required.</mat-error
+          >
         </div>
-        
 
-        
-
-
-  
-            <div class="formInputContainer">
-              <label for="password">Password: </label>
-              <input
-                class="formInput"
-                id="password"
-                type="password"
-                placeholder="***********"
-           
-              />
-             
-            </div>
-
-            <div class="btnText">
-              
-                  <button
-                    type="submit"
-                
-                    class="submitBtn"
-                  >
-                    Sign In
-                  </button>
-        
-                  <p id="textSignIn">Don't have an account? <a routerLink="/register" id="textLogIn">Register</a></p>
-          
-              </div>
-
+        <div class="formInputContainer">
+          <label for="password">Password: </label>
+          <input
+            class="formInput"
+            id="password"
+            type="password"
+            formControlName="password"
+            placeholder="***********"
+          />
+          <mat-error
+            *ngIf="
+              loginForm.get('password')?.hasError('required') &&
+              loginForm.get('password')?.touched
+            "
+          >
+            This field is required.</mat-error
+          >
         </div>
-          
+
+        <div class="btnText">
+          <button
+            type="submit"
+            [disabled]="loginForm.invalid"
+            class="submitBtn"
+          >
+            Sign In
+          </button>
+
+          <p id="textSignIn">
+            Don't have an account?
+            <a routerLink="/register" id="textLogIn">Register</a>
+          </p>
+        </div>
       </div>
-
-
-
+    </form>
+  </div>
 </div>
-
