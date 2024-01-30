@@ -75,25 +75,25 @@
 
       <!-- Toggle buttons for selecting points A and B -->
       <div class="button-container">
-        <button (click)="choosePoint('A')" [class.selected]="selectedPoint === 'A'">Choose Point A</button>
-        <button (click)="choosePoint('B')" [class.selected]="selectedPoint === 'B'">Choose Point B</button>
+        <button (click)="choosePoint('A')" [class.selected]="selectedPoint === 'A'">Choisir le point de départ</button>
+        <button (click)="choosePoint('B')" [class.selected]="selectedPoint === 'B'">Choisir le point d'arrivée</button>
       </div>
 
       <!-- Display latitude and longitude for selected points -->
       <div class="point-info" *ngIf="pointALatitude !== null && pointALongitude !== null">
-        <p>Point A Latitude: {{ pointALatitude }}</p>
-        <p>Point A Longitude: {{ pointALongitude }}</p>
+        <p>Point de départ Latitude: {{ pointALatitude }}</p>
+        <p>Point de départ Longitude: {{ pointALongitude }}</p>
       </div>
       <div class="point-info" *ngIf="pointBLatitude !== null && pointBLongitude !== null">
-        <p>Point B Latitude: {{ pointBLatitude }}</p>
-        <p>Point B Longitude: {{ pointBLongitude }}</p>
+        <p>Point d'arrivée Latitude: {{ pointBLatitude }}</p>
+        <p>Point d'arrivée Longitude: {{ pointBLongitude }}</p>
       </div>
     </mat-card>
 
        <!-- Submit Button -->
        <div class="button-container">
         <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!hikeForm.valid || markers.length < 2">
-          Create Randonnée
+          Créer Randonnée
         </button>
       </div>
       

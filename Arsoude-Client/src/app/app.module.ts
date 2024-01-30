@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -27,7 +28,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
     MatCardModule ,
     BrowserAnimationsModule,
     NoopAnimationsModule,
-    GoogleMapsModule 
+    GoogleMapsModule,
+    HttpClientModule,
+  
    ],
   providers: [],
   bootstrap: [AppComponent]
