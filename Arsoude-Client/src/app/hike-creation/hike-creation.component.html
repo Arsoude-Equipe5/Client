@@ -1,26 +1,29 @@
+<app-nav></app-nav>
 <div class="container">
   <div class="form-container">
-    <mat-card class="hike-card">
+    <div class="hike-card">
       <form [formGroup]="hikeForm" (ngSubmit)="onSubmit()">
         <!-- Form fields -->
       <div class="form-field">
         <div class="form-title">
-          <span class="required">*</span>&nbsp;Nom de la randonnée
+          <p>Nom de la randonnée</p>
         </div>
-        <mat-form-field>
-          <input matInput type="text" formControlName="nomRandonnee">
-          <mat-error *ngIf="nomRandonnee?.invalid && (nomRandonnee?.dirty || nomRandonnee?.touched)">
-            <span *ngIf="nomRandonnee?.errors?.['required']">Le nom de la randonnée est requis</span>
-            <span *ngIf="nomRandonnee?.errors?.['minlength']">Le nom de la randonnée doit contenir au moins 4 caractères</span>
-            <span *ngIf="nomRandonnee?.errors?.['maxlength']">Le nom de la randonnée ne peut pas dépasser 70 caractères</span>
-          </mat-error>
-        </mat-form-field>
+        <div class="form-field-bg">
+          <mat-form-field appearance="outline">
+            <input matInput type="text" formControlName="nomRandonnee">
+            <mat-error *ngIf="nomRandonnee?.invalid && (nomRandonnee?.dirty || nomRandonnee?.touched)">
+              <span *ngIf="nomRandonnee?.errors?.['required']">Le nom de la randonnée est requis</span>
+              <span *ngIf="nomRandonnee?.errors?.['minlength']">Le nom de la randonnée doit contenir au moins 4 caractères</span>
+              <span *ngIf="nomRandonnee?.errors?.['maxlength']">Le nom de la randonnée ne peut pas dépasser 70 caractères</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
       </div>
 
       <!-- Image upload -->
       <div class="form-field">
         <div class="form-title">
-          <span class="required">*</span>&nbsp;Image
+          <p>Image</p>
         </div>
         <img *ngIf="imagePreview && !image?.invalid" [src]="imagePreview" alt="Selected Image" class="preview-image">
         <input type="file" accept="image/*" (change)="displayImage($event)">
@@ -34,9 +37,9 @@
       <!-- Description -->
       <div class="form-field">
         <div class="form-title">
-          Description
+          <p>Description</p>
         </div>
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <textarea matInput formControlName="description"></textarea>
           <mat-hint>{{ description?.value?.length }}/255</mat-hint>
           <mat-error *ngIf="description?.invalid && (description?.dirty || description?.touched)">
@@ -45,28 +48,29 @@
         </mat-form-field>
       </div>
 
+
+      <!-- Location -->
+      <div class="form-field">
+        <div class="form-title">
+          <p>Emplacement</p>
+        </div>
+        <mat-form-field appearance="outline">
+          <input matInput type="text" formControlName="location">
+        </mat-form-field>
+      </div>
+
       <!-- Type (Vélo ou pied) -->
       <div class="form-field">
         <div class="form-title">
-          <span class="required">*</span>&nbsp;Type (Vélo ou pied)
+          <p>Type</p>
         </div>
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <mat-select formControlName="type">
             <mat-option *ngFor="let type of hikeTypes" [value]="type">{{ type }}</mat-option>
           </mat-select>
           <mat-error *ngIf="type?.invalid && (type?.dirty || type?.touched)">
             Le type est requis
           </mat-error>
-        </mat-form-field>
-      </div>
-
-            <!-- Location -->
-      <div class="form-field">
-        <div class="form-title">
-          Location
-        </div>
-        <mat-form-field>
-          <input matInput type="text" formControlName="location">
         </mat-form-field>
       </div>
 
@@ -88,7 +92,7 @@
         <p>Point d'arrivée Latitude: {{ pointBLatitude }}</p>
         <p>Point d'arrivée Longitude: {{ pointBLongitude }}</p>
       </div>
-    </mat-card>
+    </div>
 
        <!-- Submit Button -->
        <div class="button-container">
@@ -103,9 +107,8 @@
   <!-- Map section -->
   <div class="map-container">
     <div class="map-section">
-      <!-- Removed map title -->
       <google-map #mapAB [center]="center" [zoom]="zoom" (mapClick)="placeMarker($event)">
-        <map-marker *ngFor="let marker of markers" [position]="marker.position"></map-marker>
+        <map-marker *ngFor="let marker of markers" [position]="marker.position" height="100%"></map-marker>
       </google-map>
     </div>
   </div>

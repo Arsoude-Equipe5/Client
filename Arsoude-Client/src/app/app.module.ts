@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { NavComponent } from './nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    HikeCreationComponent
+    HikeCreationComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
