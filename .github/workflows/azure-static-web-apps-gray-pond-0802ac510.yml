@@ -21,7 +21,7 @@ jobs:
           
       - name: Npm I and Build
         run: |
-          cd Arsoude-client
+          cd Arsoude-Client
           npm install
           npm run build --if-present
       - name: Build And Deploy
