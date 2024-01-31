@@ -97,7 +97,7 @@
 
   <!-- Map section -->
   <div class="map-container">
-    <button class="btnSend" (click)="onSubmit()" [disabled]="!hikeForm.valid || !isFormValid() || !arePointsSelected() ">
+    <button class="btnSend"  (click)="onSubmit()" [disabled]="!hikeForm.valid || !isFormValid() || !arePointsSelected() || onloading == true">
       Create Hike
     </button>
     <div class="button-container">
