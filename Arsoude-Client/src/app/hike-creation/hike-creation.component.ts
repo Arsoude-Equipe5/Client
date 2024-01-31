@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GoogleMap } from "@angular/google-maps";
 import { HikeDTO, hikeType } from '../models/HikeDTO';
 import { HikeCoordinatesDTO } from '../models/HikeCoordinatesDTO'; 
-import { HikeService } from '../serivces/HikeServices';
+import { HikeService } from '../services/HikeServices';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 
 @Component({
@@ -34,8 +34,7 @@ export class HikeCreationComponent implements OnInit {
 
   ngOnInit(): void {
     //uncomment when testing hikeCreation
-/*     this.hikeService.login();
- */    this.createForm();
+    this.createForm();
   }
 
   uploadFile(input: HTMLInputElement) {

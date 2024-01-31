@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment.development';
+import { tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -30,10 +31,15 @@ export class AuthService {
     return this.http.post(`${environment.apiUrl}/api/users/login`, {
       email,
       password,
-    });
+    }).pipe(
+      tap((response: any) => {
+        const token = response.token;
+        localStorage.setItem('token', token);
+      })
+    );
   }
 
   logout() {
-    throw new Error('Methode not implemented');
+    localStorage.removeItem('token');
   }
 }

@@ -10,7 +10,6 @@ import {
   MAT_FORM_FIELD_DEFAULT_OPTIONS,
   MatFormFieldModule,
 } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -25,7 +24,6 @@ import {
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NavComponent } from './nav/nav.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -76,9 +74,22 @@ const MY_DATE_FORMAT = {
     MatInputModule,
     MatIconModule,
     MatButtonModule,
+    MatSelectModule,
+    MatCardModule ,
     MatButtonToggleModule,
+    BrowserAnimationsModule,
+    GoogleMapsModule,
     MatNativeDateModule,
     ToastrModule.forRoot(),
+    provideFirebaseApp(() => initializeApp(
+      {"projectId":"arsoudeimages",
+      "appId":"1:872033534476:web:40ebd03f0a00218c42a429",
+      "storageBucket":"arsoudeimages.appspot.com",
+      "apiKey":"AIzaSyAG5qz6MN9xj1io_wrYtMFuqfguJURJUuQ",
+      "authDomain":"arsoudeimages.firebaseapp.com",
+      "messagingSenderId":"872033534476"}
+      )),
+    provideStorage(() => getStorage()),
   ],
   providers: [
     {
@@ -93,29 +104,6 @@ const MY_DATE_FORMAT = {
     },
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMAT },
   ],
-  bootstrap: [AppComponent],
-    AppRoutingModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatSelectModule,
-    MatCardModule ,
-    BrowserAnimationsModule,
-    NoopAnimationsModule,
-    GoogleMapsModule,
-    HttpClientModule,
-
-    provideFirebaseApp(() => initializeApp(
-      {"projectId":"arsoudeimages",
-      "appId":"1:872033534476:web:40ebd03f0a00218c42a429",
-      "storageBucket":"arsoudeimages.appspot.com",
-      "apiKey":"AIzaSyAG5qz6MN9xj1io_wrYtMFuqfguJURJUuQ",
-      "authDomain":"arsoudeimages.firebaseapp.com",
-      "messagingSenderId":"872033534476"}
-      )),
-    provideStorage(() => getStorage()),
-  
-   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
