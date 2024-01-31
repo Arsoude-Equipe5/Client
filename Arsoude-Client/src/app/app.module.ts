@@ -1,5 +1,7 @@
+import { HikeCreationComponent } from './hike-creation/hike-creation.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,6 +22,14 @@ import {
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE,
 } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { NavComponent } from './nav/nav.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { RegisterComponent } from './pages/register/register.component';
@@ -42,8 +52,19 @@ const MY_DATE_FORMAT = {
   },
 };
 
+
+
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, HomeComponent, NavbarComponent, InputComponent, SigninComponent],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    HikeCreationComponent,
+    RegisterComponent,
+    HomeComponent,
+    SigninComponent,
+    NavbarComponent,
+    InputComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -73,5 +94,28 @@ const MY_DATE_FORMAT = {
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMAT },
   ],
   bootstrap: [AppComponent],
+    AppRoutingModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatCardModule ,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    GoogleMapsModule,
+    HttpClientModule,
+
+    provideFirebaseApp(() => initializeApp(
+      {"projectId":"arsoudeimages",
+      "appId":"1:872033534476:web:40ebd03f0a00218c42a429",
+      "storageBucket":"arsoudeimages.appspot.com",
+      "apiKey":"AIzaSyAG5qz6MN9xj1io_wrYtMFuqfguJURJUuQ",
+      "authDomain":"arsoudeimages.firebaseapp.com",
+      "messagingSenderId":"872033534476"}
+      )),
+    provideStorage(() => getStorage()),
+  
+   ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

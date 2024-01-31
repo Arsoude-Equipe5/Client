@@ -1,0 +1,138 @@
+
+
+<app-nav></app-nav>
+<div class="container">
+  <div class="form-container">
+    <div class="hike-card">
+      <form [formGroup]="hikeForm" (ngSubmit)="false">
+        <!-- Form fields -->
+      <div class="form-field">
+        <div class="form-title">
+          <p>Nom de la randonnée</p>
+        </div>
+        <div class="form-field-bg">
+          <mat-form-field appearance="outline">
+            <input matInput type="text" formControlName="nomRandonnee">
+            <mat-error *ngIf="nomRandonnee?.invalid && (nomRandonnee?.dirty || nomRandonnee?.touched)">
+              <span *ngIf="nomRandonnee?.errors?.['required']">Le nom de la randonnée est requis</span>
+              <span *ngIf="nomRandonnee?.errors?.['minlength']">Le nom de la randonnée doit contenir au moins 4 caractères</span>
+              <span *ngIf="nomRandonnee?.errors?.['maxlength']">Le nom de la randonnée ne peut pas dépasser 70 caractères</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Image upload -->
+      <div class="form-field">
+        <div class="form-title">
+          <p>Image</p>
+        </div>
+        <div class="dropzone">
+          <h3>Drag and drop file here</h3>
+          <h3>or</h3>
+          <br>
+          <label for="fileDropRef">Browse for file</label>
+          <input type="file" accept="image/*" (change)="displayImage($event)">
+          <img class="preview-image" *ngIf="imagePreview && !image?.invalid" [src]="imagePreview" alt="Selected Image" class="preview-image">
+        </div>
+        <mat-error *ngIf="imageSelected && image?.invalid">
+          <span *ngIf="image?.errors?.['required']">L'image est requise</span>
+          <span *ngIf="image?.errors?.['invalidFileType']">Format de fichier non pris en charge. Veuillez sélectionner une image.</span>
+          <span *ngIf="image?.errors?.['invalidFileContent']">Fichier non valide. Veuillez sélectionner une image valide.</span>
+        </mat-error>
+      </div>
+
+      <!-- Description -->
+      <div class="form-field">
+        <div class="form-title">
+          <p>Description</p>
+        </div>
+        <mat-form-field appearance="outline">
+          <textarea matInput formControlName="description"></textarea>
+          <mat-hint>{{ description?.value?.length }}/255</mat-hint>
+          <mat-error *ngIf="description?.invalid && (description?.dirty || description?.touched)">
+            La description ne peut pas dépasser 255 caractères
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+     <!-- Location -->
+<div class="form-field">
+  <div class="form-title">
+    <p>Emplacement</p>
+  </div>
+  <mat-form-field appearance="outline">
+    <input matInput type="text" formControlName="location">
+  </mat-form-field>
+  <mat-error *ngIf="location?.invalid && (location?.dirty || location?.touched)">
+    L'emplacement est requis
+  </mat-error>
+</div>
+
+      <!-- Type (Vélo ou pied) -->
+      <div class="form-field">
+        <div class="form-title">
+          <p>Type</p>
+        </div>
+        
+        <div class="button-group">
+          <button [ngClass]="{'selected': hikeType === 'marche'}" (click)="setHikeType('marche')">
+            <i class="fas fa-walking"></i>
+          </button>
+          <button [ngClass]="{'selected': hikeType === 'vélo'}" (click)="setHikeType('vélo')">
+            <i class="fas fa-bicycle"></i>
+          </button>
+        </div>
+      </div>
+
+
+
+      </form>
+
+      <!-- Toggle buttons for selecting points A and B -->
+      
+
+      <!-- Display latitude and longitude for selected points -->
+      
+    </div>
+  </div>
+
+  <!-- Map section -->
+  <div class="map-container">
+    <button class="btnSend" (click)="onSubmit()" [disabled]="!hikeForm.valid || !isFormValid() || !arePointsSelected() ">
+      Create Hike
+    </button>
+    <div class="button-container">
+      <button (click)="choosePoint('A')" [class.selected]="selectedPoint === 'A'">
+        <i class="fas fa-play"></i><br>
+        Start Point
+      </button>
+      <button (click)="choosePoint('B')" [class.selected]="selectedPoint === 'B'">
+        <i class="fas fa-flag-checkered"></i><br>
+        End Point
+      </button>
+    <!-- Display latitude and longitude for selected points -->
+    <div class="point-info" *ngIf="selectedPoint === 'A' && pointALatitude !== null && pointALongitude !== null">
+      <p>Point de départ Latitude: {{ pointALatitude }}</p>
+      <p>Point de départ Longitude: {{ pointALongitude }}</p>
+    </div>
+    <div class="point-info" *ngIf="selectedPoint === 'B' && pointBLatitude !== null && pointBLongitude !== null">
+      <p>Point d'arrivée Latitude: {{ pointBLatitude }}</p>
+      <p>Point d'arrivée Longitude: {{ pointBLongitude }}</p>
+    </div>
+    <div *ngIf="selectedPoint !== 'A' && (pointALatitude === null || pointALongitude === null)">
+      <p class="error-message">Point de départ est requis</p>
+    </div>
+    <div *ngIf="selectedPoint !== 'B' && (pointBLatitude === null || pointBLongitude === null)">
+      <p class="error-message">Point d'arrivée est requis</p>
+    </div>
+
+    </div>
+    <div class="map-section">
+      <google-map id="map" #mapAB [center]="center" [zoom]="zoom" (mapClick)="placeMarker($event)" [width]="'100%'" [height]="'100%'">
+        <map-marker *ngFor="let marker of markers" [position]="marker.position" height="100%"></map-marker>
+      </google-map>
+    </div>
+  </div>
+</div>
