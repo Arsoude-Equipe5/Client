@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   env: 'prod',
-  apiUrl: 'prod url',
+  apiUrl: 'https://arsoude-equipe5.azurewebsites.net',
 };

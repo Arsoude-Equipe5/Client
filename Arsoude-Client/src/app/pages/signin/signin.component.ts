@@ -16,6 +16,7 @@ isWaiting:boolean=false;
 requestResponse:string='';
 
 
+
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
@@ -32,10 +33,13 @@ requestResponse:string='';
         next: (res) => {
           this.isWaiting =false
           
-          console.log(res);
+          console.log(res.token);
+          localStorage.setItem('token', res.token);
           this.router.navigate(['/home'])
           // window.alert('Account created successfully!')
           this.toastr.success('Logged in successfully!')
+
+        
 
         },
         error: (err) => {

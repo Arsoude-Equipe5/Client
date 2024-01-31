@@ -56,6 +56,11 @@
             placeholder="Otth"
             formControlName="lastName"
           />
+
+
+
+
+          
           <mat-error
             *ngIf="
               formRegister.get('lastName')?.hasError('required') &&
@@ -71,7 +76,7 @@
               formRegister.get('lastName')?.touched
             "
           >
-            First Name must be 2 characters minimum.
+            Last Name field must have 2 characters minimum.
           </mat-error>
           <mat-error
             *ngIf="
@@ -84,7 +89,11 @@
         </div>
 
         <div class="formInputContainer">
+
+          <div>
           <label for="adresse">Adresse </label>
+          </div>
+          
           <input
             placeholder="123 Bader St"
             class="formInput"
@@ -92,6 +101,10 @@
             type="text"
             formControlName="adresse"
           />
+
+
+
+
         </div>
 
         <div class="formInputContainer">
@@ -110,6 +123,8 @@
             placeholder="H3N 1F5"
             type="text"
             formControlName="postalCode"
+            maxlength="6"
+            onkeypress="return event.charCode != 32"
           />
           <mat-error
             *ngIf="
@@ -233,7 +248,7 @@
             This field is required.</mat-error
           >
 
-          <mat-error
+          <p class="passwordError"
             *ngIf="
               formRegister.get('password')?.hasError('pattern') ||
               (formRegister.get('password')?.hasError('minlength') &&
@@ -242,7 +257,7 @@
           >
             The password must contain atleast 6 characters, including at least 1
             number
-          </mat-error>
+          </p>
 
           <mat-error
             *ngIf="
@@ -282,19 +297,19 @@
           >
             This field is required.</mat-error
           >
-          <mat-error
+          <p class="passwordError"
             *ngIf="!formRegister.get('confirmedPassword')?.hasError('required') && formRegister.errors?.['passwordMismatch'] && formRegister.get('confirmedPassword')?.touched "
           >
-            Passwords are not matching</mat-error
+            Passwords are not matching</p
           >
         </div>
       </div>
-
+<p style="color: red; text-align: center;">{{this.requestResponse}}</p>
       <div class="row flex-center">
         <div class="content">
           <button
             type="submit"
-            [disabled]="formRegister.invalid"
+            [disabled]="formRegister.invalid || isWaiting  "
             class="submitBtn"
           >
             CREATE MY ACCOUNTS
@@ -304,9 +319,9 @@
         </div>
       </div>
 
-      <!-- <pre>form value : {{ formRegister.value | json }}</pre>
+      <pre>form value : {{ formRegister.value | json }}</pre>
       <pre>form status : {{ formRegister.status }}</pre>
-      <pre>form errors: {{ formRegister.errors | json }}</pre> -->
+      <pre>form errors: {{ formRegister.errors | json }}</pre>
     </form>
   </div>
 </div>
