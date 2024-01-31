@@ -1,11 +1,10 @@
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 
 
 <app-nav></app-nav>
 <div class="container">
   <div class="form-container">
     <div class="hike-card">
-      <form [formGroup]="hikeForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="hikeForm" (ngSubmit)="false">
         <!-- Form fields -->
       <div class="form-field">
         <div class="form-title">
@@ -22,11 +21,6 @@
           </mat-form-field>
         </div>
       </div>
-
-      <h1>Storage</h1>
-        <label for="fileUpload">Choose a File</label>
-        <input id="fileUpload" type="file" #upload>
-        <button (click)="uploadFile(upload)">Upload</button>
 
       <!-- Image upload -->
       <div class="form-field">
@@ -63,15 +57,18 @@
       </div>
 
 
-      <!-- Location -->
-      <div class="form-field">
-        <div class="form-title">
-          <p>Emplacement</p>
-        </div>
-        <mat-form-field appearance="outline">
-          <input matInput type="text" formControlName="location">
-        </mat-form-field>
-      </div>
+     <!-- Location -->
+<div class="form-field">
+  <div class="form-title">
+    <p>Emplacement</p>
+  </div>
+  <mat-form-field appearance="outline">
+    <input matInput type="text" formControlName="location">
+  </mat-form-field>
+  <mat-error *ngIf="location?.invalid && (location?.dirty || location?.touched)">
+    L'emplacement est requis
+  </mat-error>
+</div>
 
       <!-- Type (Vélo ou pied) -->
       <div class="form-field">
@@ -80,22 +77,13 @@
         </div>
         
         <div class="button-group">
-          <button [ngClass]="{'selected': hikeType === 'walk'}" (click)="setHikeType('walk')">
+          <button [ngClass]="{'selected': hikeType === 'marche'}" (click)="setHikeType('marche')">
             <i class="fas fa-walking"></i>
           </button>
-          <button [ngClass]="{'selected': hikeType === 'bike'}" (click)="setHikeType('bike')">
+          <button [ngClass]="{'selected': hikeType === 'vélo'}" (click)="setHikeType('vélo')">
             <i class="fas fa-bicycle"></i>
           </button>
         </div>
-        <!--
-        <mat-form-field appearance="outline">
-          <mat-select formControlName="type">
-            <mat-option *ngFor="let type of hikeTypes" [value]="type">{{ type }}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="type?.invalid && (type?.dirty || type?.touched)">
-            Le type est requis
-          </mat-error>
-        </mat-form-field>-->
       </div>
 
 
@@ -112,9 +100,9 @@
 
   <!-- Map section -->
   <div class="map-container">
-    <div class="btnSend" (click)="onSubmit()">
+    <button class="btnSend" (click)="onSubmit()" [disabled]="!hikeForm.valid || !isFormValid() || !arePointsSelected() ">
       Create Hike
-    </div>
+    </button>
     <div class="button-container">
       <button (click)="choosePoint('A')" [class.selected]="selectedPoint === 'A'">
         <i class="fas fa-play"></i><br>
@@ -124,14 +112,22 @@
         <i class="fas fa-flag-checkered"></i><br>
         End Point
       </button>
-      <div class="point-info" *ngIf="pointALatitude !== null && pointALongitude !== null">
-        <p>Point de départ Latitude: {{ pointALatitude }}</p>
-        <p>Point de départ Longitude: {{ pointALongitude }}</p>
-      </div>
-      <div class="point-info" *ngIf="pointBLatitude !== null && pointBLongitude !== null">
-        <p>Point d'arrivée Latitude: {{ pointBLatitude }}</p>
-        <p>Point d'arrivée Longitude: {{ pointBLongitude }}</p>
-      </div>
+    <!-- Display latitude and longitude for selected points -->
+    <div class="point-info" *ngIf="selectedPoint === 'A' && pointALatitude !== null && pointALongitude !== null">
+      <p>Point de départ Latitude: {{ pointALatitude }}</p>
+      <p>Point de départ Longitude: {{ pointALongitude }}</p>
+    </div>
+    <div class="point-info" *ngIf="selectedPoint === 'B' && pointBLatitude !== null && pointBLongitude !== null">
+      <p>Point d'arrivée Latitude: {{ pointBLatitude }}</p>
+      <p>Point d'arrivée Longitude: {{ pointBLongitude }}</p>
+    </div>
+    <div *ngIf="selectedPoint !== 'A' && (pointALatitude === null || pointALongitude === null)">
+      <p class="error-message">Point de départ est requis</p>
+    </div>
+    <div *ngIf="selectedPoint !== 'B' && (pointBLatitude === null || pointBLongitude === null)">
+      <p class="error-message">Point d'arrivée est requis</p>
+    </div>
+
     </div>
     <div class="map-section">
       <google-map id="map" #mapAB [center]="center" [zoom]="zoom" (mapClick)="placeMarker($event)" [width]="'100%'" [height]="'100%'">

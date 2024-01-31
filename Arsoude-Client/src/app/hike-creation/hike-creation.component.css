@@ -36,23 +36,23 @@ p{
     width: 100%;
     height: 100%;
     top: 0;
-    left: 0;
-    cursor: pointer;
-  }
-
-  .preview-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-  }
-
-  label{
-    color: white;
-    padding: 8px;
+    left: 0; 
+    cursor: pointer; 
+  } 
+ 
+  .preview-image { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    z-index: 1; 
+  } 
+ 
+  label{ 
+    color: white; 
+    padding: 8px; 
     border-radius: 22px;
     background-color: #4caf50;
     z-index: 4;
@@ -88,6 +88,7 @@ p{
     left: 50px;
     z-index: 2;
     gap: 40px;
+    
 
     button{
       border: none;
@@ -123,6 +124,16 @@ p{
     border-radius: 50px;
     transform: translateX(-50%);
     z-index: 3;
+    
+    border: none;
+  }
+
+  .btnSend:disabled, .btnSend[disabled] {
+ 
+    background-color: #769288;
+    color: black;
+   
+    
   }
 }
 
@@ -174,7 +185,7 @@ mat-form-field.mat-focused .mat-form-field-label {
 }
 
 .button-group button.selected {
-  background-color: #379271; /* or any color you prefer */
+  background-color: #379271; 
   color: white;
 }
 

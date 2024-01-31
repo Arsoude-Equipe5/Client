@@ -1,3 +1,4 @@
+import { HikeCreationComponent } from './hike-creation/hike-creation.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -5,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MatInputModule} from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { HikeCreationComponent } from './hike-creation/hike-creation.component';
 import { MatCardModule } from '@angular/material/card'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,8 +20,8 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 @NgModule({
   declarations: [
     AppComponent,
-    HikeCreationComponent,
-    NavComponent
+    NavComponent,
+    HikeCreationComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +34,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
     NoopAnimationsModule,
     GoogleMapsModule,
     HttpClientModule,
+
     provideFirebaseApp(() => initializeApp(
       {"projectId":"arsoudeimages",
       "appId":"1:872033534476:web:40ebd03f0a00218c42a429",

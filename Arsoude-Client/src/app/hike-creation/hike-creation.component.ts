@@ -4,7 +4,7 @@ import { GoogleMap } from "@angular/google-maps";
 import { HikeDTO, hikeType } from '../models/HikeDTO';
 import { HikeCoordinatesDTO } from '../models/HikeCoordinatesDTO'; 
 import { HikeService } from '../serivces/HikeServices';
-import { Storage, ref, uploadBytesResumable } from '@angular/fire/storage';
+import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-hike-creation',
@@ -33,7 +33,9 @@ export class HikeCreationComponent implements OnInit {
   constructor(private fb: FormBuilder, private hikeService: HikeService) { }
 
   ngOnInit(): void {
-    this.createForm();
+    //uncomment when testing hikeCreation
+/*     this.hikeService.login();
+ */    this.createForm();
   }
 
   uploadFile(input: HTMLInputElement) {
@@ -48,16 +50,32 @@ export class HikeCreationComponent implements OnInit {
             uploadBytesResumable(storageRef, file);
         }
     }
-}
+  }
+
+  selectHikeType(type: string) {
+    this.hikeForm.patchValue({ type: type });
+    this.hikeForm.controls['type'].markAsTouched();
+  }
+  
 
   createForm(): void {
     this.hikeForm = this.fb.group({
       nomRandonnee: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(70)]],
       image: [null, [Validators.required, this.imageTypeValidator.bind(this)]],
       description: ['', Validators.maxLength(255)],
-      location: [''], 
+      location: ['', Validators.required],
+      type: ['', [Validators.required, Validators.pattern('vélo|marche')]], // Add validation for type field
+
     });
   }
+
+  isFormValid(): boolean {
+    return this.hikeForm.valid && this.markers.length === 2;
+  }
+  
+  arePointsSelected(): boolean {
+    return this.pointALatitude !== null && this.pointALongitude !== null && this.pointBLatitude !== null && this.pointBLongitude !== null;
+  } 
 
   imageTypeValidator(control: any) {
     const file = control.value;
@@ -147,42 +165,67 @@ export class HikeCreationComponent implements OnInit {
   hikeType: string = '';
   setHikeType(type: string) {
     this.hikeType = type;
+    this.hikeForm.patchValue({ type: type });
+    this.hikeForm.controls['type'].markAsTouched();
   }
+  
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     if (this.hikeForm.valid && this.markers.length === 2) {
       const { nomRandonnee, image, description, type, location } = this.hikeForm.value;
     
-      const startPoint: HikeCoordinatesDTO = {
-        latitude: this.markers[0].position.lat,
-        longitude: this.markers[0].position.lng,
-        Time: new Date()
-      };
-    
-      const endPoint: HikeCoordinatesDTO = {
-        latitude: this.markers[1].position.lat,
-        longitude: this.markers[1].position.lng,
-        Time: new Date()
-      };
-    
-      const hikeData: HikeDTO = new HikeDTO(
-        nomRandonnee,
-        location,
-        description,
-        image,
-        type === 'vélo' ? hikeType.bike : hikeType.walk,
-        startPoint,
-        endPoint
-      );
-    
-      this.hikeService.createHike(hikeData).subscribe(
-        (response: any) => {
-          console.log('Hike created successfully:', response);
-          // Optionally, you can perform any additional actions here after hike creation
+      // Upload image to Firebase Storage
+      const filePath = `images/${image.name}`;
+      const storageRef = ref(this.storage, filePath);
+      const uploadTask = uploadBytesResumable(storageRef, image);
+      
+      uploadTask.on('state_changed', 
+        (snapshot) => {
+          // Handle progress
         },
-        (error: any) => {
-          console.error('Error creating hike:', error);
-          // Optionally, you can handle the error here
+        (error) => {
+          // Handle unsuccessful upload
+          console.error('Error uploading image:', error);
+        },
+        async () => {
+          // Handle successful upload
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          
+          // Create HikeDTO with image URL
+          const startPoint: HikeCoordinatesDTO = {
+            latitude: this.markers[0].position.lat,
+            longitude: this.markers[0].position.lng,
+            Time: new Date()
+          };
+        
+          const endPoint: HikeCoordinatesDTO = {
+            latitude: this.markers[1].position.lat,
+            longitude: this.markers[1].position.lng,
+            Time: new Date()
+          };
+        
+          const hikeData: HikeDTO = new HikeDTO(
+            nomRandonnee,
+            location,
+            description,
+            downloadURL, // Use download URL as image URL
+            type === 'vélo' ? hikeType.bike : hikeType.walk,
+            startPoint,
+            endPoint
+          );
+        
+          // Send HikeDTO to server
+          this.hikeService.createHike(hikeData).subscribe(
+            (response: any) => {
+              console.log('Hike created successfully:', response);
+              console.log(hikeData)
+              // Optionally, you can perform any additional actions here after hike creation
+            },
+            (error: any) => {
+              console.error('Error creating hike:', error);
+              console.log(hikeData)
+            }
+          );
         }
       );
     } else {
