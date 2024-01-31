@@ -42,4 +42,12 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
   }
+
+
+  getHikes(){
+
+    return this.http.get(`${environment.apiUrl}/api/hikes/gethikes`)
+
+    
+  }
 }

@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MAT_FORM_FIELD_DEFAULT_OPTIONS,
@@ -36,6 +36,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { InputComponent } from './components/input/input.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { ToastrModule } from 'ngx-toastr';
+import { InterceptorInterceptor } from './assets/interceptor/interceptor.interceptor';
 
 
 const MY_DATE_FORMAT = {
@@ -96,7 +97,7 @@ const MY_DATE_FORMAT = {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'outline' },
       
-    },
+    },{ provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true },
     {
       provide: DateAdapter,
       useClass: MomentDateAdapter,

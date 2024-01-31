@@ -33,7 +33,8 @@ requestResponse:string='';
         next: (res) => {
           this.isWaiting =false
           
-          console.log(res);
+          console.log(res.token);
+          localStorage.setItem('token', res.token);
           this.router.navigate(['/home'])
           // window.alert('Account created successfully!')
           this.toastr.success('Logged in successfully!')

@@ -16,7 +16,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent {
+export class RegisterComponent  {
   constructor(private auth: AuthService, private router: Router,private toastr: ToastrService) {}
 
   title = 'Arsoude-Client';
