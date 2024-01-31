@@ -112,12 +112,17 @@ export class RegisterComponent  {
 
           },
           error: (err) => {
-          
-          this.requestResponse = err.error.error;
-            console.log(err);
             this.isWaiting =false;
-          },
+
+            this.requestResponse = err.error.error
+            console.log(err);
+            console.log(this.requestResponse);
+            
+          }
+          
         });
+        
+        
     }
   }
 }

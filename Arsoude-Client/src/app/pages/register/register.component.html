@@ -123,6 +123,8 @@
             placeholder="H3N 1F5"
             type="text"
             formControlName="postalCode"
+            maxlength="6"
+            onkeypress="return event.charCode != 32"
           />
           <mat-error
             *ngIf="
@@ -307,7 +309,7 @@
         <div class="content">
           <button
             type="submit"
-            [disabled]="formRegister.invalid || isWaiting"
+            [disabled]="formRegister.invalid || isWaiting  "
             class="submitBtn"
           >
             CREATE MY ACCOUNTS
@@ -317,9 +319,9 @@
         </div>
       </div>
 
-      <!-- <pre>form value : {{ formRegister.value | json }}</pre>
+      <pre>form value : {{ formRegister.value | json }}</pre>
       <pre>form status : {{ formRegister.status }}</pre>
-      <pre>form errors: {{ formRegister.errors | json }}</pre> -->
+      <pre>form errors: {{ formRegister.errors | json }}</pre>
     </form>
   </div>
 </div>
