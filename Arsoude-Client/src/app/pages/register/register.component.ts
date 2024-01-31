@@ -21,6 +21,7 @@ export class RegisterComponent {
 
   title = 'Arsoude-Client';
   msgRecu: string = '';
+  requestResponse:string='';
 
   date = new Date().toISOString().slice(0,10);
 
@@ -34,7 +35,7 @@ export class RegisterComponent {
         Validators.required,
         Validators.maxLength(100),
         Validators.minLength(6),
-        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z]).*$'),
+        Validators.pattern('^(?=.*[0-9])(?=.*[!@#$%^&*()_+{}|:"<>?])(?=.*[a-zA-Z]).*$'),
       ]),
       confirmedPassword: new FormControl(
         '',
@@ -108,8 +109,10 @@ export class RegisterComponent {
            
 
           },
-          error: (res) => {
-            console.log(res);
+          error: (err) => {
+          
+          this.requestResponse = err.error.error;
+            console.log(err);
           },
         });
     }

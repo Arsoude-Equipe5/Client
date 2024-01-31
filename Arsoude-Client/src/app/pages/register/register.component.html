@@ -56,6 +56,11 @@
             placeholder="Otth"
             formControlName="lastName"
           />
+
+
+
+
+          
           <mat-error
             *ngIf="
               formRegister.get('lastName')?.hasError('required') &&
@@ -71,7 +76,7 @@
               formRegister.get('lastName')?.touched
             "
           >
-            First Name must be 2 characters minimum.
+            Last Name field must have 2 characters minimum.
           </mat-error>
           <mat-error
             *ngIf="
@@ -84,7 +89,11 @@
         </div>
 
         <div class="formInputContainer">
+
+          <div>
           <label for="adresse">Adresse </label>
+          </div>
+          
           <input
             placeholder="123 Bader St"
             class="formInput"
@@ -92,6 +101,10 @@
             type="text"
             formControlName="adresse"
           />
+
+
+
+
         </div>
 
         <div class="formInputContainer">
@@ -233,7 +246,7 @@
             This field is required.</mat-error
           >
 
-          <mat-error
+          <p class="passwordError"
             *ngIf="
               formRegister.get('password')?.hasError('pattern') ||
               (formRegister.get('password')?.hasError('minlength') &&
@@ -242,7 +255,7 @@
           >
             The password must contain atleast 6 characters, including at least 1
             number
-          </mat-error>
+          </p>
 
           <mat-error
             *ngIf="
@@ -282,14 +295,14 @@
           >
             This field is required.</mat-error
           >
-          <mat-error
+          <p class="passwordError"
             *ngIf="!formRegister.get('confirmedPassword')?.hasError('required') && formRegister.errors?.['passwordMismatch'] && formRegister.get('confirmedPassword')?.touched "
           >
-            Passwords are not matching</mat-error
+            Passwords are not matching</p
           >
         </div>
       </div>
-
+<p style="color: red; text-align: ce;">{{this.requestResponse}}</p>
       <div class="row flex-center">
         <div class="content">
           <button
