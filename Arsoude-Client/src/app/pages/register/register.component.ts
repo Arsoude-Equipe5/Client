@@ -22,6 +22,8 @@ export class RegisterComponent  {
   title = 'Arsoude-Client';
   msgRecu: string = '';
   requestResponse:string='';
+  isWaiting:boolean=false;
+  
 
   date = new Date().toISOString().slice(0,10);
 
@@ -69,7 +71,7 @@ export class RegisterComponent  {
 
   async onSubmit() {
     console.log(this.formRegister.value);
-
+    this.isWaiting =true
     const {
       email,
       password,
@@ -106,13 +108,14 @@ export class RegisterComponent  {
             this.router.navigate(['/signin'])
             // window.alert('Account created successfully!')
             this.toastr.success('Account created successfully!')
-           
+            this.isWaiting =false;
 
           },
           error: (err) => {
           
           this.requestResponse = err.error.error;
             console.log(err);
+            this.isWaiting =false;
           },
         });
     }

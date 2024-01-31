@@ -302,12 +302,12 @@
           >
         </div>
       </div>
-<p style="color: red; text-align: ce;">{{this.requestResponse}}</p>
+<p style="color: red; text-align: center;">{{this.requestResponse}}</p>
       <div class="row flex-center">
         <div class="content">
           <button
             type="submit"
-            [disabled]="formRegister.invalid"
+            [disabled]="formRegister.invalid || isWaiting"
             class="submitBtn"
           >
             CREATE MY ACCOUNTS
