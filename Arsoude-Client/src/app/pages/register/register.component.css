@@ -115,6 +115,7 @@ margin: 30px 0 40px 0;
 }
 #postalCode {
   width: 60px;
+  text-transform:uppercase
 }
 #email {
   width: 305px;
@@ -153,4 +154,10 @@ margin: 30px 0 40px 0;
 width: 150px;
 
 
+}
+
+.passwordError{
+color: red;
+
+  width: 350px;
 }

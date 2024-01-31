@@ -17,7 +17,7 @@ export class AuthService {
     firstName: string,
     lastName: string
   ) {
-    return this.http.post(`${environment.apiUrl}/api/users/register`, {
+    return this.http.post(`${environment.apiUrl}/api/Users/Register`, {
       email: email,
       password: password,
       passwordconfirm: passwordconfirm,
@@ -41,5 +41,13 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
+  }
+
+
+  getHikes(){
+
+    return this.http.get(`${environment.apiUrl}/api/hikes/gethikes`)
+
+    
   }
 }
