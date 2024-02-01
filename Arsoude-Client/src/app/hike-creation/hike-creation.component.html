@@ -110,14 +110,6 @@
         End Point
       </button>
     <!-- Display latitude and longitude for selected points -->
-    <div class="point-info" *ngIf="selectedPoint === 'A' && pointALatitude !== null && pointALongitude !== null">
-      <p>Point de départ Latitude: {{ pointALatitude }}</p>
-      <p>Point de départ Longitude: {{ pointALongitude }}</p>
-    </div>
-    <div class="point-info" *ngIf="selectedPoint === 'B' && pointBLatitude !== null && pointBLongitude !== null">
-      <p>Point d'arrivée Latitude: {{ pointBLatitude }}</p>
-      <p>Point d'arrivée Longitude: {{ pointBLongitude }}</p>
-    </div>
     <div *ngIf="selectedPoint !== 'A' && (pointALatitude === null || pointALongitude === null)">
       <p class="error-message">Point de départ est requis</p>
     </div>

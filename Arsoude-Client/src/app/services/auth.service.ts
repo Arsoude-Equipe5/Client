@@ -44,6 +44,11 @@ export class AuthService {
   }
 
 
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+
   getHikes(){
 
     return this.http.get(`${environment.apiUrl}/api/hikes/gethikes`)
