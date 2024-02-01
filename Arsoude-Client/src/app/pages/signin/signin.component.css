@@ -1,7 +1,7 @@
 .container {
   display: flex;
   justify-content: center;
-  padding-top: 10%;
+  padding-top: 20vh;
 }
 
 .leftBox {
@@ -77,3 +77,24 @@
 .submitBtn[disabled] {
   background-color: #bae2d0;
 }
+
+
+@media only screen and (max-width: 1000px) {
+  .container {
+    padding-top: 20vh;
+    display: flex;
+    justify-content: center ;
+    align-items: center; /* Add this line */
+    
+ 
+  }
+
+  .rightBox {
+    width: 60%;
+  }
+
+  .formInput {
+    width: 100% !important;
+  }
+}
+
