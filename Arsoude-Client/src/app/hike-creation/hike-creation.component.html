@@ -5,15 +5,15 @@
         <!-- Form fields -->
       <div class="form-field">
         <div class="form-title">
-          <p>Nom de la randonnée</p>
+          <p>Hike Name</p>
         </div>
         <div class="form-field-bg">
           <mat-form-field appearance="outline">
             <input matInput type="text" formControlName="nomRandonnee">
             <mat-error *ngIf="nomRandonnee?.invalid && (nomRandonnee?.dirty || nomRandonnee?.touched)">
-              <span *ngIf="nomRandonnee?.errors?.['required']">Le nom de la randonnée est requis</span>
-              <span *ngIf="nomRandonnee?.errors?.['minlength']">Le nom de la randonnée doit contenir au moins 4 caractères</span>
-              <span *ngIf="nomRandonnee?.errors?.['maxlength']">Le nom de la randonnée ne peut pas dépasser 70 caractères</span>
+              <span *ngIf="nomRandonnee?.errors?.['required']">Hike name is required</span>
+              <span *ngIf="nomRandonnee?.errors?.['minlength']">Hike name must be at least 4 characters</span>
+              <span *ngIf="nomRandonnee?.errors?.['maxlength']">Hike name cannot exceed 70 characters</span>
             </mat-error>
           </mat-form-field>
         </div>
@@ -33,9 +33,9 @@
           <img class="preview-image" *ngIf="imagePreview && !image?.invalid" [src]="imagePreview" alt="Selected Image" class="preview-image">
         </div>
         <mat-error *ngIf="imageSelected && image?.invalid">
-          <span *ngIf="image?.errors?.['required']">L'image est requise</span>
-          <span *ngIf="image?.errors?.['invalidFileType']">Format de fichier non pris en charge. Veuillez sélectionner une image.</span>
-          <span *ngIf="image?.errors?.['invalidFileContent']">Fichier non valide. Veuillez sélectionner une image valide.</span>
+          <span *ngIf="image?.errors?.['required']">Image is required</span>
+          <span *ngIf="image?.errors?.['invalidFileType']">Unsupported file format. Please select an image.</span>
+          <span *ngIf="image?.errors?.['invalidFileContent']">Invalid file. Please select a valid image.</span>
         </mat-error>
       </div>
 
@@ -48,7 +48,7 @@
           <textarea matInput formControlName="description"></textarea>
           <mat-hint>{{ description?.value?.length }}/255</mat-hint>
           <mat-error *ngIf="description?.invalid && (description?.dirty || description?.touched)">
-            La description ne peut pas dépasser 255 caractères
+            Description cannot exceed 255 characters
           </mat-error>
         </mat-form-field>
       </div>
@@ -57,17 +57,17 @@
      <!-- Location -->
 <div class="form-field">
   <div class="form-title">
-    <p>Emplacement</p>
+    <p>Location</p>
   </div>
   <mat-form-field appearance="outline">
     <input matInput type="text" formControlName="location">
   </mat-form-field>
   <mat-error *ngIf="location?.invalid && (location?.dirty || location?.touched)">
-    L'emplacement est requis
+    The location is required
   </mat-error>
 </div>
 
-      <!-- Type (Vélo ou pied) -->
+      <!-- Type (Bike or Walk) -->
       <div class="form-field">
         <div class="form-title">
           <p>Type</p>
@@ -97,7 +97,7 @@
 
   <!-- Map section -->
   <div class="map-container">
-    <button class="btnSend"  (click)="onSubmit()" [disabled]="!hikeForm.valid || !isFormValid() || !arePointsSelected() || onloading == true">
+    <button class="btnSend"  (click)="onSubmit()" [disabled]="!hikeForm.valid || !isFormValid() || !arePointsSelected() || onloading">
       Create Hike
     </button>
     <div class="button-container">
@@ -111,18 +111,18 @@
       </button>
     <!-- Display latitude and longitude for selected points -->
     <div class="point-info" *ngIf="selectedPoint === 'A' && pointALatitude !== null && pointALongitude !== null">
-      <p>Point de départ Latitude: {{ pointALatitude }}</p>
-      <p>Point de départ Longitude: {{ pointALongitude }}</p>
+      <p>Starting Point Latitude: {{ pointALatitude }}</p>
+      <p>Starting Point Longitude: {{ pointALongitude }}</p>
     </div>
     <div class="point-info" *ngIf="selectedPoint === 'B' && pointBLatitude !== null && pointBLongitude !== null">
-      <p>Point d'arrivée Latitude: {{ pointBLatitude }}</p>
-      <p>Point d'arrivée Longitude: {{ pointBLongitude }}</p>
+      <p>End Point Latitude: {{ pointBLatitude }}</p>
+      <p>End Point Longitude: {{ pointBLongitude }}</p>
     </div>
     <div *ngIf="selectedPoint !== 'A' && (pointALatitude === null || pointALongitude === null)">
-      <p class="error-message">Point de départ est requis</p>
+      <p class="error-message">Starting point is required</p>
     </div>
     <div *ngIf="selectedPoint !== 'B' && (pointBLatitude === null || pointBLongitude === null)">
-      <p class="error-message">Point d'arrivée est requis</p>
+      <p class="error-message">End point is required</p>
     </div>
 
     </div>

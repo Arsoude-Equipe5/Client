@@ -176,7 +176,7 @@ export class HikeCreationComponent implements OnInit {
       const { nomRandonnee, image, description, type, location } = this.hikeForm.value;
     
 
-      this.onloading == true;
+      this.onloading = true;
 
       // Upload image to Firebase Storage
       const filePath = `images/${image.name}`;
@@ -229,7 +229,7 @@ export class HikeCreationComponent implements OnInit {
             (error: any) => {
               console.error('Error creating hike:', error);
               
-              this.onloading == false;
+              this.onloading = false;
               console.log(hikeData)
             }
           );
