@@ -1,0 +1,17 @@
+{
+    "input":{
+      "inputWorks": "input works!"
+    },
+
+    "navbar":{
+      "home": "Home",
+      "register": "Register",
+      "signIn": "Sign In"
+    },
+
+    "hike-creation":{
+      "hikeName": "Hike name"
+    }
+
+  }
+  

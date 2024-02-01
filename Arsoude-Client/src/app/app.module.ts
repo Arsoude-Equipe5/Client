@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MAT_FORM_FIELD_DEFAULT_OPTIONS,
@@ -37,6 +37,8 @@ import { InputComponent } from './components/input/input.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { ToastrModule } from 'ngx-toastr';
 import { InterceptorInterceptor } from './assets/interceptor/interceptor.interceptor';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 
 const MY_DATE_FORMAT = {
@@ -68,6 +70,13 @@ const MY_DATE_FORMAT = {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
     NoopAnimationsModule,
     MatFormFieldModule,
     ReactiveFormsModule,
@@ -108,3 +117,7 @@ const MY_DATE_FORMAT = {
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+
+export function HttpLoaderFactory(http: HttpClient){
+  return new TranslateHttpLoader(http);
+}

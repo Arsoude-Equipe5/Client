@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -17,7 +18,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent  {
-  constructor(private auth: AuthService, private router: Router,private toastr: ToastrService) {}
+  language: string = "fr";
+
+  constructor(private auth: AuthService, private router: Router,private toastr: ToastrService, public translator:TranslateService) {
+    translator.setDefaultLang(this.language);
+  }
 
   title = 'Arsoude-Client';
   msgRecu: string = '';

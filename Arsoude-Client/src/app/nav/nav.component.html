@@ -7,13 +7,15 @@
     </div>
     <nav>
         <ul class="strip">
-            <li><a routerLink="/home" id="textLogIn">Home</a></li>
+            <li><a routerLink="/home" id="textLogIn">{{ 'nav.home' | translate}}</a></li>
             <li>All Trails</li>
             <li>Community</li>
             <li>Profile</li>
             <li><a routerLink="/hikecreation" id="textLogIn">Create</a></li>
             <li><a routerLink="/register" id="textLogIn">Register</a></li>
             <li><a routerLink="/signin" id="textLogIn">Log in</a></li>
+            <li><button (click)="changeLanguage('fr')">Français</button></li>
+            <li><button (click)="changeLanguage('en')">English</button></li>
         </ul>
     </nav>
 </div>

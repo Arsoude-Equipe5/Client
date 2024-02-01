@@ -1,0 +1,16 @@
+{
+    "input":{
+      "inputWorks": "input marche!"
+    },
+  
+    "nav":{
+      "home": "Accueil",
+      "register": "S'inscrire",
+      "signIn": "Se connecter"
+    },
+  
+    "hike-creation":{
+      "hikeName": "Nom de la randonnée"
+    }
+  
+  }

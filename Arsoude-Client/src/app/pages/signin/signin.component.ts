@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -11,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SigninComponent {
 
-
+language: string = "fr";
 isWaiting:boolean=false;
 requestResponse:string='';
 
@@ -21,7 +22,9 @@ requestResponse:string='';
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
-  constructor(private auth: AuthService, private router:Router, private toastr:ToastrService) {}
+  constructor(private auth: AuthService, private router:Router, private toastr:ToastrService, public translator:TranslateService) {
+    translator.setDefaultLang(this.language);
+  }
 
   onSubmit() {
     const { email, password } = this.loginForm.value;

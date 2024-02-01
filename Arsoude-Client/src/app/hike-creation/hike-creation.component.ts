@@ -5,6 +5,7 @@ import { HikeDTO, hikeType } from '../models/HikeDTO';
 import { HikeCoordinatesDTO } from '../models/HikeCoordinatesDTO'; 
 import { HikeService } from '../services/HikeServices';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-hike-creation',
@@ -27,10 +28,13 @@ export class HikeCreationComponent implements OnInit {
   pointBLatitude: number | null = null;
   pointBLongitude: number | null = null;
   selectedPoint: 'A' | 'B' | null = null;
+  language: string = "fr";
 
   @ViewChild('mapAB') mapAB!: GoogleMap;
 
-  constructor(private fb: FormBuilder, private hikeService: HikeService) { }
+  constructor(private fb: FormBuilder, private hikeService: HikeService, public translator: TranslateService) {
+    translator.setDefaultLang(this.language);
+   }
 
   ngOnInit(): void {
     //uncomment when testing hikeCreation
