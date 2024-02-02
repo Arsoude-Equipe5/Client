@@ -31,7 +31,7 @@ export class RegisterComponent  {
     {
       email: new FormControl('', [
         Validators.required,
-        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/),
       ]),
       password: new FormControl('', [
         Validators.required,
@@ -57,14 +57,10 @@ export class RegisterComponent  {
         Validators.required,
         Validators.pattern(
           /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i
-
         ),
       ]),
       adresse: new FormControl(''),
-      dateOfBirth: new FormControl('', [
-        Validators.required,
-        customDateValidator(),
-      ]),
+      dateOfBirth: new FormControl(''), // Remove Validators.required here
     },
     { validators: passwordValidator }
   );
@@ -94,7 +90,7 @@ export class RegisterComponent  {
     ) {
       this.auth
         .register(
-          email,
+          email.toLocaleLowerCase(),
           password,
           confirmedPassword,
           postalCode,

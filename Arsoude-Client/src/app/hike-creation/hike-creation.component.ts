@@ -5,6 +5,7 @@ import { HikeDTO, hikeType } from '../models/HikeDTO';
 import { HikeCoordinatesDTO } from '../models/HikeCoordinatesDTO'; 
 import { HikeService } from '../services/HikeServices';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hike-creation',
@@ -27,10 +28,11 @@ export class HikeCreationComponent implements OnInit {
   pointBLatitude: number | null = null;
   pointBLongitude: number | null = null;
   selectedPoint: 'A' | 'B' | null = null;
+  onloading : boolean = false;
 
   @ViewChild('mapAB') mapAB!: GoogleMap;
 
-  constructor(private fb: FormBuilder, private hikeService: HikeService) { }
+  constructor(private fb: FormBuilder, private hikeService: HikeService, private router: Router) { }
 
   ngOnInit(): void {
     //uncomment when testing hikeCreation
@@ -173,6 +175,9 @@ export class HikeCreationComponent implements OnInit {
     if (this.hikeForm.valid && this.markers.length === 2) {
       const { nomRandonnee, image, description, type, location } = this.hikeForm.value;
     
+
+      this.onloading = true;
+
       // Upload image to Firebase Storage
       const filePath = `images/${image.name}`;
       const storageRef = ref(this.storage, filePath);
@@ -218,10 +223,13 @@ export class HikeCreationComponent implements OnInit {
             (response: any) => {
               console.log('Hike created successfully:', response);
               console.log(hikeData)
+              this.router.navigate(['/home'])
               // Optionally, you can perform any additional actions here after hike creation
             },
             (error: any) => {
               console.error('Error creating hike:', error);
+              
+              this.onloading = false;
               console.log(hikeData)
             }
           );
