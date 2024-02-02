@@ -1,17 +1,72 @@
 {
-    "input":{
-      "inputWorks": "input works!"
-    },
 
-    "nav":{
-      "home": "Home",
-      "register": "Register",
-      "signIn": "Sign In"
-    },
+  "nav":{
+    "home": "Home",
+    "register": "Register",
+    "logIn": "Log in",
+    "create": "Create"
+  },
 
-    "hike-creation":{
-      "hikeName": "Hike name"
-    }
+  "hike-creation":{
+    "hikeName": "Hike name",
+    "hikeImage" : "Image",
+    "description": "Description",
+    "location": "Location",
+    "type":"Type",
+    "startPoint":"Start Point",
+    "endPoint":"End Point",
+    "startPointRequired":"Start point is required",
+    "endPointRequired":"End point is required",
+    "createHike":"Create Hike",
+    "nameRequired":"Name is required",
+    "name4car":"Name needs to be at least 4 characters",
+    "name70car":"Name needs to be 70 characters or less",
+    "dragDropFile":"Drag and drop file here",
+    "or":"or",
+    "browseFile":"Browse for file",
+    "imageRequired":"The image is required",
+    "wrongFormat":"Wrong file format, select an image.",
+    "invalidFile":"Invalid file, select an image",
+    "descrption255car":"The description cannot surpass 255 characters",
+    "locationRequired":"Location is required"
+
+  
+
+  },
+  
+  "register":{
+    "createAccount":"Create an account",
+    "firstName":"First Name",
+    "lastName":"Last Name",
+    "email":"Email",
+    "password":"Password",
+    "confirmPassword": "Confirm Password",
+    "address":"Address",
+    "postalCode":"Postal Code",
+    "dateOfBirth":"Date of Birth",
+    "createMyAccount": "CREATE MY ACCOUNT",
+    "alreadyAnAccount": "Already have an account?",
+    "login":"Log in",
+    "requiredField":"This field is required",
+    "firstName2car":"First Name must be 2 characters minimum.",
+    "firstName40car":"First Name must be 40 characters maximum.",
+    "lastName2car":"Last Name must be 2 characters minimum.",
+    "lastName40car":"Last Name must be 40 characters maximum.",
+    "invalidPostalCode":"Please enter a valid postal code",
+    "invalidEmail":"Please enter a valid email format.",
+    "invalidDate":"Please enter a valid date",
+    "password6car":"The password must contain atleast 6 characters, including at least 1 number",
+    "password100car":"The password must be shorter than 100 characters.",
+    "passwordMatching":"Passwords are not matching"
+
+  },
+
+  "signin":{
+    "signin":"Sign in",
+    "email":"Email",
+    "password":"Password",
+    "dontHaveAccount":"Don't have an account?",
+    "register":"Register"
+  }
 
 }
-  

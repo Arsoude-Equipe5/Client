@@ -29,6 +29,10 @@ export class HomeComponent  {
 
   // }
 
+  changeLanguage(lang:string):void{
+    this.language = lang;
+    this.translator.use(this.language);
+  }
  
 
 }

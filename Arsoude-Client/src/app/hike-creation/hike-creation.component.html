@@ -13,9 +13,9 @@
           <mat-form-field appearance="outline">
             <input matInput type="text" formControlName="nomRandonnee">
             <mat-error *ngIf="nomRandonnee?.invalid && (nomRandonnee?.dirty || nomRandonnee?.touched)">
-              <span *ngIf="nomRandonnee?.errors?.['required']">Le nom de la randonnée est requis</span>
-              <span *ngIf="nomRandonnee?.errors?.['minlength']">Le nom de la randonnée doit contenir au moins 4 caractères</span>
-              <span *ngIf="nomRandonnee?.errors?.['maxlength']">Le nom de la randonnée ne peut pas dépasser 70 caractères</span>
+              <span *ngIf="nomRandonnee?.errors?.['required']">{{'hike-creation.nameRequired' | translate}}</span>
+              <span *ngIf="nomRandonnee?.errors?.['minlength']">{{'hike-creation.name4car' | translate}}</span>
+              <span *ngIf="nomRandonnee?.errors?.['maxlength']">{{'hike-creation.name70car' | translate}}</span>
             </mat-error>
           </mat-form-field>
         </div>
@@ -24,33 +24,33 @@
       <!-- Image upload -->
       <div class="form-field">
         <div class="form-title">
-          <p>Image</p>
+          <p>{{'hike-creation.hikeImage' | translate}}</p>
         </div>
         <div class="dropzone">
-          <h3>Drag and drop file here</h3>
-          <h3>or</h3>
+          <h3>{{'hike-creation.dragDropFile' | translate}}</h3>
+          <h3>{{'hike-creation.or' | translate}}</h3>
           <br>
-          <label for="fileDropRef">Browse for file</label>
+          <label for="fileDropRef">{{'hike-creation.browseFile' | translate}}</label>
           <input type="file" accept="image/*" (change)="displayImage($event)">
           <img class="preview-image" *ngIf="imagePreview && !image?.invalid" [src]="imagePreview" alt="Selected Image" class="preview-image">
         </div>
         <mat-error *ngIf="imageSelected && image?.invalid">
-          <span *ngIf="image?.errors?.['required']">L'image est requise</span>
-          <span *ngIf="image?.errors?.['invalidFileType']">Format de fichier non pris en charge. Veuillez sélectionner une image.</span>
-          <span *ngIf="image?.errors?.['invalidFileContent']">Fichier non valide. Veuillez sélectionner une image valide.</span>
+          <span *ngIf="image?.errors?.['required']">{{'hike-creation.imageRequired' | translate}}</span>
+          <span *ngIf="image?.errors?.['invalidFileType']">{{'hike-creation.wrongFormat' | translate}}</span>
+          <span *ngIf="image?.errors?.['invalidFileContent']">{{'hike-creation.invalidFile' | translate}}</span>
         </mat-error>
       </div>
 
       <!-- Description -->
       <div class="form-field">
         <div class="form-title">
-          <p>Description</p>
+          <p>{{'hike-creation.description' | translate}}</p>
         </div>
         <mat-form-field appearance="outline">
           <textarea matInput formControlName="description"></textarea>
           <mat-hint>{{ description?.value?.length }}/255</mat-hint>
           <mat-error *ngIf="description?.invalid && (description?.dirty || description?.touched)">
-            La description ne peut pas dépasser 255 caractères
+            {{'hike-creation.description255car' | translate}}
           </mat-error>
         </mat-form-field>
       </div>
@@ -59,20 +59,20 @@
      <!-- Location -->
 <div class="form-field">
   <div class="form-title">
-    <p>Emplacement</p>
+    <p>{{'hike-creation.location' | translate}}</p>
   </div>
   <mat-form-field appearance="outline">
     <input matInput type="text" formControlName="location">
   </mat-form-field>
   <mat-error *ngIf="location?.invalid && (location?.dirty || location?.touched)">
-    L'emplacement est requis
+    {{'hike-creation.locationRequired' | translate}}
   </mat-error>
 </div>
 
       <!-- Type (Vélo ou pied) -->
       <div class="form-field">
         <div class="form-title">
-          <p>Type</p>
+          <p>{{'hike-creation.type' | translate}}</p>
         </div>
         
         <div class="button-group">
@@ -100,16 +100,16 @@
   <!-- Map section -->
   <div class="map-container">
     <button class="btnSend" (click)="onSubmit()" [disabled]="!hikeForm.valid || !isFormValid() || !arePointsSelected() ">
-      Create Hike
+      {{'hike-creation.createHike' | translate}}
     </button>
     <div class="button-container">
       <button (click)="choosePoint('A')" [class.selected]="selectedPoint === 'A'">
         <i class="fas fa-play"></i><br>
-        Start Point
+        {{'hike-creation.startPoint' | translate}}
       </button>
       <button (click)="choosePoint('B')" [class.selected]="selectedPoint === 'B'">
         <i class="fas fa-flag-checkered"></i><br>
-        End Point
+        {{'hike-creation.endPoint' | translate}}
       </button>
     <!-- Display latitude and longitude for selected points -->
     <div class="point-info" *ngIf="selectedPoint === 'A' && pointALatitude !== null && pointALongitude !== null">
@@ -121,10 +121,10 @@
       <p>Point d'arrivée Longitude: {{ pointBLongitude }}</p>
     </div>
     <div *ngIf="selectedPoint !== 'A' && (pointALatitude === null || pointALongitude === null)">
-      <p class="error-message">Point de départ est requis</p>
+      <p class="error-message">{{'hike-creation.startPointRequired' | translate}}</p>
     </div>
     <div *ngIf="selectedPoint !== 'B' && (pointBLatitude === null || pointBLongitude === null)">
-      <p class="error-message">Point d'arrivée est requis</p>
+      <p class="error-message">{{'hike-creation.endPointRequired' | translate}}</p>
     </div>
 
     </div>
