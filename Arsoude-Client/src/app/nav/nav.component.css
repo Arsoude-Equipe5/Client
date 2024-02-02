@@ -1,3 +1,8 @@
+
+.navcontainer{
+    display: flex;
+}
+
 nav{
     margin-top: 35px;
 }
@@ -6,7 +11,7 @@ ul{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-left: 21%;
+    padding-left: 45vh; 
     padding-right: 2%;
     height: 66px;
     align-items: center;
@@ -37,7 +42,47 @@ li{
     }
 }
 
-a{
-    text-decoration: none;
-    color: black;
+
+.menuMobile{
+
+    display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+   
+
+    .menuMobile{
+
+        display: block;
+        display: flex;
+        justify-content: end;
+        padding-right: 7vh;
+    
+    
+    }
+
+    .strip{display: none;}
+    
+    .linkMenu{
+
+        text-decoration: none;
+        color: white;
+     }
+
+}
+@media only screen and (min-width: 1000px) and (max-width:1400px) {
+   
+
+
+    .strip{
+
+
+        padding-left: 45vh;
+        padding-right: 2%;
+
+        
+    }
+    
+
+
 }
