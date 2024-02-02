@@ -66,7 +66,8 @@
     "email":"Courriel",
     "password":"Mot de Passe",
     "dontHaveAccount":"Pas de compte?",
-    "register":"S'inscrire"
+    "register":"S'inscrire",
+    "requiredField":"Ce champ est requis"
   }
 
 }

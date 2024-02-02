@@ -3,9 +3,9 @@
   <div class="rightBox">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="signinContainer">
-        <h2 style="text-align: center">Sign In</h2>
+        <h2 style="text-align: center">{{'signin.signin' | translate}}</h2>
         <div class="formInputContainer">
-          <label for="email">Email </label>
+          <label for="email">{{'signin.email' | translate}}</label>
           <input
             class="formInput"
             id="email"
@@ -20,12 +20,12 @@
               loginForm.get('email')?.touched
             "
           >
-            This field is required.</mat-error
+          {{'signin.requiredField' | translate}}</mat-error
           >
         </div>
 
         <div class="formInputContainer">
-          <label for="password">Password: </label>
+          <label for="password">{{'signin.password' | translate}}</label>
           <input
             class="formInput"
             id="password"
@@ -39,7 +39,7 @@
               loginForm.get('password')?.touched
             "
           >
-            This field is required.</mat-error
+          {{'signin.requiredField' | translate}}</mat-error
           >
         </div>
 
@@ -52,12 +52,12 @@
             class="submitBtn"
        
           >
-            Sign In
+          {{'signin.signin' | translate}}
           </button>
 
           <p id="textSignIn">
-            Don't have an account?
-            <a routerLink="/register" id="textLogIn">Register</a>
+            {{'signin.dontHaveAccount' | translate}}
+            <a routerLink="/register" id="textLogIn">{{'signin.register' | translate}}</a>
           </p>
         </div>
       </div>
