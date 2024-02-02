@@ -57,17 +57,11 @@ li{
         display: flex;
         justify-content: end;
         padding-right: 7vh;
-    
-    
     }
 
     .strip{display: none;}
     
-    .linkMenu{
 
-        text-decoration: none;
-        color: white;
-     }
 
 }
 @media only screen and (min-width: 1000px) and (max-width:1400px) {
@@ -83,6 +77,18 @@ li{
         
     }
     
+      
 
 
+}
+
+@media only screen and (max-width: 900px) {
+
+
+
+    .logo{
+      
+        left: 80px;
+
+    } 
 }
