@@ -3,7 +3,7 @@
       "inputWorks": "input works!"
     },
 
-    "navbar":{
+    "nav":{
       "home": "Home",
       "register": "Register",
       "signIn": "Sign In"

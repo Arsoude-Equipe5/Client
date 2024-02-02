@@ -31,7 +31,6 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { RegisterComponent } from './pages/register/register.component';
-import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { InputComponent } from './components/input/input.component';
 import { SigninComponent } from './pages/signin/signin.component';
@@ -39,6 +38,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { InterceptorInterceptor } from './assets/interceptor/interceptor.interceptor';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HomeComponent } from './pages/home/home.component';
 
 
 const MY_DATE_FORMAT = {
@@ -71,6 +71,7 @@ const MY_DATE_FORMAT = {
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({
+      defaultLanguage: 'fr-CA',
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
@@ -119,5 +120,5 @@ const MY_DATE_FORMAT = {
 export class AppModule {}
 
 export function HttpLoaderFactory(http: HttpClient){
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
