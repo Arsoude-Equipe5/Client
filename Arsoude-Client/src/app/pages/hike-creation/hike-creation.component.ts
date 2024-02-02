@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GoogleMap } from "@angular/google-maps";
-import { HikeDTO, hikeType } from '../models/HikeDTO';
-import { HikeCoordinatesDTO } from '../models/HikeCoordinatesDTO'; 
-import { HikeService } from '../services/HikeServices';
+import { HikeDTO, hikeType } from '../../models/HikeDTO';
+import { HikeCoordinatesDTO } from '../../models/HikeCoordinatesDTO'; 
+import { HikeService } from '../../services/HikeServices';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-hike-creation',
