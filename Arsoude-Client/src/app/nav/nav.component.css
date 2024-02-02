@@ -10,14 +10,17 @@ ul{
     list-style: none;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding-left: 45vh; 
+    justify-content: flex-end;
+  padding-left: 45vh; 
     padding-right: 2%;
     height: 66px;
     align-items: center;
     background-color: white;
+    gap: 25px;
+    padding-right: 130px;  
 }
 li{
+    
     font-size: 1.3rem;
     font-weight: bold;
 }
@@ -61,6 +64,8 @@ li{
 
     .strip{display: none;}
     
+  .linkMenu{text-decoration: none;
+color: white;}
 
 
 }
@@ -73,6 +78,7 @@ li{
 
         padding-left: 45vh;
         padding-right: 2%;
+
 
         
     }
@@ -88,7 +94,7 @@ li{
 
     .logo{
       
-        left: 80px;
+        left: 8     0px;
 
     } 
 }
