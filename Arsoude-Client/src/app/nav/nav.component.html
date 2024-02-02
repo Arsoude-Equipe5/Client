@@ -1,11 +1,15 @@
-<div>
+<div class="navContainer">
+
+
     <div class="logo">
+
         <div>
 
         </div>
         <p>ARSOUDE</p>
     </div>
-    <nav>
+
+    <nav >
         <ul class="strip">
             <li><a routerLink="/home" id="textLogIn">Home</a></li>
             <!-- <li>All Trails</li>
@@ -21,5 +25,45 @@
             </ng-container>
             <li class="Disconnect" *ngIf="isLoggedIn()"><a (click)="logout()" id="textLogIn">Disconnect</a></li>
         </ul>
+
+
+        <!-- menu mobile -->
+        <ul class="menuMobile">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button> <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>home</mat-icon>
+              <a class="linkMenu" routerLink="/home" id="textLogIn">Home</a>
+            </button>
+           
+          
+            <button mat-menu-item>
+                <mat-icon>Create</mat-icon>
+                <a class="linkMenu" routerLink="/hikecreation" id="textLogIn">Create Hike</a>
+              </button>
+         
+              <button mat-menu-item>
+                <mat-icon>Register</mat-icon>
+                <a class="linkMenu" routerLink="/register" id="textLogIn">Register</a>
+              </button>
+
+
+              
+              <button mat-menu-item>
+                <mat-icon>Log in</mat-icon>
+                <a class="linkMenu" routerLink="/signin" id="textLogIn">Log in</a>
+              </button>
+      </mat-menu></ul>
+   
+
+
+
+       
+
+    
     </nav>
+
+  
+
 </div>

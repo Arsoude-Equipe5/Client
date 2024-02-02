@@ -2,7 +2,8 @@
   flex-direction: row;
   height: 100%;
   background-color: #02282F;
-  position: relative;
+  /* position: relative; */
+ 
 }
 
 app-nav{
@@ -12,4 +13,13 @@ app-nav{
   right: 0;
   width: 100%;
   z-index: 1000;
+}
+
+@media only screen and (max-width:1500px)  {
+
+.content{
+
+padding-bottom: 100px;
+  height: auto;
+}
 }

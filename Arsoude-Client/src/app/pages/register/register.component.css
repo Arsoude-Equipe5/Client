@@ -1,8 +1,9 @@
 .container {
   display: flex;
+  
   justify-content: center;
   border-radius: 30px;
-  padding-top: 10%;
+  padding-top: 20vh;
   padding-left: 8%;
   padding-right: 8%;
 }
@@ -43,6 +44,7 @@ display: flex;
   border-style: solid;
   border-color: #193d2a;
   padding: 12px;
+
 }
 .content {
   display: flex;
@@ -156,8 +158,76 @@ width: 150px;
 
 }
 
+.firstNameLastName{
+
+  display: flex;
+  gap: 13px;
+}
+
 .passwordError{
 color: red;
 
   width: 350px;
+}
+
+
+
+
+@media only screen and (max-width:900px)
+{
+
+  
+     
+
+
+  
+ .row{
+      flex-direction: column;
+
+       
+    }
+
+    .rightbox{
+
+      width: 90% !important;
+      justify-content: center;
+ 
+    }
+
+    .formInput{
+
+      width: 100% !important;
+  
+    }
+
+    .formBoite{
+      padding: 0 100px 0 100px
+          }
+          
+      
+  
+}
+
+@media only screen and (min-width:900px) and (max-width: 1500px) {
+
+     
+  .rightbox{
+
+    padding: 50px 30px 0 0}
+
+  
+    .rightbox .row{
+      flex-direction: column;
+
+       
+    }
+
+    .formInput{
+
+      width: 100% !important;
+      
+    }
+
+    
+
 }

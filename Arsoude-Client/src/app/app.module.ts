@@ -21,6 +21,7 @@ import {
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE,
 } from '@angular/material/core';
+import {MatMenuModule} from '@angular/material/menu'
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,7 +38,6 @@ import { InputComponent } from './components/input/input.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { ToastrModule } from 'ngx-toastr';
 import { InterceptorInterceptor } from './assets/interceptor/interceptor.interceptor';
-
 
 const MY_DATE_FORMAT = {
   parse: {
@@ -72,6 +72,7 @@ const MY_DATE_FORMAT = {
     MatFormFieldModule,
     ReactiveFormsModule,
     MatDatepickerModule,
+    MatMenuModule,
     MatInputModule,
     MatIconModule,
     MatButtonModule,
