@@ -12,7 +12,7 @@ export class AppComponent {
 
 
 
-  language: string = "fr-CA";
+  language: string = "fr";
 
   constructor(public translator: TranslateService) {
     translator.setDefaultLang(this.language);
