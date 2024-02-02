@@ -60,7 +60,7 @@ export class RegisterComponent  {
         ),
       ]),
       adresse: new FormControl(''),
-      dateOfBirth: new FormControl(''), // Remove Validators.required here
+      dateOfBirth: new FormControl(''), 
     },
     { validators: passwordValidator }
   );
@@ -121,6 +121,8 @@ export class RegisterComponent  {
         
     }
   }
+
+  
 }
 
 const passwordValidator: ValidatorFn = (
@@ -156,3 +158,5 @@ export function customDateValidator(): ValidatorFn {
     return null; // Return null if validation passes
   };
 }
+
+

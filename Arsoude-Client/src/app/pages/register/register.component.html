@@ -191,7 +191,8 @@
             formControlName="dateOfBirth"
             placeholder="2024-02-03"
             max="{{this.date}}"
-           
+            (keydown)="false"
+            (paste)="false"
           />
 
           <mat-error

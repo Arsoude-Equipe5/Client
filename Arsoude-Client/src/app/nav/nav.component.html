@@ -8,12 +8,18 @@
     <nav>
         <ul class="strip">
             <li><a routerLink="/home" id="textLogIn">Home</a></li>
-            <li>All Trails</li>
+            <!-- <li>All Trails</li>
             <li>Community</li>
-            <li>Profile</li>
-            <li><a routerLink="/hikecreation" id="textLogIn">Create</a></li>
-            <li><a routerLink="/register" id="textLogIn">Register</a></li>
-            <li><a routerLink="/signin" id="textLogIn">Log in</a></li>
+            <li>Profile</li> -->
+            <ng-container *ngIf="isLoggedIn()" >
+                <li><a routerLink="/hikecreation" id="textLogIn" >Create</a></li>
+            </ng-container>
+            <!-- Conditionally render based on user login status -->
+            <ng-container *ngIf="!isLoggedIn()">
+                <li><a routerLink="/register" id="textLogIn">Register</a></li>
+                <li><a routerLink="/signin" id="textLogIn">Log in</a></li>
+            </ng-container>
+            <li class="Disconnect" *ngIf="isLoggedIn()"><a (click)="logout()" id="textLogIn">Disconnect</a></li>
         </ul>
     </nav>
 </div>

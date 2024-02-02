@@ -9,7 +9,7 @@
         </div>
         <div class="form-field-bg">
           <mat-form-field appearance="outline">
-            <input matInput type="text" formControlName="nomRandonnee">
+            <input matInput type="text" formControlName="nomRandonnee" [readonly]="onloading">
             <mat-error *ngIf="nomRandonnee?.invalid && (nomRandonnee?.dirty || nomRandonnee?.touched)">
               <span *ngIf="nomRandonnee?.errors?.['required']">Hike name is required</span>
               <span *ngIf="nomRandonnee?.errors?.['minlength']">Hike name must be at least 4 characters</span>
@@ -29,7 +29,7 @@
           <h3>or</h3>
           <br>
           <label for="fileDropRef">Browse for file</label>
-          <input type="file" accept="image/*" (change)="displayImage($event)">
+          <input type="file" accept="image/*" (change)="displayImage($event)" [readonly]="onloading">
           <img class="preview-image" *ngIf="imagePreview && !image?.invalid" [src]="imagePreview" alt="Selected Image" class="preview-image">
         </div>
         <mat-error *ngIf="imageSelected && image?.invalid">
@@ -45,7 +45,7 @@
           <p>Description</p>
         </div>
         <mat-form-field appearance="outline">
-          <textarea matInput formControlName="description"></textarea>
+          <textarea matInput formControlName="description" [readonly]="onloading"></textarea>
           <mat-hint>{{ description?.value?.length }}/255</mat-hint>
           <mat-error *ngIf="description?.invalid && (description?.dirty || description?.touched)">
             Description cannot exceed 255 characters
@@ -60,7 +60,7 @@
     <p>Location</p>
   </div>
   <mat-form-field appearance="outline">
-    <input matInput type="text" formControlName="location">
+    <input matInput type="text" formControlName="location" [readonly]="onloading">
   </mat-form-field>
   <mat-error *ngIf="location?.invalid && (location?.dirty || location?.touched)">
     The location is required
@@ -74,10 +74,10 @@
         </div>
         
         <div class="button-group">
-          <button [ngClass]="{'selected': hikeType === 'marche'}" (click)="setHikeType('marche')">
+          <button [ngClass]="{'selected': hikeType === 'marche'}" (click)="setHikeType('marche')" [disabled]="onloading">
             <i class="fas fa-walking"></i>
           </button>
-          <button [ngClass]="{'selected': hikeType === 'vélo'}" (click)="setHikeType('vélo')">
+          <button [ngClass]="{'selected': hikeType === 'vélo'}" (click)="setHikeType('vélo')" [disabled]="onloading">
             <i class="fas fa-bicycle"></i>
           </button>
         </div>
@@ -101,11 +101,11 @@
       Create Hike
     </button>
     <div class="button-container">
-      <button (click)="choosePoint('A')" [class.selected]="selectedPoint === 'A'">
+      <button (click)="choosePoint('A')" [class.selected]="selectedPoint === 'A'" [disabled]="onloading">
         <i class="fas fa-play"></i><br>
         Start Point
       </button>
-      <button (click)="choosePoint('B')" [class.selected]="selectedPoint === 'B'">
+      <button (click)="choosePoint('B')" [class.selected]="selectedPoint === 'B'" [disabled]="onloading">
         <i class="fas fa-flag-checkered"></i><br>
         End Point
       </button>
