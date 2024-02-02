@@ -200,6 +200,10 @@ color: red;
   
     }
 
+    .formBoite{
+      padding: 0 100px 0 100px
+          }
+          
       
   
 }
@@ -221,6 +225,9 @@ color: red;
     .formInput{
 
       width: 100% !important;
+      
     }
+
+    
 
 }
