@@ -14,7 +14,7 @@ export class AuthGuardLoggedIn implements CanActivate {
     if (this.authService.isLoggedIn()) {
       // If user is already logged in, redirect to home page
       this.router.navigate(['/home']);
-      this.toastr.warning('Please Log out before signing again.', 'Already logged in');
+      this.toastr.warning('Please Log out before signing in again.', 'Already logged in');
       return false; // Prevent access to the route
     } else {
       return true; // Allow access to the route
