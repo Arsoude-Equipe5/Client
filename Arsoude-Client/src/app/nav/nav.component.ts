@@ -14,8 +14,10 @@ export class NavComponent {
     translator.setDefaultLang(this.language);
   }
   
-  changeLanguage(lang:string):void{
+  changeLanguage(lang: string, event: Event): void {
+    event.preventDefault();  // Prevent the default behavior of the anchor element
     this.language = lang;
     this.translator.use(this.language);
   }
+  
 }

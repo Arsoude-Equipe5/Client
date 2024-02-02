@@ -4,7 +4,8 @@
     "home": "Home",
     "register": "Register",
     "logIn": "Log in",
-    "create": "Create"
+    "create": "Create",
+    "languages":"Languages"
   },
 
   "hike-creation":{
