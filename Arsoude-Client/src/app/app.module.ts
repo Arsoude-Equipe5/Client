@@ -71,7 +71,7 @@ const MY_DATE_FORMAT = {
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({
-      defaultLanguage: 'fr-CA',
+      defaultLanguage: 'fr',
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
