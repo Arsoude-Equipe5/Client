@@ -1,0 +1,92 @@
+{
+
+  "nav":{
+    "home": "Accueil",
+    "register": "S'inscrire",
+    "logIn": "Se connecter",
+    "create": "Créer",
+    "languages":"Langues",
+    "disconnect":"Se déconnecter"
+  },
+
+  "hike-creation":{
+    "hikeName": "Nom de la randonnée",
+    "hikeImage" : "Image",
+    "description": "Description",
+    "location": "Emplacement",
+    "type":"Type",
+    "startPoint":"Point de Départ",
+    "endPoint":"Point d'Arrivée",
+    "startPointRequired":"Point de départ est requis",
+    "endPointRequired":"Point d'arrivée est requis",
+    "createHike":"Créer la Randonnée",
+
+    "nameRequired":"Nom est requis",
+    "name4car":"Nom doit avoir au moins 4 caractères",
+    "name70car":"Nom doit avoir moins de 70 caractères",
+    "dragDropFile":"Glissez et déposez le fichier ici",
+    "or":"ou",
+    "browseFile":"Rechercher un fichier",
+    "imageRequired":"L'image est requise",
+    "wrongFormat":"Mauvais format de fichier, sélectionnez une image.",
+    "invalidFile":"Fichier invalide, sélectionnez une image.",
+    "description255car":"La description ne peut pas dépasser 255 caractères.",
+    "locationRequired":"L'emplacement est requis",
+    "createHikeSuccess":"Randonnée créée avec succès",
+    "success":"Succès",
+    "loginCreate":"Connectez-vous avant de créer une randonnée",
+    "loginRequired":"Connexion requise"
+
+
+  },
+  
+  "register":{
+    "createAccount":"Créer un compte",
+    "firstName":"Prénom",
+    "lastName":"Nom",
+    "email":"Courriel",
+    "password":"Mot de Passe",
+    "confirmPassword": "Confirmer le Mot de Passe",
+    "address":"Adresse",
+    "postalCode":"Code Postal",
+    "dateOfBirth":"Date de naissance",
+    "createMyAccount": "CRÉER MON COMPTE",
+    "alreadyAnAccount": "Déjà un compte?",
+    "login":"Se connecter",
+
+    "requiredField":"Ce champ est requis",
+    "firstName2car":"Prénom doit contenir au moins 2 caractères",
+    "firstName40car":"Prénom doit contenir un maximum de 40 caractères",
+    "lastName2car":"Nom doit contenir au moins 2 caractères",
+    "lastName40car":"Nom doit contenir un maximum de 40 caractères",
+    "invalidPostalCode":"Entrer un code postal valide",
+    "invalidEmail":"Entrer un format de courriel valide",
+    "invalidDate":"Entrer une date valide",
+    "password6car":"Le mot de passe doit contenir au moins 6 caractères, incluant 1 chiffre",
+    "password100car":"Le mot de passe doit avoir moins de 100 caractères",
+    "passwordMatching":"Les mots de passe ne sont pas équivalents",
+    "emailInUse":"Courriel déjà utilisé",
+    "invalidBirth":"Date de naissance invalide",
+    "unexpectedError":"Une erreur inattendue est survenue",
+    "accountSuccessful":"Compte créé avec succès!"
+
+  },
+
+  "signin":{
+    "signin":"Se connecter",
+    "email":"Courriel",
+    "password":"Mot de Passe",
+    "dontHaveAccount":"Pas de compte?",
+    "register":"S'inscrire",
+    "requiredField":"Ce champ est requis",
+    "invalidLogin":"Courriel ou mot de passe invalide",
+    "logOutBeforeLogin":"Déconnectez-vous avant de faire cette action.",
+    "alreadyLogin":"Déjà connecté",
+    "logBeforeCreate":"Connectez-vous avant de créer une randonnée",
+    "loginRequired":"Connexion requise",
+    "loginSuccess":"Connecté avec succès!"
+    
+  }
+
+}
+

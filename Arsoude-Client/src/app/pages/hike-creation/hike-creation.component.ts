@@ -8,6 +8,7 @@ import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fir
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-hike-creation',
@@ -38,7 +39,8 @@ export class HikeCreationComponent implements OnInit {
     private hikeService: HikeService, 
     private router: Router, 
     private toastr: ToastrService, 
-    private authService: AuthService, 
+    private authService: AuthService,
+    private translate: TranslateService, 
   ) { }
 
   ngOnInit(): void {
@@ -181,7 +183,7 @@ export class HikeCreationComponent implements OnInit {
   async onSubmit(): Promise<void> {
     if (!this.authService.isLoggedIn()) {
       // User is not logged in, display toastr and redirect to login page
-      this.toastr.warning('Please login before creating a hike', 'Login Required');
+      this.showWarning(); // display toastr warning
       this.router.navigate(['/signin']); // Adjust the route if necessary
       return;
     }
@@ -238,7 +240,7 @@ export class HikeCreationComponent implements OnInit {
             (response: any) => {
               console.log('Hike created successfully:', response);
               this.router.navigate(['/home']);
-              this.toastr.success('Hike created successfully', 'Success'); // Toastr notification for successful hike creation
+              this.showSuccess(); // Toastr notification for successful hike creation
               // Optionally, you can perform any additional actions here after hike creation
             },
             (error: any) => {
@@ -274,4 +276,21 @@ export class HikeCreationComponent implements OnInit {
   get location(){
     return this.hikeForm.get('location');
   }
+
+  showSuccess() {
+    this.translate.get('hike-creation.createHikeSuccess').subscribe((message: string) => {
+      const successWord = this.translate.instant('hike-creation.success'); // Translate the word "Success"
+      const fullMessage = `${message} - ${successWord}`; // Combine the translated message and word "Success"
+      this.toastr.success(fullMessage, successWord);
+    });
+}
+
+
+showWarning() {
+  this.translate.get('hike-creation.loginCreate').subscribe((message: string) => {
+    const warningWord = this.translate.instant('hike-creation.loginRequired'); // Translate the word "Success"
+    const fullMessage = `${message} - ${warningWord}`; // Combine the translated message and word "Success"
+    this.toastr.warning(fullMessage, warningWord);
+  });
+}
 }

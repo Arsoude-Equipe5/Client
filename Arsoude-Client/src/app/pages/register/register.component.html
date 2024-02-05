@@ -3,11 +3,11 @@
 
   <div class="rightbox">
     <form [formGroup]="formRegister" (ngSubmit)="onSubmit()" class="formBoite">
-      <h2 style="text-align: center" id="titleCreate">Create an account</h2>
+      <h2 translate style="text-align: center" id="titleCreate">register.createAccount</h2>
       <div class="row">
         <div class="formInputContainer">
           <div>
-          <label for="firstName">First Name</label>
+          <label for="firstName">{{'register.firstName' | translate}}</label>
           <span style="color: red;"> *</span></div>
           <input
             class="formInput"
@@ -22,7 +22,7 @@
               formRegister.get('firstName')?.touched
             "
           >
-            This field is required
+          {{'register.requiredField' | translate}}
           </mat-error>
           <mat-error
             *ngIf="
@@ -30,7 +30,7 @@
               formRegister.get('firstName')?.touched
             "
           >
-            First Name must be 2 characters minimum.
+          {{'register.firsName2car' | translate}}
           </mat-error>
           <mat-error
             *ngIf="
@@ -38,7 +38,7 @@
               formRegister.get('firstName')?.touched
             "
           >
-            First Name must be 40 characters maximum.
+          {{'register.firstName40car' | translate}}
           </mat-error>
         </div>
 
@@ -46,7 +46,7 @@
     
 
           <div>
-            <label for="lastName">Last Name </label>
+            <label for="lastName">{{'register.lastName' | translate}}</label>
             <span style="color: red;"> *</span></div>
 
           <input
@@ -59,7 +59,6 @@
 
 
 
-
           
           <mat-error
             *ngIf="
@@ -67,7 +66,7 @@
               formRegister.get('lastName')?.touched
             "
           >
-            This field is required
+            {{'register.requiredField' | translate}}
           </mat-error>
 
           <mat-error
@@ -76,7 +75,7 @@
               formRegister.get('lastName')?.touched
             "
           >
-            Last Name field must have 2 characters minimum.
+           {{'register.lastName2car' | translate}}
           </mat-error>
           <mat-error
             *ngIf="
@@ -84,14 +83,14 @@
               formRegister.get('lastName')?.touched
             "
           >
-            First Name must be 40 characters maximum.
+           {{'register.lastName40car' | translate}}
           </mat-error>
         </div>
 
         <div class="formInputContainer">
 
           <div>
-          <label for="adresse">Adress </label>
+          <label for="adresse">{{'register.address' | translate}} </label>
           </div>
           
           <input
@@ -104,7 +103,6 @@
 
 
 
-
         </div>
 
         <div class="formInputContainer">
@@ -112,9 +110,8 @@
 
           
           <div>
-            <label for="postalCode">Postal Code </label>
+            <label for="postalCode">{{'register.postalCode' | translate}} </label>
             <span style="color: red;"> *</span></div>
-
 
 
           <input
@@ -131,14 +128,14 @@
               formRegister.get('postalCode')?.hasError('required') &&
               formRegister.get('postalCode')?.touched
             "
-            >This field is required.</mat-error
+            >{{'register.requiredField' | translate}}</mat-error
           >
           <mat-error
             *ngIf="
               formRegister.get('postalCode')?.hasError('pattern') &&
               formRegister.get('postalCode')?.touched
             "
-            >Please enter a valid postal code.
+            >{{'register.invalidPostalCode' | translate}}
           </mat-error>
         </div>
       </div>
@@ -147,9 +144,8 @@
        
 
           <div>
-            <label for="email">Email </label>
+            <label for="email">{{'register.email' | translate}}</label>
             <span style="color: red;"> *</span></div>
-
 
           <input
             class="formInput"
@@ -164,7 +160,7 @@
               formRegister.get('email')?.touched
             "
           >
-            This field is required.</mat-error
+          {{'register.requiredField' | translate}}</mat-error
           >
           <mat-error
             *ngIf="
@@ -172,17 +168,16 @@
               formRegister.get('email')?.touched
             "
           >
-            Please enter a valid email format.
+          {{'register.invalidEmail' | translate}}
           </mat-error>
         </div>
         <div class="formInputContainer">
           
 
           <div>
-            <label for="dateOfBirth"> Date of birth </label>
+            <label for="dateOfBirth">{{'register.dateOfBirth' | translate}}</label>
 
             </div>
-
 
           <input
             type="date"
@@ -201,7 +196,7 @@
               formRegister.get('dateOfBirth')?.touched
             "
           >
-            The date is required</mat-error
+          {{'register.requiredField' | translate}}</mat-error
           >
 
           <mat-error
@@ -210,7 +205,7 @@
               formRegister.get('dateOfBirth')?.touched
             "
           >
-            Please enter a valid date</mat-error
+          {{'register.invalidDate' | translate}}</mat-error
           >
 
           <mat-error
@@ -219,19 +214,17 @@
               formRegister.get('dateOfBirth')?.touched
             "
           >
-            Please enter a valid</mat-error
+          {{'register.requiredField' | translate}}</mat-error
           >
         </div>
       </div>
       <div class="row">
         <div class="formInputContainer">
 
-
           <div>
-            <label for="password">Password </label>
+            <label for="password">{{'register.password' | translate}}</label>
 
             <span style="color: red;"> *</span></div>
-
 
           <input
             class="formInput"
@@ -246,7 +239,7 @@
               formRegister.get('password')?.touched
             "
           >
-            This field is required.</mat-error
+          {{'register.requiredField' | translate}}</mat-error
           >
 
           <p class="passwordError"
@@ -256,8 +249,7 @@
                 formRegister.get('password')?.touched)
             "
           >
-            The password must contain atleast 6 characters, including at least 1
-            number
+          {{'register.password6car' | translate}}
           </p>
 
           <mat-error
@@ -267,7 +259,7 @@
               formRegister.get('password')?.touched
             "
           >
-            The password must be shorter than 100 characters.
+          {{'register.password100car' | translate}}
           </mat-error>
         </div>
       </div>
@@ -275,13 +267,10 @@
         <div class="formInputContainer">
 
 
-
           <div>
-            <label for="confirmedPassword">Confirm Password: </label>
-
+            <label for="confirmedPassword">{{'register.confirmPassword' | translate}}</label>
 
             <span style="color: red;"> *</span></div>
-
 
           <input
             class="formInput"
@@ -296,16 +285,19 @@
               formRegister.get('confirmedPassword')?.touched
             "
           >
-            This field is required.</mat-error
-          >
+          {{'register.requiredField' | translate}}</mat-error>
           <p class="passwordError"
             *ngIf="!formRegister.get('confirmedPassword')?.hasError('required') && formRegister.errors?.['passwordMismatch'] && formRegister.get('confirmedPassword')?.touched "
           >
-            Passwords are not matching</p
+          {{'register.passwordMatching' | translate}}</p
           >
         </div>
       </div>
-<p style="color: red; text-align: center;">{{this.requestResponse}}</p>
+
+      <!-- Translates the error message from the server -->
+      <p translate style="color: red; text-align: center;">{{this.requestResponseFormat}}</p> 
+  
+
       <div class="row flex-center">
         <div class="content">
           <button
@@ -313,10 +305,10 @@
             [disabled]="formRegister.invalid || isWaiting  "
             class="submitBtn"
           >
-            CREATE MY ACCOUNT
+          {{'register.createAccount' | translate}}
           </button>
 
-          <p id="textSignIn">Already have an account? <a routerLink="/signin" id="textLogIn">Log in</a></p>
+          <p id="textSignIn">{{'register.alreadyAnAccount' | translate}} <a routerLink="/signin" id="textLogIn">{{'register.login' | translate}}</a></p>
         </div>
       </div>
 

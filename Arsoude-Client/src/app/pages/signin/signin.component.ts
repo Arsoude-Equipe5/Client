@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
+import { ServerErrorMappings } from 'src/app/models/ServerErrorMappings';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -11,9 +13,10 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SigninComponent {
 
-
+language: string = "fr";
 isWaiting:boolean=false;
 requestResponse:string='';
+requestResponseFormat:string=''
 
 
 
@@ -21,7 +24,9 @@ requestResponse:string='';
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
-  constructor(private auth: AuthService, private router:Router, private toastr:ToastrService) {}
+  constructor(private auth: AuthService, private router:Router, private toastr:ToastrService, public translator:TranslateService) {
+    translator.setDefaultLang(this.language);
+  }
 
   onSubmit() {
     const { email, password } = this.loginForm.value;
@@ -37,7 +42,7 @@ requestResponse:string='';
           localStorage.setItem('token', res.token);
           this.router.navigate(['/home'])
           // window.alert('Account created successfully!')
-          this.toastr.success('Logged in successfully!')
+          this.showSuccess();
 
         
 
@@ -47,8 +52,15 @@ requestResponse:string='';
 
           console.log(err);
           this.requestResponse=err.error.error;
+          this.requestResponseFormat = ServerErrorMappings.getLocalizationKey(this.requestResponse)
         },
       });
     }
   }
+
+  showSuccess() {
+    this.translator.get('signin.loginSuccess').subscribe((message: string) => {
+      this.toastr.success(message);
+    });
+}
 }

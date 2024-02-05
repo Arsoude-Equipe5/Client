@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,7 +8,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent  {
-  constructor(private auth: AuthService){}
+  language: string = "fr";
+
+  constructor(private auth: AuthService, public translator: TranslateService){
+    translator.setDefaultLang(this.language);
+  }
   // ngOnInit(): void {
 
   //   // this.auth.getHikes().subscribe({
@@ -24,6 +29,10 @@ export class HomeComponent  {
 
   // }
 
+  changeLanguage(lang:string):void{
+    this.language = lang;
+    this.translator.use(this.language);
+  }
  
 
 }
