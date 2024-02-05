@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: row;
-height: 110vh;
+height: 115vh;
   background-color: #02282F;
 
 }
@@ -87,7 +87,7 @@ height: 100%;
 
 .map-container {
   position: relative;
-  width: 100%;
+  width: 75%;
 
 height: 100%;
 
@@ -234,7 +234,7 @@ mat-form-field.mat-focused .mat-form-field-label {
 }
 
 
-@media only screen and (max-width:900px)
+@media only screen and (max-width:1500px) 
 {
 
   .container{
@@ -256,10 +256,7 @@ height: 100%;
 
 }
  
-}
 
-
-@media only screen and (max-width:900px) {
 
 
   .form-container {
