@@ -83,7 +83,7 @@ color: white;}
 
 
 }
-@media only screen and (min-width: 1000px) and (max-width:1400px) {
+@media only screen and (min-width: 1000px)  {
    
 
 
@@ -97,7 +97,19 @@ color: white;}
         
     }
     
-      
+    ::ng-deep .cdk-overlay-container {
+  
+        display: none;
+      }
+      ::ng-deep .cdk-overlay-pane {
+        display: none;
+    
+      }
+      ::ng-deep .mat-select-panel {
+    
+        display: none;
+      }
+  
 
 
 }
