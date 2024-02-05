@@ -61,8 +61,7 @@
     "passwordMatching":"Passwords are not matching",
     "emailInUse":"Email already in use",
     "invalidBirth":"BirthDate is not valid",
-    "unexpectedError":"An unexpected error occured",
-    "invalidLogin":"test"
+    "unexpectedError":"An unexpected error occured"
 
   },
 

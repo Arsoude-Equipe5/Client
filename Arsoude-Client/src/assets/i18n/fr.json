@@ -61,8 +61,7 @@
     "passwordMatching":"Les mots de passe ne sont pas équivalents",
     "emailInUse":"Courriel déjà utilisé",
     "invalidBirth":"Date de naissance invalide",
-    "unexpectedError":"Une erreur inattendue est survenue",
-    "invalidLogin":"test"
+    "unexpectedError":"Une erreur inattendue est survenue"
 
   },
 
