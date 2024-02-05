@@ -1,11 +1,13 @@
 import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GoogleMap } from "@angular/google-maps";
-import { HikeDTO, hikeType } from '../models/HikeDTO';
-import { HikeCoordinatesDTO } from '../models/HikeCoordinatesDTO'; 
-import { HikeService } from '../services/HikeServices';
+import { HikeDTO, hikeType } from '../../models/HikeDTO';
+import { HikeCoordinatesDTO } from '../../models/HikeCoordinatesDTO'; 
+import { HikeService } from '../../services/HikeServices';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
-import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-hike-creation',
@@ -28,13 +30,16 @@ export class HikeCreationComponent implements OnInit {
   pointBLatitude: number | null = null;
   pointBLongitude: number | null = null;
   selectedPoint: 'A' | 'B' | null = null;
-  language: string = "fr";
+  onloading : boolean = false;
 
   @ViewChild('mapAB') mapAB!: GoogleMap;
 
-  constructor(private fb: FormBuilder, private hikeService: HikeService, public translator: TranslateService) {
-    translator.setDefaultLang(this.language);
-   }
+  constructor(private fb: FormBuilder, 
+    private hikeService: HikeService, 
+    private router: Router, 
+    private toastr: ToastrService, 
+    private authService: AuthService, 
+  ) { }
 
   ngOnInit(): void {
     //uncomment when testing hikeCreation
@@ -174,11 +179,22 @@ export class HikeCreationComponent implements OnInit {
   
 
   async onSubmit(): Promise<void> {
+    if (!this.authService.isLoggedIn()) {
+      // User is not logged in, display toastr and redirect to login page
+      this.toastr.warning('Please login before creating a hike', 'Login Required');
+      this.router.navigate(['/signin']); // Adjust the route if necessary
+      return;
+    }
+  
     if (this.hikeForm.valid && this.markers.length === 2) {
       const { nomRandonnee, image, description, type, location } = this.hikeForm.value;
-    
-      // Upload image to Firebase Storage
-      const filePath = `images/${image.name}`;
+  
+      this.onloading = true;
+  
+      const fileName = new Date().getTime().toString() + Math.random().toString(36).substring(2);
+  
+      // Upload image to Firebase Storage with generated file name
+      const filePath = `images/${fileName}`;
       const storageRef = ref(this.storage, filePath);
       const uploadTask = uploadBytesResumable(storageRef, image);
       
@@ -221,12 +237,14 @@ export class HikeCreationComponent implements OnInit {
           this.hikeService.createHike(hikeData).subscribe(
             (response: any) => {
               console.log('Hike created successfully:', response);
-              console.log(hikeData)
+              this.router.navigate(['/home']);
+              this.toastr.success('Hike created successfully', 'Success'); // Toastr notification for successful hike creation
               // Optionally, you can perform any additional actions here after hike creation
             },
             (error: any) => {
               console.error('Error creating hike:', error);
-              console.log(hikeData)
+              this.onloading = false;
+              console.log(hikeData);
             }
           );
         }
@@ -235,6 +253,7 @@ export class HikeCreationComponent implements OnInit {
       this.hikeForm.markAllAsTouched();
     }
   }
+  
 
   get nomRandonnee() {
     return this.hikeForm.get('nomRandonnee');

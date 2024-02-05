@@ -117,7 +117,7 @@
           <input
             class="formInput"
             id="postalCode"
-            placeholder="H3N 1F5"
+            placeholder="H3N1F5"
             type="text"
             formControlName="postalCode"
             maxlength="6"
@@ -177,7 +177,7 @@
           <div>
             <label for="dateOfBirth">{{'register.dateOfBirth' | translate}}</label>
 
-            <span style="color: red;"> *</span></div>
+            </div>
 
           <input
             type="date"
@@ -186,7 +186,8 @@
             formControlName="dateOfBirth"
             placeholder="2024-02-03"
             max="{{this.date}}"
-           
+            (keydown)="false"
+            (paste)="false"
           />
 
           <mat-error
@@ -311,9 +312,9 @@
         </div>
       </div>
 
-      <pre>form value : {{ formRegister.value | json }}</pre>
+      <!-- <pre>form value : {{ formRegister.value | json }}</pre>
       <pre>form status : {{ formRegister.status }}</pre>
-      <pre>form errors: {{ formRegister.errors | json }}</pre>
+      <pre>form errors: {{ formRegister.errors | json }}</pre> -->
     </form>
   </div>
 </div>

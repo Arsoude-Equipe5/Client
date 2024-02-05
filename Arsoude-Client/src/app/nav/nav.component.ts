@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -10,7 +12,7 @@ export class NavComponent {
 
   language: string = "fr";
   
-  constructor(public translator: TranslateService) {
+  constructor(public translator: TranslateService, private authService: AuthService,    private router: Router // Inject Router) {
     translator.setDefaultLang(this.language);
   }
   
@@ -20,4 +22,12 @@ export class NavComponent {
     this.translator.use(this.language);
   }
   
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/home']); // Redirect to home page after logout
+  }
 }
