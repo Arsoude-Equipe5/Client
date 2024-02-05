@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: row;
-height: 110vh;
+  height: 100%;
   background-color: #02282F;
 
 }
@@ -73,21 +73,18 @@ p{
 
 .form-container { 
   background-color: #193D2A;
-height: 100%;
-
-
+  height: 100%;
   width: 25%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Enable scrolling if the content exceeds the container height */
-  /* overflow-y: auto; */
-
+  overflow-y: auto; /* Enable scrolling if the content exceeds the container height */
 }
+
 
 .map-container {
   position: relative;
-  width: 100%;
+  width: 75%;
 
 height: 100%;
 
@@ -234,7 +231,7 @@ mat-form-field.mat-focused .mat-form-field-label {
 }
 
 
-@media only screen and (max-width:900px)
+@media only screen and (max-width:1500px) 
 {
 
   .container{
@@ -247,19 +244,19 @@ mat-form-field.mat-focused .mat-form-field-label {
 
    
   }
-.form-container{
-  width: 100%;
-  padding-left: 0px;
-  justify-content: center;
-height: 100%;
-
-
-}
+  .form-container {
+    background-color: #193D2A;
+    height: 100%;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    max-height: 90vh; 
+  }
+  
  
-}
 
-
-@media only screen and (max-width:900px) {
 
 
   .form-container {
@@ -300,3 +297,8 @@ height: 100%;
  
 
 }
+
+.character-count {
+  color: white;
+}
+
