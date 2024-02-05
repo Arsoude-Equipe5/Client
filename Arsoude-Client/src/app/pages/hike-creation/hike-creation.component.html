@@ -3,21 +3,22 @@
     <div class="hike-card">
       <form class="formBox" [formGroup]="hikeForm" (ngSubmit)="false">
         <!-- Form fields -->
-      <div class="form-field">
-        <div class="form-title">
-          <p>Hike Name</p>
-        </div>
-        <div class="form-field-bg">
-          <mat-form-field appearance="outline">
-            <input matInput type="text" formControlName="nomRandonnee" [readonly]="onloading">
-            <mat-error *ngIf="nomRandonnee?.invalid && (nomRandonnee?.dirty || nomRandonnee?.touched)">
-              <span *ngIf="nomRandonnee?.errors?.['required']">Hike name is required</span>
-              <span *ngIf="nomRandonnee?.errors?.['minlength']">Hike name must be at least 4 characters</span>
-              <span *ngIf="nomRandonnee?.errors?.['maxlength']">Hike name cannot exceed 70 characters</span>
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
+        <div class="form-field">
+          <div class="form-title">
+            <p>Hike Name</p>
+          </div>
+          <div class="form-field-bg">
+            <mat-form-field appearance="outline">
+              <input matInput type="text" formControlName="nomRandonnee" [readonly]="onloading" maxlength="70">
+              <mat-hint class="character-count">{{ nomRandonnee?.value?.length }}/70</mat-hint>
+              <mat-error *ngIf="nomRandonnee?.invalid && (nomRandonnee?.dirty || nomRandonnee?.touched)">
+                <span *ngIf="nomRandonnee?.errors?.['required']">Hike name is required</span>
+                <span *ngIf="nomRandonnee?.errors?.['minlength']">Hike name must be at least 4 characters</span>
+                <span *ngIf="nomRandonnee?.errors?.['maxlength']">Hike name cannot exceed 70 characters</span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>        
 
       <!-- Image upload -->
       <div class="form-field">
@@ -45,8 +46,8 @@
           <p>Description</p>
         </div>
         <mat-form-field appearance="outline">
-          <textarea matInput formControlName="description" [readonly]="onloading"></textarea>
-          <mat-hint>{{ description?.value?.length }}/255</mat-hint>
+          <textarea matInput formControlName="description" [readonly]="onloading" maxlength="255" cdkTextareaAutosize></textarea>
+          <mat-hint class="character-count">{{ description?.value?.length }}/255</mat-hint>
           <mat-error *ngIf="description?.invalid && (description?.dirty || description?.touched)">
             Description cannot exceed 255 characters
           </mat-error>
@@ -54,13 +55,14 @@
       </div>
 
 
-     <!-- Location -->
+    <!-- Location -->
 <div class="form-field">
   <div class="form-title">
     <p>Location</p>
   </div>
   <mat-form-field appearance="outline">
-    <input matInput type="text" formControlName="location" [readonly]="onloading">
+    <textarea matInput formControlName="location" maxlength="70" cdkTextareaAutosize></textarea>
+    <mat-hint class="character-count">{{ location?.value?.length }}/70</mat-hint>
   </mat-form-field>
   <mat-error *ngIf="location?.invalid && (location?.dirty || location?.touched)">
     The location is required

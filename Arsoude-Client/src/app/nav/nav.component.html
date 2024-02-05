@@ -1,69 +1,78 @@
 <div class="navContainer">
 
 
-    <div class="logo">
+  <div class="logo">
 
-        <div>
+      <div>
 
-        </div>
-        <p>ARSOUDE</p>
-    </div>
+      </div>
+      <p>ARSOUDE</p>
+  </div>
 
-    <nav >
-        <ul class="strip">
-            <li><a routerLink="/home" id="textLogIn">Home</a></li>
-            <!-- <li>All Trails</li>
-            <li>Community</li>
-            <li>Profile</li> -->
-            <ng-container *ngIf="isLoggedIn()" >
-                <li><a routerLink="/hikecreation" id="textLogIn" >Create</a></li>
-            </ng-container>
-            <!-- Conditionally render based on user login status -->
-            <ng-container *ngIf="!isLoggedIn()">
-                <li><a routerLink="/register" id="textLogIn">Register</a></li>
-                <li><a routerLink="/signin" id="textLogIn">Log in</a></li>
-            </ng-container>
-            <li class="Disconnect" *ngIf="isLoggedIn()"><a (click)="logout()" id="textLogIn">Disconnect</a></li>
-        </ul>
-
-
-        <!-- menu mobile -->
-        <ul class="menuMobile">
-            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                <mat-icon>more_vert</mat-icon>
-              </button> <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-              <mat-icon>home</mat-icon>
-              <a class="linkMenu" routerLink="/home" id="textLogIn">Home</a>
-            </button>
-           
-          
-            <button mat-menu-item>
-                <mat-icon>Create</mat-icon>
-                <a class="linkMenu" routerLink="/hikecreation" id="textLogIn">Create Hike</a>
-              </button>
-         
-              <button mat-menu-item>
-                <mat-icon>Register</mat-icon>
-                <a class="linkMenu" routerLink="/register" id="textLogIn">Register</a>
-              </button>
+  <nav >
+      <ul class="strip">
+          <li><a routerLink="/home" id="textLogIn">Home</a></li>
+          <!-- <li>All Trails</li>
+          <li>Community</li>
+          <li>Profile</li> -->
+          <ng-container *ngIf="isLoggedIn()" >
+              <li><a routerLink="/hikecreation" id="textLogIn" >Create</a></li>
+          </ng-container>
+          <!-- Conditionally render based on user login status -->
+          <ng-container *ngIf="!isLoggedIn()">
+              <li><a routerLink="/register" id="textLogIn">Register</a></li>
+              <li><a routerLink="/signin" id="textLogIn">Log in</a></li>
+          </ng-container>
+          <li class="Disconnect" *ngIf="isLoggedIn()"><a (click)="logout()" id="textLogIn">Disconnect</a></li>
+      </ul>
 
 
-              
-              <button mat-menu-item>
-                <mat-icon>Log in</mat-icon>
-                <a class="linkMenu" routerLink="/signin" id="textLogIn">Log in</a>
-              </button>
-      </mat-menu></ul>
-   
-
-
-
-       
-
+      <!-- menu mobile -->
+      <ul class="menuMobile">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+        </button> 
+        <mat-menu #menu="matMenu">
+            <ng-container *ngIf="isLoggedIn()">
+                <button mat-menu-item>
+                    <mat-icon>home</mat-icon>
+                    <a class="linkMenu" routerLink="/home" id="textLogIn">Home</a>
+                </button>
     
-    </nav>
+                <button mat-menu-item>
+                    <mat-icon>Create</mat-icon>
+                    <a class="linkMenu" routerLink="/hikecreation" id="textLogIn">Create Hike</a>
+                </button>
+    
+                <button mat-menu-item>
+                    <mat-icon>Disconnect</mat-icon>
+                    <a (click)="logout()" id="textLogIn">Disconnect</a>
+                </button>
+            </ng-container>
+    
+            <ng-container *ngIf="!isLoggedIn()">
+                <button mat-menu-item>
+                    <mat-icon>Register</mat-icon>
+                    <a class="linkMenu" routerLink="/register" id="textLogIn">Register</a>
+                </button>
+    
+                <button mat-menu-item>
+                    <mat-icon>Log in</mat-icon>
+                    <a class="linkMenu" routerLink="/signin" id="textLogIn">Log in</a>
+                </button>
+            </ng-container>
+        </mat-menu>
+    </ul>
+    
+ 
+
+
+
+     
 
   
+  </nav>
+
+
 
 </div>
