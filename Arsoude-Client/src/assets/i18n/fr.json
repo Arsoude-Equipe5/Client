@@ -5,7 +5,8 @@
     "register": "S'inscrire",
     "logIn": "Se connecter",
     "create": "Créer",
-    "languages":"Langues"
+    "languages":"Langues",
+    "disconnect":"Se déconnecter"
   },
 
   "hike-creation":{
@@ -29,8 +30,13 @@
     "imageRequired":"L'image est requise",
     "wrongFormat":"Mauvais format de fichier, sélectionnez une image.",
     "invalidFile":"Fichier invalide, sélectionnez une image.",
-    "descrption255car":"La description ne peut pas dépasser 255 caractères.",
-    "locationRequired":"L'emplacement est requis"
+    "description255car":"La description ne peut pas dépasser 255 caractères.",
+    "locationRequired":"L'emplacement est requis",
+    "createHikeSuccess":"Randonnée créée avec succès",
+    "success":"Succès",
+    "loginCreate":"Connectez-vous avant de créer une randonnée",
+    "loginRequired":"Connexion requise"
+
 
   },
   
@@ -61,7 +67,8 @@
     "passwordMatching":"Les mots de passe ne sont pas équivalents",
     "emailInUse":"Courriel déjà utilisé",
     "invalidBirth":"Date de naissance invalide",
-    "unexpectedError":"Une erreur inattendue est survenue"
+    "unexpectedError":"Une erreur inattendue est survenue",
+    "accountSuccessful":"Compte créé avec succès!"
 
   },
 
@@ -72,7 +79,13 @@
     "dontHaveAccount":"Pas de compte?",
     "register":"S'inscrire",
     "requiredField":"Ce champ est requis",
-    "invalidLogin":"Courriel ou mot de passe invalide"
+    "invalidLogin":"Courriel ou mot de passe invalide",
+    "logOutBeforeLogin":"Déconnectez-vous avant de faire cette action.",
+    "alreadyLogin":"Déjà connecté",
+    "logBeforeCreate":"Connectez-vous avant de créer une randonnée",
+    "loginRequired":"Connexion requise",
+    "loginSuccess":"Connecté avec succès!"
+    
   }
 
 }

@@ -42,7 +42,7 @@ requestResponseFormat:string=''
           localStorage.setItem('token', res.token);
           this.router.navigate(['/home'])
           // window.alert('Account created successfully!')
-          this.toastr.success('Logged in successfully!')
+          this.showSuccess();
 
         
 
@@ -57,4 +57,10 @@ requestResponseFormat:string=''
       });
     }
   }
+
+  showSuccess() {
+    this.translator.get('signin.loginSuccess').subscribe((message: string) => {
+      this.toastr.success(message);
+    });
+}
 }

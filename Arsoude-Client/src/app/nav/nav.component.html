@@ -23,7 +23,7 @@
                 <li><a translate routerLink="/register" id="textLogIn">nav.register</a></li>
                 <li><a translate routerLink="/signin" id="textLogIn">nav.logIn</a></li>
             </ng-container>
-            <li class="Disconnect" *ngIf="isLoggedIn()"><a (click)="logout()" id="textLogIn">Disconnect</a></li>
+            <li class="Disconnect" *ngIf="isLoggedIn()"><a translate (click)="logout()" id="textLogIn">nav.disconnect</a></li>
             <li><div class="dropdown">
                 <button translate class="dropbtn">nav.languages</button>
                 <div class="dropdown-content">

@@ -110,7 +110,7 @@ export class RegisterComponent  {
             console.log(res);
             this.router.navigate(['/signin'])
             // window.alert('Account created successfully!')
-            this.toastr.success('Account created successfully!')
+            this.showSuccess();
             this.isWaiting =false;
 
           },
@@ -130,6 +130,13 @@ export class RegisterComponent  {
         
     }
   }
+
+
+  showSuccess() {
+    this.translator.get('register.accountSuccessful').subscribe((message: string) => {
+      this.toastr.success(message);
+    });
+}
 
   
 }

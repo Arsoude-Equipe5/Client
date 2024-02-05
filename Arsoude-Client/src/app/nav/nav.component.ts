@@ -12,7 +12,8 @@ export class NavComponent {
 
   language: string = "fr";
   
-  constructor(public translator: TranslateService, private authService: AuthService,    private router: Router // Inject Router) {
+  constructor(public translator: TranslateService, private authService: AuthService,    private router: Router ) 
+  {
     translator.setDefaultLang(this.language);
   }
   
