@@ -10,6 +10,7 @@ import {
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
+import { ServerErrorMappings } from 'src/app/models/ServerErrorMappings';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -27,6 +28,7 @@ export class RegisterComponent  {
   title = 'Arsoude-Client';
   msgRecu: string = '';
   requestResponse:string='';
+  requestResponseFormat:string=''
   isWaiting:boolean=false;
   
 
@@ -120,8 +122,10 @@ export class RegisterComponent  {
             this.isWaiting =false;
 
             this.requestResponse = err.error.error
+            this.requestResponseFormat = ServerErrorMappings.getLocalizationKey(this.requestResponse)
             console.log(err);
             console.log(this.requestResponse);
+            console.log(this.requestResponseFormat);
             
           }
           

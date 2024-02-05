@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
+import { ServerErrorMappings } from 'src/app/models/ServerErrorMappings';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class SigninComponent {
 language: string = "fr";
 isWaiting:boolean=false;
 requestResponse:string='';
+requestResponseFormat:string=''
 
 
 
@@ -50,6 +52,7 @@ requestResponse:string='';
 
           console.log(err);
           this.requestResponse=err.error.error;
+          this.requestResponseFormat = ServerErrorMappings.getLocalizationKey(this.requestResponse)
         },
       });
     }

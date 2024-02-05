@@ -58,7 +58,11 @@
     "invalidDate":"Please enter a valid date",
     "password6car":"The password must contain atleast 6 characters, including at least 1 number",
     "password100car":"The password must be shorter than 100 characters.",
-    "passwordMatching":"Passwords are not matching"
+    "passwordMatching":"Passwords are not matching",
+    "emailInUse":"Email already in use",
+    "invalidBirth":"BirthDate is not valid",
+    "unexpectedError":"An unexpected error occured",
+    "invalidLogin":"test"
 
   },
 
@@ -68,7 +72,9 @@
     "password":"Password",
     "dontHaveAccount":"Don't have an account?",
     "register":"Register",
-    "requiredField":"This field is required"
+    "requiredField":"This field is required",
+    "invalidLogin":"Invalid email or password"
   }
 
 }
+

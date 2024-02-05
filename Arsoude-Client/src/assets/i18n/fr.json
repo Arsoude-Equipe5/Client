@@ -58,7 +58,11 @@
     "invalidDate":"Entrer une date valide",
     "password6car":"Le mot de passe doit contenir au moins 6 caractères, incluant 1 chiffre",
     "password100car":"Le mot de passe doit avoir moins de 100 caractères",
-    "passwordMatching":"Les mots de passe ne sont pas équivalents"
+    "passwordMatching":"Les mots de passe ne sont pas équivalents",
+    "emailInUse":"Courriel déjà utilisé",
+    "invalidBirth":"Date de naissance invalide",
+    "unexpectedError":"Une erreur inattendue est survenue",
+    "invalidLogin":"test"
 
   },
 
@@ -68,7 +72,9 @@
     "password":"Mot de Passe",
     "dontHaveAccount":"Pas de compte?",
     "register":"S'inscrire",
-    "requiredField":"Ce champ est requis"
+    "requiredField":"Ce champ est requis",
+    "invalidLogin":"Courriel ou mot de passe invalide"
   }
 
 }
+

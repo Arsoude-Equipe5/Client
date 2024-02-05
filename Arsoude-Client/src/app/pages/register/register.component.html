@@ -3,7 +3,7 @@
 
   <div class="rightbox">
     <form [formGroup]="formRegister" (ngSubmit)="onSubmit()" class="formBoite">
-      <h2 style="text-align: center" id="titleCreate">{{'register.createAccount' | translate}}</h2>
+      <h2 translate style="text-align: center" id="titleCreate">register.createAccount</h2>
       <div class="row">
         <div class="formInputContainer">
           <div>
@@ -59,7 +59,6 @@
 
 
 
-
           
           <mat-error
             *ngIf="
@@ -104,7 +103,6 @@
 
 
 
-
         </div>
 
         <div class="formInputContainer">
@@ -114,7 +112,6 @@
           <div>
             <label for="postalCode">{{'register.postalCode' | translate}} </label>
             <span style="color: red;"> *</span></div>
-
 
 
           <input
@@ -150,7 +147,6 @@
             <label for="email">{{'register.email' | translate}}</label>
             <span style="color: red;"> *</span></div>
 
-
           <input
             class="formInput"
             id="email"
@@ -182,7 +178,6 @@
             <label for="dateOfBirth">{{'register.dateOfBirth' | translate}}</label>
 
             <span style="color: red;"> *</span></div>
-
 
           <input
             type="date"
@@ -225,12 +220,10 @@
       <div class="row">
         <div class="formInputContainer">
 
-
           <div>
             <label for="password">{{'register.password' | translate}}</label>
 
             <span style="color: red;"> *</span></div>
-
 
           <input
             class="formInput"
@@ -273,13 +266,10 @@
         <div class="formInputContainer">
 
 
-
           <div>
             <label for="confirmedPassword">{{'register.confirmPassword' | translate}}</label>
 
-
             <span style="color: red;"> *</span></div>
-
 
           <input
             class="formInput"
@@ -294,8 +284,7 @@
               formRegister.get('confirmedPassword')?.touched
             "
           >
-          {{'register.requiredField' | translate}}</mat-error
-          >
+          {{'register.requiredField' | translate}}</mat-error>
           <p class="passwordError"
             *ngIf="!formRegister.get('confirmedPassword')?.hasError('required') && formRegister.errors?.['passwordMismatch'] && formRegister.get('confirmedPassword')?.touched "
           >
@@ -303,7 +292,11 @@
           >
         </div>
       </div>
-<p style="color: red; text-align: center;">{{this.requestResponse}}</p>
+
+      
+      <p translate style="color: red; text-align: center;">{{this.requestResponseFormat}}</p> 
+  
+
       <div class="row flex-center">
         <div class="content">
           <button
