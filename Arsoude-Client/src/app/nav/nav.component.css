@@ -76,6 +76,8 @@ li a:hover, .navBtn:active { text-decoration: none; color:#000; }
     display: inline-block;
   }
   
+  
+  
   .dropdown-content {
     display: none;
     position: absolute;

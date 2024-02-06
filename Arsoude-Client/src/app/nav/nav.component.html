@@ -43,34 +43,70 @@
         <mat-menu #menu="matMenu">
             <ng-container *ngIf="isLoggedIn()">
                 <button mat-menu-item>
-                    <mat-icon>home</mat-icon>
-                    <a class="linkMenu" routerLink="/home" id="textLogIn">Home</a>
+                    <a translate class="linkMenu" routerLink="/home" id="textLogIn">nav.home</a>
                 </button>
     
                 <button mat-menu-item>
-                    <mat-icon>Create</mat-icon>
-                    <a class="linkMenu" routerLink="/hikecreation" id="textLogIn">Create Hike</a>
+                    <a translate class="linkMenu" routerLink="/hikecreation" id="textLogIn">nav.createHike</a>
                 </button>
     
                 <button mat-menu-item>
-                    <mat-icon>Disconnect</mat-icon>
-                    <a (click)="logout()" id="textLogIn">Disconnect</a>
+                    <a translate (click)="logout()" id="textLogIn">nav.disconnect</a>
                 </button>
             </ng-container>
     
             <ng-container *ngIf="!isLoggedIn()">
                 <button mat-menu-item>
-                    <mat-icon>Register</mat-icon>
-                    <a class="linkMenu" routerLink="/register" id="textLogIn">Register</a>
+                    <a translate class="linkMenu" routerLink="/register" id="textLogIn">nav.register</a>
                 </button>
     
                 <button mat-menu-item>
-                    <mat-icon>Log in</mat-icon>
-                    <a class="linkMenu" routerLink="/signin" id="textLogIn">Log in</a>
+                    <a translate class="linkMenu" routerLink="/signin" id="textLogIn">nav.logIn</a>
                 </button>
             </ng-container>
-            
         </mat-menu>
+
+
+
+
+
+
+
+        <button mat-icon-button [matMenuTriggerFor]="languageMenu" aria-label="Example icon-button with a menu">
+            <mat-icon>language</mat-icon>
+        </button> 
+        <mat-menu #languageMenu="matMenu">
+    
+            <ng-container>
+                <button mat-menu-item (click)="changeLanguage('fr', $event)">
+                    <mat-icon>Français</mat-icon>
+                    <p>Français</p>
+                </button>
+    
+                <button mat-menu-item mat-menu-item (click)="changeLanguage('en', $event)">
+                    <mat-icon>English</mat-icon>
+                    <p>English</p>
+                </button>
+            </ng-container>
+        </mat-menu>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
+            
+          
             
         
 
