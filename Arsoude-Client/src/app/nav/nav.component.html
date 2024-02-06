@@ -42,26 +42,26 @@
         </button> 
         <mat-menu #menu="matMenu">
             <ng-container *ngIf="isLoggedIn()">
-                <button mat-menu-item>
-                    <a translate class="linkMenu" routerLink="/home" id="textLogIn">nav.home</a>
+                <button mat-menu-item (click)="goToHome()" >
+                    <p translate class="linkMenu" id="textLogIn">nav.home</p>
                 </button>
     
-                <button mat-menu-item>
-                    <a translate class="linkMenu" routerLink="/hikecreation" id="textLogIn">nav.createHike</a>
+                <button mat-menu-item (click)="goToCreate()" >
+                    <p translate class="linkMenu" id="textLogIn">nav.create</p>
                 </button>
     
-                <button mat-menu-item>
-                    <a translate (click)="logout()" id="textLogIn">nav.disconnect</a>
+                <button mat-menu-item (click)="logout()">
+                    <p translate class="linkMenu" id="textLogIn">nav.disconnect</p>
                 </button>
             </ng-container>
     
             <ng-container *ngIf="!isLoggedIn()">
-                <button mat-menu-item>
-                    <a translate class="linkMenu" routerLink="/register" id="textLogIn">nav.register</a>
+                <button mat-menu-item (click)="goToRegister()">
+                    <p translate class="linkMenu" id="textLogIn">nav.register</p>
                 </button>
     
-                <button mat-menu-item>
-                    <a translate class="linkMenu" routerLink="/signin" id="textLogIn">nav.logIn</a>
+                <button mat-menu-item (click)="goToSignin()">
+                    <p translate class="linkMenu" id="textLogIn">nav.logIn</p>
                 </button>
             </ng-container>
         </mat-menu>
