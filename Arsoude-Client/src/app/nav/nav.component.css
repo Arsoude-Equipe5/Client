@@ -58,11 +58,6 @@ li a:hover, .navBtn:active { text-decoration: none; color:#000; }
   font-size: 1.4rem;
 }
 
-.menuMobile{
-
-    display: none;
-}
-
 .dropbtn {
     background-color: #04AA6D;
     color: white;
