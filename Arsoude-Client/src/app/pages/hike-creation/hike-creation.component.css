@@ -22,8 +22,6 @@ p{
 
 
 
-
-
 /* Inside dropzone */
 
 .dropzone input{
@@ -248,6 +246,7 @@ mat-form-field.mat-focused .mat-form-field-label {
   }
 
   
+  
   .form-container {
      background-color: #193D2A;
     height: 100%;
@@ -263,9 +262,7 @@ mat-form-field.mat-focused .mat-form-field-label {
   
 
   .container{
-
     height: 200vh;
-
     display: flex;
   background-color: #02282F;
 
