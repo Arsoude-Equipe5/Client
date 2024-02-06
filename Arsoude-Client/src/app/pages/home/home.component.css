@@ -1,0 +1,171 @@
+    .container{
+
+        padding-top: 10vh;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .firstRow{
+
+
+        display: flex;
+        gap: 15px;
+        justify-content: space-between;
+    }
+
+    .leftBox{
+
+        display: flex;
+        height: 500px;
+        width: 70%;
+        background-image: linear-gradient(  #347352,#193D2A);
+        border-radius: 0 20px 20px 0;
+
+    }
+
+
+    .leftPart{
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+   
+
+
+    }
+    .contentBox{
+        display: flex;
+        flex-direction: column;
+        width: 85%;
+        gap: 10px;
+        
+        
+    }
+
+    .imgBox{
+
+        width: 100%;
+        height: 100%;
+    }
+        
+    .rightPart{
+        
+        width: 60%;
+    }
+
+    .imgSection{
+        width: 100%;
+    }
+
+    .rightBox{
+        height: 500px;
+
+        width: 30%;
+        background-image: linear-gradient(  #347352,#193D2A);
+        border-radius: 20px 0 0 20px
+
+    }
+
+    .secondRow{
+
+
+    width: 100%;
+    height: 400px;
+    background-image: linear-gradient(  #347352,#193D2A);
+
+
+    }
+
+    .thirdRow{
+
+
+    width: 100%;
+    height: 800px;
+    background-color: #193D2A;
+    }
+
+    .titlePage{
+
+        font-family:'Lato';
+        font-weight: 500;
+    font-size: 35px;
+    color: white;
+    }
+    .inputSearch{
+
+        width: 365px;
+        padding: 15px;
+        border-radius: 20px;
+    }
+
+    .description{
+
+        
+        font-family:'Lato';
+        font-size: 19px;
+        font-weight: 400;
+        width: 80%;
+       color: white;
+       margin-top: 10px;
+
+    }
+
+    .trailBtn{  
+
+        width: 240px;
+    margin-top: 20px;
+    background-color: #379271;
+   padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    border: none 10px;
+    color: white;
+    font-weight: 500;
+    font-size: 23px;
+    font-family: 'Lato';
+align-self: flex-start;
+}
+
+.rightBox{
+
+    display: flex;
+
+    justify-content: center;
+    
+    padding-left: 5vh
+    
+   
+    }
+
+    .images{
+
+        width: 40%;
+   
+        border-radius: 15px;
+        margin-bottom: 15px;
+
+    }
+
+  
+
+    .titleImages{
+
+            font-family: 'Lato';
+            font-size: 19px;
+        font-weight: 600;
+        color: white;
+        padding-top: 10px;
+  
+        
+    }
+
+    .imageBox{
+display: flex;
+flex-direction: column;
+    }
+
+    .imageTitlebBox{
+  
+        
+    }
