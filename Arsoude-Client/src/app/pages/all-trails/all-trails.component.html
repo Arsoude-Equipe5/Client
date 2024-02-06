@@ -1,6 +1,5 @@
 <div class="container">
     <div class="row">
-      <div class="col" *ngFor="let a of hikeService.hikeList">
         <br>
             <br>
             <br>
@@ -8,15 +7,47 @@
             <br>
             <br>
             <br>
-            <br>
-            <br>
-            <br>
+      <div class="col" *ngFor="let a of hikeService.hikeList">
+        <br>
+        <br>
+        <br>
         <div class="tile">
           <div class="row">
-            <p>{{ a.name }}</p>
-          </div>
-          <div class="row">
-            <p>{{ a.location }}</p>
+            <div class="col">
+                <div class="row">
+                    <p>{{ a.name }}</p>
+                </div>
+                <div class="row">
+                    <p>{{ a.location }}</p>
+                </div>
+                <div class="row">
+                    <p>{{ a.image }}</p>
+                </div>
+
+            </div>
+            <div class="col">
+                <div class="row">
+                    <p>{{ a.description }}</p>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <p>Distance</p>
+                    </div>
+                    <div class="col">
+                        <p>{{ a.type }}</p>
+                    </div>
+                    <div class="col">
+                        <p>Time</p>
+                    </div>
+
+                </div>
+                
+            </div>
+            <div class="col">
+                    <p>Map</p>
+                
+            </div>
           </div>
           <!-- Add more details as needed -->
         </div>
