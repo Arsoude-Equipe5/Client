@@ -1,3 +1,12 @@
+<div class="loading" [ngClass]="{ 'active': onloading, 'inactive': !onloading }">
+  <div class="loader main">
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+  </div>
+</div>
 <div class="container">
   <div class="form-container">
     <div class="hike-card">
@@ -100,7 +109,7 @@
 
   <!-- Map section -->
   <div class="map-container">
-    <button class="btnSend"  (click)="onSubmit()" [disabled]="!hikeForm.valid || !isFormValid() || !arePointsSelected() || onloading">
+    <button class="btnSend"  (click)="onSubmit()" [disabled]="!hikeForm.valid || !isFormValid() || !arePointsSelected() || onloading" *ngIf="!onloading">
       {{'hike-creation.createHike' | translate}}
     </button>
     <div class="button-container">
