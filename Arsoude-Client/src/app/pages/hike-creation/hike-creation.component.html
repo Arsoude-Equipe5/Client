@@ -26,6 +26,7 @@
         <div class="form-title">
           <p>{{'hike-creation.hikeImage' | translate}}</p>
         </div>
+
         <div class="dropzone">
           <h3>{{'hike-creation.dragDropFile' | translate}}</h3>
           <h3>{{'hike-creation.or' | translate}}</h3>
@@ -34,6 +35,7 @@
           <input type="file" accept="image/*" (change)="displayImage($event)" [readonly]="onloading">
           <img class="preview-image" *ngIf="imagePreview && !image?.invalid" [src]="imagePreview" alt="Selected Image" class="preview-image">
         </div>
+        
         <mat-error *ngIf="imageSelected && image?.invalid">
           <span *ngIf="image?.errors?.['required']">{{'hike-creation.imageRequired' | translate}}</span>
           <span *ngIf="image?.errors?.['invalidFileType']">{{'hike-creation.wrongFormat' | translate}}</span>

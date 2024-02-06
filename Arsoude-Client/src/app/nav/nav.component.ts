@@ -31,4 +31,17 @@ export class NavComponent {
     this.authService.logout();
     this.router.navigate(['/home']); // Redirect to home page after logout
   }
+
+  goToHome() {
+    this.router.navigate(['/home']);
+  }
+  goToCreate() {
+    this.router.navigate(['/hikecreation']);
+  }
+  goToRegister() {
+    this.router.navigate(['/register']);
+  }
+  goToSignin() {
+    this.router.navigate(['/signin']);
+  }
 }
