@@ -28,42 +28,52 @@ p{
   border: dashed 1px #979797;
   position: relative;
   
-
-  input{
-    opacity: 0;
-    position: absolute;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0; 
-    cursor: pointer; 
-  } 
- 
-  .preview-image { 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    z-index: 1; 
-  } 
- 
-  label{ 
-    color: white; 
-    padding: 8px; 
-    border-radius: 22px;
-    background-color: #4caf50;
-    z-index: 4;
-  }
-
-  h3{
-    font-size: 20px;
-    font-weight: 600;
-
-  }
 }
+
+
+
+
+
+.dropzone input{
+  opacity: 0;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0; 
+  cursor: pointer; 
+} 
+
+.dropzone .preview-image { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  z-index: 1; 
+} 
+
+.dropzone label{ 
+  color: white; 
+  padding: 8px; 
+  border-radius: 22px;
+  background-color: #4caf50;
+  z-index: 4;
+}
+
+.dropzone h3{
+  font-size: 20px;
+  font-weight: 600;
+
+}
+
+
+
+
+
+
 
 .formBox{
 
@@ -87,61 +97,64 @@ p{
   width: 75%;
 
 height: 100%;
+}
 
-  .button-container{
-    position: absolute;
-    top: 150px;
-    left: 50px;
-    z-index: 2;
-    gap: 20px;
+
+
+.map-container .button-container{
+  position: absolute;
+  top: 150px;
+  left: 50px;
+  z-index: 2;
+  gap: 20px;
+
+
+}
+
+.map-container .button-container button{
  
+  border: none;
+  background-color: #379271;
+  height: 60px;
+  width: 90px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+}
 
-    button{
-   
-      border: none;
-      background-color: #379271;
-      height: 60px;
-      width: 90px;
-      border-radius: 10px;
-      cursor: pointer;
-      color: white;
-    }
-
-    button.selected {
-      background-color: #235a46;
-      color: black;
-    }
+.map-container .button-container button.selected {
+  background-color: #235a46;
+  color: black;
+}
 
 
-  }
 
-  .btnSend{
-    cursor: pointer;
-    position: absolute;
-    color: white;
-    font-weight: 450;
-    background-color: #379271;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 70px;
-    padding-right: 70px;
-    font-size: 1.7rem;
-    bottom: 75px;
-    left: 50%;
-    border-radius: 50px;
-    transform: translateX(-50%);
-    z-index: 3;
-    
-    border: none;
-  }
+.map-container .btnSend{
+  cursor: pointer;
+  position: absolute;
+  color: white;
+  font-weight: 450;
+  background-color: #379271;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 70px;
+  padding-right: 70px;
+  font-size: 1.7rem;
+  bottom: 75px;
+  left: 50%;
+  border-radius: 50px;
+  transform: translateX(-50%);
+  z-index: 3;
+  
+  border: none;
+}
 
-  .btnSend:disabled, .btnSend[disabled] {
+.map-container .btnSend:disabled, .btnSend[disabled] {
+
+  background-color: #769288;
+  color: black;
  
-    background-color: #769288;
-    color: black;
-   
-    
-  }
+  
 }
 /* 
 .form-container2{
@@ -280,15 +293,15 @@ mat-form-field.mat-focused .mat-form-field-label {
     width: 100%;
   
   height: 100%;
-  
-    .button-container{
+    
+    }
+
+    .map-container .button-container{
       position: absolute;
       left: 0px;
       top: 150px;
       z-index: 2;
    }
-    
-    }
  
 
 }
