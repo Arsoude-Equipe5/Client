@@ -16,6 +16,7 @@ ul{
     height: 66px;
     align-items: center;
     background-color: white;
+    /* here */
     gap: 25px;
     padding-right: 130px;  
     
@@ -46,16 +47,19 @@ li a:hover, .navBtn:active { text-decoration: none; color:#000; }
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
 
 
-    
+    p{
+        color: white;
+        font-weight: 450;
+        text-align: center;
+        margin-top: 55%;
+        font-size: 1.4rem;
+    }
 }
 
 
-.logo p{
-  color: white;
-  font-weight: 450;
-  text-align: center;
-  margin-top: 55%;
-  font-size: 1.4rem;
+.menuMobile{
+
+    display: none;
 }
 
 .dropbtn {
@@ -70,8 +74,6 @@ li a:hover, .navBtn:active { text-decoration: none; color:#000; }
     position: relative;
     display: inline-block;
   }
-  
-  
   
   .dropdown-content {
     display: none;
@@ -110,12 +112,18 @@ cursor: pointer;
         padding-right: 7vh;
     }
 
+    ul{
+      gap: 5px;
+      
+  }
+
     .strip{display: none;}
     
   .linkMenu{text-decoration: none;
-    color: white;}
-}
+color: white;}
 
+
+}
 @media only screen and (min-width: 1000px)  {
    
 
