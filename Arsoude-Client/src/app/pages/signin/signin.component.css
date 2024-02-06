@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   padding-top: 20vh;
+
 }
 
 .leftBox {
@@ -20,6 +21,7 @@
   height: 600px;
   background-color: white;
   border-radius: 0 30px 30px 0;
+
 }
 
 .formInputContainer {
@@ -79,12 +81,13 @@
 }
 
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1500px) {
   .container {
     padding-top: 20vh;
     display: flex;
     justify-content: center ;
     align-items: center; /* Add this line */
+
     
  
   }
@@ -96,5 +99,17 @@
   .formInput {
     width: 100% !important;
   }
+   .container{
+  padding-bottom: 10vh;
+
+    }
 }
 
+@media only screen and (max-width: 400px) {
+
+
+  .rightBox{width: 100%;}
+  .container{
+    padding: 25vh 4vh 5vh 4vh;
+  }
+}
