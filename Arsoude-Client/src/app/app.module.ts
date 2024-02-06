@@ -40,6 +40,7 @@ import { InterceptorInterceptor } from './assets/interceptor/interceptor.interce
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HomeComponent } from './pages/home/home.component';
+import { AllTrailsComponent } from './pages/all-trails/all-trails.component';
 
 const MY_DATE_FORMAT = {
   parse: {
@@ -64,7 +65,8 @@ const MY_DATE_FORMAT = {
     HomeComponent,
     SigninComponent,
     NavbarComponent,
-    InputComponent
+    InputComponent,
+    AllTrailsComponent
   ],
   imports: [
     BrowserModule,

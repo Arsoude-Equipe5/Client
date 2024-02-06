@@ -6,7 +6,8 @@
     "logIn": "Se connecter",
     "create": "Créer",
     "languages":"Langues",
-    "disconnect":"Se déconnecter"
+    "disconnect":"Se déconnecter",
+    "allTrails":"Toutes les randonnées"
   },
 
   "hike-creation":{

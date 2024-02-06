@@ -6,7 +6,8 @@
     "logIn": "Log in",
     "create": "Create",
     "languages":"Languages",
-    "disconnect":"Disconnect"
+    "disconnect":"Disconnect",
+    "allTrails":"All trails"
   },
 
   "hike-creation":{
