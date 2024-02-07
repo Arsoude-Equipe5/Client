@@ -288,15 +288,17 @@ flex-direction: column;
         align-items: center;
 
         height: 100%;
-            .imageBox{
-
-                flex-direction: row;
-                width: 100%;
-                gap: 2vh;
-                align-items: center;
-            }
-            .images{width: 30%;}
+            
     } 
+    .imageBox{
+
+        flex-direction: row;
+        width: 100%;
+        gap: 2vh;
+        align-items: center;
+        justify-content: center;
+    }
+    .images{width: 30%;}
 
     .secondRow{
             flex-direction: column;
