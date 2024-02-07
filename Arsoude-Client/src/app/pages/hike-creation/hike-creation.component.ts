@@ -48,6 +48,9 @@ export class HikeCreationComponent implements OnInit {
     this.createForm();
   }
 
+
+  
+
   uploadFile(input: HTMLInputElement) {
     if (!input.files) return
 
@@ -70,10 +73,10 @@ export class HikeCreationComponent implements OnInit {
 
   createForm(): void {
     this.hikeForm = this.fb.group({
-      nomRandonnee: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(70)]],
+      nomRandonnee: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(70)],minTrimmedLengthValidator(4)],
       image: [null, [Validators.required, this.imageTypeValidator.bind(this)]],
       description: ['', Validators.maxLength(255)],
-      location: ['', Validators.required],
+      location: ['', Validators.required,minTrimmedLengthValidator(1)],
       type: ['', [Validators.required, Validators.pattern('vélo|marche')]], // Add validation for type field
 
     });
@@ -293,4 +296,19 @@ showWarning() {
     this.toastr.warning(fullMessage, warningWord);
   });
 }
+}
+
+import { AbstractControl, ValidatorFn } from '@angular/forms';
+
+export function minTrimmedLengthValidator(minLength: number): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    if (control.value) {
+      const trimmedValue: string = control.value.trim();
+      const isInvalid: boolean = trimmedValue.length < minLength;
+      
+      return isInvalid ? { 'minTrimmedLength': { value: control.value } } : null;
+    }
+    
+    return null;
+  };
 }
