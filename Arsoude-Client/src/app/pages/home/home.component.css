@@ -220,8 +220,8 @@ flex-direction: column;
    
 
     .titleCard{
-
-
+line-height: 110%;
+        text-align: center;
         font-family:'Lato';
         font-weight: 500;
     font-size: 30px;
