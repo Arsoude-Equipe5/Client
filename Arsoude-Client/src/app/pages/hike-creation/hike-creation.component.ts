@@ -3,12 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GoogleMap } from "@angular/google-maps";
 import { HikeDTO, hikeType } from '../../models/HikeDTO';
 import { HikeCoordinatesDTO } from '../../models/HikeCoordinatesDTO'; 
-import { HikeService } from '../../services/HikeServices';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from '../../services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
+import { HikeService } from '../signin/services/HikeServices';
+import { AuthService } from '../signin/services/auth.service';
 
 @Component({
   selector: 'app-hike-creation',
