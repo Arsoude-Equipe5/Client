@@ -34,7 +34,8 @@
     "createHikeSuccess":"Hike created successfully",
     "success":"Success",
     "loginCreate":"Please login before creating a hike",
-    "loginRequired":"Login Required"
+    "loginRequired":"Login Required",
+    "charactersSpaces":"There are not enough characters that aren't spaces."
 
   
 
