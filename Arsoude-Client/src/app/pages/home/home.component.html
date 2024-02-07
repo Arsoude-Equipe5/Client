@@ -15,9 +15,10 @@
 
     <div class="contentBox">
     <h1 class="titlePage">Explore like never</h1>
-    <input  type="text" class="inputSearch" placeholder="Ville, montage, coordinées...">
+    <input  id="hike" [formControl]="inputKeyword" type="text" class="inputSearch" placeholder="Ville, montage, coordinées...">
+    <!-- <pre>form value : {{ inputKeyword.value | json }}</pre> -->
     <p class="description" >Your ultimate outdoor adventure companion. Plan, create, and share your trails with a passionate community of hikers.</p>
-    <button class="trailBtn">Find a trail</button>
+    <button  (click)='onSubmit()' class="trailBtn">Find a trail</button>
 </div>
 
 

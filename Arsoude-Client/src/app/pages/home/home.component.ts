@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { HikeService } from 'src/app/services/HikeServices';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,11 +10,16 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent  {
+
   language: string = "fr";
 
-  constructor(private auth: AuthService, public translator: TranslateService){
+inputKeyword = new FormControl('');
+
+  constructor(private auth: AuthService, public translator: TranslateService, private hikeService:HikeService){
     translator.setDefaultLang(this.language);
   }
+
+
   // ngOnInit(): void {
 
   //   // this.auth.getHikes().subscribe({
@@ -34,5 +41,15 @@ export class HomeComponent  {
     this.translator.use(this.language);
   }
  
+
+
+onSubmit(){
+
+  if(this.inputKeyword.value){
+  this.hikeService.searchHikes(this.inputKeyword.value);
+  }
+
+
+}
 
 }

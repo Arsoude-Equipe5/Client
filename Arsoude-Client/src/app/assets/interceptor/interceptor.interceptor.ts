@@ -16,7 +16,7 @@ export class InterceptorInterceptor implements HttpInterceptor {
     let token = localStorage.getItem('token');
 
     // Check if the request is going to your API
-    if (request.url.startsWith("https://arsoude-equipe5.azurewebsites.net")) {
+    if (request.url.startsWith("http://localhost:5020")) {
       // Clone the request and add the Authorization header
       request = request.clone({
         setHeaders: {
