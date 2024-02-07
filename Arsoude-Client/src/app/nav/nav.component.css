@@ -1,10 +1,12 @@
 
 .navcontainer{
     display: flex;
+
 }
 
 nav{
     margin-top: 35px;
+
 }
 ul{
     list-style: none;

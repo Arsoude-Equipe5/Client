@@ -235,3 +235,16 @@ color: red;
     
 
 }
+
+.rightBox{
+
+display: flex;
+flex-direction: column;
+
+
+
+
+}
+
+
+ 
