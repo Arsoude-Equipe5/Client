@@ -1,6 +1,6 @@
     .container{
 
-        padding-top: 12vh;
+        padding-top: 18vh;
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -10,7 +10,7 @@
 
     .firstRow{
 
-       
+       width: 100%;
         display: flex;
         gap: 15px;
         justify-content: space-between;
@@ -97,7 +97,7 @@ padding-top: 25px;
     }
     .inputSearch{
 
-        width: 365px;
+        width:  38.300vh;
         padding: 15px;
         border-radius: 20px;
     }
@@ -137,7 +137,7 @@ padding-top: 25px;
 
     justify-content: center;
     
-    padding-left: 5vh
+    padding-left: 3vh
     
    
     }
@@ -178,8 +178,8 @@ flex-direction: column;
 
     .square{
 
-        height: 150px;
-        width: 150px;
+        height: 15.7398vh;
+        width: 15.7398vh;
         background-color: #379271;
         border-radius: 10px;
     box-shadow: 5px 5px 1000px;
@@ -187,8 +187,8 @@ flex-direction: column;
 
  
     .topPart{
-        height: 125px;
-        width: 270px;
+        height: 13.116vh;
+        width: 28.3316vh;
         background-color: #379271;
         display: flex;
         justify-content: center;
@@ -197,8 +197,8 @@ flex-direction: column;
         
     }
     .bottomPart{
-        height: 200px;
-        width: 270px;
+        height: 20.9864vh;
+        width: 28.3316vh;
         background-color: #ffffff;
         border-radius:  0 0 20px 20px;
       
@@ -227,3 +227,90 @@ flex-direction: column;
     font-size: 30px;
     color: white;
     }
+
+
+@media only screen and (max-width: 1400px) {
+
+     .firstRow{
+
+
+        flex-direction: column;
+       
+
+        
+    }
+
+    .leftBox{
+        
+        flex-direction: column; 
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        
+    }
+
+
+
+    .titlePage,.titleImages {
+        width: 100%;
+        text-align: center;
+    }
+
+    .rightPart{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contentBox{
+
+        align-items: center;
+    padding-top: 5vh;
+        
+    }
+    .description{
+            width: 100%;
+            text-align: center;
+        }
+
+        .imgBox{
+
+            width: 50%;
+            padding-bottom: 5vh;
+          
+        }
+
+    .rightBox{
+        width: 100%;
+        padding : 0vh;
+        justify-content: center;
+        align-items: center;
+
+        height: 100%;
+            .imageBox{
+
+                flex-direction: row;
+                width: 100%;
+                gap: 2vh;
+                align-items: center;
+            }
+            .images{width: 30%;}
+    } 
+
+    .secondRow{
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            gap: 3vh;
+            padding-bottom: 2vh;
+    }
+
+    .col1{
+        flex-direction: row;
+    }
+
+    
+}
