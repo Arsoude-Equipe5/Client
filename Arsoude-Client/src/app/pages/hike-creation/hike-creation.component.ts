@@ -73,10 +73,10 @@ export class HikeCreationComponent implements OnInit {
 
   createForm(): void {
     this.hikeForm = this.fb.group({
-      nomRandonnee: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(70)],minTrimmedLengthValidator(4)],
+      nomRandonnee: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(70), minTrimmedLengthValidator(4)]],
       image: [null, [Validators.required, this.imageTypeValidator.bind(this)]],
       description: ['', Validators.maxLength(255)],
-      location: ['', Validators.required,minTrimmedLengthValidator(1)],
+      location: ['', [Validators.required,minTrimmedLengthValidator(1)]],
       type: ['', [Validators.required, Validators.pattern('vélo|marche')]], // Add validation for type field
 
     });

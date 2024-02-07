@@ -15,6 +15,7 @@
               <span *ngIf="nomRandonnee?.errors?.['required']">{{'hike-creation.nameRequired' | translate}}</span>
               <span *ngIf="nomRandonnee?.errors?.['minlength']">{{'hike-creation.name4car' | translate}}</span>
               <span *ngIf="nomRandonnee?.errors?.['maxlength']">{{'hike-creation.name70car' | translate}}</span>
+              <span *ngIf="nomRandonnee?.errors?.['minTrimmedLength']">{{'hike-creation.charactersSpaces' | translate}}</span>
             </mat-error>
           </mat-form-field>
         </div>
@@ -68,7 +69,9 @@
     <mat-hint class="character-count">{{ location?.value?.length }}/70</mat-hint>
   </mat-form-field>
   <mat-error *ngIf="location?.invalid && (location?.dirty || location?.touched)">
-    {{'hike-creation.locationRequired' | translate}}
+    
+    <span *ngIf="location?.errors?.['required']">{{'hike-creation.locationRequired' | translate}}</span>
+    <span *ngIf="location?.errors?.['minTrimmedLength']">{{'hike-creation.charactersSpaces' | translate}}</span>
   </mat-error>
 </div>
 

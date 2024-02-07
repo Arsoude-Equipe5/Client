@@ -35,7 +35,8 @@
     "createHikeSuccess":"Randonnée créée avec succès",
     "success":"Succès",
     "loginCreate":"Connectez-vous avant de créer une randonnée",
-    "loginRequired":"Connexion requise"
+    "loginRequired":"Connexion requise",
+    "charactersSpaces":"Pas assez de caractères excluant les espaces."
 
 
   },
