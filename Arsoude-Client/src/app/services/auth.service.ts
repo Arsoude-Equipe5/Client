@@ -15,7 +15,8 @@ export class AuthService {
     passwordconfirm: string,
     postalCode: string,
     firstName: string,
-    lastName: string
+    lastName: string,
+    address?: string | null
   ) {
     return this.http.post(`${environment.apiUrl}/api/Users/Register`, {
       email: email,
@@ -24,35 +25,33 @@ export class AuthService {
       postalCode: postalCode,
       firstName: firstName,
       lastName: lastName,
+      address: address,
     });
   }
 
   login(email: string, password: string) {
-    return this.http.post(`${environment.apiUrl}/api/users/login`, {
-      email,
-      password,
-    }).pipe(
-      tap((response: any) => {
-        const token = response.token;
-        localStorage.setItem('token', token);
+    return this.http
+      .post(`${environment.apiUrl}/api/users/login`, {
+        email,
+        password,
       })
-    );
+      .pipe(
+        tap((response: any) => {
+          const token = response.token;
+          localStorage.setItem('token', token);
+        })
+      );
   }
 
   logout() {
     localStorage.removeItem('token');
   }
 
-
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
 
-
-  getHikes(){
-
-    return this.http.get(`${environment.apiUrl}/api/hikes/gethikes`)
-
-    
+  getHikes() {
+    return this.http.get(`${environment.apiUrl}/api/hikes/gethikes`);
   }
 }
