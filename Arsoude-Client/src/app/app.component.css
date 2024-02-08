@@ -2,8 +2,10 @@
   flex-direction: row;
   height: 100%;
   background-color: #02282F;
-  position: relative;
+  
 }
+
+
 
 app-nav{
   position: absolute;

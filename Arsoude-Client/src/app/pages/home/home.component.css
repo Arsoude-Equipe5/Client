@@ -1,0 +1,318 @@
+    .container{
+
+        padding-top: 18vh;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+    
+    }
+
+    .firstRow{
+
+       width: 100%;
+        display: flex;
+        gap: 15px;
+        justify-content: space-between;
+    }
+
+    .leftBox{
+
+        display: flex;
+        height: 500px;
+        width: 95%;
+        background-image: linear-gradient(  #347352,#193D2A);
+        border-radius: 0 20px 20px 0;
+
+    }
+
+
+    .leftPart{
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+   
+
+
+    }
+    .contentBox{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        gap: 10px;
+     
+        
+        
+    }
+
+    .imgBox{
+
+        width: 100%;
+        height: 100%;
+    }
+        
+    .rightPart{
+        
+        width: 60%;
+    }
+
+    .imgSection{
+        width: 100%;
+    }
+
+    .rightBox{
+        height: 500px;
+
+        width: 20%;
+        background-image: linear-gradient(  #347352,#193D2A);
+        border-radius: 20px 0 0 20px
+
+    }
+
+    .secondRow{
+
+padding-top: 25px;
+    width: 100%;
+    height: 400px;
+    background-image: linear-gradient(  #347352,#193D2A);
+
+
+    }
+
+    .thirdRow{
+
+
+    width: 100%;
+    height: 800px;
+    background-color: #193D2A;
+    }
+
+    .titlePage{
+
+        font-family:'Lato';
+        font-weight: 500;
+    font-size: 35px;
+    color: white;
+    }
+    .inputSearch{
+
+        width:  38.300vh;
+        padding: 15px;
+        border-radius: 20px;
+    }
+
+    .description{
+
+        
+        font-family:'Lato';
+        font-size: 19px;
+        font-weight: 400;
+        line-height: 120%;
+        width: 80%;
+       color: white;
+       margin-top: 10px;
+
+    }
+
+    .trailBtn{  
+
+        width: 240px;
+    margin-top: 20px;
+    background-color: #379271;
+   padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    border: none 10px;
+    color: white;
+    font-weight: 500;
+    font-size: 23px;
+    font-family: 'Lato';
+
+}
+
+.rightBox{
+
+    display: flex;
+
+    justify-content: center;
+    
+    padding-left: 3vh
+    
+   
+    }
+
+    .images{
+
+        width: 70%;
+   
+        border-radius: 15px;
+        margin-bottom: 15px;
+
+    }
+
+  
+
+    .titleImages{
+
+            font-family: 'Lato';
+            font-size: 19px;
+        font-weight: 600;
+        color: white;
+        padding-top: 10px;
+  
+        
+    }
+
+    .imageBox{
+display: flex;
+flex-direction: column;
+    }
+
+   
+    .secondRow{
+        display: flex;
+        justify-content: space-evenly;
+
+    }
+
+    .square{
+
+        height: 15.7398vh;
+        width: 15.7398vh;
+        background-color: #379271;
+        border-radius: 10px;
+    box-shadow: 5px 5px 1000px;
+    }
+
+ 
+    .topPart{
+        height: 13.116vh;
+        width: 28.3316vh;
+        background-color: #379271;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius:  15px 15px 0 0;
+        
+    }
+    .bottomPart{
+        height: 20.9864vh;
+        width: 28.3316vh;
+        background-color: #ffffff;
+        border-radius:  0 0 20px 20px;
+      
+
+    }
+    .imageCard{
+
+        width: 100%;
+        height: 100%;
+    }
+
+    .col1{
+
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        
+    }
+   
+
+    .titleCard{
+
+
+        font-family:'Lato';
+        font-weight: 500;
+    font-size: 30px;
+    color: white;
+    }
+
+
+@media only screen and (max-width: 1400px) {
+
+     .firstRow{
+
+
+        flex-direction: column;
+       
+
+        
+    }
+
+    .leftBox{
+        
+        flex-direction: column; 
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        
+    }
+
+
+
+    .titlePage,.titleImages {
+        width: 100%;
+        text-align: center;
+    }
+
+    .rightPart{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contentBox{
+
+        align-items: center;
+    padding-top: 5vh;
+        
+    }
+    .description{
+            width: 100%;
+            text-align: center;
+        }
+
+        .imgBox{
+
+            width: 50%;
+            padding-bottom: 5vh;
+          
+        }
+
+    .rightBox{
+        width: 100%;
+        padding : 0vh;
+        justify-content: center;
+        align-items: center;
+
+        height: 100%;
+            
+    } 
+    .imageBox{
+
+        flex-direction: row;
+        width: 100%;
+        gap: 2vh;
+        align-items: center;
+        justify-content: center;
+    }
+    .images{width: 30%;}
+
+    .secondRow{
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            gap: 3vh;
+            padding-bottom: 2vh;
+    }
+
+    .col1{
+        flex-direction: row;
+    }
+
+    
+}

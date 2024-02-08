@@ -14,15 +14,17 @@ export class InterceptorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let token = localStorage.getItem('token');
-    let objURL = new URL(request.url);
-    // On validate que c'est une requête vers notre API
-    if(objURL.hostname == "https://arsoude-equipe5.azurewebsites.net") {
+
+    // Check if the request is going to your API
+    if (request.url.startsWith("https://arsoude-equipe5.azurewebsites.net")) {
+      // Clone the request and add the Authorization header
       request = request.clone({
         setHeaders: {
           'Authorization': 'Bearer ' + token
         }
-      })
+      });
     }
+
     return next.handle(request);
   }
 }

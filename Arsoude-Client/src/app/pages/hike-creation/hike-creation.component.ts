@@ -1,11 +1,14 @@
 import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GoogleMap } from "@angular/google-maps";
-import { HikeDTO, hikeType } from '../models/HikeDTO';
-import { HikeCoordinatesDTO } from '../models/HikeCoordinatesDTO'; 
-import { HikeService } from '../services/HikeServices';
+import { HikeDTO, hikeType } from '../../models/HikeDTO';
+import { HikeCoordinatesDTO } from '../../models/HikeCoordinatesDTO'; 
+import { HikeService } from '../../services/HikeServices';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../services/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-hike-creation',
@@ -32,12 +35,21 @@ export class HikeCreationComponent implements OnInit {
 
   @ViewChild('mapAB') mapAB!: GoogleMap;
 
-  constructor(private fb: FormBuilder, private hikeService: HikeService, private router: Router) { }
+  constructor(private fb: FormBuilder, 
+    private hikeService: HikeService, 
+    private router: Router, 
+    private toastr: ToastrService, 
+    private authService: AuthService,
+    private translate: TranslateService, 
+  ) { }
 
   ngOnInit(): void {
     //uncomment when testing hikeCreation
     this.createForm();
   }
+
+
+  
 
   uploadFile(input: HTMLInputElement) {
     if (!input.files) return
@@ -61,10 +73,10 @@ export class HikeCreationComponent implements OnInit {
 
   createForm(): void {
     this.hikeForm = this.fb.group({
-      nomRandonnee: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(70)]],
+      nomRandonnee: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(70), minTrimmedLengthValidator(4)]],
       image: [null, [Validators.required, this.imageTypeValidator.bind(this)]],
       description: ['', Validators.maxLength(255)],
-      location: ['', Validators.required],
+      location: ['', [Validators.required,minTrimmedLengthValidator(1)]],
       type: ['', [Validators.required, Validators.pattern('vélo|marche')]], // Add validation for type field
 
     });
@@ -172,14 +184,22 @@ export class HikeCreationComponent implements OnInit {
   
 
   async onSubmit(): Promise<void> {
+    if (!this.authService.isLoggedIn()) {
+      // User is not logged in, display toastr and redirect to login page
+      this.showWarning(); // display toastr warning
+      this.router.navigate(['/signin']); // Adjust the route if necessary
+      return;
+    }
+  
     if (this.hikeForm.valid && this.markers.length === 2) {
       const { nomRandonnee, image, description, type, location } = this.hikeForm.value;
-    
-
+  
       this.onloading = true;
-
-      // Upload image to Firebase Storage
-      const filePath = `images/${image.name}`;
+  
+      const fileName = new Date().getTime().toString() + Math.random().toString(36).substring(2);
+  
+      // Upload image to Firebase Storage with generated file name
+      const filePath = `images/${fileName}`;
       const storageRef = ref(this.storage, filePath);
       const uploadTask = uploadBytesResumable(storageRef, image);
       
@@ -222,15 +242,14 @@ export class HikeCreationComponent implements OnInit {
           this.hikeService.createHike(hikeData).subscribe(
             (response: any) => {
               console.log('Hike created successfully:', response);
-              console.log(hikeData)
-              this.router.navigate(['/home'])
+              this.router.navigate(['/home']);
+              this.showSuccess(); // Toastr notification for successful hike creation
               // Optionally, you can perform any additional actions here after hike creation
             },
             (error: any) => {
               console.error('Error creating hike:', error);
-              
               this.onloading = false;
-              console.log(hikeData)
+              console.log(hikeData);
             }
           );
         }
@@ -239,6 +258,7 @@ export class HikeCreationComponent implements OnInit {
       this.hikeForm.markAllAsTouched();
     }
   }
+  
 
   get nomRandonnee() {
     return this.hikeForm.get('nomRandonnee');
@@ -259,4 +279,36 @@ export class HikeCreationComponent implements OnInit {
   get location(){
     return this.hikeForm.get('location');
   }
+
+  showSuccess() {
+    this.translate.get('hike-creation.createHikeSuccess').subscribe((message: string) => {
+      const successWord = this.translate.instant('hike-creation.success'); // Translate the word "Success"
+      const fullMessage = `${message} - ${successWord}`; // Combine the translated message and word "Success"
+      this.toastr.success(fullMessage, successWord);
+    });
+}
+
+
+showWarning() {
+  this.translate.get('hike-creation.loginCreate').subscribe((message: string) => {
+    const warningWord = this.translate.instant('hike-creation.loginRequired'); // Translate the word "Success"
+    const fullMessage = `${message} - ${warningWord}`; // Combine the translated message and word "Success"
+    this.toastr.warning(fullMessage, warningWord);
+  });
+}
+}
+
+import { AbstractControl, ValidatorFn } from '@angular/forms';
+
+export function minTrimmedLengthValidator(minLength: number): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    if (control.value) {
+      const trimmedValue: string = control.value.trim();
+      const isInvalid: boolean = trimmedValue.length < minLength;
+      
+      return isInvalid ? { 'minTrimmedLength': { value: control.value } } : null;
+    }
+    
+    return null;
+  };
 }

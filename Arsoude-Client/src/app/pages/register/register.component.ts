@@ -8,7 +8,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
+import { ServerErrorMappings } from 'src/app/models/ServerErrorMappings';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -17,11 +19,16 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent  {
-  constructor(private auth: AuthService, private router: Router,private toastr: ToastrService) {}
+  language: string = "fr";
+
+  constructor(private auth: AuthService, private router: Router,private toastr: ToastrService, public translator:TranslateService) {
+    translator.setDefaultLang(this.language);
+  }
 
   title = 'Arsoude-Client';
   msgRecu: string = '';
   requestResponse:string='';
+  requestResponseFormat:string=''
   isWaiting:boolean=false;
   
 
@@ -60,7 +67,7 @@ export class RegisterComponent  {
         ),
       ]),
       adresse: new FormControl(''),
-      dateOfBirth: new FormControl(''), // Remove Validators.required here
+      dateOfBirth: new FormControl(''), 
     },
     { validators: passwordValidator }
   );
@@ -103,7 +110,7 @@ export class RegisterComponent  {
             console.log(res);
             this.router.navigate(['/signin'])
             // window.alert('Account created successfully!')
-            this.toastr.success('Account created successfully!')
+            this.showSuccess();
             this.isWaiting =false;
 
           },
@@ -111,8 +118,10 @@ export class RegisterComponent  {
             this.isWaiting =false;
 
             this.requestResponse = err.error.error
+            this.requestResponseFormat = ServerErrorMappings.getLocalizationKey(this.requestResponse)
             console.log(err);
             console.log(this.requestResponse);
+            console.log(this.requestResponseFormat);
             
           }
           
@@ -121,6 +130,15 @@ export class RegisterComponent  {
         
     }
   }
+
+
+  showSuccess() {
+    this.translator.get('register.accountSuccessful').subscribe((message: string) => {
+      this.toastr.success(message);
+    });
+}
+
+  
 }
 
 const passwordValidator: ValidatorFn = (
@@ -156,3 +174,5 @@ export function customDateValidator(): ValidatorFn {
     return null; // Return null if validation passes
   };
 }
+
+
