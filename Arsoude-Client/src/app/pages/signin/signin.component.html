@@ -47,15 +47,21 @@
         <p translate style="text-align: center; color: red;">{{this.requestResponseFormat}}</p>
 
         <div class="btnText">
-          <button
+          <div class="loader main" *ngIf="isWaiting">
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+          </div>
+          <button 
             type="submit"
             [disabled]="loginForm.invalid || isWaiting"
             class="submitBtn"
-       
+            *ngIf="!isWaiting"
           >
           {{'signin.signin' | translate}}
           </button>
-
           <p id="textSignIn">
             {{'signin.dontHaveAccount' | translate}}
             <a routerLink="/register" id="textLogIn">{{'signin.register' | translate}}</a>

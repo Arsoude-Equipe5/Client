@@ -17,6 +17,7 @@ language: string = "fr";
 isWaiting:boolean=false;
 requestResponse:string='';
 requestResponseFormat:string=''
+isLoading : boolean = false;
 
 
 
