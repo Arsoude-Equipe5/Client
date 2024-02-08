@@ -85,6 +85,24 @@
     "logBeforeCreate":"Please login before creating a hike",
     "loginRequired":"Login Required",
     "loginSuccess":"Logged in successfully!"
+  },
+
+  "home":{
+
+    "homeTitle" : "Explore like never!",
+    "hikePlaceholder" : "City, montage, coordinates...",
+    "hikeDescription": "Your ultimate outdoor adventure companion. Plan, create, and share your trails with a passionate community of hikers.",
+    "findTrail": "Find a trail",
+    "popularTrail" : "Popular trails",
+    "trailMaking" : "Trail Making",
+    "trackHike" : "Track your Explorations",
+    "community" : "Community"
+
+
+
+
+
+    
   }
 
 }

@@ -18,21 +18,25 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent  {
-  language: string = "fr";
+export class RegisterComponent {
+  language: string = 'fr';
 
-  constructor(private auth: AuthService, private router: Router,private toastr: ToastrService, public translator:TranslateService) {
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private toastr: ToastrService,
+    public translator: TranslateService
+  ) {
     translator.setDefaultLang(this.language);
   }
 
   title = 'Arsoude-Client';
   msgRecu: string = '';
-  requestResponse:string='';
-  requestResponseFormat:string=''
-  isWaiting:boolean=false;
-  
+  requestResponse: string = '';
+  requestResponseFormat: string = '';
+  isWaiting: boolean = false;
 
-  date = new Date().toISOString().slice(0,10);
+  date = new Date().toISOString().slice(0, 10);
 
   formRegister = new FormGroup(
     {
@@ -44,12 +48,11 @@ export class RegisterComponent  {
         Validators.required,
         Validators.maxLength(100),
         Validators.minLength(6),
-        Validators.pattern('^(?=.*[0-9])(?=.*[!@#$%^&*()_+{}|:"<>?])(?=.*[a-zA-Z]).*$'),
+        Validators.pattern(
+          '^(?=.*[0-9])(?=.*[!@#$%^&*()_+{}|:"<>?])(?=.*[a-zA-Z]).*$'
+        ),
       ]),
-      confirmedPassword: new FormControl(
-        '',
-        Validators.required
-      ),
+      confirmedPassword: new FormControl('', Validators.required),
       firstName: new FormControl('', [
         Validators.required,
         Validators.minLength(2),
@@ -66,15 +69,15 @@ export class RegisterComponent  {
           /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i
         ),
       ]),
-      adresse: new FormControl(''),
-      dateOfBirth: new FormControl(''), 
+      address: new FormControl(''),
+      dateOfBirth: new FormControl(''),
     },
     { validators: passwordValidator }
   );
 
   async onSubmit() {
     console.log(this.formRegister.value);
-    this.isWaiting =true
+    this.isWaiting = true;
     const {
       email,
       password,
@@ -82,6 +85,7 @@ export class RegisterComponent  {
       postalCode,
       firstName,
       lastName,
+      address,
       dateOfBirth,
     } = this.formRegister.value;
 
@@ -102,43 +106,40 @@ export class RegisterComponent  {
           confirmedPassword,
           postalCode,
           firstName,
-          lastName
+          lastName,
+          address
         )
         .subscribe({
           next: (res) => {
             //handle response accordingly
             console.log(res);
-            this.router.navigate(['/signin'])
+            this.router.navigate(['/signin']);
             // window.alert('Account created successfully!')
             this.showSuccess();
-            this.isWaiting =false;
-
+            this.isWaiting = false;
           },
           error: (err) => {
-            this.isWaiting =false;
+            this.isWaiting = false;
 
-            this.requestResponse = err.error.error
-            this.requestResponseFormat = ServerErrorMappings.getLocalizationKey(this.requestResponse)
+            this.requestResponse = err.error.error;
+            this.requestResponseFormat = ServerErrorMappings.getLocalizationKey(
+              this.requestResponse
+            );
             console.log(err);
             console.log(this.requestResponse);
             console.log(this.requestResponseFormat);
-            
-          }
-          
+          },
         });
-        
-        
     }
   }
 
-
   showSuccess() {
-    this.translator.get('register.accountSuccessful').subscribe((message: string) => {
-      this.toastr.success(message);
-    });
-}
-
-  
+    this.translator
+      .get('register.accountSuccessful')
+      .subscribe((message: string) => {
+        this.toastr.success(message);
+      });
+  }
 }
 
 const passwordValidator: ValidatorFn = (
@@ -168,11 +169,9 @@ export function customDateValidator(): ValidatorFn {
 
     // Check if the input date is greater than today's date
     if (inputDate > currentDate) {
-        return { futureDate: true }; // Return an object indicating a future date
+      return { futureDate: true }; // Return an object indicating a future date
     }
 
     return null; // Return null if validation passes
   };
 }
-
-

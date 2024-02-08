@@ -87,7 +87,23 @@
     "loginRequired":"Connexion requise",
     "loginSuccess":"Connecté avec succès!"
     
+  },
+  "home":{
+
+    "homeTitle" : "Explorez comme jamais!",
+    "hikePlaceholder" : "Ville, montage, coordinées...",
+    "hikeDescription": "Votre compagnon ultime pour l'aventure en plein air. Planifiez, créez et partagez vos sentiers avec une communauté passionnée de randonneurs.",
+    "findTrail": "Trouver une randonnée",
+    "popularTrail" : "Randonnées populaires",
+    "trailMaking" : "Création de Randonnée",
+    "trackHike" : "Suivez vos Explorations.",
+    "community" : "Communauté"
+
+
+    
   }
 
+
+ 
 }
 
