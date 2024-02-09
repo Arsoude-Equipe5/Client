@@ -47,6 +47,40 @@ export class HikeService {
 
     return this.http.post<any>(environment.apiUrl + '/api/Hikes/CreateHike', hikeData, httpOptions);
   }
+
+
+
+
+
+
+  // async getFavouriteHikes():Promise<void>{
+  //   let httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json'
+  //       // 'Authorization': 'Bearer ' + token
+  //     })
+  //   };
+
+  //   await this.http.get<HikeDTO[]>(environment.apiUrl + '/api/Hikes/GetMyFavouriteHikes', httpOptions).subscribe(x => {
+  //     console.log(x);
+  //     this.hikeList = x;
+  //   })
+  // } 
+
+
+  // async addFavouriteHikes():Promise<void>{
+  //   let httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json'
+  //       // 'Authorization': 'Bearer ' + token
+  //     })
+  //   };
+
+  //   await this.http.get<HikeDTO[]>(environment.apiUrl + '/api/Hikes/AddFavourite/' + hikeId, httpOptions).subscribe(x => {
+  //     console.log(x);
+  //     this.hikeList = x;
+  //   })
+  // } 
   
 
   
