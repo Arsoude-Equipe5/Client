@@ -1,5 +1,5 @@
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -30,4 +30,31 @@ export class HikeService {
 
     return this.http.post<any>(environment.apiUrl + '/api/Hikes/CreateHike', hikeData, httpOptions);
   }
+
+
+
+  searchHikes(keyword:string){
+    let params = new HttpParams();
+    params = params.set('keyword', keyword)
+
+      return this.http.get(`${environment.apiUrl}/api/Hikes/SearchHikes`,{params : params}).subscribe({
+
+        next : (res) =>{
+
+          console.log(res);
+          
+        }, error : (err)=>{
+
+
+          console.log(err);
+          
+        }
+
+      })
+
+
+
+  }
+
+
 }
