@@ -96,8 +96,9 @@ export class HikeService {
   }
 
 
-  async isInFavourite(idHike: number):Promise<boolean>{
+ 
 
+  async isInFavourite(idHike: number): Promise<boolean> {
     let token = localStorage.getItem("token");
     if (!token) {
       throw('No token available');
@@ -109,17 +110,17 @@ export class HikeService {
         'Authorization': 'Bearer ' + token
       })
     };
-
-      
-      for(let h of this.myFavouriteList){
-        if(h.id == idHike){
-          return true;
+    return new Promise<boolean>((resolve) => {
+      for (let h of this.myFavouriteList) {
+        if (h.id === idHike) {
+          resolve(true);
+          return;
         }
       }
-      
-      return false;
-      
+      resolve(false);
+    });
   }
+  
   
 
   

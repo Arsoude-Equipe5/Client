@@ -59,16 +59,11 @@ this.hikesList = [hike1,hike2];
 
 
     onButtonClick(id: number): void {
-      getFavouriteHikes();
       this.hikeService.addFavouriteHikes(id);
       
     }
   
 
 
-}
-
-function getFavouriteHikes() {
-  throw new Error('Function not implemented.');
 }
 
