@@ -25,6 +25,7 @@ export class HikeService {
   } 
   
   hikeList: HikeDTO[] = [];
+  myFavouriteList: HikeDTO[] = [];
 
 
   constructor(private http: HttpClient) { }
@@ -53,34 +54,72 @@ export class HikeService {
 
 
 
-  // async getFavouriteHikes():Promise<void>{
-  //   let httpOptions = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json'
-  //       // 'Authorization': 'Bearer ' + token
-  //     })
-  //   };
+  async getFavouriteHikes():Promise<void>{
+    let token = localStorage.getItem("token");
+    if (!token) {
+      throw('No token available');
+      console.error('No token available');
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
 
-  //   await this.http.get<HikeDTO[]>(environment.apiUrl + '/api/Hikes/GetMyFavouriteHikes', httpOptions).subscribe(x => {
-  //     console.log(x);
-  //     this.hikeList = x;
-  //   })
-  // } 
+
+    await this.http.get<HikeDTO[]>(environment.apiUrl + '/api/Hikes/GetMyFavouriteHikes', httpOptions).subscribe(x => {
+      console.log(x);
+      this.myFavouriteList = x
+    })
+  }
+  
+  
+
+  addFavouriteHikes(idHikeSelectAddFavourite: number): void {
+
+    let token = localStorage.getItem("token");
+    if (!token) {
+      throw('No token available');
+      console.error('No token available');
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+      //maybe build country here????
+      this.http.post(environment.apiUrl + '/api/Hikes/AddFavourite/' + idHikeSelectAddFavourite, httpOptions).subscribe(x => {
+        console.log(x);
+      })
+  }
 
 
-  // async addFavouriteHikes():Promise<void>{
-  //   let httpOptions = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json'
-  //       // 'Authorization': 'Bearer ' + token
-  //     })
-  //   };
+  async isInFavourite(idHike: number):Promise<boolean>{
 
-  //   await this.http.get<HikeDTO[]>(environment.apiUrl + '/api/Hikes/AddFavourite/' + hikeId, httpOptions).subscribe(x => {
-  //     console.log(x);
-  //     this.hikeList = x;
-  //   })
-  // } 
+    let token = localStorage.getItem("token");
+    if (!token) {
+      throw('No token available');
+      console.error('No token available');
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+
+      
+      for(let h of this.myFavouriteList){
+        if(h.id == idHike){
+          return true;
+        }
+      }
+      
+      return false;
+      
+  }
   
 
   

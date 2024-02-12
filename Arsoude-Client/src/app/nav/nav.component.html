@@ -18,6 +18,7 @@
           <li><a translate routerLink="/alltrails" id="textLogIn">nav.allTrails</a></li>
           <ng-container *ngIf="isLoggedIn()" >
               <li><a translate routerLink="/hikecreation" id="textLogIn" >nav.create</a></li>
+              <li><a translate routerLink="/favouritehikes" id="textLogIn" >nav.favouriteHikes</a></li>
           </ng-container>
           <!-- Conditionally render based on user login status -->
           <ng-container *ngIf="!isLoggedIn()">

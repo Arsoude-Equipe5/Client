@@ -18,7 +18,8 @@
             <br>
             <br>
             <br>
-      <div class="row" *ngFor="let a of hikeService.hikeList">
+      <div class="row" *ngFor="let a of hikeService.myFavouriteList">
+        <!-- <div class="row" *ngFor="let a of hikeList"> -->
         <br>
         <br>
         <br>
@@ -40,13 +41,6 @@
             <div class="col">
                 <div class="row">
                     <div class="col">
-                        <div class="text-right">
-                            <button class="star-button" *ngIf="isLoggedIn()" (click)="onButtonClick(a.id)">
-                                <i *ngIf="!hikeService.isInFavourite(a.id)" class="far fa-regular fa-star"></i>
-                                <i *ngIf="hikeService.isInFavourite(a.id)" class="fas fa-regular fa-star"></i>
-                            </button>
-                            
-                    </div>
                         <br>
                         <br>
                         <br>
@@ -87,9 +81,6 @@
                 
             </div>
             <div class="col">
-                
-                
-                    
                     <p>Map</p>
                 
             </div>

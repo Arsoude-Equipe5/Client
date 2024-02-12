@@ -41,6 +41,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HomeComponent } from './pages/home/home.component';
 import { AllTrailsComponent } from './pages/all-trails/all-trails.component';
+import { CommonModule } from '@angular/common'
+import { FavouriteHikeComponent } from './pages/favourite-hikes/favourite-hikes.component';
 
 const MY_DATE_FORMAT = {
   parse: {
@@ -65,12 +67,14 @@ const MY_DATE_FORMAT = {
     HomeComponent,
     SigninComponent,
     NavbarComponent,
+    FavouriteHikeComponent,
     InputComponent,
     AllTrailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CommonModule,
     HttpClientModule,
     TranslateModule.forRoot({
       defaultLanguage: 'fr',

@@ -2,20 +2,22 @@ import { Component } from '@angular/core';
 import { HikeCoordinatesDTO } from 'src/app/models/HikeCoordinatesDTO';
 import { HikeDTO, hikeType } from 'src/app/models/HikeDTO';
 import { HikeService } from 'src/app/services/HikeServices';
-import { AuthService } from 'src/app/services/auth.service';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 @Component({
-  selector: 'app-all-trails',
-  templateUrl: './all-trails.component.html',
-  styleUrls: ['./all-trails.component.css']
+  selector: 'app-favourite-hikes',
+  templateUrl: './favourite-hikes.component.html',
+  styleUrls: ['./favourite-hikes.component.css']
 })
-export class AllTrailsComponent {
+export class FavouriteHikeComponent {
   hikesList: HikeDTO[] =[];
 
-  constructor(public hikeService:HikeService, private authService: AuthService) {
+  constructor(public hikeService:HikeService) {
     
-      this.hikeService.getHikes()
-      
+
+
+      this.hikeService.getFavouriteHikes()
 
 const startPoint1 = new HikeCoordinatesDTO(37.7749, -122.4194, new Date());
 const endPoint1 = new HikeCoordinatesDTO(40.7128, -74.0060, new Date());
@@ -25,7 +27,7 @@ const endPoint2 = new HikeCoordinatesDTO(41.8781, -87.6298, new Date());
 
 // Create instances of HikeDTO using the coordinates
 const hike1 = new HikeDTO(
-  1,
+    1,
   "Hike 1",
   "Location 1",
   "Description 1",
@@ -36,7 +38,7 @@ const hike1 = new HikeDTO(
 );
 
 const hike2 = new HikeDTO(
-  2,
+    2,
   "Hike 2",
   "Location 2",
   "Description 2",
@@ -53,22 +55,9 @@ this.hikesList = [hike1,hike2];
     }
 
 
-    isLoggedIn(): boolean {
-      return this.authService.isLoggedIn();
-    }
 
-
-    onButtonClick(id: number): void {
-      getFavouriteHikes();
-      this.hikeService.addFavouriteHikes(id);
-      
-    }
+    
   
 
 
 }
-
-function getFavouriteHikes() {
-  throw new Error('Function not implemented.');
-}
-

@@ -229,6 +229,7 @@ export class HikeCreationComponent implements OnInit {
           };
         
           const hikeData: HikeDTO = new HikeDTO(
+            0,
             nomRandonnee,
             location,
             description,
