@@ -110,10 +110,12 @@ export class HikeService {
         'Authorization': 'Bearer ' + token
       })
     };
+    await this.getFavouriteHikes();
     return new Promise<boolean>((resolve) => {
       for (let h of this.myFavouriteList) {
         if (h.id === idHike) {
           resolve(true);
+          console.log(h)
           return;
         }
       }

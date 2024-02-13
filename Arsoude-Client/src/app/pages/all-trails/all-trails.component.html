@@ -42,8 +42,10 @@
                     <div class="col">
                         <div class="text-right">
                             <button class="star-button" *ngIf="isLoggedIn()" (click)="onButtonClick(a.id)">
-                                <i *ngIf="!hikeService.isInFavourite(a.id)" class="far fa-regular fa-star"></i>
-                                <i *ngIf="hikeService.isInFavourite(a.id)" class="fas fa-regular fa-star"></i>
+                                <i class="far fa-regular fa-star"></i>
+                                <!-- Not fonctionnal -->
+                                <!-- <i *ngIf="!hikeService.isInFavourite(a.id)" class="far fa-regular fa-star"></i> -->
+                                <!-- <i *ngIf="hikeService.isInFavourite(a.id)" class="fas fa-regular fa-star"></i> -->
                             </button>
                             
                     </div>
