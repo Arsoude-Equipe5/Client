@@ -15,16 +15,16 @@
 
     <div class="searchBar">
 
-        <i (click)='onSubmit();splitKeywords()' class="fas fa-search input-icon"></i>
+        <i (click)='onSubmit(); splitKeywords()' class="fas fa-search input-icon"></i>
         <input placeholder="Ville,montage,coordinées" [(ngModel)]="searchKeyword" [formControl]="inputKeyword" class="input" type="text" id="searchInput">
         
         <div class="button-group">
 
- <button >
-            <i class="fas fa-walking"></i>
+ <button   (click)="handleClick(); setHikeType('Walk')" [ngClass]="{'selected': clicked}"  >
+            <i  class="fas fa-walking"></i>
           </button>
 
-          <button >
+          <button   [ngClass]="{'selected': hikeType === 'bike'}" (click)="setHikeType('Bike')" >
             <i class="fas fa-bicycle"></i>
           </button>
     </div>
@@ -88,7 +88,7 @@
                         <p>Distance</p>
                     </div>
                     <div class="col">
-                        <p >Type : {{ a.type === 0 ? 'Pied' : 'Vélo' }}</p>
+                        <p >Type : {{ a.type === 0 ? 'Vélo' : 'Pied' }}</p>
                     </div>
                     <div class="col">
                         <p>Time</p>

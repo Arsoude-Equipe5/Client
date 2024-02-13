@@ -59,10 +59,10 @@ export class HikeService {
 
 
 
-  searchHikes(keyword:string){
+  searchHikes(keyword:string, type:string){
     this.hikeList = [];
     let params = new HttpParams();
-    params = params.set('keyword', keyword)
+    params = params.set('keyword', keyword).set('type', type)
 
       return this.http.get<HikeDTO[]>(`${environment.apiUrl}/api/Hikes/SearchHikes`,{params : params}).subscribe({
 

@@ -37,17 +37,7 @@ export class HomeComponent  {
     this.language = lang;
     this.translator.use(this.language);
   }
- 
-onSubmit(){
 
-  if(this.inputKeyword.value){
-  this.hikeService.searchHikes(this.inputKeyword.value);
-  }
-
-  else{
-    this.hikeService.getHikes();
-  }
-}
 
 
 

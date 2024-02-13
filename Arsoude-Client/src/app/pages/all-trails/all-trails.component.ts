@@ -14,6 +14,10 @@ export class AllTrailsComponent {
   inputKeyword = new FormControl('');
   tags: string[] = [];
   searchKeyword: string = "";
+  type: string = '';
+  hikeType:string='';
+
+  clicked:boolean=false;
 
   constructor(public hikeService:HikeService) {
     
@@ -50,14 +54,19 @@ const hike2 = new HikeDTO(
 //const hikesList: HikeDTO[] = [hike1, hike2];
 this.hikesList = [hike1,hike2];
 
+
     }
 
-
+    setHikeType(type: string) {
+      this.type = type;
+      console.log(this.type);
+  
+    }
     
     onSubmit(){
 
       if(this.inputKeyword.value){
-      this.hikeService.searchHikes(this.inputKeyword.value);
+      this.hikeService.searchHikes(this.inputKeyword.value, this.type);
       }
       else{
         this.hikeService.getHikes();
@@ -71,7 +80,17 @@ this.hikesList = [hike1,hike2];
         // Update the tags array with individual words
         this.tags = words.filter(word => word.trim() !== '');
       }
+
+      else{
+        this.tags = [];
+
+      }
     }
+
+    handleClick() {
+      this.clicked = !this.clicked; 
+    }
+
 
 
 }
