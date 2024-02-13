@@ -11,7 +11,15 @@ import { FavouriteHikeComponent } from '../pages/favourite-hikes/favourite-hikes
 })
 export class HikeService {
 
-   async getHikes():Promise<void>{
+   
+  
+  hikeList: HikeDTO[] = [];
+  myFavouriteList: HikeDTO[] = [];
+
+
+  constructor(private http: HttpClient) { }
+
+  async getHikes():Promise<void>{
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -19,17 +27,12 @@ export class HikeService {
       })
     };
 
+    console.log(environment.apiUrl);
     await this.http.get<HikeDTO[]>(environment.apiUrl + '/api/Hikes/GetHikes', httpOptions).subscribe(x => {
       console.log(x);
       this.hikeList = x;
     })
-  } 
-  
-  hikeList: HikeDTO[] = [];
-  myFavouriteList: HikeDTO[] = [];
-
-
-  constructor(private http: HttpClient) { }
+  }
   
 
   createHike(hikeData: HikeDTO): Observable<any> {

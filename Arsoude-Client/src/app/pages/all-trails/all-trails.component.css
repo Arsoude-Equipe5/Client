@@ -17,7 +17,7 @@ html, body {
 }
 
 .container-tile {
-  width: 70%;
+  width: 100%;
   /* Add other necessary styles to override Bootstrap */
 }
 
@@ -45,6 +45,9 @@ html, body {
   max-width: 100%;
 }
 
+
+/* test */
+
 .star-button {
   background-color: #f9f9f9;
   border: none;
@@ -70,3 +73,5 @@ p{
 
 
 /* here */
+
+

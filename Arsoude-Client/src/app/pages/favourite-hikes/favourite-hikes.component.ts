@@ -11,6 +11,8 @@ import { NgModule } from '@angular/core';
   styleUrls: ['./favourite-hikes.component.css']
 })
 export class FavouriteHikeComponent {
+  center: google.maps.LatLngLiteral = {lat: 42, lng: -4};
+  zoom = 5;
   hikesList: HikeDTO[] =[];
 
   constructor(public hikeService:HikeService) {
