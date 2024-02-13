@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { HikeCoordinatesDTO } from 'src/app/models/HikeCoordinatesDTO';
 import { HikeDTO, hikeType } from 'src/app/models/HikeDTO';
 import { HikeService } from 'src/app/services/HikeServices';
@@ -10,6 +11,9 @@ import { HikeService } from 'src/app/services/HikeServices';
 })
 export class AllTrailsComponent {
   hikesList: HikeDTO[] =[];
+  inputKeyword = new FormControl('');
+  tags: string[] = [];
+  searchKeyword: string = "";
 
   constructor(public hikeService:HikeService) {
     
@@ -50,7 +54,24 @@ this.hikesList = [hike1,hike2];
 
 
     
-  
+    onSubmit(){
+
+      if(this.inputKeyword.value){
+      this.hikeService.searchHikes(this.inputKeyword.value);
+      }
+      else{
+        this.hikeService.getHikes();
+      }
+    }
+
+    splitKeywords() {
+      if (this.searchKeyword) {
+        // Split the search keyword phrase into individual words
+        const words = this.searchKeyword.split(' ');
+        // Update the tags array with individual words
+        this.tags = words.filter(word => word.trim() !== '');
+      }
+    }
 
 
 }

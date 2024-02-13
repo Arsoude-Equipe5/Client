@@ -15,8 +15,8 @@
 
     <div class="searchBar">
 
-        <i class="fas fa-search input-icon"></i>
-        <input placeholder="Ville,montage,coordinées" class="input" type="text" id="searchInput">
+        <i (click)='onSubmit();splitKeywords()' class="fas fa-search input-icon"></i>
+        <input placeholder="Ville,montage,coordinées" [(ngModel)]="searchKeyword" [formControl]="inputKeyword" class="input" type="text" id="searchInput">
         
         <div class="button-group">
 
@@ -41,9 +41,16 @@
     </div>
 </div>
 
+<div class="tag-container">
+
+    <span style="color: white;" *ngIf="tags.length>0">Tags : </span>
+<span style="color: white;" *ngFor="let tag of tags" class="tags">{{ tag }}</span>
+</div>
     <div class="col">
        
-           
+        
+
+        <div *ngIf="hikeService.isEmpty===false">
       <div class="row" *ngFor="let a of hikeService.hikeList">
     
         <div class="tile">
@@ -81,7 +88,7 @@
                         <p>Distance</p>
                     </div>
                     <div class="col">
-                        <p>Type</p>
+                        <p >Type : {{ a.type === 0 ? 'Pied' : 'Vélo' }}</p>
                     </div>
                     <div class="col">
                         <p>Time</p>
@@ -116,6 +123,11 @@
         </div>
     </div>
       </div>
+</div>
+<div>
+        <h2 style="color: white; margin-top: 15px;" *ngIf="hikeService.isEmpty === true"> Aucune randonnée disponible</h2>
+        </div>
+
     </div>
   </div>
   

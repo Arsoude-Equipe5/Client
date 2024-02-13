@@ -21,11 +21,20 @@ export class HikeService {
     await this.http.get<HikeDTO[]>(environment.apiUrl + '/api/Hikes/GetHikes', httpOptions).subscribe(x => {
       console.log(x);
       this.hikeList = x;
+      this.isEmpty=false;
+
+      if(this.hikeList.length === 0){
+
+        this.isEmpty=true;
+      } 
+       
+
+      
     })
   } 
   
   hikeList: HikeDTO[] = [];
-
+  isEmpty :boolean=false;
 
   constructor(private http: HttpClient) { }
   
@@ -51,14 +60,26 @@ export class HikeService {
 
 
   searchHikes(keyword:string){
+    this.hikeList = [];
     let params = new HttpParams();
     params = params.set('keyword', keyword)
 
-      return this.http.get(`${environment.apiUrl}/api/Hikes/SearchHikes`,{params : params}).subscribe({
+      return this.http.get<HikeDTO[]>(`${environment.apiUrl}/api/Hikes/SearchHikes`,{params : params}).subscribe({
 
         next : (res) =>{
 
           console.log(res);
+
+    this.hikeList = res;
+    this.isEmpty=false;
+
+    if(this.hikeList.length === 0){
+
+      this.isEmpty=true;
+    } 
+
+
+    
           
         }, error : (err)=>{
 
@@ -72,6 +93,8 @@ export class HikeService {
 
 
   }
+
+
 
 
 }

@@ -42,7 +42,12 @@ onSubmit(){
 
   if(this.inputKeyword.value){
   this.hikeService.searchHikes(this.inputKeyword.value);
-  }}
+  }
+
+  else{
+    this.hikeService.getHikes();
+  }
+}
 
 
 
