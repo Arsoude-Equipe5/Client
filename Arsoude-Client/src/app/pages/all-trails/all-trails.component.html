@@ -10,8 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-
-<div class="container">
+<div class="container-tile">
     <div class="col">
         <br>
             <br>
@@ -24,36 +23,32 @@
         <br>
         <div class="tile">
             <div class="container-fluid">
-          <div class="row">
-            <div class="col">
-                <div class="row">
+          <div class="row" >
+            <div class="col"  style="display: flex; flex-direction: column; height: 100%;">
+                <div class="row" style="align-self: flex-start;">
                     <h1>{{ a.name }}</h1>
                 </div>
-                <div class="row">
+                <div class="row" style="align-self: flex-start;" >
                     <p>{{ a.location }}</p>
                 </div>
-                <div class="row">
-                    <!-- <img [src]="a.image" alt="Image de la randonnée" [style.max-width.px]="300" [style.max-height.px]="300"> -->
-                </div>
+                <div class="row" style="margin-top: auto; height:100%">
+                <img [src]="a.image" alt="Image de la randonnée"  class="img-fluid image">
+                </div>   
 
             </div>
             <div class="col">
                 <div class="row">
                     <div class="col">
                         <div class="text-right">
-                            <button class="star-button" *ngIf="isLoggedIn()" (click)="onButtonClick(a.id)">
-                                <i class="far fa-regular fa-star"></i>
-                                <!-- Not fonctionnal -->
-                                <!-- <i *ngIf="!hikeService.isInFavourite(a.id)" class="far fa-regular fa-star"></i> -->
-                                <!-- <i *ngIf="hikeService.isInFavourite(a.id)" class="fas fa-regular fa-star"></i> -->
+                            
+                            <button class="star-button" *ngIf="isLoggedIn()" (click)="onButtonClick(a.id, a)">
+                                <i [class]="hikeService.isInFavourite(a)"></i>
                             </button>
+
                             
                     </div>
                         <br>
-                        <br>
-                        <br>
                         <p>Description: </p>
-                    <br>
                     <p>{{ a.description }}</p>
 
                     </div>
@@ -64,35 +59,36 @@
                     <div class="col">
                     
                         <p>Distance</p>
-                    </div>
-                    <div class="col">
-                        <p>Type</p>
-                    </div>
-                    <div class="col">
-                        <p>Time</p>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col">
-                    
                         <p>indisponible</p>
                     </div>
                     <div class="col">
+                        <p>Type</p>
                         <p>{{ a.type }}</p>
                     </div>
                     <div class="col">
+                        <p>Time</p>
                         <p>indisponible</p>
                     </div>
 
                 </div>
                 
             </div>
-            <div class="col">
+            <div class="col"  >
                 
-                
-                    
-                    <p>Map</p>
+                <div class="map-container">
+                    <!-- Display latitude and longitude for selected points -->
+                   
+                    <iframe
+                    width="600"
+                    height="450"
+                    style="border:0"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps/embed/v1/place?key=
+                      &q=Space+Needle,Seattle+WA">
+                  </iframe>
+                  </div>
                 
             </div>
           </div>
@@ -108,4 +104,4 @@
   </div>
   
 </body>
-</html>
+<html></html>

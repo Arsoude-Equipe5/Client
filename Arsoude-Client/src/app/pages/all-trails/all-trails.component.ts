@@ -58,11 +58,21 @@ this.hikesList = [hike1,hike2];
     }
 
 
-    onButtonClick(id: number): void {
-      this.hikeService.addFavouriteHikes(id);
+    async onButtonClick(id: number, hike:HikeDTO): Promise<void> {
+      await this.hikeService.addFavouriteHikes(id);
+      await this.toggleFavourite(hike);
       
     }
   
+
+    async toggleFavourite(hike: HikeDTO): Promise<void> {
+      if (this.hikeService.isInFavourite(hike) === "far fa-regular fa-star") {
+        await this.hikeService.myFavouriteList.push(hike); // Add to favorites
+      } else {
+        // Remove from favorites
+        this.hikeService.myFavouriteList = this.hikeService.myFavouriteList.filter(favorite => favorite.id !== hike.id);
+      }
+    }
 
 
 }

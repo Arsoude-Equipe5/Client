@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HikeDTO } from '../models/HikeDTO';
+import { FavouriteHikeComponent } from '../pages/favourite-hikes/favourite-hikes.component';
 
 @Injectable({
   providedIn: 'root'
@@ -98,30 +99,16 @@ export class HikeService {
 
  
 
-  async isInFavourite(idHike: number): Promise<boolean> {
-    let token = localStorage.getItem("token");
-    if (!token) {
-      throw('No token available');
-      console.error('No token available');
+  isInFavourite(hike: HikeDTO): string {
+    // Check if any element in myFavouriteList has the same ID as the given hike
+    if (this.myFavouriteList.some(favorite => favorite.id === hike.id)) {
+        console.log("fas fa-regular fa-star");
+        return "fas fa-regular fa-star";
+    } else {
+        console.log("far fa-regular fa-star");
+        return "far fa-regular fa-star";
     }
-    let httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
-      })
-    };
-    await this.getFavouriteHikes();
-    return new Promise<boolean>((resolve) => {
-      for (let h of this.myFavouriteList) {
-        if (h.id === idHike) {
-          resolve(true);
-          console.log(h)
-          return;
-        }
-      }
-      resolve(false);
-    });
-  }
+}
   
   
 
