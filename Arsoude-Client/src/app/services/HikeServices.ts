@@ -10,6 +10,23 @@ import { HikeDTO } from '../models/HikeDTO';
 })
 export class HikeService {
 
+   async getHikes():Promise<void>{
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+        // 'Authorization': 'Bearer ' + token
+      })
+    };
+
+    await this.http.get<HikeDTO[]>(environment.apiUrl + '/api/Hikes/GetHikes', httpOptions).subscribe(x => {
+      console.log(x);
+      this.hikeList = x;
+    })
+  } 
+  
+  hikeList: HikeDTO[] = [];
+
+
   constructor(private http: HttpClient) { }
   
 
