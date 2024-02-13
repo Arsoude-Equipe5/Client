@@ -12,16 +12,40 @@
 <body>
 
 <div class="container">
+
+    <div class="searchBar">
+
+        <i class="fas fa-search input-icon"></i>
+        <input placeholder="Ville,montage,coordinées" class="input" type="text" id="searchInput">
+        
+        <div class="button-group">
+
+ <button >
+            <i class="fas fa-walking"></i>
+          </button>
+
+          <button >
+            <i class="fas fa-bicycle"></i>
+          </button>
+    </div>
+
+    <div class="rangeBox">
+        <p>Proximite: </p>
+        <mat-slider class="slider" min="1" max="100" step="1" value="1.5">
+            <input matSliderThumb>
+          </mat-slider>
+          
+          <p>20Km</p>
+
+
+    </div>
+</div>
+
     <div class="col">
-        <br>
-            <br>
-            <br>
-            <br>
-            <br>
+       
+           
       <div class="row" *ngFor="let a of hikeService.hikeList">
-        <br>
-        <br>
-        <br>
+    
         <div class="tile">
             <div class="container-fluid">
           <div class="row">
