@@ -36,7 +36,7 @@ html, body {
 
   width: 55%;
   padding: 10px;
-  padding-left: 45px;
+  padding-left: 55px;
 border-radius: 25px;
 border-width: 0;
 
@@ -68,10 +68,14 @@ color: white;
 
 }
 
-.selected{
-  background-color: #940dfc3f; 
+.inputSearch{
+  width: 100%;
 }
 
+
+.button-group button.selected {
+  background-color: #007200;
+}
 
 /* Optional: Style for icons */
 .button-group i {

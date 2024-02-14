@@ -15,7 +15,7 @@ export class AllTrailsComponent {
   tags: string[] = [];
   searchKeyword: string = "";
   type: string = '';
-  hikeType:string='';
+
 
   clicked:boolean=false;
 
