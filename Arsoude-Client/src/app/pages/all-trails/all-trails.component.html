@@ -54,73 +54,34 @@
       <div class="row" *ngFor="let a of hikeService.hikeList">
     
         <div class="tile">
-            <div class="container-fluid">
-          <div class="row">
-            <div class="col">
-                <div class="row">
-                    <h1>{{ a.name }}</h1>
-                </div>
-                <div class="row">
-                    <p>{{ a.location }}</p>
-                </div>
-                <div class="row">
-                    <img [src]="a.image" alt="Image de la randonnée" [style.max-width.px]="300" [style.max-height.px]="300">
-                </div>
+            <div class="firstRow"> <h1 class="hikeTitle">{{ a.name }}</h1>
+                <i class="fas fa-star"></i></div>
+            <div><div class="cardContainer">
+                <div class="col1">
+                    <div class="infoBox"> 
+                    <p class="hikeLocation">{{ a.location }}</p></div>
+                  
+                    <img [src]="a.image" alt="Image de la randonnée" [style.width.px]="300" [style.height.px]="200">
 
-            </div>
-            <div class="col">
-                <div class="row">
-                    <div class="col">
-                        <br>
-                        <br>
-                        <br>
-                        <p>Description: </p>
-                    <br>
-                    <p>{{ a.description }}</p>
+                </div>
+                <div class="col2">
+             
+                    <p class="text">Description</p>
+                    <p class="text" id="description">{{ a.description }}</p>
+                    <div class="infoHike">
+
+                        <p class="text">Distance</p>
+                        <p class="text">Type :  {{ a.type === 0 ? 'Vélo' : 'Pied' }}</p>
+                        <p class="text">Temps</p>
 
                     </div>
-                </div>
-                <br>
-                <br>
-                <div class="row">
-                    <div class="col">
                     
-                        <p>Distance</p>
-                    </div>
-                    <div class="col">
-                        <p >Type : {{ a.type === 0 ? 'Vélo' : 'Pied' }}</p>
-                    </div>
-                    <div class="col">
-                        <p>Time</p>
-                    </div>
-
                 </div>
-                <div class="row">
-                    <div class="col">
-                    
-                        <p>indisponible</p>
-                    </div>
-                    <div class="col">
-                        <p>{{ a.type }}</p>
-                    </div>
-                    <div class="col">
-                        <p>indisponible</p>
-                    </div>
+                <div class="col3"> Map: </div>
 
-                </div>
+                        </div></div>
                 
-            </div>
-            <div class="col">
-                    <p>Map</p>
-                
-            </div>
-          </div>
-          <!-- Add more details as needed -->
 
-
-
-          
-        </div>
     </div>
       </div>
 </div>

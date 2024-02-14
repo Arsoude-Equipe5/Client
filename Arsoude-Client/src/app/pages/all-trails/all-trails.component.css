@@ -9,10 +9,16 @@ html, body {
   padding-top: 15vh;
 }
 
+.firstRow{display: flex;
+align-items: center;
+justify-content: space-between;
+align-items: center;
+
+}
 
 
 .tile {
-  padding: 15px;
+  padding: 30px;
   margin: 10px;
   background-color: #f9f9f9;
   border-radius: 8px;
@@ -24,17 +30,18 @@ html, body {
 
   width: 100%;
   height: 8vh;
-  background-color: green;
-  border-radius: 5px;
+  background-color: #235A46;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  padding: 20px;
   
 }
 
 #searchInput{
 
-  width: 55%;
+  width: 65%;
   padding: 10px;
   padding-left: 55px;
 border-radius: 25px;
@@ -52,7 +59,7 @@ border-width: 0;
   width: 50px;
   height: 50px;
   border: none;
-  background-color: #57a854;
+  background-color: #347a62;
   padding: 10px;
   margin: 5px;
   cursor: pointer;
@@ -74,7 +81,7 @@ color: white;
 
 
 .button-group button.selected {
-  background-color: #007200;
+  background-color: #379271;
 }
 
 /* Optional: Style for icons */
@@ -143,6 +150,60 @@ padding: 5px 10px 5px 10px;
 
 
 
+.hikeTitle{
+
+
+  font-weight: 700;
+font-family: "Lato";
+}
+
+.hikeLocation{
+font-size: 16px;
+  font-weight: 700;
+  font-family: "Lato";
+
+}
 
 
 
+.text{
+
+
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Lato";
+  color: #193D2A;
+}
+
+.cardContainer{
+
+  display: flex;
+ gap: 50px;
+ 
+}
+
+
+.infoHike{
+
+  display: flex;
+
+gap: 4rem;
+}
+
+.col1{width: 30%;}
+.col2{width: 43%;
+padding-top: 6vh;}
+.col3{width: 27%;}
+
+.col1{
+
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+
+#description{
+ 
+  overflow-wrap: break-word;
+  height: 12vh;
+}
