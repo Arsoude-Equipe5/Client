@@ -192,7 +192,7 @@ export class HikeCreationComponent implements OnInit {
     }
   
     if (this.hikeForm.valid && this.markers.length === 2) {
-      const { nomRandonnee, image, description, type, location } = this.hikeForm.value;
+      const { nomRandonnee, image, description, type, distance, timeEstimated, location } = this.hikeForm.value;
   
       this.onloading = true;
   
@@ -235,6 +235,8 @@ export class HikeCreationComponent implements OnInit {
             description,
             downloadURL, // Use download URL as image URL
             type === 'vélo' ? hikeType.bike : hikeType.walk,
+            distance,
+            timeEstimated,
             startPoint,
             endPoint
           );

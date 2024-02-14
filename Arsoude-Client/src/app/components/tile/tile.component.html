@@ -1,0 +1,71 @@
+<div class="main">
+    <div class="left">
+        <div class="content-l">
+            <h1>{{hike.name}}</h1>
+            <p>{{hike.location}}</p>
+            <div class="image"></div>
+            <div class="infoSmall">
+                <div class="info">
+                    <p class="infoTitle">Distance</p>
+                    <p>{{hike.distance}} Km</p>
+                </div>
+                <div class="info">
+                    <p class="infoTitle">Type</p>
+                    <span class="material-symbols-outlined">
+                        directions_walk
+                     </span>
+                </div>
+                <div class="info">
+                    <div class="infoTitle">
+                        <p>Temps</p>
+                    </div>
+                    <p>{{hike.timeEstimated}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="content-r">
+            <div class="top">
+                <div class="descTitle">
+                    Description
+                </div>
+                <p>{{hike.description}}</p>    
+            </div>
+            <div class="bottom">
+                <div class="info">
+                    <div class="infoTitle">
+                        Distance
+                    </div>
+                    <p>{{hike.distance}} Km</p>
+                </div>
+                <div class="info">
+                    <div class="infoTitle">
+                        Type
+                    </div>
+                    <span class="material-symbols-outlined">
+                        directions_walk
+                     </span>
+                </div>
+                <div class="info">
+                    <div class="infoTitle">
+                        Temps
+                    </div>
+                    <p>{{hike.timeEstimated}} H</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="map-section">
+            <google-map
+            [center]="center"
+            [zoom]="zoom"
+            [width]="'100%'" 
+            [height]="'100%'">
+
+            <map-marker *ngFor="let marker of markerPositions"
+                        [position]="marker">
+            </map-marker>
+            </google-map>
+        </div>
+    </div>
+</div>

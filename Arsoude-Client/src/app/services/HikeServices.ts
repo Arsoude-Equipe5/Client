@@ -28,12 +28,37 @@ export class HikeService {
     };
 
     console.log(environment.apiUrl);
-    await this.http.get<HikeDTO[]>(environment.apiUrl + '/api/Hikes/GetHikes', httpOptions).subscribe(x => {
-      console.log(x);
-      this.hikeList = x;
-    })
+    await this.http.get<HikeDTO[]>(environment.apiUrl + '/api/Hikes/GetHikes', httpOptions).subscribe(data => {
+      console.log(data);
+      this.hikeList = data.map(hike => ({
+          ...hike,
+          timeEstimated: this.parseTimeSpan(hike.timeEstimated),
+          distance: hike.distance as number
+      }));
+      console.log(this.hikeList);
+  });
   }
   
+  private parseTimeSpan(timeSpan: string): string {
+    const [hours, minutes, seconds] = timeSpan.split(':');
+
+    const hoursNumber = parseInt(hours, 10);
+    const minutesNumber = parseInt(minutes, 10);
+    const secondsNumber = parseInt(seconds, 10);
+
+    let formattedTimeSpan = '';
+    if (hoursNumber > 0) {
+        formattedTimeSpan += hoursNumber + 'h ';
+    }
+    if (minutesNumber > 0) {
+        formattedTimeSpan += minutesNumber + 'm ';
+    }
+    if (secondsNumber > 0) {
+        formattedTimeSpan += secondsNumber + 's';
+    }
+
+    return formattedTimeSpan.trim();
+}
 
   createHike(hikeData: HikeDTO): Observable<any> {
     const token = localStorage.getItem('token');

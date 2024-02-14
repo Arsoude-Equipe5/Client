@@ -13,10 +13,10 @@ export class HikeDTO{
         public description : String,
         public image : String,
         public type : hikeType,
+        public distance : number,
+        public timeEstimated : string,
         public startPoint : HikeCoordinatesDTO,
         public endPoint : HikeCoordinatesDTO
-        
-
         ){} 
     }
 

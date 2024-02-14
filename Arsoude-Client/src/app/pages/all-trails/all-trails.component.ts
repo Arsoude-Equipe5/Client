@@ -34,6 +34,8 @@ const hike1 = new HikeDTO(
   "Description 1",
   "Image URL 1",
   hikeType.bike,
+  10.2,
+  "1.2",
   startPoint1,
   endPoint1
 );
@@ -45,6 +47,8 @@ const hike2 = new HikeDTO(
   "Description 2",
   "Image URL 2",
   hikeType.walk,
+  10.2,
+  "1.2",
   startPoint2,
   endPoint2
 );
