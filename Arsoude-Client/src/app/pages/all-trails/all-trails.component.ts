@@ -77,6 +77,11 @@ this.hikesList = [hike1,hike2];
       }
     }
 
+    markerPositions: google.maps.LatLngLiteral[] = [
+      {lat: 42, lng: -4},
+      {lat: 40, lng: -0},
+    ];
+
 
 }
 
