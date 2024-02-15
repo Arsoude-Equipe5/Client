@@ -47,50 +47,17 @@
 <span style="color: white;" *ngFor="let tag of tags" class="tags">{{ tag }}</span>
 </div>
     <div class="col">
-       
-        
+      <div *ngIf="hikeService.isEmpty===false">
+        <div class="row" *ngFor="let a of hikeService.hikeList">
 
-        <div *ngIf="hikeService.isEmpty===false">
-      <div class="row" *ngFor="let a of hikeService.hikeList">
-    
-        <div class="tile">
-            <div class="firstRow"> <h1 class="hikeTitle">{{ a.name }}</h1>
-                <i class="fas fa-star"></i></div>
-            <div><div class="cardContainer">
-                <div class="col1">
-                    <div class="infoBox"> 
-                    <p class="hikeLocation">{{ a.location }}</p></div>
-                  
-                    <img [src]="a.image" alt="Image de la randonnée" [style.width.px]="300" [style.height.px]="200">
 
-                </div>
-                <div class="col2">
-             
-                    <p class="text">Description</p>
-                    <p class="text" id="description">{{ a.description }}</p>
-                    <div class="infoHike">
-
-                        <p class="text">Distance</p>
-                        <p class="text">Type :  {{ a.type === 0 ? 'Vélo' : 'Pied' }}</p>
-                        <p class="text">Temps</p>
-
-                    </div>
-                    
-                </div>
-                <div class="col3"> Map: </div>
-
-                        </div></div>
-                
-
-    </div>
-      </div>
-</div>
-<div>
-        <h2 style="color: white; margin-top: 15px;" *ngIf="hikeService.isEmpty === true"> Aucune randonnée disponible</h2>
+          
         </div>
-
+      </div>
+      <div>
+        <h2 style="color: white; margin-top: 15px;" *ngIf="hikeService.isEmpty === true"> Aucune randonnée disponible</h2>
+      </div>
     </div>
   </div>
-  
 </body>
 </html>
