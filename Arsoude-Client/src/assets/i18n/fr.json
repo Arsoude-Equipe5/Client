@@ -7,7 +7,8 @@
     "create": "Créer",
     "languages":"Langues",
     "disconnect":"Se déconnecter",
-    "allTrails":"Toutes les randonnées"
+    "allTrails":"Toutes les randonnées",
+    "favouriteHikes":"Randonnées favorites"
   },
 
   "hike-creation":{
@@ -99,6 +100,35 @@
     "trailMaking" : "Création de Randonnée",
     "trackHike" : "Suivez vos Explorations.",
     "community" : "Communauté"
+
+
+    
+  },
+
+
+  "all-trails":{
+    "allTrails": "Toutes les randonnées",
+    "description": "Description",
+    "distance": "Distance",
+    "type":"Type",
+    "time":"Temps"
+
+
+
+
+
+    
+  },
+
+  "favourite-hikes":{
+    "myFavouriteHikes": "Mes Randonnées Favorites",
+    "description": "Description",
+    "distance": "Distance",
+    "type":"Type",
+    "time":"Temps"
+
+
+
 
 
     

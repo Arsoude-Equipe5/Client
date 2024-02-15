@@ -212,10 +212,6 @@ mat-form-field.mat-focused .mat-form-field-label {
   text-align: center;
 }
 
-.button-group button.selected {
-  background-color: #379271; 
-  color: white;
-}
 
 /* Optional: Style for icons */
 .button-group i {
