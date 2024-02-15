@@ -39,7 +39,6 @@ export class HikeService {
   });
   }
   
-  hikeList: HikeDTO[] = [];
   isEmpty :boolean=false;
   private parseTimeSpan(timeSpan: string): string {
     const [hours, minutes, seconds] = timeSpan.split(':');

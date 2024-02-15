@@ -11,41 +11,37 @@ html, body {
   color: white;
   font-weight: bold;
   font-size: 2rem;
-.container {
-  width: 100%;
-  padding: 10px;
-  padding-top: 15vh;
 }
 
+.container{
+  width: 100%;
+}
 
 .container-tile{
   margin-left: 120px;
   margin-right: 120px;
   margin-bottom: 50px;
-.firstRow{display: flex;
-align-items: center;
-justify-content: space-between;
-align-items: center;
-
 }
 
-
-.tile {
-  padding: 30px;
-  margin: 10px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
+.firstRow{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
+
 
 @media only screen and (max-width: 1000px) {
   .container-tile{
     margin-left: 30px;
     margin-right: 30px;
-.searchBar{
+  }
+}
 
-  width: 100%;
+.searchBar{
+  margin-left: 120px;
+  margin-right: 120px;
+  margin-bottom: 30px;
   height: 8vh;
   background-color: #235A46;
   border-radius: 15px;
@@ -53,7 +49,6 @@ align-items: center;
   align-items: center;
   justify-content: space-around;
   padding: 20px;
-  
 }
 
 #searchInput{
@@ -63,15 +58,13 @@ align-items: center;
   padding-left: 55px;
 border-radius: 25px;
 border-width: 0;
-
-
 }
-
 
 .button-group{
 
   display: flex;
 }
+
 .button-group button {
   width: 50px;
   height: 50px;
@@ -83,14 +76,13 @@ border-width: 0;
   border-radius: 10px;
   display: flex;
   justify-content: center;
-
- i{
-color: white;
- }
-
- 
-
 }
+
+
+i{
+  color: white;
+}
+ 
 
 .inputSearch{
   width: 100%;
@@ -101,7 +93,6 @@ color: white;
   background-color: #379271;
 }
 
-/* Optional: Style for icons */
 .button-group i {
   font-size: 2rem;
 }
@@ -116,20 +107,21 @@ color: white;
 }
 
 
-
-
-
 .slidecontainer {
   width: 100%; /* Width of the outside container */
 }
+
 
 /* The slider itself */
 mat-slider {
   width: 150px;
 }
+
+
 .my-slider {
 
 }
+
 
 @media only screen and (max-width: 1500px) {
   .container {
@@ -148,63 +140,52 @@ mat-slider {
 }
 
 .tag-container{
-
+  margin-left: 120px;
 display:flex;
 gap: 10px;
-margin-left: 10px;
 margin-top: 10px;
 align-items: center;
 }
 
 
 .tags{
-
  background-color: #235a46;
  border-radius: 20px;
-padding: 5px 10px 5px 10px;
-
+ padding: 5px 10px 5px 10px;
 }
 
 
-
 .hikeTitle{
-
-
   font-weight: 700;
 font-family: "Lato";
 }
 
+
 .hikeLocation{
-font-size: 16px;
+  font-size: 16px;
   font-weight: 700;
   font-family: "Lato";
-
 }
 
 
-
 .text{
-
-
   font-size: 18px;
   font-weight: 700;
   font-family: "Lato";
   color: #193D2A;
 }
 
-.cardContainer{
 
+.cardContainer{
   display: flex;
- gap: 50px;
+  gap: 50px;
  
 }
 
 
 .infoHike{
-
   display: flex;
-
-gap: 4rem;
+  gap: 4rem;
 }
 
 .col1{width: 30%;}

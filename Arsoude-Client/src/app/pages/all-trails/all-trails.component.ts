@@ -62,8 +62,6 @@ const hike2 = new HikeDTO(
 // Create a list of HikeDTO instances
 //const hikesList: HikeDTO[] = [hike1, hike2];
 this.hikesList = [hike1,hike2];
-
-
     }
 
 
@@ -81,10 +79,16 @@ this.hikesList = [hike1,hike2];
     setHikeType(type: string) {
       this.type = type;
       console.log(this.type);
-  
     }
-    
+
     onSubmit(){
+      if(this.inputKeyword.value){
+        this.hikeService.searchHikes(this.inputKeyword.value, this.type);
+        }
+        else{
+          this.hikeService.getHikes();
+        }
+    }
 
     async toggleFavourite(hike: HikeDTO): Promise<void> {
       if (this.hikeService.isInFavourite(hike) === "far fa-regular fa-star") {
@@ -94,19 +98,6 @@ this.hikesList = [hike1,hike2];
         this.hikeService.myFavouriteList = this.hikeService.myFavouriteList.filter(favorite => favorite.id !== hike.id);
       }
     }
-      if(this.inputKeyword.value){
-      this.hikeService.searchHikes(this.inputKeyword.value, this.type);
-      }
-      else{
-        this.hikeService.getHikes();
-      }
-    }
-
-    markerPositions: google.maps.LatLngLiteral[] = [
-      {lat: 42, lng: -4},
-      {lat: 40, lng: -0},
-    ];
-
 
     splitKeywords() {
       if (this.searchKeyword) {
@@ -122,11 +113,5 @@ this.hikesList = [hike1,hike2];
       }
     }
 
-    handleClick() {
-      this.clicked = !this.clicked; 
-    }
-
-
-
+    
 }
-
