@@ -17,18 +17,18 @@
             </div>
             <div class="infoSmall">
                 <div class="info">
-                    <p class="infoTitle">Distance</p>
+                    <p class="infoTitle">{{'all-trails.distance' | translate}}</p>
                     <p>{{hike.distance}} Km</p>
                 </div>
                 <div class="info">
-                    <p class="infoTitle">Type</p>
+                    <p class="infoTitle">{{'all-trails.type' | translate}}</p>
                     <span class="material-symbols-outlined">
                         directions_walk
                      </span>
                 </div>
                 <div class="info">
                     <div class="infoTitle">
-                        <p>Temps</p>
+                        <p>{{'all-trails.time' | translate}}</p>
                     </div>
                     <p>{{hike.timeEstimated}}</p>
                 </div>
@@ -38,7 +38,7 @@
             <div class="top">
                 <div class="descTop">
                     <div class="descTitle">
-                        Description
+                        {{'all-trails.description' | translate}}
                     </div>
                     <div class="favBtn">
                         <button class="star-button" *ngIf="isLoggedIn()" (click)="onButtonClick(hike.id, hike)">
@@ -53,13 +53,13 @@
             <div class="bottom">
                 <div class="info">
                     <div class="infoTitle">
-                        Distance
+                        {{'all-trails.distance' | translate}}
                     </div>
                     <p>{{hike.distance}} Km</p>
                 </div>
                 <div class="info">
                     <div class="infoTitle">
-                        Type
+                        {{'all-trails.type' | translate}}
                     </div>
                     <span class="material-symbols-outlined">
                         directions_walk
@@ -67,7 +67,7 @@
                 </div>
                 <div class="info">
                     <div class="infoTitle">
-                        Temps
+                        {{'all-trails.time' | translate}}
                     </div>
                     <p>{{hike.timeEstimated}} H</p>
                 </div>
