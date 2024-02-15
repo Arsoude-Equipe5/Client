@@ -18,6 +18,7 @@ html, body {
   margin-left: 120px;
   margin-right: 120px;
   margin-bottom: 50px;
+  
 }
 
 @media only screen and (max-width: 1000px) {
@@ -26,3 +27,4 @@ html, body {
     margin-right: 30px;
   }
 }
+
