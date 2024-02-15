@@ -29,7 +29,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { NavComponent } from './nav/nav.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-
+import {MatSliderModule} from '@angular/material/slider';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { RegisterComponent } from './pages/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -40,6 +40,10 @@ import { InterceptorInterceptor } from './assets/interceptor/interceptor.interce
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HomeComponent } from './pages/home/home.component';
+import { AllTrailsComponent } from './pages/all-trails/all-trails.component';
+import { CommonModule } from '@angular/common'
+import { FavouriteHikeComponent } from './pages/favourite-hikes/favourite-hikes.component';
+import { TileComponent } from './components/tile/tile.component';
 
 const MY_DATE_FORMAT = {
   parse: {
@@ -64,11 +68,15 @@ const MY_DATE_FORMAT = {
     HomeComponent,
     SigninComponent,
     NavbarComponent,
-    InputComponent
+    FavouriteHikeComponent,
+    InputComponent,
+    AllTrailsComponent,
+    TileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CommonModule,
     HttpClientModule,
     TranslateModule.forRoot({
       defaultLanguage: 'fr',
@@ -82,6 +90,7 @@ const MY_DATE_FORMAT = {
     MatFormFieldModule,
     ReactiveFormsModule,
     MatDatepickerModule,
+    MatSliderModule,
     MatMenuModule,
     MatInputModule,
     MatIconModule,

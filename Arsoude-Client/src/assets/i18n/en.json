@@ -6,7 +6,9 @@
     "logIn": "Log in",
     "create": "Create",
     "languages":"Languages",
-    "disconnect":"Disconnect"
+    "disconnect":"Disconnect",
+    "allTrails":"All trails",
+    "favouriteHikes":"Favourite hikes"
   },
 
   "hike-creation":{
@@ -103,7 +105,37 @@
 
 
     
+  },
+
+  "all-trails":{
+    "allTrails": "All Hikes",
+    "description": "Description",
+    "distance": "Distance",
+    "type":"Type",
+    "time":"Time"
+
+
+
+
+
+    
+  },
+
+  "favourite-hikes":{
+    "myFavouriteHikes": "My Favourite Hikes",
+    "description": "Description",
+    "distance": "Distance",
+    "type":"Type",
+    "time":"Time"
+
+
+
+
+
+    
   }
+
+  
 
 }
 

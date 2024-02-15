@@ -7,15 +7,16 @@ export enum hikeType {
 
 export class HikeDTO{
     constructor(
+        public id: number,
         public name : String, 
         public location : String,
         public description : String,
         public image : String,
         public type : hikeType,
+        public distance : number,
+        public timeEstimated : string,
         public startPoint : HikeCoordinatesDTO,
         public endPoint : HikeCoordinatesDTO
-        
-
         ){} 
     }
 
