@@ -130,10 +130,8 @@ export class HikeService {
   isInFavourite(hike: HikeDTO): string {
     // Check if any element in myFavouriteList has the same ID as the given hike
     if (this.myFavouriteList.some(favorite => favorite.id === hike.id)) {
-        console.log("fas fa-regular fa-star");
         return "fas fa-regular fa-star";
     } else {
-        console.log("far fa-regular fa-star");
         return "far fa-regular fa-star";
     }
 }

@@ -4,6 +4,16 @@ html, body {
   padding-top: 165px;
 }
 
+.title{
+  position: absolute;
+  top: 200px;
+  left: 120px;
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+
 .container-tile{
   margin-left: 120px;
   margin-right: 120px;

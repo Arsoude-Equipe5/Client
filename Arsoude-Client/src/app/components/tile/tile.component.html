@@ -1,9 +1,20 @@
 <div class="main">
     <div class="left">
         <div class="content-l">
-            <h1>{{hike.name}}</h1>
-            <p>{{hike.location}}</p>
-            <div class="image"></div>
+            <div class="titleTop">
+                <div>
+                    <h1>{{hike.name}}</h1>
+                    <p>{{hike.location}}</p>
+                </div>
+                <div class="favBtnSmall">
+                    <button class="star-button" *ngIf="isLoggedIn()" (click)="onButtonClick(hike.id, hike)">
+                        <i [class]="hikeService.isInFavourite(hike)"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="image">
+                <img src="{{hike.image}}" alt="">
+            </div>
             <div class="infoSmall">
                 <div class="info">
                     <p class="infoTitle">Distance</p>
@@ -25,10 +36,19 @@
         </div>
         <div class="content-r">
             <div class="top">
-                <div class="descTitle">
-                    Description
+                <div class="descTop">
+                    <div class="descTitle">
+                        Description
+                    </div>
+                    <div class="favBtn">
+                        <button class="star-button" *ngIf="isLoggedIn()" (click)="onButtonClick(hike.id, hike)">
+                            <i [class]="hikeService.isInFavourite(hike)"></i>
+                        </button>
+                    </div>
                 </div>
-                <p>{{hike.description}}</p>    
+                <div class="desc">
+                    <p>{{hike.description}}</p>
+                </div>   
             </div>
             <div class="bottom">
                 <div class="info">

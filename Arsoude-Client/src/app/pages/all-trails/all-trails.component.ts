@@ -16,7 +16,8 @@ export class AllTrailsComponent {
 
   constructor(public hikeService:HikeService, private authService: AuthService) {
     
-      this.hikeService.getHikes()
+      this.hikeService.getHikes();
+      this.hikeService.getFavouriteHikes();
       
 
 const startPoint1 = new HikeCoordinatesDTO(37.7749, -122.4194, new Date());

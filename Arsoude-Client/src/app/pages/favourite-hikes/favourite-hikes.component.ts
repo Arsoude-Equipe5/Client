@@ -17,8 +17,6 @@ export class FavouriteHikeComponent {
 
   constructor(public hikeService:HikeService) {
     
-
-
       this.hikeService.getFavouriteHikes()
 
 const startPoint1 = new HikeCoordinatesDTO(37.7749, -122.4194, new Date());
@@ -59,11 +57,4 @@ const hike2 = new HikeDTO(
 this.hikesList = [hike1,hike2];
 
     }
-
-
-
-    
-  
-
-
 }

@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HikeCoordinatesDTO } from 'src/app/models/HikeCoordinatesDTO';
 import { HikeDTO, hikeType } from 'src/app/models/HikeDTO';
+import { HikeService } from 'src/app/services/HikeServices';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-tile',
@@ -10,6 +12,30 @@ import { HikeDTO, hikeType } from 'src/app/models/HikeDTO';
 export class TileComponent implements OnInit{
   startPoint1 = new HikeCoordinatesDTO(37.7749, -122.4194, new Date());
   endPoint1 = new HikeCoordinatesDTO(40.7128, -74.0060, new Date());
+
+  constructor(public hikeService:HikeService, private authService: AuthService) {
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+
+  async onButtonClick(id: number, hike:HikeDTO): Promise<void> {
+    await this.hikeService.addFavouriteHikes(id);
+    await this.toggleFavourite(hike);
+    
+  }
+
+
+  async toggleFavourite(hike: HikeDTO): Promise<void> {
+    if (this.hikeService.isInFavourite(hike) === "far fa-regular fa-star") {
+      await this.hikeService.myFavouriteList.push(hike); // Add to favorites
+    } else {
+      // Remove from favorites
+      this.hikeService.myFavouriteList = this.hikeService.myFavouriteList.filter(favorite => favorite.id !== hike.id);
+    }
+  }
 
   @Input() hike:HikeDTO = new HikeDTO(
     1,

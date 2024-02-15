@@ -22,6 +22,16 @@
     display: flex;
 }
 
+.titleTop{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.favBtnSmall{
+    display: none;
+}
+
 .map-section{
     width: 100%;
     height: 100%;
@@ -39,13 +49,18 @@
     justify-content: space-between;
 }
 
-.top{
-    padding-top: 20px;
+
+.descTop{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 93px;
 }
 
 .descTitle{
     font-weight: bold;
-    margin-bottom: 20px;
+    font-size: 1.2rem;
+    align-self: end;
 }
 
 .bottom{
@@ -73,13 +88,30 @@
 .infoTitle{
     font-weight: bold;
     margin-bottom: 10px;
+    font-size: 1.2rem;
 }
 
 .image {
-    background-color: orange;
     width: 400px;
     height: 265px;
     margin-top: 15px;
+}
+.image img {
+    border-bottom-left-radius: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.star-button {
+    background-color: transparent;
+    border: none;
+    color: #7bc735;
+    cursor: pointer;
+    text-align: right;
+    font-size: 40px;
+    align-self: self-start;
+
 }
 
 h1 {
@@ -107,6 +139,9 @@ p {
     .infoSmall{
         display: flex;
     }
+    .favBtnSmall{
+        display: flex;
+    }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -123,5 +158,5 @@ p {
     .left{
         justify-content: center;
         width: 100%;
-    }
+    }    
 }
