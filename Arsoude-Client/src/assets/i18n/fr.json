@@ -103,6 +103,35 @@
 
 
     
+  },
+
+
+  "all-trails":{
+    "allTrails": "Toutes les randonnées",
+    "description": "Description",
+    "distance": "Distance",
+    "type":"Type",
+    "time":"Temps"
+
+
+
+
+
+    
+  },
+
+  "favourite-hikes":{
+    "myFavouriteHikes": "Mes Randonnées Favorites",
+    "description": "Description",
+    "distance": "Distance",
+    "type":"Type",
+    "time":"Temps"
+
+
+
+
+
+    
   }
 
 

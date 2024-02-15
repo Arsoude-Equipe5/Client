@@ -10,7 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-  <div class="title">Toutes les Randonnées</div>
+  <div class="title">{{'all-trails.allTrails' | translate}}</div>
     <div class="container-tile" *ngFor="let hike of hikeService.hikeList">
         <app-tile [hike]="hike"></app-tile>
     </div>

@@ -105,7 +105,37 @@
 
 
     
+  },
+
+  "all-trails":{
+    "allTrails": "All Hikes",
+    "description": "Description",
+    "distance": "Distance",
+    "type":"Type",
+    "time":"Time"
+
+
+
+
+
+    
+  },
+
+  "favourite-hikes":{
+    "myFavouriteHikes": "My Favourite Hikes",
+    "description": "Description",
+    "distance": "Distance",
+    "type":"Type",
+    "time":"Time"
+
+
+
+
+
+    
   }
+
+  
 
 }
 
