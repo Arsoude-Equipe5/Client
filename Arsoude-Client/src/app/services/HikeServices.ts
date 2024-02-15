@@ -1,5 +1,5 @@
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -39,6 +39,8 @@ export class HikeService {
   });
   }
   
+  hikeList: HikeDTO[] = [];
+  isEmpty :boolean=false;
   private parseTimeSpan(timeSpan: string): string {
     const [hours, minutes, seconds] = timeSpan.split(':');
 
@@ -104,6 +106,46 @@ export class HikeService {
   }
   
   
+
+
+
+  searchHikes(keyword:string, type:string){
+    this.hikeList = [];
+    let params = new HttpParams();
+    params = params.set('keyword', keyword).set('type', type)
+
+      return this.http.get<HikeDTO[]>(`${environment.apiUrl}/api/Hikes/SearchHikes`,{params : params}).subscribe({
+
+        next : (res) =>{
+
+          console.log(res);
+
+    this.hikeList = res;
+    this.isEmpty=false;
+
+    if(this.hikeList.length === 0){
+
+      this.isEmpty=true;
+    } 
+
+
+    
+          
+        }, error : (err)=>{
+
+
+          console.log(err);
+          
+        }
+
+      })
+
+
+
+  }
+
+
+
 
   addFavouriteHikes(idHikeSelectAddFavourite: number): void {
 

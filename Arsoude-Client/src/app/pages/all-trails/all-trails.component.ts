@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { HikeCoordinatesDTO } from 'src/app/models/HikeCoordinatesDTO';
 import { HikeDTO, hikeType } from 'src/app/models/HikeDTO';
 import { HikeService } from 'src/app/services/HikeServices';
@@ -13,6 +14,10 @@ export class AllTrailsComponent {
   center: google.maps.LatLngLiteral = {lat: 42, lng: -4};
   zoom = 5;
   hikesList: HikeDTO[] =[];
+  inputKeyword = new FormControl('');
+  tags: string[] = [];
+  searchKeyword: string = "";
+  type: string = '';
 
   constructor(public hikeService:HikeService, private authService: AuthService) {
     
@@ -58,6 +63,7 @@ const hike2 = new HikeDTO(
 //const hikesList: HikeDTO[] = [hike1, hike2];
 this.hikesList = [hike1,hike2];
 
+
     }
 
 
@@ -72,6 +78,13 @@ this.hikesList = [hike1,hike2];
       
     }
   
+    setHikeType(type: string) {
+      this.type = type;
+      console.log(this.type);
+  
+    }
+    
+    onSubmit(){
 
     async toggleFavourite(hike: HikeDTO): Promise<void> {
       if (this.hikeService.isInFavourite(hike) === "far fa-regular fa-star") {
@@ -81,11 +94,38 @@ this.hikesList = [hike1,hike2];
         this.hikeService.myFavouriteList = this.hikeService.myFavouriteList.filter(favorite => favorite.id !== hike.id);
       }
     }
+      if(this.inputKeyword.value){
+      this.hikeService.searchHikes(this.inputKeyword.value, this.type);
+      }
+      else{
+        this.hikeService.getHikes();
+      }
+    }
 
     markerPositions: google.maps.LatLngLiteral[] = [
       {lat: 42, lng: -4},
       {lat: 40, lng: -0},
     ];
+
+
+    splitKeywords() {
+      if (this.searchKeyword) {
+        // Split the search keyword phrase into individual words
+        const words = this.searchKeyword.split(' ');
+        // Update the tags array with individual words
+        this.tags = words.filter(word => word.trim() !== '');
+      }
+
+      else{
+        this.tags = [];
+
+      }
+    }
+
+    handleClick() {
+      this.clicked = !this.clicked; 
+    }
+
 
 
 }

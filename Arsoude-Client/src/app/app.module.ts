@@ -29,7 +29,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { NavComponent } from './nav/nav.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-
+import {MatSliderModule} from '@angular/material/slider';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { RegisterComponent } from './pages/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -90,6 +90,7 @@ const MY_DATE_FORMAT = {
     MatFormFieldModule,
     ReactiveFormsModule,
     MatDatepickerModule,
+    MatSliderModule,
     MatMenuModule,
     MatInputModule,
     MatIconModule,
