@@ -118,7 +118,7 @@ export class HikeService {
         'Authorization': 'Bearer ' + token
       })
     };
-      //maybe build country here????
+    
       this.http.post(environment.apiUrl + '/api/Hikes/AddFavourite/' + idHikeSelectAddFavourite, httpOptions).subscribe(x => {
         console.log(x);
       })
