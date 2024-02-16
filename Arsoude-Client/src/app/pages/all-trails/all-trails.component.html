@@ -17,10 +17,10 @@
         <input placeholder="Ville,montage,coordinées" [(ngModel)]="searchKeyword" [formControl]="inputKeyword" class="input" type="text" id="searchInput">
       </div>
       <div class="button-group">
-        <button    [ngClass]="{'selected': type == 'walk'}" (click)="setHikeType('walk')"  >
+        <button    [ngClass]="{'selected': type == 'walk'}" (click)="toggleHikeType('walk')"  >
           <i  class="fas fa-walking"></i>
         </button>
-        <button   [ngClass]="{'selected': type == 'bike'}" (click)="setHikeType('bike')" >
+        <button   [ngClass]="{'selected': type == 'bike'}" (click)="toggleHikeType('bike')" >
           <i class="fas fa-bicycle"></i>
         </button>
       </div>

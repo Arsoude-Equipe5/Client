@@ -145,6 +145,7 @@ display:flex;
 gap: 10px;
 margin-top: 10px;
 align-items: center;
+margin-bottom: 15px;
 }
 
 
@@ -152,6 +153,7 @@ align-items: center;
  background-color: #235a46;
  border-radius: 20px;
  padding: 5px 10px 5px 10px;
+
 }
 
 

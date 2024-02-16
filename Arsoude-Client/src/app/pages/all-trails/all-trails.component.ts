@@ -17,7 +17,7 @@ export class AllTrailsComponent {
   inputKeyword = new FormControl('');
   tags: string[] = [];
   searchKeyword: string = "";
-  type: string = '';
+  type: string |null = null;
 
   constructor(public hikeService:HikeService, private authService: AuthService) {
     
@@ -81,6 +81,15 @@ this.hikesList = [hike1,hike2];
       console.log(this.type);
     }
 
+    toggleHikeType(type: string) {
+      if (this.type === type) {
+        this.type = null; // Deselect if already selected
+      } else {
+        this.type = type; // Select if not selected
+      }
+    }
+
+
     onSubmit(){
       if(this.inputKeyword.value){
         this.hikeService.searchHikes(this.inputKeyword.value, this.type);
@@ -93,7 +102,7 @@ this.hikesList = [hike1,hike2];
     async toggleFavourite(hike: HikeDTO): Promise<void> {
       if (this.hikeService.isInFavourite(hike) === "far fa-regular fa-star") {
         await this.hikeService.myFavouriteList.push(hike); // Add to favorites
-      } else {
+      } else {  
         // Remove from favorites
         this.hikeService.myFavouriteList = this.hikeService.myFavouriteList.filter(favorite => favorite.id !== hike.id);
       }

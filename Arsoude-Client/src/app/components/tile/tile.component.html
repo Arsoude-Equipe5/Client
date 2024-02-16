@@ -62,7 +62,7 @@
                         {{'all-trails.type' | translate}}
                     </div>
                     <span class="material-symbols-outlined">
-                        directions_walk
+                        {{ hike.type  === 0 ? 'directions_bike' : 'directions_walk' }}
                      </span>
                 </div>
                 <div class="info">
