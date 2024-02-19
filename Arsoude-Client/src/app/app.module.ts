@@ -44,6 +44,7 @@ import { AllTrailsComponent } from './pages/all-trails/all-trails.component';
 import { CommonModule } from '@angular/common'
 import { FavouriteHikeComponent } from './pages/favourite-hikes/favourite-hikes.component';
 import { TileComponent } from './components/tile/tile.component';
+import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
 
 const MY_DATE_FORMAT = {
   parse: {
@@ -69,13 +70,15 @@ const MY_DATE_FORMAT = {
     SigninComponent,
     NavbarComponent,
     FavouriteHikeComponent,
+    UpdateProfileComponent,
     InputComponent,
     AllTrailsComponent,
-    TileComponent
+    TileComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatInputModule ,
     CommonModule,
     HttpClientModule,
     TranslateModule.forRoot({

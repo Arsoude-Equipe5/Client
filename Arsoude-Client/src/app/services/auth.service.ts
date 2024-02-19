@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -53,5 +53,9 @@ export class AuthService {
 
   getHikes() {
     return this.http.get(`${environment.apiUrl}/api/hikes/gethikes`);
+  }
+
+  getUserInfo() {
+    return this.http.get<any>(`${environment.apiUrl}/api/Users/GetUserInfo`);
   }
 }
