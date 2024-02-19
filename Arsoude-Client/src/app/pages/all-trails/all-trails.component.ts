@@ -10,9 +10,12 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./all-trails.component.css']
 })
 export class AllTrailsComponent {
+
+
   center: google.maps.LatLngLiteral = {lat: 42, lng: -4};
   zoom = 5;
   hikesList: HikeDTO[] =[];
+
 
   constructor(public hikeService:HikeService, private authService: AuthService) {
     
@@ -25,6 +28,7 @@ const endPoint1 = new HikeCoordinatesDTO(40.7128, -74.0060, new Date());
 
 const startPoint2 = new HikeCoordinatesDTO(34.0522, -118.2437, new Date());
 const endPoint2 = new HikeCoordinatesDTO(41.8781, -87.6298, new Date());
+
 
 
 // Create instances of HikeDTO using the coordinates
@@ -59,6 +63,7 @@ const hike2 = new HikeDTO(
 this.hikesList = [hike1,hike2];
 
     }
+    
 
 
     isLoggedIn(): boolean {
@@ -74,7 +79,12 @@ this.hikesList = [hike1,hike2];
   
 
     async toggleFavourite(hike: HikeDTO): Promise<void> {
-      if (this.hikeService.isInFavourite(hike) === "far fa-regular fa-star") {
+
+      //Display icon when the hike is not in favourite (empty star)
+      const isNotInFavouriteIcon: String= "far fa-regular fa-star";
+
+
+      if (this.hikeService.isInFavourite(hike) === isNotInFavouriteIcon) {
         await this.hikeService.myFavouriteList.push(hike); // Add to favorites
       } else {
         // Remove from favorites

@@ -127,11 +127,12 @@
     "distance": "Distance",
     "type":"Type",
     "time":"Time"
+    
+  },
 
-
-
-
-
+  "hikeServices":{
+    "unableAdd": "Offline: Unable to add or remove favourite hike",
+    "offline": "Offline"
     
   }
 

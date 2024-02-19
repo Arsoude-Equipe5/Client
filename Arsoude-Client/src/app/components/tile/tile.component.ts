@@ -29,13 +29,19 @@ export class TileComponent implements OnInit{
 
 
   async toggleFavourite(hike: HikeDTO): Promise<void> {
-    if (this.hikeService.isInFavourite(hike) === "far fa-regular fa-star") {
+
+    //Display icon when the hike is not in favourite (empty star)
+    const isNotInFavouriteIcon: String= "far fa-regular fa-star";
+
+
+    if (this.hikeService.isInFavourite(hike) === isNotInFavouriteIcon) {
       await this.hikeService.myFavouriteList.push(hike); // Add to favorites
     } else {
       // Remove from favorites
       this.hikeService.myFavouriteList = this.hikeService.myFavouriteList.filter(favorite => favorite.id !== hike.id);
     }
   }
+  
 
   @Input() hike:HikeDTO = new HikeDTO(
     1,
