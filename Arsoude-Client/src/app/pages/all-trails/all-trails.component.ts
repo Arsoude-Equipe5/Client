@@ -91,12 +91,10 @@ this.hikesList = [hike1,hike2];
 
 
     onSubmit(){
-      if(this.inputKeyword.value){
+   
         this.hikeService.searchHikes(this.inputKeyword.value, this.type);
-        }
-        else{
-          this.hikeService.getHikes();
-        }
+        
+       
     }
 
     async toggleFavourite(hike: HikeDTO): Promise<void> {
