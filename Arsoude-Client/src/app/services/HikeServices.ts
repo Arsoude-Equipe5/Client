@@ -182,6 +182,7 @@ export class HikeService {
   }
 
 
+
  
 
   isInFavourite(hike: HikeDTO): string {
@@ -202,6 +203,28 @@ export class HikeService {
     } else {
         return isNotInFavouriteIcon.toString();
     }
+}
+
+
+
+async getAdminHikes():Promise<void>{
+  let httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+      // 'Authorization': 'Bearer ' + token
+    })
+  };
+
+  console.log(environment.apiUrl);
+  await this.http.get<HikeDTO[]>(environment.apiUrl + '/api/Hikes/GetAdminHikes', httpOptions).subscribe(data => {
+    console.log(data);
+    this.hikeList = data.map(hike => ({
+        ...hike,
+        timeEstimated: this.parseTimeSpan(hike.timeEstimated),
+        distance: hike.distance as number
+    }));
+    console.log(this.hikeList);
+});
 }
   
   

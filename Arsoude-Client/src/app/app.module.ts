@@ -45,6 +45,7 @@ import { CommonModule } from '@angular/common'
 import { FavouriteHikeComponent } from './pages/favourite-hikes/favourite-hikes.component';
 import { TileComponent } from './components/tile/tile.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { AdminHikesComponent } from './pages/admin-hikes/admin-hikes.component';
 
 const MY_DATE_FORMAT = {
   parse: {
@@ -73,7 +74,8 @@ const MY_DATE_FORMAT = {
     InputComponent,
     AllTrailsComponent,
     TileComponent,
-    AdminComponent
+    AdminComponent,
+    AdminHikesComponent
   ],
   imports: [
     BrowserModule,
