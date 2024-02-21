@@ -178,3 +178,13 @@ p {
     font-size: 20px;
   }
 }
+
+.titleTop{
+    overflow: clip;
+    max-width:500px;
+  }
+
+  .desc{
+    overflow: clip;
+    max-width:450px;
+  }
