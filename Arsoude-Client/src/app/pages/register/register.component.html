@@ -176,7 +176,7 @@
           
 
           <div>
-            <label for="dateOfBirth">{{'register.dateOfBirth' | translate}}</label>
+            <label for="birthDate">{{'register.dateOfBirth' | translate}}</label>
 
             </div>
 
@@ -184,7 +184,7 @@
             type="date"
             class="formInput"
             id="date"
-            formControlName="dateOfBirth"
+            formControlName="birthDate"
             placeholder="2024-02-03"
             max="{{this.date}}"
             (keydown)="false"
@@ -193,8 +193,8 @@
 
           <mat-error
             *ngIf="
-              formRegister.get('dateOfBirth')?.hasError('required') &&
-              formRegister.get('dateOfBirth')?.touched
+              formRegister.get('birthDate')?.hasError('required') &&
+              formRegister.get('birthDate')?.touched
             "
           >
           {{'register.requiredField' | translate}}</mat-error
@@ -202,8 +202,8 @@
 
           <mat-error
             *ngIf="
-              formRegister.get('dateOfBirth')?.hasError('pastDate') &&
-              formRegister.get('dateOfBirth')?.touched
+              formRegister.get('birthDate')?.hasError('pastDate') &&
+              formRegister.get('birthDate')?.touched
             "
           >
           {{'register.invalidDate' | translate}}</mat-error
@@ -211,8 +211,8 @@
 
           <mat-error
             *ngIf="
-              formRegister.get('dateOfBirth')?.hasError('futureDate') &&
-              formRegister.get('dateOfBirth')?.touched
+              formRegister.get('birthDate')?.hasError('futureDate') &&
+              formRegister.get('birthDate')?.touched
             "
           >
           {{'register.requiredField' | translate}}</mat-error

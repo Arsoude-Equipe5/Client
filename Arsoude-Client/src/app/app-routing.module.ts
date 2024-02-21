@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'hikecreation', component: HikeCreationComponent, canActivate: [AuthGuard] },
   { path: 'alltrails', component: AllTrailsComponent },
   { path: 'favouritehikes', component: FavouriteHikeComponent, canActivate: [AuthGuard] },
-  { path: 'updateprofile', component: UpdateProfileComponent} ,
+  { path: 'updateprofile', component: UpdateProfileComponent,canActivate: [AuthGuard]} ,
 
 ];
 

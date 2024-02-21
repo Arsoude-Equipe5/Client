@@ -3,80 +3,97 @@
 
   <div class="rightbox">
     <form [formGroup]="formUpdateProfile" (ngSubmit)="onSubmit()" class="formBoite">
-      <h2 translate style="text-align: center" id="titleUpdate">Update Profile</h2>
+      <!-- Update Profile Title -->
+      <h2 translate style="text-align: center" id="titleUpdate">{{ 'updateProfile.title' | translate }}</h2>
       <!-- First Name and Last Name -->
       <div class="row">
         <div class="formInputContainer">
-          <label for="firstName">First Name</label>
-          <input class="formInput" id="firstName" type="text" placeholder="First Name" formControlName="firstName">
-          <mat-error *ngIf="formUpdateProfile.get('firstName')?.errors?.['minlength']">Minimum 2 characters</mat-error>
-          <mat-error *ngIf="formUpdateProfile.get('firstName')?.errors?.['maxlength']">Maximum 40 characters</mat-error>
+          <label for="firstName">{{ 'register.firstName' | translate }}</label>
+          <input class="formInput" id="firstName" type="text" placeholder="{{ 'register.firstName' | translate }}" formControlName="firstName">
+          <mat-error *ngIf="formUpdateProfile.get('firstName')?.errors?.['minlength']">{{ 'register.firstName2car' | translate }}</mat-error>
+          <mat-error *ngIf="formUpdateProfile.get('firstName')?.errors?.['maxlength']">{{ 'register.firstName40car' | translate }}</mat-error>
         </div>
         <div class="formInputContainer">
-          <label for="lastName">Last Name</label>
-          <input class="formInput" id="lastName" type="text" placeholder="Last Name" formControlName="lastName">
-          <mat-error *ngIf="formUpdateProfile.get('lastName')?.errors?.['minlength']">Minimum 2 characters</mat-error>
-          <mat-error *ngIf="formUpdateProfile.get('lastName')?.errors?.['maxlength']">Maximum 40 characters</mat-error>
+          <label for="lastName">{{ 'register.lastName' | translate }}</label>
+          <input class="formInput" id="lastName" type="text" placeholder="{{ 'register.lastName' | translate }}" formControlName="lastName">
+          <mat-error *ngIf="formUpdateProfile.get('lastName')?.errors?.['minlength']">{{ 'register.lastName2car' | translate }}</mat-error>
+          <mat-error *ngIf="formUpdateProfile.get('lastName')?.errors?.['maxlength']">{{ 'register.lastName40car' | translate }}</mat-error>
         </div>
       </div>
 
       <!-- Postal Code and Address -->
       <div class="row">
         <div class="formInputContainer">
-          <label for="postalCode">Postal Code</label>
-          <input class="formInput" id="postalCode" type="text" placeholder="Postal Code" formControlName="postalCode">
-          <mat-error *ngIf="formUpdateProfile.get('postalCode')?.errors?.['pattern']">Invalid postal code format</mat-error>
+          <label for="postalCode">{{ 'register.postalCode' | translate }}</label>
+          <input class="formInput" id="postalCode" type="text" placeholder="{{ 'register.postalCode' | translate }}" formControlName="postalCode">
+          <mat-error *ngIf="formUpdateProfile.get('postalCode')?.errors?.['pattern']">{{ 'register.invalidPostalCode' | translate }}</mat-error>
         </div>
         <div class="formInputContainer">
-          <label for="address">Address</label>
-          <input class="formInput" id="address" type="text" placeholder="Address" formControlName="address">
-          <mat-error *ngIf="formUpdateProfile.get('address')?.errors?.['maxlength']">Maximum 100 characters</mat-error>
+          <label for="address">{{ 'register.address' | translate }}</label>
+          <input class="formInput" id="address" type="text" placeholder="{{ 'register.address' | translate }}" formControlName="address">
+          <mat-error *ngIf="formUpdateProfile.get('address')?.errors?.['maxlength']">{{ 'register.addressMaxLength' | translate }}</mat-error>
         </div>
       </div>
 
      <!-- Birthdate and Profile Picture -->
-<div class="row">
-  <div class="formInputContainer">
-    <label for="birthdate">Birthdate</label>
-    <!-- Bind form control to input field -->
-    <input class="formInput" id="birthdate" type="date" formControlName="birthdate" >
-  </div>           
-  <div class="formInputContainer">
-    <label for="profilePicture">Profile Picture</label>
-    <input type="file" accept="image/*" (change)="displayImage($event)">
-    <div *ngIf="imagePreview" class="image-preview">
-      <div class="circular-crop">
-        <img [src]="imagePreview" alt="Profile Picture">
+      <div class="row">
+        <div class="formInputContainer">
+          <label for="birthdate">{{ 'register.dateOfBirth' | translate }}</label>
+          <input class="formInput" id="birthdate" type="date" formControlName="birthdate" max="{{ today | date: 'yyyy-MM-dd' }}" >
+        </div>           
+        <div class="formInputContainer">
+          <label for="profilePicture">{{ 'register.profilePicture' | translate }}</label>
+          <!-- Apply the "fileInput" class to the input element -->
+          <input type="file" accept="image/*" (change)="displayImage($event)" class="fileInput">
+          <div *ngIf="imagePreview" class="image-preview">
+            <div class="circular-crop">
+              <img [src]="imagePreview" alt="{{ 'register.profilePicture' | translate }}">
+            </div>
+          </div>
+          <!-- Display error message under the image -->
+          <div class="error-message" *ngIf="profilePicture?.touched && profilePicture?.invalid">
+            <span *ngIf="profilePicture?.errors?.['required']">{{'hike-creation.imageRequired' | translate}}</span>
+            <span *ngIf="profilePicture?.errors?.['invalidFileType']">{{'hike-creation.wrongFormat' | translate}}</span>
+            <span *ngIf="profilePicture?.errors?.['invalidFileContent']">{{'hike-creation.invalidFile' | translate}}</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
-
+      <!-- Update Password section -->
+      <h2 translate style="text-align: center" id="titleUpdate">{{ 'passwordSection.title' | translate }}</h2>
       <!-- Current Password, New Password, Confirm New Password -->
       <div class="password-container">
         <div class="formInputContainer">
-          <label for="currentPassword">Current Password</label>
-          <input class="formInput" id="currentPassword" type="password" placeholder="Current Password" formControlName="currentPassword">
+          <label for="currentPassword">{{ 'passwordSection.currentPassword' | translate }}</label>
+          <input class="formInput" id="currentPassword" type="password" placeholder="{{ 'passwordSection.currentPassword' | translate }}" formControlName="currentPassword" (input)="togglePasswordFields()">
         </div>
-        <div class="formInputContainer">
-          <label for="newPassword">New Password</label>
-          <input class="formInput" id="newPassword" type="password" placeholder="New Password" formControlName="newPassword">
-          <mat-error *ngIf="formUpdateProfile.get('newPassword')?.errors?.['minlength']">Minimum 6 characters</mat-error>
-          <mat-error *ngIf="formUpdateProfile.get('newPassword')?.errors?.['maxlength']">Maximum 100 characters</mat-error>
-          <mat-error *ngIf="formUpdateProfile.get('newPassword')?.errors?.['pattern']">Invalid password format</mat-error>
+        <div class="formInputContainer" [class.disabled]="formUpdateProfile.get('newPassword')?.disabled">
+          <label for="newPassword">{{ 'passwordSection.newPassword' | translate }}</label>
+          <input class="formInput" id="newPassword" type="password" placeholder="{{ 'passwordSection.newPassword' | translate }}" formControlName="newPassword">
+          <mat-error *ngIf="formUpdateProfile.get('newPassword')?.hasError('required') && formUpdateProfile.get('newPassword')?.touched">
+            {{ 'register.requiredField' | translate }}
+          </mat-error>
+          <!-- Other validation errors -->
         </div>
-        <div class="formInputContainer">
-          <label for="newPasswordConfirm">Confirm New Password</label>
-          <input class="formInput" id="newPasswordConfirm" type="password" placeholder="Confirm New Password" formControlName="newPasswordConfirm">
-          <mat-error *ngIf="formUpdateProfile.get('newPasswordConfirm')?.errors?.['passwordMismatch']">Passwords do not match</mat-error>
+        <div class="formInputContainer" [class.disabled]="formUpdateProfile.get('newPasswordConfirm')?.disabled">
+          <label for="newPasswordConfirm">{{ 'passwordSection.confirmNewPassword' | translate }}</label>
+          <input class="formInput" id="newPasswordConfirm" type="password" placeholder="{{ 'passwordSection.confirmNewPassword' | translate }}" formControlName="newPasswordConfirm">
+          <mat-error *ngIf="formUpdateProfile.get('newPasswordConfirm')?.errors?.['passwordMismatch']">{{ 'passwordSection.passwordMismatch' | translate }}</mat-error>
         </div>
       </div>
 
       <!-- Submit Button -->
       <div class="row flex-center">
         <div class="content">
-          <button type="submit" class="submitBtn">Update Profile</button>
+          <button type="submit" class="submitBtn" [disabled]="isSubmitting">
+            <span *ngIf="!isSubmitting">{{ 'passwordSection.submitBtn' | translate }}</span>
+            <div *ngIf="isSubmitting" class="loader">
+              <div class="ball"></div>
+              <div class="ball"></div>
+              <div class="ball"></div>
+              <div class="ball"></div>
+            </div>
+          </button>
         </div>
       </div>
     </form>

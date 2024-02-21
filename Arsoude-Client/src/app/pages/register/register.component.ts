@@ -70,7 +70,7 @@ export class RegisterComponent {
         ),
       ]),
       address: new FormControl(''),
-      dateOfBirth: new FormControl(''),
+      birthDate: new FormControl(''),
     },
     { validators: passwordValidator }
   );
@@ -86,10 +86,14 @@ export class RegisterComponent {
       firstName,
       lastName,
       address,
-      dateOfBirth,
+      birthDate,
     } = this.formRegister.value;
 
-    console.log(dateOfBirth);
+    console.log(birthDate);
+
+    const parsedBirthDate = birthDate ? new Date(birthDate) : undefined;
+
+    console.log(parsedBirthDate);
 
     if (
       email &&
@@ -107,7 +111,8 @@ export class RegisterComponent {
           postalCode,
           firstName,
           lastName,
-          address
+          address,
+          parsedBirthDate 
         )
         .subscribe({
           next: (res) => {
