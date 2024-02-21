@@ -1,91 +1,98 @@
 <div class="main">
-    <div class="left">
-        <div class="content-l">
-            <div class="titleTop">
-                <div>
-                    <h1>{{hike.name}}</h1>
-                    <p>{{hike.location}}</p>
-                </div>
-                <div class="favBtnSmall">
-                    <button class="star-button" *ngIf="isLoggedIn()" (click)="onButtonClick(hike.id, hike)">
-                        <i [class]="hikeService.isInFavourite(hike)"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="image">
-                <img src="{{hike.image}}" alt="">
-            </div>
-            <div class="infoSmall">
-                <div class="info">
-                    <p class="infoTitle">{{'all-trails.distance' | translate}}</p>
-                    <p>{{hike.distance}} Km</p>
-                </div>
-                <div class="info">
-                    <p class="infoTitle">{{'all-trails.type' | translate}}</p>
-                    <span class="material-symbols-outlined">
-                        {{ hike.type  === 0 ? 'directions_bike' : 'directions_walk' }}
-                     </span>
-                </div>
-                <div class="info">
-                    <div class="infoTitle">
-                        <p>{{'all-trails.time' | translate}}</p>
-                    </div>
-                    <p>{{hike.timeEstimated}}</p>
-                </div>
-            </div>
+  <div class="left">
+    <div class="content-l">
+      <div class="titleTop">
+        <div class="boxTitle">
+          <h1>{{ hike.name }}</h1>
+          <p>{{ hike.location }}</p>
         </div>
-        <div class="content-r">
-            <div class="top">
-                <div class="descTop">
-                    <div class="descTitle">
-                        {{'all-trails.description' | translate}}
-                    </div>
-                    <div class="favBtn">
-                        <button class="star-button" *ngIf="isLoggedIn()" (click)="onButtonClick(hike.id, hike)">
-                            <i [class]="hikeService.isInFavourite(hike)"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="desc">
-                    <p>{{hike.description}}</p>
-                </div>   
-            </div>
-            <div class="bottom">
-                <div class="info">
-                    <div class="infoTitle">
-                        {{'all-trails.distance' | translate}}
-                    </div>
-                    <p>{{hike.distance}} Km</p>
-                </div>
-                <div class="info">
-                    <div class="infoTitle">
-                        {{'all-trails.type' | translate}}
-                    </div>
-                    <span class="material-symbols-outlined">
-                        {{ hike.type  === 0 ? 'directions_bike' : 'directions_walk' }}
-                     </span>
-                </div>
-                <div class="info">
-                    <div class="infoTitle">
-                        {{'all-trails.time' | translate}}
-                    </div>
-                    <p>{{hike.timeEstimated}} H</p>
-                </div>
-            </div>
+        <div class="favBtnSmall">
+          <button
+            class="star-button"
+            *ngIf="isLoggedIn()"
+            (click)="onButtonClick(hike.id, hike)"
+          >
+            <i [class]="hikeService.isInFavourite(hike)"></i>
+          </button>
         </div>
+      </div>
+      <div class="image">
+        <img src="{{ hike.image }}" alt="" />
+      </div>
+      <div class="infoSmall">
+        <div class="info">
+          <p class="infoTitle">{{ "all-trails.distance" | translate }}</p>
+          <p>{{ hike.distance }} Km</p>
+        </div>
+        <div class="info">
+          <p class="infoTitle">{{ "all-trails.type" | translate }}</p>
+          <span class="material-symbols-outlined">
+            {{ hike.type === 0 ? "directions_bike" : "directions_walk" }}
+          </span>
+        </div>
+        <div class="info">
+          <div class="infoTitle">
+            <p>{{ "all-trails.time" | translate }}</p>
+          </div>
+          <p>{{ hike.timeEstimated }}</p>
+        </div>
+      </div>
     </div>
-    <div class="right">
-        <div class="map-section">
-            <google-map
-            [center]="center"
-            [zoom]="zoom"
-            [width]="'100%'" 
-            [height]="'100%'">
-
-            <map-marker *ngFor="let marker of markerPositions"
-                        [position]="marker">
-            </map-marker>
-            </google-map>
+    <div class="content-r">
+      <div class="top">
+        <div class="descTop">
+          <div class="descTitle">
+            {{ "all-trails.description" | translate }}
+          </div>
+          <div class="favBtn">
+            <button
+              class="star-button"
+              *ngIf="isLoggedIn()"
+              (click)="onButtonClick(hike.id, hike)"
+            >
+              <i [class]="hikeService.isInFavourite(hike)"></i>
+            </button>
+          </div>
         </div>
+        <div class="desc">
+          <p>{{ hike.description }}</p>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="info">
+          <div class="infoTitle">
+            {{ "all-trails.distance" | translate }}
+          </div>
+          <p>{{ hike.distance }} Km</p>
+        </div>
+        <div class="info">
+          <div class="infoTitle">
+            {{ "all-trails.type" | translate }}
+          </div>
+          <span class="material-symbols-outlined">
+            {{ hike.type === 0 ? "directions_bike" : "directions_walk" }}
+          </span>
+        </div>
+        <div class="info">
+          <div class="infoTitle">
+            {{ "all-trails.time" | translate }}
+          </div>
+          <p>{{ hike.timeEstimated }} H</p>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="right">
+    <div class="map-section">
+      <google-map
+        [center]="center"
+        [zoom]="zoom"
+        [width]="'100%'"
+        [height]="'100%'"
+      >
+        <map-marker *ngFor="let marker of markerPositions" [position]="marker">
+        </map-marker>
+      </google-map>
+    </div>
+  </div>
 </div>
