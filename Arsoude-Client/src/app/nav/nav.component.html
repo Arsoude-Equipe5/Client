@@ -12,6 +12,9 @@
   <nav >
       <ul class="strip">
           <li><a translate routerLink="/home" id="textLogIn">nav.home</a></li>
+          <ng-container *ngIf="isAdmin()">
+            <li><a routerLink="/Admin/HikesAdmin/Index">Admin</a></li>
+          </ng-container>
           <!-- <li>All Trails</li>
           <li>Community</li>
           <li>Profile</li> -->
@@ -25,6 +28,7 @@
               <li><a translate routerLink="/register" id="textLogIn">nav.register</a></li>
               <li><a translate routerLink="/signin" id="textLogIn">nav.logIn</a></li>
           </ng-container>
+          
           <li class="Disconnect" *ngIf="isLoggedIn()"><a translate (click)="logout()" id="textLogIn">nav.disconnect</a></li>
           <li><div class="dropdown">
             <button translate class="dropbtn">nav.languages</button>
@@ -70,10 +74,6 @@
 
 
 
-
-
-
-
         <button mat-icon-button [matMenuTriggerFor]="languageMenu" aria-label="Example icon-button with a menu">
             <mat-icon>language</mat-icon>
         </button> 
@@ -91,36 +91,7 @@
                 </button>
             </ng-container>
         </mat-menu>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-         
-            
-          
-            
-        
-
     </ul>
-    
- 
-            
-
-
-     
-
-  
   </nav>
 
 
