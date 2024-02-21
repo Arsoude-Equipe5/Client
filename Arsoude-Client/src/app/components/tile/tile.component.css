@@ -124,6 +124,34 @@ p {
   padding: 0;
 }
 
+.pending {
+  padding: 8px;
+  background-color: #dbd82c;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+
+  font-size: 16px;
+}
+.validated {
+  padding: 8px;
+  background-color: #2bb92b;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+
+  font-size: 16px;
+}
+.rejected {
+  padding: 8px;
+  background-color: #c5312c;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+
+  font-size: 16px;
+}
+
 @media only screen and (max-width: 1550px) {
   .content-r {
     display: none;
@@ -179,12 +207,12 @@ p {
   }
 }
 
-.titleTop{
-    overflow: clip;
-    max-width:500px;
-  }
+.titleTop {
+  overflow: clip;
+  max-width: 500px;
+}
 
-  .desc{
-    overflow: clip;
-    max-width:450px;
-  }
+.desc {
+  overflow: clip;
+  max-width: 450px;
+}

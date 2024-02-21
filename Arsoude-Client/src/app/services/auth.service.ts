@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { jwtDecode }  from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -59,9 +59,29 @@ export class AuthService {
   isAdmin(): boolean {
     const token = localStorage.getItem('token');
     if (!token) return false;
-  
+
     const decoded: any = jwtDecode(token);
-    const roles = decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+    const roles =
+      decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
     return Array.isArray(roles) ? roles.includes('Admin') : roles === 'Admin';
+  }
+
+  getUserId(): string | null {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      console.log(
+        decoded[
+          'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
+        ]
+      );
+
+      return decoded[
+        'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
+      ];
+    }
+
+    return null;
   }
 }

@@ -1,6 +1,26 @@
 <div class="main">
   <div class="left">
     <div class="content-l">
+      <span
+        *ngIf="hike.isMine === true"
+        [ngClass]="
+          hike.status === 0
+            ? 'pending'
+            : hike.status === 1
+            ? 'validated'
+            : 'rejected'
+        "
+      >
+        {{
+          hike.status === 0
+            ? "Pending"
+            : hike.status === 1
+            ? "Validated"
+            : hike.status === 2
+            ? "Rejected"
+            : "Other Status"
+        }}
+      </span>
       <div class="titleTop">
         <div class="boxTitle">
           <h1>{{ hike.name }}</h1>
