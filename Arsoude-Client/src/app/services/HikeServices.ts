@@ -5,6 +5,9 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HikeDTO } from '../models/HikeDTO';
 import { FavouriteHikeComponent } from '../pages/favourite-hikes/favourite-hikes.component';
+import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +18,15 @@ export class HikeService {
   
   hikeList: HikeDTO[] = [];
   myFavouriteList: HikeDTO[] = [];
+  
 
 
-  constructor(private http: HttpClient) { }
 
+  constructor(private http: HttpClient, private toastr: ToastrService, private translate: TranslateService, private router: Router) { }
+
+  //static readonly isInFavouriteIcon: string = 'fas fa-regular fa-star';
+  //static readonly isNotInFavouriteIcon: string = 'far fa-regular fa-star';
+  
   async getHikes():Promise<void>{
     let httpOptions = {
       headers: new HttpHeaders({
@@ -147,10 +155,18 @@ export class HikeService {
 
 
   addFavouriteHikes(idHikeSelectAddFavourite: number): void {
+    if (!navigator.onLine) {
+      this.translate.get('hikeServices.unableAdd').subscribe((message: string) => {
+        this.toastr.error(message, this.translate.instant('hikeServices.offline'));
+      });
+      return;
+    }
 
     let token = localStorage.getItem("token");
     if (!token) {
+      this.router.navigate(['/signin']);
       throw('No token available');
+      
       console.error('No token available');
     }
     let httpOptions = {
@@ -159,7 +175,7 @@ export class HikeService {
         'Authorization': 'Bearer ' + token
       })
     };
-      //maybe build country here????
+    
       this.http.post(environment.apiUrl + '/api/Hikes/AddFavourite/' + idHikeSelectAddFavourite, httpOptions).subscribe(x => {
         console.log(x);
       })
@@ -169,11 +185,22 @@ export class HikeService {
  
 
   isInFavourite(hike: HikeDTO): string {
+
+    //Display icon when the hike is not in favourite (empty star)
+    const isNotInFavouriteIcon: String= "far fa-regular fa-star";
+
+    //Display icon when the hike is in favourite (full star)
+    const isInFavouriteIcon: String= "fas fa-regular fa-star";
+
+
+
+
+
     // Check if any element in myFavouriteList has the same ID as the given hike
     if (this.myFavouriteList.some(favorite => favorite.id === hike.id)) {
-        return "fas fa-regular fa-star";
+        return isInFavouriteIcon.toString();
     } else {
-        return "far fa-regular fa-star";
+        return isNotInFavouriteIcon.toString();
     }
 }
   
