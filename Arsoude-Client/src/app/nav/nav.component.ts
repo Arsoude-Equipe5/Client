@@ -27,6 +27,10 @@ export class NavComponent {
     return this.authService.isLoggedIn();
   }
 
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
+  }
+
   logout() {
     this.authService.logout();
     this.router.navigate(['/home']); // Redirect to home page after logout

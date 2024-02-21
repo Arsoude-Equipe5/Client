@@ -160,3 +160,13 @@ p {
         width: 100%;
     }    
 }
+
+.titleTop{
+    overflow: clip;
+    max-width:500px;
+  }
+
+  .desc{
+    overflow: clip;
+    max-width:450px;
+  }

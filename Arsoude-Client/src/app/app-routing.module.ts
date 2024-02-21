@@ -8,6 +8,7 @@ import { AuthGuard } from './Guards/auth.guard';
 import { AuthGuardLoggedIn } from './Guards/auth-guard-logged-in.guard';
 import { AllTrailsComponent } from './pages/all-trails/all-trails.component';
 import { FavouriteHikeComponent } from './pages/favourite-hikes/favourite-hikes.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent,canActivate: [AuthGuardLoggedIn] },
   { path: 'hikecreation', component: HikeCreationComponent, canActivate: [AuthGuard] },
   { path: 'alltrails', component: AllTrailsComponent },
-  { path: 'favouritehikes', component: FavouriteHikeComponent, canActivate: [AuthGuard] }
+  { path: 'favouritehikes', component: FavouriteHikeComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]}
 
 ];
 

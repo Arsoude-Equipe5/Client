@@ -127,13 +127,14 @@
     "type":"Type",
     "time":"Temps"
 
+  },
 
 
-
-
+  "hikeServices":{
+    "unableAdd": "Hors ligne: incapable d'ajouter ou retirer une randonnée favorite",
+    "offline": "Hors ligne"
     
   }
-
 
  
 }
