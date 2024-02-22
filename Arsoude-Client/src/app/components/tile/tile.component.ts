@@ -14,11 +14,7 @@ export class TileComponent implements OnInit{
   endPoint1 = new HikeCoordinatesDTO(40.7128, -74.0060, new Date());
 
   hikeStatus = hikeStatus;
-
-
   @Input() updateStatusCallback?: (hikeId: number, newStatus: number) => void;
-
-
 
 
   getColor(status: number): string {

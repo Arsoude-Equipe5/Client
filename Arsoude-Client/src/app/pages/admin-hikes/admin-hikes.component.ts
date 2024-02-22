@@ -24,6 +24,8 @@ export class AdminHikesComponent implements OnInit, OnDestroy {
   statusFilter = new FormControl('');
   private subscription: Subscription | undefined;
 
+  public refreshKey = true;
+
   constructor(public hikeService: HikeService, private authService: AuthService) {
     this.hikeService.getAdminHikes();
     this.hikesList = [];
@@ -34,6 +36,11 @@ export class AdminHikesComponent implements OnInit, OnDestroy {
     this.subscription = this.statusFilter.valueChanges.subscribe(filter => {
       this.hikeService.getAdminHikes(filter ?? undefined);
     });
+  }
+
+  forceRefreshComponent() {
+    this.refreshKey = false;
+    setTimeout(() => this.refreshKey = true, 0);
   }
 
   ngOnDestroy() {
@@ -61,7 +68,8 @@ export class AdminHikesComponent implements OnInit, OnDestroy {
     this.hikeService.updateHikeStatus(hikeId, newStatus).subscribe({
       next: (response) => {
         console.log('Status updated successfully', response);
-        // Refresh your hike list or individual hike status here
+        // Re-fetch the hike data
+        this.onSubmit(); // Implement this method to re-fetch data
       },
       error: (error) => {
         console.error('Error updating hike status', error);
