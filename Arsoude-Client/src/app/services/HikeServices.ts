@@ -195,42 +195,47 @@ export class HikeService {
         return isNotInFavouriteIcon.toString();
     }
   }
-}
 
 
 
-async getAdminHikes(statusFilter?: string): Promise<void> {
-  let httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-      // 'Authorization': 'Bearer ' + token
-    }),
-    params: statusFilter ? new HttpParams().set('statusFilter', statusFilter) : {}
-  };
 
-  console.log(environment.apiUrl);
-  await this.http.get<HikePathDTO[]>(environment.apiUrl + '/api/Hikes/GetAdminHikes', httpOptions).subscribe(data => {
-    console.log(data);
-    this.hikeList = data.map(hike => ({
-        ...hike,
-        timeEstimated: this.parseTimeSpan(hike.timeEstimated),
-        distance: hike.distance as number
-    }));
-    console.log(this.hikeList);
-});
-}
+  async getAdminHikes(statusFilter?: string): Promise<void> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+        // 'Authorization': 'Bearer ' + token
+      }),
+      params: statusFilter ? new HttpParams().set('statusFilter', statusFilter) : {}
+    };
   
-
-updateHikeStatus(id: number, status: number): Observable<any> {
-  const httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      // 'Authorization': 'Bearer ' + token
-    }),
-    responseType: 'text' as 'json' // Tell Angular to expect a text response, not JSON
-  };
-
-  return this.http.put<any>(`${environment.apiUrl}/api/Hikes/UpdateHikeStatus/${id}/status`, { Status: status }, httpOptions);
+    console.log(environment.apiUrl);
+    await this.http.get<HikePathDTO[]>(environment.apiUrl + '/api/Hikes/GetAdminHikes', httpOptions).subscribe(data => {
+      console.log(data);
+      this.hikeList = data.map(hike => ({
+          ...hike,
+          timeEstimated: this.parseTimeSpan(hike.timeEstimated),
+          distance: hike.distance as number
+      }));
+      console.log(this.hikeList);
+  });
+  }
+    
+  
+  updateHikeStatus(id: number, status: number): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        // 'Authorization': 'Bearer ' + token
+      }),
+      responseType: 'text' as 'json' // Tell Angular to expect a text response, not JSON
+    };
+  
+    return this.http.put<any>(`${environment.apiUrl}/api/Hikes/UpdateHikeStatus/${id}/status`, { Status: status }, httpOptions);
+  }
+  
+  
+  
 }
 
-}
+
+

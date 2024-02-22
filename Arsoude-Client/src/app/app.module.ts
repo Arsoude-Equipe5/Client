@@ -47,7 +47,6 @@ import { AdminTileComponent } from './components/admin-tile/admin-tile.component
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminHikesComponent } from './pages/admin-hikes/admin-hikes.component';
 import { TileComponent } from './components/tile/tile.component';
-import { AdminComponent } from './pages/admin/admin.component';
 import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
 
 const MY_DATE_FORMAT = {

@@ -22,8 +22,8 @@ const routes: Routes = [
   { path: 'alltrails', component: AllTrailsComponent },
   { path: 'favouritehikes', component: FavouriteHikeComponent, canActivate: [AuthGuard] },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
-  { path: 'adminhikes', component: AdminHikesComponent,canActivate: [AdminGuard] }
-  { path: 'updateprofile', component: UpdateProfileComponent,canActivate: [AuthGuard]} ,
+  { path: 'adminhikes', component: AdminHikesComponent,canActivate: [AdminGuard] },
+  { path: 'updateprofile', component: UpdateProfileComponent,canActivate: [AuthGuard]} 
 
 ];
 
