@@ -3,6 +3,9 @@
         <div class="content-l">
             <div class="titleTop">
                 <div>
+                    <div *ngIf="isAdmin()">
+                        <h1 [ngStyle]="{'color': getColor(hike.status)}">{{getHikeStatusName(hike.status)}}</h1>
+                    </div>
                     <h1>{{hike.name}}</h1>
                     <p>{{hike.location}}</p>
                 </div>
@@ -12,6 +15,17 @@
                     </button>
                 </div>
             </div>
+
+            <div *ngIf="isAdmin()">
+            <select #statusSelect (change)="safeUpdateStatus(hike.id, +statusSelect.value)" class="form-control">
+                <option disabled>Select Status...</option>
+                <option [value]="0" [selected]="hike.status === 0">Pending</option>
+                <option [value]="1" [selected]="hike.status === 1">Validated</option>
+                <option [value]="2" [selected]="hike.status === 2">Rejected</option>
+            </select>
+        </div>
+            
+
             <div class="image">
                 <img src="{{hike.image}}" alt="">
             </div>
@@ -55,7 +69,7 @@
                     <div class="infoTitle">
                         {{'all-trails.distance' | translate}}
                     </div>
-                    <p>{{hike.distance}} Km</p>
+                    <p>{{hike.distance}} Km</p>                    
                 </div>
                 <div class="info">
                     <div class="infoTitle">

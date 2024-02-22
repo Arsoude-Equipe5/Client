@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectorRef } from '@angular/core';
 import { HikeCoordinatesDTO } from 'src/app/models/HikeCoordinatesDTO';
-import { HikeDTO, hikeType } from 'src/app/models/HikeDTO';
+import { HikePathDTO, hikeStatus, hikeType } from 'src/app/models/HikePathDTO';
 import { HikeService } from 'src/app/services/HikeServices';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -13,7 +13,48 @@ export class TileComponent implements OnInit{
   startPoint1 = new HikeCoordinatesDTO(37.7749, -122.4194, new Date());
   endPoint1 = new HikeCoordinatesDTO(40.7128, -74.0060, new Date());
 
-  constructor(public hikeService:HikeService, private authService: AuthService) {
+  hikeStatus = hikeStatus;
+
+
+  @Input() updateStatusCallback?: (hikeId: number, newStatus: number) => void;
+
+
+
+
+  getColor(status: number): string {
+    switch(status) {
+      case hikeStatus.pending: return 'blue';
+      case hikeStatus.validated: return 'green';
+      case hikeStatus.rejected: return 'red';
+      default: return 'black';
+    }
+  }
+
+  getHikeStatusName(status: number): string {
+    return hikeStatus[status]?.toUpperCase() || 'UNKNOWN';
+  }
+
+  callUpdateStatusCallback(hikeId: number, newStatus: number): void {
+    if (this.updateStatusCallback) {
+      this.updateStatusCallback(hikeId, newStatus);
+      this.hike = { ...this.hike, status: newStatus };
+      this.changeDetectorRef.markForCheck();
+      this.changeDetectorRef.detectChanges();
+    } else {
+      console.warn('updateStatusCallback is undefined.');
+    }
+  }
+  
+
+  safeUpdateStatus(hikeId: number, newStatus: number) {
+    if (this.updateStatusCallback) {
+      this.updateStatusCallback(hikeId, newStatus);
+    } else {
+      console.warn('updateStatusCallback is not defined.');
+    }
+  }
+
+  constructor(private changeDetectorRef: ChangeDetectorRef,public hikeService:HikeService, private authService: AuthService) {
   }
 
   isLoggedIn(): boolean {
@@ -21,14 +62,14 @@ export class TileComponent implements OnInit{
   }
 
 
-  async onButtonClick(id: number, hike:HikeDTO): Promise<void> {
+  async onButtonClick(id: number, hike:HikePathDTO): Promise<void> {
     await this.hikeService.addFavouriteHikes(id);
     await this.toggleFavourite(hike);
     
   }
 
 
-  async toggleFavourite(hike: HikeDTO): Promise<void> {
+  async toggleFavourite(hike: HikePathDTO): Promise<void> {
 
     //Display icon when the hike is not in favourite (empty star)
     const isNotInFavouriteIcon: String= "far fa-regular fa-star";
@@ -43,19 +84,22 @@ export class TileComponent implements OnInit{
   }
   
 
-  @Input() hike:HikeDTO = new HikeDTO(
+  @Input() hike:HikePathDTO = new HikePathDTO(
     1,
     "Hike 1",
     "Location 1",
     "Description 1",
     "Image URL 1",
     hikeType.bike,
+    hikeStatus.pending,
     10.2,
     "1.2",
     this.startPoint1,
     this.endPoint1
   );
   
+ 
+
 
   @Input() center:google.maps.LatLngLiteral = {lat: 42, lng: -4};
   @Input() zoom:number = 5;
@@ -68,5 +112,11 @@ export class TileComponent implements OnInit{
 
   ngOnInit() {
   }
+
+
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
+  }
+  
 
 }

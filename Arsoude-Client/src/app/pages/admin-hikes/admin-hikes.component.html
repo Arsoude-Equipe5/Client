@@ -10,13 +10,22 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-
+  
 
     <div>
+      <div>
+        <select [formControl]="statusFilter">
+          <option value="">All</option>
+          <option value="Pending">Pending</option>
+          <option value="Validated">Validated</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+      </div>
+
       <div *ngIf="hikeService.isEmpty===false">
         <div class="title">Admin Hikes List</div>
         <div class="container-tile" *ngFor="let hike of hikeService.hikeList">
-          <app-tile [hike]="hike"></app-tile>
+          <app-tile [hike]="hike" [updateStatusCallback]="updateStatus.bind(this)"></app-tile>
         </div>
       </div>
       <div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { HikeCoordinatesDTO } from 'src/app/models/HikeCoordinatesDTO';
 import { HikeDTO, hikeType } from 'src/app/models/HikeDTO';
+import { HikePathDTO } from 'src/app/models/HikePathDTO';
 import { HikeService } from 'src/app/services/HikeServices';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -75,7 +76,7 @@ this.hikesList = [hike1,hike2];
     }
 
 
-    async onButtonClick(id: number, hike:HikeDTO): Promise<void> {
+    async onButtonClick(id: number, hike:HikePathDTO): Promise<void> {
       await this.hikeService.addFavouriteHikes(id);
       await this.toggleFavourite(hike);
       
@@ -95,7 +96,7 @@ this.hikesList = [hike1,hike2];
         }
     }
 
-    async toggleFavourite(hike: HikeDTO): Promise<void> {
+    async toggleFavourite(hike: HikePathDTO): Promise<void> {
 
       //Display icon when the hike is not in favourite (empty star)
       const isNotInFavouriteIcon: String= "far fa-regular fa-star";

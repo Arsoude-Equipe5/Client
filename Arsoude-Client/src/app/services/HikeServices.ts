@@ -8,6 +8,7 @@ import { FavouriteHikeComponent } from '../pages/favourite-hikes/favourite-hikes
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
+import { HikePathDTO } from '../models/HikePathDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,9 @@ export class HikeService {
 
    
   
-  hikeList: HikeDTO[] = [];
-  myFavouriteList: HikeDTO[] = [];
+  hikeList: HikePathDTO[] = [];
+  myFavouriteList: HikePathDTO[] = [];
+  
   
 
 
@@ -36,7 +38,7 @@ export class HikeService {
     };
 
     console.log(environment.apiUrl);
-    await this.http.get<HikeDTO[]>(environment.apiUrl + '/api/Hikes/GetHikes', httpOptions).subscribe(data => {
+    await this.http.get<HikePathDTO[]>(environment.apiUrl + '/api/Hikes/GetHikes', httpOptions).subscribe(data => {
       console.log(data);
       this.hikeList = data.map(hike => ({
           ...hike,
@@ -106,7 +108,7 @@ export class HikeService {
     };
 
 
-    await this.http.get<HikeDTO[]>(environment.apiUrl + '/api/Hikes/GetMyFavouriteHikes', httpOptions).subscribe(x => {
+    await this.http.get<HikePathDTO[]>(environment.apiUrl + '/api/Hikes/GetMyFavouriteHikes', httpOptions).subscribe(x => {
       console.log(x);
       this.myFavouriteList = x
     })
@@ -121,7 +123,7 @@ export class HikeService {
     let params = new HttpParams();
     params = params.set('keyword', keyword).set('type', type)
 
-      return this.http.get<HikeDTO[]>(`${environment.apiUrl}/api/Hikes/SearchHikes`,{params : params}).subscribe({
+      return this.http.get<HikePathDTO[]>(`${environment.apiUrl}/api/Hikes/SearchHikes`,{params : params}).subscribe({
 
         next : (res) =>{
 
@@ -207,16 +209,17 @@ export class HikeService {
 
 
 
-async getAdminHikes():Promise<void>{
+async getAdminHikes(statusFilter?: string): Promise<void> {
   let httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
       // 'Authorization': 'Bearer ' + token
-    })
+    }),
+    params: statusFilter ? new HttpParams().set('statusFilter', statusFilter) : {}
   };
 
   console.log(environment.apiUrl);
-  await this.http.get<HikeDTO[]>(environment.apiUrl + '/api/Hikes/GetAdminHikes', httpOptions).subscribe(data => {
+  await this.http.get<HikePathDTO[]>(environment.apiUrl + '/api/Hikes/GetAdminHikes', httpOptions).subscribe(data => {
     console.log(data);
     this.hikeList = data.map(hike => ({
         ...hike,
@@ -227,7 +230,17 @@ async getAdminHikes():Promise<void>{
 });
 }
   
-  
 
-  
+updateHikeStatus(id: number, status: number): Observable<any> {
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      // 'Authorization': 'Bearer ' + token
+    }),
+    responseType: 'text' as 'json' // Tell Angular to expect a text response, not JSON
+  };
+
+  return this.http.put<any>(`${environment.apiUrl}/api/Hikes/UpdateHikeStatus/${id}/status`, { Status: status }, httpOptions);
+}
+
 }
