@@ -38,8 +38,8 @@
     "success":"Succès",
     "loginCreate":"Connectez-vous avant de créer une randonnée",
     "loginRequired":"Connexion requise",
-    "charactersSpaces":"Pas assez de caractères excluant les espaces."
-
+    "charactersSpaces":"Pas assez de caractères excluant les espaces.",
+    "imgTooBig" : "L'image est trop grande."
 
   },
   

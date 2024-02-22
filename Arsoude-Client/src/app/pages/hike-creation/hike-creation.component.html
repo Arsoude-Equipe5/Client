@@ -51,6 +51,7 @@
           <span *ngIf="image?.errors?.['required']">{{'hike-creation.imageRequired' | translate}}</span>
           <span *ngIf="image?.errors?.['invalidFileType']">{{'hike-creation.wrongFormat' | translate}}</span>
           <span *ngIf="image?.errors?.['invalidFileContent']">{{'hike-creation.invalidFile' | translate}}</span>
+          <span *ngIf="image?.errors?.['imgTooBig']">{{'hike-creation.imgTooBig' | translate}}</span>
         </mat-error>
       </div>
 
