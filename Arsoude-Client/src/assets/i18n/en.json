@@ -148,6 +148,21 @@
     "unableAdd": "Offline: Unable to add or remove favourite hike",
     "offline": "Offline"
     
+  },
+
+  "admin-tile":{
+    "pending": "Pending",
+    "validated": "Validated",
+    "rejected": "Rejected",
+    "all": "All",
+    "adminHikesList": "Admin Hikes List",
+    "selectStatus": "Select Status...",
+    "noHikesAvailable": "No Hikes Available",
+
+
+    "pendingCaps": "PENDING",
+    "validatedCaps": "VALIDATED",
+    "rejectedCaps": "REJECTED"
   }
 
   

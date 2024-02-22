@@ -4,7 +4,9 @@
             <div class="titleTop">
                 <div>
                     <div *ngIf="isAdmin()">
-                        <h1 [ngStyle]="{'color': getColor(hike.status)}">{{getHikeStatusName(hike.status)}}</h1>
+                        <h1 *ngIf="getHikeStatusName(hike.status) == 'REJECTED'" [ngStyle]="{'color': getColor(hike.status)}">{{'admin-tile.rejectedCaps' | translate}}</h1>
+                        <h1 *ngIf="getHikeStatusName(hike.status) == 'PENDING'" [ngStyle]="{'color': getColor(hike.status)}">{{'admin-tile.pendingCaps' | translate}}</h1>
+                        <h1 *ngIf="getHikeStatusName(hike.status) == 'VALIDATED'" [ngStyle]="{'color': getColor(hike.status)}">{{'admin-tile.validatedCaps' | translate}}</h1>
                     </div>
                     <h1>{{hike.name}}</h1>
                     <p>{{hike.location}}</p>
@@ -18,10 +20,10 @@
 
             <div *ngIf="isAdmin()">
             <select #statusSelect (change)="safeUpdateStatus(hike.id, +statusSelect.value)" class="form-control">
-                <option disabled>Select Status...</option>
-                <option [value]="0" [selected]="hike.status === 0">Pending</option>
-                <option [value]="1" [selected]="hike.status === 1">Validated</option>
-                <option [value]="2" [selected]="hike.status === 2">Rejected</option>
+                <option disabled>{{'admin-tile.selectStatus' | translate}}</option>
+                <option [value]="0" [selected]="hike.status === 0">{{'admin-tile.pending' | translate}}</option>
+                <option [value]="1" [selected]="hike.status === 1">{{'admin-tile.validated' | translate}}</option>
+                <option [value]="2" [selected]="hike.status === 2">{{'admin-tile.rejected' | translate}}</option>
             </select>
         </div>
             
