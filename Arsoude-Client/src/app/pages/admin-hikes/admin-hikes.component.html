@@ -26,7 +26,7 @@
         <div class="title">Admin Hikes List</div>
         <div class="container-tile" *ngFor="let hike of hikeService.hikeList">
           <div *ngIf="refreshKey">
-            <app-tile [hike]="hike" [updateStatusCallback]="updateStatus.bind(this)"></app-tile>
+            <app-admin-tile [hike]="hike" [updateStatusCallback]="updateStatus.bind(this)"></app-admin-tile>
           </div>
         </div>
       </div>

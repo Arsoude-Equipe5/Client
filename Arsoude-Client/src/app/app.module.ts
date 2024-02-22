@@ -43,9 +43,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { AllTrailsComponent } from './pages/all-trails/all-trails.component';
 import { CommonModule } from '@angular/common'
 import { FavouriteHikeComponent } from './pages/favourite-hikes/favourite-hikes.component';
-import { TileComponent } from './components/tile/tile.component';
+import { AdminTileComponent } from './components/admin-tile/admin-tile.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminHikesComponent } from './pages/admin-hikes/admin-hikes.component';
+import { TileComponent } from './components/tile/tile.component';
 
 const MY_DATE_FORMAT = {
   parse: {
@@ -75,7 +76,8 @@ const MY_DATE_FORMAT = {
     AllTrailsComponent,
     TileComponent,
     AdminComponent,
-    AdminHikesComponent
+    AdminHikesComponent,
+    AdminTileComponent
   ],
   imports: [
     BrowserModule,
