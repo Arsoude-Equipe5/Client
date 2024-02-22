@@ -10,6 +10,7 @@ import { AllTrailsComponent } from './pages/all-trails/all-trails.component';
 import { FavouriteHikeComponent } from './pages/favourite-hikes/favourite-hikes.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminHikesComponent } from './pages/admin-hikes/admin-hikes.component';
+import { AdminGuard } from './Guards/admin.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,7 +21,7 @@ const routes: Routes = [
   { path: 'alltrails', component: AllTrailsComponent },
   { path: 'favouritehikes', component: FavouriteHikeComponent, canActivate: [AuthGuard] },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
-  { path: 'adminhikes', component: AdminHikesComponent,canActivate: [AuthGuard] }
+  { path: 'adminhikes', component: AdminHikesComponent,canActivate: [AdminGuard] }
 
 ];
 
