@@ -85,7 +85,7 @@
       <!-- Submit Button -->
       <div class="row flex-center">
         <div class="content">
-          <button type="submit" class="submitBtn" [disabled]="isSubmitting">
+          <button type="submit" class="submitBtn" [disabled]="isSubmitting || formUpdateProfile.get('currentPassword')?.value && (!formUpdateProfile.get('newPassword')?.value || !formUpdateProfile.get('newPasswordConfirm')?.value) || (formUpdateProfile.get('newPassword')?.value !== formUpdateProfile.get('newPasswordConfirm')?.value)">
             <span *ngIf="!isSubmitting">{{ 'passwordSection.submitBtn' | translate }}</span>
             <div *ngIf="isSubmitting" class="loader">
               <div class="ball"></div>
@@ -93,7 +93,7 @@
               <div class="ball"></div>
               <div class="ball"></div>
             </div>
-          </button>
+          </button>          
         </div>
       </div>
     </form>
