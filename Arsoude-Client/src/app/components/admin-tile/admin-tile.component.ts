@@ -1,20 +1,56 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectorRef } from '@angular/core';
 import { HikeCoordinatesDTO } from 'src/app/models/HikeCoordinatesDTO';
-import { HikeDTO, hikeType } from 'src/app/models/HikeDTO';
-import { HikePathDTO, hikeStatus } from 'src/app/models/HikePathDTO';
+import { HikePathDTO, hikeStatus, hikeType } from 'src/app/models/HikePathDTO';
 import { HikeService } from 'src/app/services/HikeServices';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-tile',
-  templateUrl: './tile.component.html',
-  styleUrls: ['./tile.component.css']
+  selector: 'app-admin-tile',
+  templateUrl: './admin-tile.component.html',
+  styleUrls: ['./admin-tile.component.css']
 })
-export class TileComponent implements OnInit{
+export class AdminTileComponent implements OnInit{
   startPoint1 = new HikeCoordinatesDTO(37.7749, -122.4194, new Date());
   endPoint1 = new HikeCoordinatesDTO(40.7128, -74.0060, new Date());
 
-  constructor(public hikeService:HikeService, private authService: AuthService) {
+  hikeStatus = hikeStatus;
+  @Input() updateStatusCallback?: (hikeId: number, newStatus: number) => void;
+
+
+  getColor(status: number): string {
+    switch(status) {
+      case hikeStatus.pending: return 'blue';
+      case hikeStatus.validated: return 'green';
+      case hikeStatus.rejected: return 'red';
+      default: return 'black';
+    }
+  }
+
+  getHikeStatusName(status: number): string {
+    return hikeStatus[status]?.toUpperCase() || 'UNKNOWN';
+  }
+
+  callUpdateStatusCallback(hikeId: number, newStatus: number): void {
+    if (this.updateStatusCallback) {
+      this.updateStatusCallback(hikeId, newStatus);
+      this.hike = { ...this.hike, status: newStatus };
+      this.changeDetectorRef.markForCheck();
+      this.changeDetectorRef.detectChanges();
+    } else {
+      console.warn('updateStatusCallback is undefined.');
+    }
+  }
+  
+
+  safeUpdateStatus(hikeId: number, newStatus: number) {
+    if (this.updateStatusCallback) {
+      this.updateStatusCallback(hikeId, newStatus);
+    } else {
+      console.warn('updateStatusCallback is not defined.');
+    }
+  }
+
+  constructor(private changeDetectorRef: ChangeDetectorRef,public hikeService:HikeService, private authService: AuthService) {
   }
 
   isLoggedIn(): boolean {
@@ -27,6 +63,7 @@ export class TileComponent implements OnInit{
     await this.toggleFavourite(hike);
     
   }
+
 
   async toggleFavourite(hike: HikePathDTO): Promise<void> {
 
@@ -41,7 +78,6 @@ export class TileComponent implements OnInit{
       this.hikeService.myFavouriteList = this.hikeService.myFavouriteList.filter(favorite => favorite.id !== hike.id);
     }
   }
-  
   
 
   @Input() hike:HikePathDTO = new HikePathDTO(
@@ -58,6 +94,8 @@ export class TileComponent implements OnInit{
     this.endPoint1
   );
   
+ 
+
 
   @Input() center:google.maps.LatLngLiteral = {lat: 42, lng: -4};
   @Input() zoom:number = 5;
@@ -71,5 +109,10 @@ export class TileComponent implements OnInit{
   ngOnInit() {
   }
 
-}
 
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
+  }
+  
+
+}

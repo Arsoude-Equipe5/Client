@@ -43,6 +43,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { AllTrailsComponent } from './pages/all-trails/all-trails.component';
 import { CommonModule } from '@angular/common'
 import { FavouriteHikeComponent } from './pages/favourite-hikes/favourite-hikes.component';
+import { AdminTileComponent } from './components/admin-tile/admin-tile.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { AdminHikesComponent } from './pages/admin-hikes/admin-hikes.component';
 import { TileComponent } from './components/tile/tile.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
@@ -75,7 +78,9 @@ const MY_DATE_FORMAT = {
     InputComponent,
     AllTrailsComponent,
     TileComponent,
-    AdminComponent
+    AdminComponent,
+    AdminHikesComponent,
+    AdminTileComponent
   ],
   imports: [
     BrowserModule,
