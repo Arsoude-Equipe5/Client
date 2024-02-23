@@ -13,14 +13,16 @@
 <div>
     <div class="searchBar">
       <div class="inputSearch">
-        <i (click)='onSubmit(); splitKeywords()' class="fas fa-search input-icon"></i>
+        <button  (click)="onSubmit(); splitKeywords()" [disabled]="hikeService.isWaiting" class="search-button">
+          <i class="fas fa-search"></i>
+        </button>
         <input placeholder="Ville,montage,coordinées" [(ngModel)]="searchKeyword" [formControl]="inputKeyword" class="input" type="text" id="searchInput">
       </div>
       <div class="button-group">
-        <button    [ngClass]="{'selected': type == 'Walk'}" (click)="toggleHikeType('Walk')"  >
+        <button    [ngClass]="{'selected': type == 'Walk'}" (click)="toggleHikeType('Walk'); onSubmit()"  >
           <i  class="fas fa-walking"></i>
         </button>
-        <button   [ngClass]="{'selected': type == 'Bike'}" (click)="toggleHikeType('Bike')" >
+        <button   [ngClass]="{'selected': type == 'Bike'}" (click)="toggleHikeType('Bike'); onSubmit()" >
           <i class="fas fa-bicycle"></i>
         </button>
       </div>
@@ -29,8 +31,8 @@
 
 <div class="tag-container">
 
-    <span style="color: white;" *ngIf="tags.length>0">Tags : </span>
-<span style="color: white;" *ngFor="let tag of tags" class="tags">{{ tag }}</span>
+    <!-- <span style="color: white;" *ngIf="tags.length>0">Tags : </span>
+<span style="color: white;" *ngFor="let tag of tags" class="tags">{{ tag }}</span> -->
 </div>
     <div>
       <div *ngIf="hikeService.isEmpty===false">
@@ -40,7 +42,8 @@
         </div>
       </div>
       <div>
-        <h2 style="color: white; margin-top: 15px;" *ngIf="hikeService.isEmpty === true"> Aucune randonnée disponible</h2>
+        <h2 class="textListVide" *ngIf="hikeService.isEmpty === true"> Aucune randonnée disponible</h2>
+        
       </div>
     </div>
   </div>
