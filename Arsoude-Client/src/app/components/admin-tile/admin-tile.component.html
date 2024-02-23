@@ -44,9 +44,11 @@
                 </div>
                 <div class="info">
                     <div class="infoTitle">
-                        <p>{{'all-trails.time' | translate}}</p>
-                    </div>
-                    <p>{{hike.timeEstimated}}</p>
+                        {{ "all-trails.type" | translate }}
+                      </div>
+                      <span class="material-symbols-outlined">
+                        {{ hike.type === 0 ? "directions_bike" : "directions_walk" }}
+                      </span>
                 </div>
             </div>
         </div>
@@ -78,14 +80,15 @@
                         {{'all-trails.type' | translate}}
                     </div>
                     <span class="material-symbols-outlined">
-                        directions_walk
-                     </span>
+                        {{ hike.type === 0 ? "directions_bike" : "directions_walk" }}
+                      </span>
                 </div>
                 <div class="info">
                     <div class="infoTitle">
                         {{'all-trails.time' | translate}}
                     </div>
-                    <p>{{hike.timeEstimated}} H</p>
+                    <p *ngIf="hike.timeEstimated; else noTime">{{ hike.timeEstimated }} H</p>
+                    <ng-template #noTime>N/D</ng-template>
                 </div>
             </div>
         </div>
@@ -97,7 +100,6 @@
             [zoom]="zoom"
             [width]="'100%'" 
             [height]="'100%'">
-
             <map-marker *ngFor="let marker of markerPositions"
                         [position]="marker">
             </map-marker>
