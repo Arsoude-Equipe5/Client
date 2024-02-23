@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, ViewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GoogleMap } from "@angular/google-maps";
 import { HikeDTO, hikeType } from '../../models/HikeDTO';
@@ -23,8 +23,8 @@ export class HikeCreationComponent implements OnInit {
   hikeTypes: string[] = ['vélo', 'marche'];
   imagePreview: string | undefined;
   imageSelected: boolean = false;
-  center: google.maps.LatLngLiteral = { lat: 42, lng: -4 };
-  zoom = 5;
+  center: google.maps.LatLngLiteral = { lat: 45.535940, lng: -73.493940 }; // Updated center to Longueuil
+  zoom = 14; // Adjusted zoom level
   markers: { position: google.maps.LatLngLiteral, point: 'A' | 'B' }[] = [];
   pointALatitude: number | null = null;
   pointALongitude: number | null = null;
@@ -32,8 +32,14 @@ export class HikeCreationComponent implements OnInit {
   pointBLongitude: number | null = null;
   selectedPoint: 'A' | 'B' | null = null;
   onloading : boolean = false;
+  isOnline: boolean = navigator.onLine;
+  isOnlineSubscription?: Subscription;
+  onlineStatusChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  
 
   @ViewChild('mapAB') mapAB!: GoogleMap;
+  networkService: any;
 
   constructor(private fb: FormBuilder, 
     private hikeService: HikeService, 
@@ -44,10 +50,32 @@ export class HikeCreationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //uncomment when testing hikeCreation
     this.createForm();
-  }
 
+    if (this.type?.invalid) {
+      this.type.markAsTouched();
+    }
+
+
+    // Subscribe to online/offline events
+    window.addEventListener('online', () => {
+      this.isOnline = true;
+      this.onlineStatusChange.emit(true);
+    });
+
+    window.addEventListener('offline', () => {
+      this.isOnline = false;
+      this.onlineStatusChange.emit(false);
+    });
+
+    // Check online status on component initialization
+    this.onlineStatusChange.subscribe((status: boolean) => {
+      if (!status) {
+        // If offline, show toastr message
+        this.toastr.error('Aucune connection internet Veuillez vous connecter a internet et rafraîchir la page');
+      }
+    });
+  }
 
   
 
@@ -190,6 +218,12 @@ export class HikeCreationComponent implements OnInit {
       this.router.navigate(['/signin']); // Adjust the route if necessary
       return;
     }
+    
+    if (!this.isOnline) {
+      // Check if there's no internet connection
+      this.toastr.error('Aucune connection internet1 Veuillez vous connecter a internet et rafraîchir la page');
+      return;
+    }
   
     if (this.hikeForm.valid && this.markers.length === 2) {
       const { nomRandonnee, image, description, type, distance, timeEstimated, location } = this.hikeForm.value;
@@ -302,6 +336,7 @@ showWarning() {
 }
 
 import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 export function minTrimmedLengthValidator(minLength: number): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {

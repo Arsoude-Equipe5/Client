@@ -6,6 +6,11 @@
     <div class="ball"></div>
     <div class="ball"></div>
   </div>
+
+  <div class="no-internet" *ngIf="!isOnline">
+    <p class="no-internet-miam">{{'hike-creation.InternetError' | translate}}.</p>
+  </div>
+
 </div>
 <div class="container">
   <div class="form-container">
@@ -24,7 +29,6 @@
               <span *ngIf="nomRandonnee?.errors?.['required']">{{'hike-creation.nameRequired' | translate}}</span>
               <span *ngIf="nomRandonnee?.errors?.['minlength']">{{'hike-creation.name4car' | translate}}</span>
               <span *ngIf="nomRandonnee?.errors?.['maxlength']">{{'hike-creation.name70car' | translate}}</span>
-              <span *ngIf="nomRandonnee?.errors?.['minTrimmedLength']">{{'hike-creation.charactersSpaces' | translate}}</span>
             </mat-error>
           </mat-form-field>
         </div>
@@ -40,9 +44,6 @@
 
         <div class="dropzone">
           <h3>{{'hike-creation.dragDropFile' | translate}}</h3>
-          <h3>{{'hike-creation.or' | translate}}</h3>
-          <br>
-          <label for="fileDropRef">{{'hike-creation.browseFile' | translate}}</label>
           <input type="file" accept="image/*" (change)="displayImage($event)" [readonly]="onloading">
           <img class="preview-image" *ngIf="imagePreview && !image?.invalid" [src]="imagePreview" alt="Selected Image" class="preview-image">
         </div>
@@ -85,24 +86,29 @@
   </mat-error>
 </div>
 
+<div style="margin-top: 10px;"></div>
+
+
       <!-- Type (Bike or Walk) -->
-      <div class="form-field">
-        <div class="form-title">
-          <p>{{'hike-creation.type' | translate}}</p>
-        </div>
-        
-        <div class="button-group">
-          <button [ngClass]="{'selected': hikeType === 'marche'}" (click)="setHikeType('marche')" [disabled]="onloading">
-            <i class="fas fa-walking"></i>
-          </button>
-          <button [ngClass]="{'selected': hikeType === 'vélo'}" (click)="setHikeType('vélo')" [disabled]="onloading">
-            <i class="fas fa-bicycle"></i>
-          </button>
-        </div>
-      </div>
-
-
-
+<div class="form-field">
+  <div class="form-title">
+    <p>{{ 'hike-creation.type' | translate }}</p>
+  </div>
+  
+  <div class="button-group">
+    <button [ngClass]="{'selected': hikeType === 'marche'}" (click)="setHikeType('marche')" [disabled]="onloading">
+      <i class="fas fa-walking"></i>
+    </button>
+    <button [ngClass]="{'selected': hikeType === 'vélo'}" (click)="setHikeType('vélo')" [disabled]="onloading">
+      <i class="fas fa-bicycle"></i>
+    </button>
+  </div>
+  
+  <mat-error *ngIf="type?.invalid && (type?.dirty || type?.touched)">
+    <span *ngIf="type?.errors?.['required']">{{ 'hike-creation.typeRequired' | translate }}</span>
+    <span *ngIf="type?.errors?.['pattern']">{{ 'hike-creation.typeInvalid' | translate }}</span>
+  </mat-error>
+</div>
       </form>
 
       <!-- Toggle buttons for selecting points A and B -->

@@ -39,7 +39,10 @@
     "success":"Succès",
     "loginCreate":"Connectez-vous avant de créer une randonnée",
     "loginRequired":"Connexion requise",
-    "charactersSpaces":"Pas assez de caractères excluant les espaces."
+    "charactersSpaces":"Pas assez de caractères excluant les espaces.",
+    "typeRequired" : "Le type est requis.",
+    "InternetError" : "Veuillez vérifier votre connexion réseau et rafraîchir la page."
+
 
 
   },

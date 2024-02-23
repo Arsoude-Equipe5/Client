@@ -18,6 +18,19 @@ p{
   text-align: center;
   border: dashed 1px #979797;
   position: relative;
+  margin-bottom: 20px;
+}
+
+
+.mat-error {
+  margin-bottom: 10px; /* Add a small spacing under all error messages */
+}
+
+.error-message {
+  margin-bottom: 10px; /* Add a small spacing under all error messages */
+  display: block; /* Ensures error messages are displayed as block elements */
+  margin-top: 5px; /* Adds margin space between error message and next input */
+  color: red;
 }
 
 
@@ -26,6 +39,7 @@ p{
 
 .dropzone input{
   opacity: 0;
+  color: white;
   position: absolute;
   z-index: 2;
   width: 100%;
@@ -56,6 +70,7 @@ p{
 }
 
 .dropzone h3{
+  color: white; 
   font-size: 20px;
   font-weight: 600;
 }
@@ -92,10 +107,6 @@ p{
 }
 
 
-
-
-
-
 /* Inside map-container */
 
 .map-container .button-container{
@@ -107,6 +118,20 @@ p{
 
 
 }
+
+
+.no-internet{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: red;
+}
+
+.no-internet-miam{
+  color: red;
+}
+
 
 .map-container .button-container button{
  
@@ -168,6 +193,7 @@ google-map{
 mat-form-field{
   width: 90%;
   margin: 0;
+
 }
 
 mat-form-field.mat-focused .mat-form-field-label {

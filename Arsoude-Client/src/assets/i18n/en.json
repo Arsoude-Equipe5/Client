@@ -38,7 +38,8 @@
     "success":"Success",
     "loginCreate":"Please login before creating a hike",
     "loginRequired":"Login Required",
-    "charactersSpaces":"There are not enough characters that aren't spaces."
+    "charactersSpaces":"There are not enough characters that aren't spaces.",
+    "InternetError" : "Please check your network connection and refresh the web page."
 
   },
       "updateProfile": {
@@ -50,7 +51,8 @@
         "newPassword": "New Password",
         "confirmNewPassword": "Confirm New Password",
         "passwordMismatch": "Passwords do not match",
-        "submitBtn": "Update Profile"
+        "submitBtn": "Update Profile",
+        "typeRequired" : "Type is required."
       }
     ,
     
