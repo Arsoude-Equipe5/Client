@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class NavComponent {
 
   language: string = "fr";
-  
+
   constructor(public translator: TranslateService, private authService: AuthService,    private router: Router ) 
   {
     translator.setDefaultLang(this.language);
@@ -48,4 +48,9 @@ export class NavComponent {
   goToSignin() {
     this.router.navigate(['/signin']);
   }
+
+  
+
+
+
 }

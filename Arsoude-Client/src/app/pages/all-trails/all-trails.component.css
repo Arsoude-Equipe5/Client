@@ -86,6 +86,24 @@ i {
   width: 100%;
 }
 
+.search-button {
+  width: auto;
+  height: auto;
+  border: none;
+  background-color: transparent; /* Transparent background */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+  cursor: pointer;
+  position: relative;
+  left:3rem;
+}
+
+.search-button i {
+  color: rgb(22, 22, 22); /* Icon color */
+  font-size: 1.5rem; /* Icon size */
+  cursor: pointer;
+}
+
 .button-group button.selected {
   background-color: #379271;
 }
@@ -133,6 +151,13 @@ mat-slider {
   margin-top: 10px;
   align-items: center;
   margin-bottom: 15px;
+}
+
+
+.textListVide{
+
+  color: white;
+  text-align: center;
 }
 
 .tags {

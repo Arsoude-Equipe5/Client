@@ -49,6 +49,7 @@ import { AdminHikesComponent } from './pages/admin-hikes/admin-hikes.component';
 import { TileComponent } from './components/tile/tile.component';
 import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
 
+
 const MY_DATE_FORMAT = {
   parse: {
     dateInput: 'MM/YYYY', // this is how your date will be parsed from Input
@@ -83,6 +84,7 @@ const MY_DATE_FORMAT = {
   ],
   imports: [
     BrowserModule,
+
     AppRoutingModule,
     MatInputModule ,
     CommonModule,
