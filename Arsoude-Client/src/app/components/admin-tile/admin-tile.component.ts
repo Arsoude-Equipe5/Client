@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, ChangeDetectorRef, ViewChild,AfterViewInit,Renderer2  } from '@angular/core';
 import { GoogleMap } from '@angular/google-maps';
 import { HikeCoordinatesDTO } from 'src/app/models/HikeCoordinatesDTO';
 import { HikePathDTO, hikeStatus, hikeType } from 'src/app/models/HikePathDTO';
@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './admin-tile.component.html',
   styleUrls: ['./admin-tile.component.css']
 })
-export class AdminTileComponent implements OnInit, OnChanges {
+export class AdminTileComponent implements OnInit, OnChanges,AfterViewInit  {
   startPoint1 = new HikeCoordinatesDTO(37.7749, -122.4194, new Date());
   endPoint1 = new HikeCoordinatesDTO(40.7128, -74.0060, new Date());
   
@@ -39,7 +39,8 @@ export class AdminTileComponent implements OnInit, OnChanges {
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
     public hikeService: HikeService, 
-    private authService: AuthService
+    private authService: AuthService,
+    private renderer: Renderer2,
   ) {
     this.markerPositions = []; // Initialize as an empty array
   }
@@ -50,6 +51,8 @@ export class AdminTileComponent implements OnInit, OnChanges {
 
   ngAfterViewInit(): void {
     this.updateMapView();
+    // Additional logic as needed...
+    this.attemptToClickDismissButton();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -86,6 +89,34 @@ export class AdminTileComponent implements OnInit, OnChanges {
     const midLng = (startPoint.longitude + endPoint.longitude) / 2;
     return { lat: midLat, lng: midLng };
   }
+
+private attemptToClickDismissButton(): void {
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.addedNodes.length) {
+        mutation.addedNodes.forEach((node) => {
+          // Check if the added node is the dismiss button or contains it
+          if ((node as Element).querySelector) {
+            const buttons = (node as Element).querySelectorAll('.dismissButton');
+            buttons.forEach(button => {
+              (button as HTMLElement).click();
+            });
+          }
+        });
+      }
+    });
+  });
+
+  // Configuration of the observer:
+  const config = { childList: true, subtree: true };
+
+  // Start observing the target node for configured mutations
+  observer.observe(document.body, config);
+
+  // Optionally, stop observing at some point later
+  // observer.disconnect();
+}
+  
 
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
