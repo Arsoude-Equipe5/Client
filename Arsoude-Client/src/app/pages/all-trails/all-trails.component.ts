@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { HikeCoordinatesDTO } from 'src/app/models/HikeCoordinatesDTO';
 import { HikeDTO, hikeType } from 'src/app/models/HikeDTO';
+import { HikePathDTO } from 'src/app/models/HikePathDTO';
 import { HikeService } from 'src/app/services/HikeServices';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -19,7 +20,7 @@ export class AllTrailsComponent {
   inputKeyword = new FormControl('');
   tags: string[] = [];
   searchKeyword: string = "";
-  type: string = '';
+  type: string |null = null;
 
 
   constructor(public hikeService:HikeService, private authService: AuthService) {
@@ -75,7 +76,7 @@ this.hikesList = [hike1,hike2];
     }
 
 
-    async onButtonClick(id: number, hike:HikeDTO): Promise<void> {
+    async onButtonClick(id: number, hike:HikePathDTO): Promise<void> {
       await this.hikeService.addFavouriteHikes(id);
       await this.toggleFavourite(hike);
       
@@ -86,16 +87,23 @@ this.hikesList = [hike1,hike2];
       console.log(this.type);
     }
 
-    onSubmit(){
-      if(this.inputKeyword.value){
-        this.hikeService.searchHikes(this.inputKeyword.value, this.type);
-        }
-        else{
-          this.hikeService.getHikes();
-        }
+    toggleHikeType(type: string) {
+      if (this.type === type) {
+        this.type = null; // Deselect if already selected
+      } else {
+        this.type = type; // Select if not selected
+      }
     }
 
-    async toggleFavourite(hike: HikeDTO): Promise<void> {
+
+    onSubmit(){
+   
+        this.hikeService.searchHikes(this.inputKeyword.value, this.type);
+        
+       
+    }
+
+    async toggleFavourite(hike: HikePathDTO): Promise<void> {
 
       //Display icon when the hike is not in favourite (empty star)
       const isNotInFavouriteIcon: String= "far fa-regular fa-star";
@@ -103,7 +111,7 @@ this.hikesList = [hike1,hike2];
 
       if (this.hikeService.isInFavourite(hike) === isNotInFavouriteIcon) {
         await this.hikeService.myFavouriteList.push(hike); // Add to favorites
-      } else {
+      } else {  
         // Remove from favorites
         this.hikeService.myFavouriteList = this.hikeService.myFavouriteList.filter(favorite => favorite.id !== hike.id);
       }

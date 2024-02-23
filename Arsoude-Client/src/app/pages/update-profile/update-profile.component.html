@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="leftBox"></div>
+
+  <div class="rightbox">
+    <form [formGroup]="formUpdateProfile" (ngSubmit)="onSubmit()" class="formBoite">
+      <!-- Update Profile Title -->
+      <h2 translate style="text-align: center" id="titleUpdate">{{ 'updateProfile.title' | translate }}</h2>
+      <!-- First Name and Last Name -->
+      <div class="row">
+        <div class="formInputContainer">
+          <label for="firstName">{{ 'register.firstName' | translate }}</label>
+          <input class="formInput" id="firstName" type="text" placeholder="{{ 'register.firstName' | translate }}" formControlName="firstName">
+          <mat-error *ngIf="formUpdateProfile.get('firstName')?.errors?.['minlength']">{{ 'register.firstName2car' | translate }}</mat-error>
+          <mat-error *ngIf="formUpdateProfile.get('firstName')?.errors?.['maxlength']">{{ 'register.firstName40car' | translate }}</mat-error>
+        </div>
+        <div class="formInputContainer">
+          <label for="lastName">{{ 'register.lastName' | translate }}</label>
+          <input class="formInput" id="lastName" type="text" placeholder="{{ 'register.lastName' | translate }}" formControlName="lastName">
+          <mat-error *ngIf="formUpdateProfile.get('lastName')?.errors?.['minlength']">{{ 'register.lastName2car' | translate }}</mat-error>
+          <mat-error *ngIf="formUpdateProfile.get('lastName')?.errors?.['maxlength']">{{ 'register.lastName40car' | translate }}</mat-error>
+        </div>
+      </div>
+
+      <!-- Postal Code and Address -->
+      <div class="row">
+        <div class="formInputContainer">
+          <label for="postalCode">{{ 'register.postalCode' | translate }}</label>
+          <input class="formInput" id="postalCode" type="text" placeholder="{{ 'register.postalCode' | translate }}" formControlName="postalCode">
+          <mat-error *ngIf="formUpdateProfile.get('postalCode')?.errors?.['pattern']">{{ 'register.invalidPostalCode' | translate }}</mat-error>
+        </div>
+        <div class="formInputContainer">
+          <label for="address">{{ 'register.address' | translate }}</label>
+          <input class="formInput" id="address" type="text" placeholder="{{ 'register.address' | translate }}" formControlName="address">
+          <mat-error *ngIf="formUpdateProfile.get('address')?.errors?.['maxlength']">{{ 'register.addressMaxLength' | translate }}</mat-error>
+        </div>
+      </div>
+
+     <!-- Birthdate and Profile Picture -->
+      <div class="row">
+        <div class="formInputContainer">
+          <label for="birthdate">{{ 'register.dateOfBirth' | translate }}</label>
+          <input class="formInput" id="birthdate" type="date" formControlName="birthdate" max="{{ today | date: 'yyyy-MM-dd' }}" >
+        </div>           
+        <div class="formInputContainer">
+          <label for="profilePicture">{{ 'register.profilePicture' | translate }}</label>
+          <!-- Apply the "fileInput" class to the input element -->
+          <input type="file" accept="image/*" (change)="displayImage($event)" class="fileInput">
+          <div *ngIf="imagePreview" class="image-preview">
+            <div class="circular-crop">
+              <img [src]="imagePreview" alt="{{ 'register.profilePicture' | translate }}">
+            </div>
+          </div>
+          <!-- Display error message under the image -->
+          <div class="error-message" *ngIf="profilePicture?.touched && profilePicture?.invalid">
+            <span *ngIf="profilePicture?.errors?.['required']">{{'hike-creation.imageRequired' | translate}}</span>
+            <span *ngIf="profilePicture?.errors?.['invalidFileType']">{{'hike-creation.wrongFormat' | translate}}</span>
+            <span *ngIf="profilePicture?.errors?.['invalidFileContent']">{{'hike-creation.invalidFile' | translate}}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Update Password section -->
+      <h2 translate style="text-align: center" id="titleUpdate">{{ 'passwordSection.title' | translate }}</h2>
+      <!-- Current Password, New Password, Confirm New Password -->
+      <div class="password-container">
+        <div class="formInputContainer">
+          <label for="currentPassword">{{ 'passwordSection.currentPassword' | translate }}</label>
+          <input class="formInput" id="currentPassword" type="password" placeholder="{{ 'passwordSection.currentPassword' | translate }}" formControlName="currentPassword" (input)="togglePasswordFields()">
+        </div>
+        <div class="formInputContainer" [class.disabled]="formUpdateProfile.get('newPassword')?.disabled">
+          <label for="newPassword">{{ 'passwordSection.newPassword' | translate }}</label>
+          <input class="formInput" id="newPassword" type="password" placeholder="{{ 'passwordSection.newPassword' | translate }}" formControlName="newPassword">
+          <mat-error *ngIf="formUpdateProfile.get('newPassword')?.hasError('required') && formUpdateProfile.get('newPassword')?.touched">
+            {{ 'register.requiredField' | translate }}
+          </mat-error>
+          <!-- Other validation errors -->
+        </div>
+        <div class="formInputContainer" [class.disabled]="formUpdateProfile.get('newPasswordConfirm')?.disabled">
+          <label for="newPasswordConfirm">{{ 'passwordSection.confirmNewPassword' | translate }}</label>
+          <input class="formInput" id="newPasswordConfirm" type="password" placeholder="{{ 'passwordSection.confirmNewPassword' | translate }}" formControlName="newPasswordConfirm">
+          <mat-error *ngIf="formUpdateProfile.get('newPasswordConfirm')?.errors?.['passwordMismatch']">{{ 'passwordSection.passwordMismatch' | translate }}</mat-error>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="row flex-center">
+        <div class="content">
+          <button type="submit" class="submitBtn" [disabled]="isSubmitting || formUpdateProfile.get('currentPassword')?.value && (!formUpdateProfile.get('newPassword')?.value || !formUpdateProfile.get('newPasswordConfirm')?.value) || (formUpdateProfile.get('newPassword')?.value !== formUpdateProfile.get('newPasswordConfirm')?.value)">
+            <span *ngIf="!isSubmitting">{{ 'passwordSection.submitBtn' | translate }}</span>
+            <div *ngIf="isSubmitting" class="loader">
+              <div class="ball"></div>
+              <div class="ball"></div>
+              <div class="ball"></div>
+              <div class="ball"></div>
+            </div>
+          </button>          
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

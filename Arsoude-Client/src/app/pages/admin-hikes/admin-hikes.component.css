@@ -1,0 +1,217 @@
+html, body {
+    margin: 0;
+    background-color: #02282F;
+    padding-top: 165px;
+  }
+  
+  .title{
+    position: absolute;
+    top: 200px;
+    left: 120px;
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+  
+  .container{
+    width: 100%;
+  }
+  
+  .container-tile{
+    margin-left: 120px;
+    margin-right: 120px;
+    margin-bottom: 50px;
+    
+  }
+  
+  .firstRow{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  
+  @media only screen and (max-width: 1000px) {
+    .container-tile{
+      margin-left: 30px;
+      margin-right: 30px;
+    }
+  }
+  
+  .searchBar{
+    margin-left: 120px;
+    margin-right: 120px;
+    margin-bottom: 30px;
+    height: 8vh;
+    background-color: #235A46;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  
+  #searchInput{
+  
+    width: 65%;
+    padding: 10px;
+    padding-left: 55px;
+  border-radius: 25px;
+  border-width: 0;
+  }
+  
+  .button-group{
+  
+    display: flex;
+  }
+  
+  .button-group button {
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-color: #347a62;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  i{
+    color: white;
+  }
+   
+  
+  .inputSearch{
+    width: 100%;
+  }
+  
+  
+  .button-group button.selected {
+    background-color: #379271;
+  }
+  
+  .button-group i {
+    font-size: 2rem;
+  }
+  
+  .rangeBox{
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    gap: 10px;
+  }
+  
+  
+  .slidecontainer {
+    width: 100%; /* Width of the outside container */
+  }
+  
+  
+  /* The slider itself */
+  mat-slider {
+    width: 150px;
+  }
+  
+  
+  .my-slider {
+  
+  }
+  
+  
+  @media only screen and (max-width: 1500px) {
+    .container {
+      width: 100%;
+    }
+  }
+  
+  
+  .input-icon {
+    position: relative;
+    left: 3px;
+    color: rgb(12, 12, 12);
+    left: 3rem;
+    cursor: pointer;
+    /* Vertically center the icon in the input */
+  }
+  
+  .tag-container{
+    margin-left: 120px;
+  display:flex;
+  gap: 10px;
+  margin-top: 10px;
+  align-items: center;
+  }
+  
+  
+  .tags{
+   background-color: #235a46;
+   border-radius: 20px;
+   padding: 5px 10px 5px 10px;
+  }
+  
+  
+  .hikeTitle{
+    font-weight: 700;
+  font-family: "Lato";
+  }
+  
+  
+  .hikeLocation{
+    font-size: 16px;
+    font-weight: 700;
+    font-family: "Lato";
+  }
+  
+  
+  .text{
+    font-size: 18px;
+    font-weight: 700;
+    font-family: "Lato";
+    color: #193D2A;
+  }
+  
+  
+  .cardContainer{
+    display: flex;
+    gap: 50px;
+   
+  }
+  
+  
+  .infoHike{
+    display: flex;
+    gap: 4rem;
+  }
+  
+  .col1{width: 30%;}
+  .col2{width: 43%;
+  padding-top: 6vh;}
+  .col3{width: 27%;}
+  
+  .col1{
+  
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  }
+  
+  #description{
+   
+    overflow-wrap: break-word;
+    height: 12vh;
+  }
+  
+  .menu{
+    position: absolute;
+    top: 250px;
+    left: 120px;
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+  }

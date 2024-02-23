@@ -17,20 +17,14 @@
         <input placeholder="Ville,montage,coordinées" [(ngModel)]="searchKeyword" [formControl]="inputKeyword" class="input" type="text" id="searchInput">
       </div>
       <div class="button-group">
-        <button    [ngClass]="{'selected': type == 'walk'}" (click)="setHikeType('walk')"  >
+        <button    [ngClass]="{'selected': type == 'Walk'}" (click)="toggleHikeType('Walk')"  >
           <i  class="fas fa-walking"></i>
         </button>
-        <button   [ngClass]="{'selected': type == 'bike'}" (click)="setHikeType('bike')" >
+        <button   [ngClass]="{'selected': type == 'Bike'}" (click)="toggleHikeType('Bike')" >
           <i class="fas fa-bicycle"></i>
         </button>
       </div>
-    <!-- <div class="rangeBox">
-        <p>Proximite: </p>
-        <mat-slider class="slider" min="1" max="100" step="1" value="1.5">
-            <input matSliderThumb>
-          </mat-slider>
-          <p>20Km</p>
-    </div> -->
+   
 </div>
 
 <div class="tag-container">

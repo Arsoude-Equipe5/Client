@@ -8,7 +8,8 @@
     "languages":"Langues",
     "disconnect":"Se déconnecter",
     "allTrails":"Toutes les randonnées",
-    "favouriteHikes":"Randonnées favorites"
+    "favouriteHikes":"Randonnées favorites",
+    "profile" : "Profile"
   },
 
   "hike-creation":{
@@ -42,6 +43,21 @@
     "imgTooBig" : "L'image est trop grande."
 
   },
+
+  
+    "updateProfile": {
+      "title": "Mettre à jour le profil"
+    },
+    "passwordSection": {
+      "title": "Mettre à jour le mot de passe",
+      "currentPassword": "Mot de passe actuel",
+      "newPassword": "Nouveau mot de passe",
+      "confirmNewPassword": "Confirmer le nouveau mot de passe",
+      "passwordMismatch": "Les mots de passe ne correspondent pas",
+      "submitBtn": "Mettre à jour le profil"
+    }
+
+,  
   
   "register":{
     "createAccount":"Créer un compte",
@@ -134,6 +150,21 @@
     "unableAdd": "Hors ligne: incapable d'ajouter ou retirer une randonnée favorite",
     "offline": "Hors ligne"
     
+  },
+
+
+  "admin-tile":{
+    "pending": "En attente",
+    "validated": "Validé",
+    "rejected": "Rejeté",
+    "all": "Tout",
+    "adminHikesList": "Liste de randonnées Admin",
+    "selectStatus": "Selectionner le Status...",
+    "noHikesAvailable": "Aucune Randonnée Disponible",
+
+    "pendingCaps": "EN ATTENTE",
+    "validatedCaps": "VALIDÉ",
+    "rejectedCaps": "REJETÉ"
   }
 
  

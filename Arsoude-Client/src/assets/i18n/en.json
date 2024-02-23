@@ -8,7 +8,8 @@
     "languages":"Languages",
     "disconnect":"Disconnect",
     "allTrails":"All trails",
-    "favouriteHikes":"Favourite hikes"
+    "favouriteHikes":"Favourite hikes",
+    "profile" : "Profile"
   },
 
   "hike-creation":{
@@ -42,6 +43,21 @@
   
 
   },
+      "updateProfile": {
+        "title": "Update Profile"
+      },
+      "passwordSection": {
+        "title": "Update Password",
+        "currentPassword": "Current Password",
+        "newPassword": "New Password",
+        "confirmNewPassword": "Confirm New Password",
+        "passwordMismatch": "Passwords do not match",
+        "submitBtn": "Update Profile"
+      }
+    ,
+    
+
+  
   
   "register":{
     "createAccount":"Create an account",
@@ -134,6 +150,21 @@
     "unableAdd": "Offline: Unable to add or remove favourite hike",
     "offline": "Offline"
     
+  },
+
+  "admin-tile":{
+    "pending": "Pending",
+    "validated": "Validated",
+    "rejected": "Rejected",
+    "all": "All",
+    "adminHikesList": "Admin Hikes List",
+    "selectStatus": "Select Status...",
+    "noHikesAvailable": "No Hikes Available",
+
+
+    "pendingCaps": "PENDING",
+    "validatedCaps": "VALIDATED",
+    "rejectedCaps": "REJECTED"
   }
 
   
