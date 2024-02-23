@@ -14,23 +14,20 @@ import { HikePathDTO } from '../models/HikePathDTO';
   providedIn: 'root',
 })
 export class HikeService {
-
-   
-  
   hikeList: HikePathDTO[] = [];
   myFavouriteList: HikePathDTO[] = [];
-  
-  
 
-
-
-
-  constructor(private http: HttpClient, private toastr: ToastrService, private translate: TranslateService, private router: Router) { }
+  constructor(
+    private http: HttpClient,
+    private toastr: ToastrService,
+    private translate: TranslateService,
+    private router: Router
+  ) {}
 
   //static readonly isInFavouriteIcon: string = 'fas fa-regular fa-star';
   //static readonly isNotInFavouriteIcon: string = 'far fa-regular fa-star';
-  
-  async getHikes():Promise<void>{
+
+  async getHikes(): Promise<void> {
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -39,9 +36,14 @@ export class HikeService {
     };
 
     console.log(environment.apiUrl);
-    await this.http.get<HikePathDTO[]>(environment.apiUrl + '/api/Hikes/GetHikes', httpOptions).subscribe(data => {
-      console.log(data);
-      this.hikeList = data.map(hike => ({
+    await this.http
+      .get<HikePathDTO[]>(
+        environment.apiUrl + '/api/Hikes/GetHikes',
+        httpOptions
+      )
+      .subscribe((data) => {
+        console.log(data);
+        this.hikeList = data.map((hike) => ({
           ...hike,
           timeEstimated: this.parseTimeSpan(hike.timeEstimated),
           distance: hike.distance as number,
@@ -107,11 +109,15 @@ export class HikeService {
       }),
     };
 
-
-    await this.http.get<HikePathDTO[]>(environment.apiUrl + '/api/Hikes/GetMyFavouriteHikes', httpOptions).subscribe(x => {
-      console.log(x);
-      this.myFavouriteList = x
-    })
+    await this.http
+      .get<HikePathDTO[]>(
+        environment.apiUrl + '/api/Hikes/GetMyFavouriteHikes',
+        httpOptions
+      )
+      .subscribe((x) => {
+        console.log(x);
+        this.myFavouriteList = x;
+      });
   }
 
   searchHikes(keyword: string | null, type: string | null) {
@@ -119,7 +125,8 @@ export class HikeService {
     let params = new HttpParams();
 
     if (keyword !== null) {
-    params = params.append('keyword', keyword);}
+      params = params.append('keyword', keyword);
+    }
 
     if (type !== null) {
       params = params.append('type', type);
@@ -148,17 +155,22 @@ export class HikeService {
 
   addFavouriteHikes(idHikeSelectAddFavourite: number): void {
     if (!navigator.onLine) {
-      this.translate.get('hikeServices.unableAdd').subscribe((message: string) => {
-        this.toastr.error(message, this.translate.instant('hikeServices.offline'));
-      });
+      this.translate
+        .get('hikeServices.unableAdd')
+        .subscribe((message: string) => {
+          this.toastr.error(
+            message,
+            this.translate.instant('hikeServices.offline')
+          );
+        });
       return;
     }
 
-    let token = localStorage.getItem("token");
+    let token = localStorage.getItem('token');
     if (!token) {
       this.router.navigate(['/signin']);
-      throw('No token available');
-      
+      throw 'No token available';
+
       console.error('No token available');
     }
     let httpOptions = {
@@ -167,75 +179,91 @@ export class HikeService {
         Authorization: 'Bearer ' + token,
       }),
     };
-    
-      this.http.post(environment.apiUrl + '/api/Hikes/AddFavourite/' + idHikeSelectAddFavourite, httpOptions).subscribe(x => {
+
+    this.http
+      .post(
+        environment.apiUrl +
+          '/api/Hikes/AddFavourite/' +
+          idHikeSelectAddFavourite,
+        httpOptions
+      )
+      .subscribe((x) => {
         console.log(x);
       });
   }
 
-
- 
-
   isInFavourite(hike: HikeDTO): string {
-
     //Display icon when the hike is not in favourite (empty star)
-    const isNotInFavouriteIcon: String= "far fa-regular fa-star";
+    const isNotInFavouriteIcon: String = 'far fa-regular fa-star';
 
     //Display icon when the hike is in favourite (full star)
-    const isInFavouriteIcon: String= "fas fa-regular fa-star";
-
-
-
-
+    const isInFavouriteIcon: String = 'fas fa-regular fa-star';
 
     // Check if any element in myFavouriteList has the same ID as the given hike
-    if (this.myFavouriteList.some(favorite => favorite.id === hike.id)) {
-        return isInFavouriteIcon.toString();
+    if (this.myFavouriteList.some((favorite) => favorite.id === hike.id)) {
+      return isInFavouriteIcon.toString();
     } else {
-        return isNotInFavouriteIcon.toString();
+      return isNotInFavouriteIcon.toString();
     }
   }
-
-
-
 
   async getAdminHikes(statusFilter?: string): Promise<void> {
     let httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
         // 'Authorization': 'Bearer ' + token
       }),
-      params: statusFilter ? new HttpParams().set('statusFilter', statusFilter) : {}
+      params: statusFilter
+        ? new HttpParams().set('statusFilter', statusFilter)
+        : {},
     };
-  
+
     console.log(environment.apiUrl);
-    await this.http.get<HikePathDTO[]>(environment.apiUrl + '/api/Hikes/GetAdminHikes', httpOptions).subscribe(data => {
-      console.log(data);
-      this.hikeList = data.map(hike => ({
+    await this.http
+      .get<HikePathDTO[]>(
+        environment.apiUrl + '/api/Hikes/GetAdminHikes',
+        httpOptions
+      )
+      .subscribe((data) => {
+        console.log(data);
+        this.hikeList = data.map((hike) => ({
           ...hike,
           timeEstimated: this.parseTimeSpan(hike.timeEstimated),
-          distance: hike.distance as number
-      }));
-      console.log(this.hikeList);
-  });
+          distance: hike.distance as number,
+        }));
+        console.log(this.hikeList);
+      });
   }
-    
-  
+
   updateHikeStatus(id: number, status: number): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         // 'Authorization': 'Bearer ' + token
       }),
-      responseType: 'text' as 'json' // Tell Angular to expect a text response, not JSON
+      responseType: 'text' as 'json', // Tell Angular to expect a text response, not JSON
     };
-  
-    return this.http.put<any>(`${environment.apiUrl}/api/Hikes/UpdateHikeStatus/${id}/status`, { Status: status }, httpOptions);
+
+    return this.http.put<any>(
+      `${environment.apiUrl}/api/Hikes/UpdateHikeStatus/${id}/status`,
+      { Status: status },
+      httpOptions
+    );
   }
-  
-  
-  
+
+  getMyHikes() {
+    console.log('hihi');
+
+    return this.http
+      .get<[HikePathDTO]>(environment.apiUrl + '/api/Hikes/GetMyHikes')
+      .subscribe(
+        (res) => {
+          console.log(res);
+          this.hikeList = res;
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
 }
-
-
-

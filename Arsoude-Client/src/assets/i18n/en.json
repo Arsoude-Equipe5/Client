@@ -9,7 +9,8 @@
     "disconnect":"Disconnect",
     "allTrails":"All trails",
     "favouriteHikes":"Favourite hikes",
-    "profile" : "Profile"
+    "profile" : "Profile",
+    "myhikes" : "My hikes"
   },
 
   "hike-creation":{

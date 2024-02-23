@@ -12,23 +12,48 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { AdminHikesComponent } from './pages/admin-hikes/admin-hikes.component';
 import { AdminGuard } from './Guards/admin.guard';
 import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
+import { MyHikesComponent } from './pages/my-hikes/my-hikes.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'register', component: RegisterComponent,canActivate: [AuthGuardLoggedIn] },
-  { path: 'signin', component: SigninComponent,canActivate: [AuthGuardLoggedIn] },
-  { path: 'hikecreation', component: HikeCreationComponent, canActivate: [AuthGuard] },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [AuthGuardLoggedIn],
+  },
+  {
+    path: 'signin',
+    component: SigninComponent,
+    canActivate: [AuthGuardLoggedIn],
+  },
+  {
+    path: 'hikecreation',
+    component: HikeCreationComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'alltrails', component: AllTrailsComponent },
-  { path: 'favouritehikes', component: FavouriteHikeComponent, canActivate: [AuthGuard] },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
-  { path: 'adminhikes', component: AdminHikesComponent,canActivate: [AdminGuard] },
-  { path: 'updateprofile', component: UpdateProfileComponent,canActivate: [AuthGuard]} 
-
+  {
+    path: 'favouritehikes',
+    component: FavouriteHikeComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+  {
+    path: 'adminhikes',
+    component: AdminHikesComponent,
+    canActivate: [AdminGuard],
+  },
+  {
+    path: 'updateprofile',
+    component: UpdateProfileComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'myhikes', component: MyHikesComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash : true})],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
