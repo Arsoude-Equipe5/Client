@@ -33,7 +33,7 @@ export class AdminTileComponent implements OnInit, OnChanges {
   @Input() zoom: number = 5;
   @ViewChild(GoogleMap, {static: false}) map!: GoogleMap;
   
-  // Correctly initialize markerPositions here
+  //initialize markerPositions here
   markerPositions: google.maps.LatLngLiteral[];
 
   constructor(
@@ -141,5 +141,4 @@ export class AdminTileComponent implements OnInit, OnChanges {
       console.warn('updateStatusCallback is not defined.');
     }
   }
-  
 }
