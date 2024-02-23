@@ -44,9 +44,11 @@
                 </div>
                 <div class="info">
                     <div class="infoTitle">
-                        <p>{{'all-trails.time' | translate}}</p>
-                    </div>
-                    <p>{{hike.timeEstimated}}</p>
+                        {{ "all-trails.type" | translate }}
+                      </div>
+                      <span class="material-symbols-outlined">
+                        {{ hike.type === 0 ? "directions_bike" : "directions_walk" }}
+                      </span>
                 </div>
             </div>
         </div>
@@ -78,8 +80,8 @@
                         {{'all-trails.type' | translate}}
                     </div>
                     <span class="material-symbols-outlined">
-                        directions_walk
-                     </span>
+                        {{ hike.type === 0 ? "directions_bike" : "directions_walk" }}
+                      </span>
                 </div>
                 <div class="info">
                     <div class="infoTitle">
