@@ -207,3 +207,11 @@ html, body {
     height: 12vh;
   }
   
+  .menu{
+    position: absolute;
+    top: 250px;
+    left: 120px;
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+  }

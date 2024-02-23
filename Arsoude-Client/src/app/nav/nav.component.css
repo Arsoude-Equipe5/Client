@@ -125,6 +125,11 @@ cursor: pointer;
   .linkMenu{text-decoration: none;
 color: white;}
 
+.logo{
+  display: inline;
+
+} 
+
 
 }
 @media only screen and (min-width: 1000px)  {
@@ -168,4 +173,20 @@ color: white;}
         60px;
 
     } 
+}
+
+@media only screen and (max-width: 1220px) {
+
+
+
+  .logo{
+    left:-5px;
+
+  } 
+}
+
+@media only screen and (min-width: 1000px) and (max-width: 1076px) {
+  .logo {
+    display: none;
+  } 
 }
