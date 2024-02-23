@@ -150,6 +150,21 @@
     "unableAdd": "Hors ligne: incapable d'ajouter ou retirer une randonnée favorite",
     "offline": "Hors ligne"
     
+  },
+
+
+  "admin-tile":{
+    "pending": "En attente",
+    "validated": "Validé",
+    "rejected": "Rejeté",
+    "all": "Tout",
+    "adminHikesList": "Liste de randonnées Admin",
+    "selectStatus": "Selectionner le Status...",
+    "noHikesAvailable": "Aucune Randonnée Disponible",
+
+    "pendingCaps": "EN ATTENTE",
+    "validatedCaps": "VALIDÉ",
+    "rejectedCaps": "REJETÉ"
   }
 
  

@@ -15,15 +15,15 @@
     <div>
       <div>
         <select [formControl]="statusFilter">
-          <option value="">All</option>
-          <option value="Pending">Pending</option>
-          <option value="Validated">Validated</option>
-          <option value="Rejected">Rejected</option>
+          <option value="">{{'admin-tile.all' | translate}}</option>
+          <option value="Pending">{{'admin-tile.pending' | translate}}</option>
+          <option value="Validated">{{'admin-tile.validated' | translate}}</option>
+          <option value="Rejected">{{'admin-tile.rejected' | translate}}</option>
         </select>
       </div>
 
       <div *ngIf="hikeService.isEmpty===false">
-        <div class="title">Admin Hikes List</div>
+        <div class="title">{{'admin-tile.adminHikesList' | translate}}</div>
         <div class="container-tile" *ngFor="let hike of hikeService.hikeList">
           <div *ngIf="refreshKey">
             <app-admin-tile [hike]="hike" [updateStatusCallback]="updateStatus.bind(this)"></app-admin-tile>
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div>
-        <h2 style="color: white; margin-top: 15px;" *ngIf="hikeService.isEmpty === true"> Aucune randonnée disponible</h2>
+        <h2 style="color: white; margin-top: 15px;" *ngIf="hikeService.isEmpty === true"> {{'admin-tile.noHikesAvailable' | translate}}</h2>
       </div>
     </div>
 </body>
