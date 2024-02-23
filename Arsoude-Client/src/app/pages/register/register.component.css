@@ -1,5 +1,4 @@
 
-
 .container {
   display: flex;
   
@@ -23,7 +22,6 @@
   justify-content: center;
   padding: 30px 0 0 0;
 
-
   background-color: white;
   border-radius: 0 30px 30px 0;
   
@@ -39,7 +37,6 @@
 .labelRequired{
 
 display: flex;
-
 
 }
 
@@ -66,7 +63,6 @@ label {
   font-size: 14px;
   margin-bottom: 5px;
   font-weight: 400;
-
 
 }
 
@@ -143,11 +139,9 @@ margin: 30px 0 40px 0;
 
 }
 
-
 #textLogIn{
   color: #379271;
   text-decoration: none;
-
 
 }
 
@@ -159,7 +153,6 @@ margin: 30px 0 40px 0;
 :host mat-error{
 
 width: 150px;
-
 
 }
 
@@ -174,7 +167,6 @@ color: red;
 
   width: 350px;
 }
-
 
 
 
@@ -243,12 +235,9 @@ flex-direction: column;
 
 
 
-
 }
 
-
  
-
 
 /* Loading Indicator */
 .loader {
@@ -310,3 +299,7 @@ flex-direction: column;
     background-color: #379271;
   }
 }
+
+
+
+

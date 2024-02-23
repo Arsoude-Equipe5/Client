@@ -1,17 +1,15 @@
+
 <div class="container">
   <div class="leftBox"></div>
 
   <div class="rightbox">
     <form [formGroup]="formRegister" (ngSubmit)="onSubmit()" class="formBoite">
-      <h2 translate style="text-align: center" id="titleCreate">
-        register.createAccount
-      </h2>
+      <h2 translate style="text-align: center" id="titleCreate">register.createAccount</h2>
       <div class="row">
         <div class="formInputContainer">
           <div>
-            <label for="firstName">{{"register.firstName" | translate}}</label>
-            <span style="color: red"> *</span>
-          </div>
+          <label for="firstName">{{'register.firstName' | translate}}</label>
+          <span style="color: red;"> *</span></div>
           <input
             class="formInput"
             id="firstName"
@@ -25,7 +23,7 @@
               formRegister.get('firstName')?.touched
             "
           >
-            {{ "register.requiredField" | translate }}
+          {{'register.requiredField' | translate}}
           </mat-error>
           <mat-error
             *ngIf="
@@ -33,7 +31,7 @@
               formRegister.get('firstName')?.touched
             "
           >
-            {{ "register.firsName2car" | translate }}
+          {{'register.firsName2car' | translate}}
           </mat-error>
           <mat-error
             *ngIf="
@@ -41,15 +39,16 @@
               formRegister.get('firstName')?.touched
             "
           >
-            {{ "register.firstName40car" | translate }}
+          {{'register.firstName40car' | translate}}
           </mat-error>
         </div>
 
         <div class="formInputContainer">
+    
+
           <div>
-            <label for="lastName">{{ "register.lastName" | translate }}</label>
-            <span style="color: red"> *</span>
-          </div>
+            <label for="lastName">{{'register.lastName' | translate}}</label>
+            <span style="color: red;"> *</span></div>
 
           <input
             class="formInput"
@@ -59,13 +58,16 @@
             formControlName="lastName"
           />
 
+
+
+          
           <mat-error
             *ngIf="
               formRegister.get('lastName')?.hasError('required') &&
               formRegister.get('lastName')?.touched
             "
           >
-            {{ "register.requiredField" | translate }}
+            {{'register.requiredField' | translate}}
           </mat-error>
 
           <mat-error
@@ -74,7 +76,7 @@
               formRegister.get('lastName')?.touched
             "
           >
-            {{ "register.lastName2car" | translate }}
+           {{'register.lastName2car' | translate}}
           </mat-error>
           <mat-error
             *ngIf="
@@ -82,15 +84,16 @@
               formRegister.get('lastName')?.touched
             "
           >
-            {{ "register.lastName40car" | translate }}
+           {{'register.lastName40car' | translate}}
           </mat-error>
         </div>
 
         <div class="formInputContainer">
-          <div>
-            <label for="address">{{ "register.address" | translate }} </label>
-          </div>
 
+          <div>
+          <label for="address">{{'register.address' | translate}} </label>
+          </div>
+          
           <input
             placeholder="123 Bader St"
             class="formInput"
@@ -98,15 +101,19 @@
             type="text"
             formControlName="address"
           />
+
+
+
         </div>
 
         <div class="formInputContainer">
+        
+
+          
           <div>
-            <label for="postalCode"
-              >{{ "register.postalCode" | translate }}
-            </label>
-            <span style="color: red"> *</span>
-          </div>
+            <label for="postalCode">{{'register.postalCode' | translate}} </label>
+            <span style="color: red;"> *</span></div>
+
 
           <input
             class="formInput"
@@ -122,23 +129,24 @@
               formRegister.get('postalCode')?.hasError('required') &&
               formRegister.get('postalCode')?.touched
             "
-            >{{ "register.requiredField" | translate }}</mat-error
+            >{{'register.requiredField' | translate}}</mat-error
           >
           <mat-error
             *ngIf="
               formRegister.get('postalCode')?.hasError('pattern') &&
               formRegister.get('postalCode')?.touched
             "
-            >{{ "register.invalidPostalCode" | translate }}
+            >{{'register.invalidPostalCode' | translate}}
           </mat-error>
         </div>
       </div>
       <div class="row">
         <div class="formInputContainer">
+       
+
           <div>
-            <label for="email">{{ "register.email" | translate }}</label>
-            <span style="color: red"> *</span>
-          </div>
+            <label for="email">{{'register.email' | translate}}</label>
+            <span style="color: red;"> *</span></div>
 
           <input
             class="formInput"
@@ -153,7 +161,7 @@
               formRegister.get('email')?.touched
             "
           >
-            {{ "register.requiredField" | translate }}</mat-error
+          {{'register.requiredField' | translate}}</mat-error
           >
           <mat-error
             *ngIf="
@@ -161,59 +169,63 @@
               formRegister.get('email')?.touched
             "
           >
-            {{ "register.invalidEmail" | translate }}
+          {{'register.invalidEmail' | translate}}
           </mat-error>
         </div>
         <div class="formInputContainer">
+          
+
           <div>
-            <label for="birthDate">{{'register.dateOfBirth' | translate}}</label>
+            <label for="dateOfBirth">{{'register.dateOfBirth' | translate}}</label>
+
+            </div>
 
           <input
             type="date"
             class="formInput"
             id="date"
-            formControlName="birthDate"
+            formControlName="dateOfBirth"
             placeholder="2024-02-03"
-            max="{{ this.date }}"
-            (keydown)="(false)"
-            (paste)="(false)"
+            max="{{this.date}}"
+            (keydown)="false"
+            (paste)="false"
           />
 
           <mat-error
             *ngIf="
-              formRegister.get('birthDate')?.hasError('required') &&
-              formRegister.get('birthDate')?.touched
+              formRegister.get('dateOfBirth')?.hasError('required') &&
+              formRegister.get('dateOfBirth')?.touched
             "
           >
-            {{ "register.requiredField" | translate }}</mat-error
+          {{'register.requiredField' | translate}}</mat-error
           >
 
           <mat-error
             *ngIf="
-              formRegister.get('birthDate')?.hasError('pastDate') &&
-              formRegister.get('birthDate')?.touched
+              formRegister.get('dateOfBirth')?.hasError('pastDate') &&
+              formRegister.get('dateOfBirth')?.touched
             "
           >
-            {{ "register.invalidDate" | translate }}</mat-error
+          {{'register.invalidDate' | translate}}</mat-error
           >
 
           <mat-error
             *ngIf="
-              formRegister.get('birthDate')?.hasError('futureDate') &&
-              formRegister.get('birthDate')?.touched
+              formRegister.get('dateOfBirth')?.hasError('futureDate') &&
+              formRegister.get('dateOfBirth')?.touched
             "
           >
-            {{ "register.requiredField" | translate }}</mat-error
+          {{'register.requiredField' | translate}}</mat-error
           >
         </div>
       </div>
       <div class="row">
         <div class="formInputContainer">
-          <div>
-            <label for="password">{{ "register.password" | translate }}</label>
 
-            <span style="color: red"> *</span>
-          </div>
+          <div>
+            <label for="password">{{'register.password' | translate}}</label>
+
+            <span style="color: red;"> *</span></div>
 
           <input
             class="formInput"
@@ -228,18 +240,17 @@
               formRegister.get('password')?.touched
             "
           >
-            {{ "register.requiredField" | translate }}</mat-error
+          {{'register.requiredField' | translate}}</mat-error
           >
 
-          <p
-            class="passwordError"
+          <p class="passwordError"
             *ngIf="
               formRegister.get('password')?.hasError('pattern') ||
               (formRegister.get('password')?.hasError('minlength') &&
                 formRegister.get('password')?.touched)
             "
           >
-            {{ "register.password6car" | translate }}
+          {{'register.password6car' | translate}}
           </p>
 
           <mat-error
@@ -249,19 +260,18 @@
               formRegister.get('password')?.touched
             "
           >
-            {{ "register.password100car" | translate }}
+          {{'register.password100car' | translate}}
           </mat-error>
         </div>
       </div>
       <div class="row">
         <div class="formInputContainer">
-          <div>
-            <label for="confirmedPassword">{{
-              "register.confirmPassword" | translate
-            }}</label>
 
-            <span style="color: red"> *</span>
-          </div>
+
+          <div>
+            <label for="confirmedPassword">{{'register.confirmPassword' | translate}}</label>
+
+            <span style="color: red;"> *</span></div>
 
           <input
             class="formInput"
@@ -276,21 +286,18 @@
               formRegister.get('confirmedPassword')?.touched
             "
           >
-            {{ "register.requiredField" | translate }}</mat-error
-          >
-          <p
-            class="passwordError"
+          {{'register.requiredField' | translate}}</mat-error>
+          <p class="passwordError"
             *ngIf="!formRegister.get('confirmedPassword')?.hasError('required') && formRegister.errors?.['passwordMismatch'] && formRegister.get('confirmedPassword')?.touched "
           >
-            {{ "register.passwordMatching" | translate }}
-          </p>
+          {{'register.passwordMatching' | translate}}</p
+          >
         </div>
       </div>
 
       <!-- Translates the error message from the server -->
-      <p translate style="color: red; text-align: center">
-        {{ this.requestResponseFormat }}
-      </p>
+      <p translate style="color: red; text-align: center;">{{this.requestResponseFormat}}</p> 
+  
 
       <div class="row flex-center">
         <div class="content">
@@ -303,25 +310,20 @@
           </div>
           <button
             type="submit"
-            [disabled]="formRegister.invalid || isWaiting"
+            [disabled]="formRegister.invalid || isWaiting  "
             class="submitBtn"
             *ngIf="!isWaiting"
           >
-            {{ "register.createAccount" | translate }}
+          {{'register.createAccount' | translate}}
           </button>
 
-          <p id="textSignIn">
-            {{ "register.alreadyAnAccount" | translate }}
-            <a routerLink="/signin" id="textLogIn">{{
-              "register.login" | translate
-            }}</a>
-          </p>
+          <p id="textSignIn">{{'register.alreadyAnAccount' | translate}} <a routerLink="/signin" id="textLogIn">{{'register.login' | translate}}</a></p>
         </div>
       </div>
 
       <!-- <pre>form value : {{ formRegister.value | json }}</pre>
       <pre>form status : {{ formRegister.status }}</pre>
       <pre>form errors: {{ formRegister.errors | json }}</pre> -->
+    </form>
   </div>
-</form>
 </div>
