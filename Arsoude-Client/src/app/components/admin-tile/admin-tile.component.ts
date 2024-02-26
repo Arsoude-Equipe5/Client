@@ -141,4 +141,11 @@ export class AdminTileComponent implements OnInit, OnChanges {
       console.warn('updateStatusCallback is not defined.');
     }
   }
+
+  calculateTime(distanceKm: number): any {
+    const averageKmHoursWalk = 4.55;
+    const timeHours = distanceKm / averageKmHoursWalk;
+    const roundedTime = Number(timeHours.toFixed(2)); // Round to two decimal places
+    return roundedTime;
+}
 }

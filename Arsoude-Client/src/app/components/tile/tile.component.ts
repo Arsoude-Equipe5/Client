@@ -102,5 +102,13 @@ export class TileComponent implements OnInit{
   ngAfterViewInit(): void {
     this.updateMapView();
   }
+
+
+  calculateTime(distanceKm: number): any {
+    const averageKmHoursWalk = 4.55;
+    const timeHours = distanceKm / averageKmHoursWalk;
+    const roundedTime = Number(timeHours.toFixed(2)); // Round to two decimal places
+    return roundedTime;
+}
 }
 
