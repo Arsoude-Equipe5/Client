@@ -1,59 +1,55 @@
-    .container{
+.container{
+    padding-top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
-        padding-top: 18vh;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
+.firstRow{
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
 
+.leftBox{
+    background-color: red;
+    display: flex;
+    height: 500px;
+    width: 95%;
+    background-image: linear-gradient(  #347352,#193D2A);
+    border-radius: 0 20px 20px 0;
+}
+
+.leftPart{
+    padding-left: 120px;
+    width: 40%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+
+
+}
+.contentBox{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    gap: 10px;
     
-    }
-
-    .firstRow{
-
-       width: 100%;
-        display: flex;
-        gap: 15px;
-        justify-content: space-between;
-    }
-
-    .leftBox{
-
-        display: flex;
-        height: 500px;
-        width: 95%;
-        background-image: linear-gradient(  #347352,#193D2A);
-        border-radius: 0 20px 20px 0;
-
-    }
-
-
-    .leftPart{
-        width: 40%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-   
-
-
-    }
-    .contentBox{
-        display: flex;
-        flex-direction: column;
-        width: 80%;
-        gap: 10px;
-     
-        
-        
-    }
+    
+    
+}
 
     .imgBox{
-
         width: 100%;
         height: 100%;
+        object-fit: cover;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
     }
         
     .rightPart{
-        
         width: 60%;
     }
 
@@ -63,11 +59,9 @@
 
     .rightBox{
         height: 500px;
-
-        width: 20%;
+        width: 365px;
         background-image: linear-gradient(  #347352,#193D2A);
-        border-radius: 20px 0 0 20px
-
+        border-radius: 20px 0 0 20px;
     }
 
     .secondRow{
@@ -80,13 +74,6 @@ padding-top: 25px;
 
     }
 
-    .thirdRow{
-
-
-    width: 100%;
-    height: 800px;
-    background-color: #193D2A;
-    }
 
     .titlePage{
 
@@ -132,26 +119,12 @@ padding-top: 25px;
 }
 
 .rightBox{
-
+    padding-right: 120px;
     display: flex;
-
+    flex-direction: column;
     justify-content: center;
-    
-    padding-left: 3vh
-    
-   
+    padding-left: 1.2%;
     }
-
-    .images{
-
-        width: 70%;
-   
-        border-radius: 15px;
-        margin-bottom: 15px;
-
-    }
-
-  
 
     .titleImages{
 
@@ -165,8 +138,10 @@ padding-top: 25px;
     }
 
     .imageBox{
-display: flex;
-flex-direction: column;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
     }
 
    
@@ -177,7 +152,6 @@ flex-direction: column;
     }
 
     .square{
-
         height: 15.7398vh;
         width: 15.7398vh;
         background-color: #379271;
@@ -232,25 +206,22 @@ line-height: 110%;
 @media only screen and (max-width: 1400px) {
 
      .firstRow{
-
-
         flex-direction: column;
-       
-
-        
+    }
+    .imgBox{
+        display: none;
     }
 
     .leftBox{
-        
+        border-radius: 0px;
         flex-direction: column; 
-        justify-content: center;
         align-items: center;
         width: 100%;
         height: 100%;
+        background-image: url("/assets/images/2024-01-26_09_30_36-fc8c42d9-1012-4f31-9801-060789edc1041.png");
+        background-position: center;
         
     }
-
-
 
     .titlePage,.titleImages {
         width: 100%;
@@ -275,7 +246,7 @@ line-height: 110%;
         }
 
         .imgBox{
-
+            
             width: 50%;
             padding-bottom: 5vh;
           
@@ -315,4 +286,58 @@ line-height: 110%;
     }
 
     
+}
+
+@media only screen and (max-width: 800px) {
+    .firstRow{
+        flex-direction: column;
+    }
+}
+
+.thirdRow{
+    width: 100%;
+    height: 800px;
+    background-color: #193D2A;
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.test1{
+    width: 500px;
+    height: 700px;
+    display: block;
+    background-color: black;
+    transition: width 0.3s, height 0.3s, opacity 0.3s;
+}
+
+.row4{
+    margin-top: 80px;
+    background-color: #193D2A;
+    width: 100%;
+    height: 800px;
+}
+
+.topBtn{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    background-color: grey;
+    outline: none;
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 50px;
+    font-size: 20px;
+    color: white;
+}
+
+app-home-tile{
+    cursor: pointer;
 }
