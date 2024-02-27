@@ -45,15 +45,6 @@
               <div class="descTitle">
                 {{ "all-trails.description" | translate }}
               </div>
-              <div class="favBtn">
-                <button
-                  class="star-button"
-                  *ngIf="isLoggedIn()"
-                  (click)="onButtonClick(hikeService.selectedHike.id, hikeService.selectedHike)"
-                >
-                  <i [class]="hikeService.isInFavourite(hikeService.selectedHike)"></i>
-                </button>
-              </div>
             </div>
             <div class="desc">
               <p>{{ hikeService.selectedHike.description }}</p>
