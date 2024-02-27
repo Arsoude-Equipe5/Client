@@ -11,11 +11,6 @@
                     <h1>{{hike.name}}</h1>
                     <p>{{hike.location}}</p>
                 </div>
-                <div class="favBtnSmall">
-                    <button class="star-button" *ngIf="isLoggedIn()" (click)="onButtonClick(hike.id, hike)">
-                        <i [class]="hikeService.isInFavourite(hike)"></i>
-                    </button>
-                </div>
             </div>
 
             <div *ngIf="isAdmin()">
@@ -58,11 +53,6 @@
                     <div class="descTitle">
                         {{'all-trails.description' | translate}}
                     </div>
-                    <div class="favBtn">
-                        <button class="star-button" *ngIf="isLoggedIn()" (click)="onButtonClick(hike.id, hike)">
-                            <i [class]="hikeService.isInFavourite(hike)"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="desc">
                     <p>{{hike.description}}</p>
@@ -85,14 +75,11 @@
                 </div>
                 <div class="info">
                     <div class="infoTitle">
-                        {{'all-trails.time' | translate}}
+                      {{ "all-trails.time" | translate }}
                     </div>
-                     <p *ngIf="hike.timeEstimated">{{ hike.timeEstimated }}</p>
-                        <div *ngIf="(hike.distance != null && hike.distance !== 0 && !hike.timeEstimated)">
-                            <p>{{ calculateTime(hike.distance) }} {{ "all-trails.hours" | translate }}</p>
-                        </div>
-                     <p *ngIf="(hike.distance == null || hike.distance === 0) && !hike.timeEstimated">N/A</p>
-                </div>
+                    <p *ngIf="hike.timeEstimated; else noTime">{{ hike.timeEstimated }}</p>
+                    <ng-template #noTime>N/D</ng-template>
+                  </div>
             </div>
         </div>
     </div>

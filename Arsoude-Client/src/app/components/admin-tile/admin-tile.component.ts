@@ -108,20 +108,9 @@ export class AdminTileComponent implements OnInit, OnChanges {
     return hikeStatus[status]?.toUpperCase() || 'UNKNOWN';
   }
 
-  async onButtonClick(id: number, hike: HikePathDTO): Promise<void> {
-    await this.hikeService.addFavouriteHikes(id);
-    await this.toggleFavourite(hike);
-  }
+  
 
-  async toggleFavourite(hike: HikePathDTO): Promise<void> {
-    const isNotInFavouriteIcon: String = "far fa-regular fa-star";
-    if (this.hikeService.isInFavourite(hike) === isNotInFavouriteIcon) {
-      await this.hikeService.myFavouriteList.push(hike); // Add to favorites
-    } else {
-      // Remove from favorites
-      this.hikeService.myFavouriteList = this.hikeService.myFavouriteList.filter(favorite => favorite.id !== hike.id);
-    }
-  }
+ 
 
   callUpdateStatusCallback(hikeId: number, newStatus: number): void {
     if (this.updateStatusCallback) {
@@ -142,10 +131,5 @@ export class AdminTileComponent implements OnInit, OnChanges {
     }
   }
 
-  calculateTime(distanceKm: number): any {
-    const averageKmHoursWalk = 4.55;
-    const timeHours = distanceKm / averageKmHoursWalk;
-    const roundedTime = Number(timeHours.toFixed(2)); // Round to two decimal places
-    return roundedTime;
-}
+ 
 }
