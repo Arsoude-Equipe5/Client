@@ -277,6 +277,8 @@ export class HikeCreationComponent implements OnInit {
 
 
           const roundedDistance = Number(distance.toFixed(2));
+
+          const timeEstimated = this.convertHoursToTimeString(Number(this.calculateTime(roundedDistance)));
         
           const hikeData: HikeDTO = new HikeDTO(
             0,
@@ -352,7 +354,29 @@ showWarning() {
     this.toastr.warning(fullMessage, warningWord);
   });
 }
+
+
+calculateTime(distanceKm: number): any {
+  const averageKmHoursWalk = 4.55;
+  const timeHours = distanceKm / averageKmHoursWalk;
+  const roundedTime = Number(timeHours.toFixed(2)); // Round to two decimal places
+  return roundedTime;
 }
+
+
+convertHoursToTimeString(hours: number): string {
+  const totalSeconds = Math.floor(hours * 3600);
+  const hoursPart = Math.floor(totalSeconds / 3600);
+  const minutesPart = Math.floor((totalSeconds % 3600) / 60);
+  const secondsPart = totalSeconds % 60;
+
+  const formattedTime = `${String(hoursPart).padStart(2, '0')}:${String(minutesPart).padStart(2, '0')}:${String(secondsPart).padStart(2, '0')}`;
+  return formattedTime;
+}
+}
+
+
+
 
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
