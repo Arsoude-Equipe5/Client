@@ -18,6 +18,8 @@ export class HikeService {
   hikeList: HikePathDTO[] = [];
   myFavouriteList: HikePathDTO[] = [];
 
+  selectedHike?: HikePathDTO;
+
   isWaiting: boolean = false;
 
   constructor(
@@ -262,5 +264,17 @@ export class HikeService {
       { Status: status },
       httpOptions
     );
+  }
+
+
+  async getSelectedHike(selectedHikeId:number): Promise<void> {
+
+    this.selectedHike = undefined;
+    console.log("this is the id selected: " + selectedHikeId);
+    await this.http.get<HikePathDTO>(environment.apiUrl + '/api/Hikes/GetHike/' + selectedHikeId).subscribe(x => {
+      console.log("The selected Hike: " + x.name);
+      this.selectedHike = x;
+
+    })
   }
 }

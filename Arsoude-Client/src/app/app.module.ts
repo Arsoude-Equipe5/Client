@@ -48,6 +48,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { AdminHikesComponent } from './pages/admin-hikes/admin-hikes.component';
 import { TileComponent } from './components/tile/tile.component';
 import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
+import { DetailsComponent } from './pages/details/details.component';
 
 
 const MY_DATE_FORMAT = {
@@ -75,6 +76,7 @@ const MY_DATE_FORMAT = {
     NavbarComponent,
     FavouriteHikeComponent,
     UpdateProfileComponent,
+    DetailsComponent,
     InputComponent,
     AllTrailsComponent,
     TileComponent,

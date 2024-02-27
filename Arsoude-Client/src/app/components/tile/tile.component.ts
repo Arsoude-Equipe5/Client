@@ -102,5 +102,8 @@ export class TileComponent implements OnInit{
   ngAfterViewInit(): void {
     this.updateMapView();
   }
+
+
+  
 }
 

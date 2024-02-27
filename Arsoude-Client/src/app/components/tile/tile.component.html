@@ -1,5 +1,9 @@
-<div class="main">
-    <div class="left">
+<div class="main"
+[routerLink]="['/details/' + hike.id]"
+routerLinkActive="active"
+ariaCurrentWhenActive="page">
+
+    <div class="left" onclick="redirectToPage()">
       <div class="content-l">
         <div class="titleTop">
           <div class="boxTitle">
@@ -97,5 +101,6 @@
         </google-map>
       </div>
     </div>
+    
   </div>
   
