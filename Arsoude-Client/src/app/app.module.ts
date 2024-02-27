@@ -48,6 +48,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { AdminHikesComponent } from './pages/admin-hikes/admin-hikes.component';
 import { TileComponent } from './components/tile/tile.component';
 import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
+import { DoomComponent } from './doom/doom.component';
 
 
 const MY_DATE_FORMAT = {
@@ -80,7 +81,8 @@ const MY_DATE_FORMAT = {
     TileComponent,
     AdminComponent,
     AdminHikesComponent,
-    AdminTileComponent
+    AdminTileComponent,
+    DoomComponent
   ],
   imports: [
     BrowserModule,
