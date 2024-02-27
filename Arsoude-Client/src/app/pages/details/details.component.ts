@@ -28,12 +28,6 @@ export class DetailsComponent implements AfterViewInit {
 
 
 
-  // updateMarkerPositions(): void {
-  //     this.markerPositions = [
-  //       { lat: this.hike.startPoint.latitude, lng: this.hike.startPoint.longitude },
-  //       { lat: this.hike.endPoint.latitude, lng: this.hike.endPoint.longitude }
-  //     ];
-  // }
 
   ngAfterViewInit(): void {}
 
