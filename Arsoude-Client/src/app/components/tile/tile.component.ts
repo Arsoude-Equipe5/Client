@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class TileComponent implements OnInit{
   startPoint1 = new HikeCoordinatesDTO(37.7749, -122.4194, new Date());
   endPoint1 = new HikeCoordinatesDTO(40.7128, -74.0060, new Date());
-
+  @Input() showStatus:boolean=false;
   @Input() hike: HikePathDTO = new HikePathDTO(
     1,
     "Hike 1",

@@ -263,4 +263,24 @@ export class HikeService {
       httpOptions
     );
   }
+
+  getMyHikes() {
+    console.log('hihi');
+
+    return this.http
+      .get<[HikePathDTO]>(environment.apiUrl + '/api/Hikes/GetMyHikes')
+      .subscribe(
+        (res) => {
+          console.log(res);
+          this.hikeList = res;
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+
+
+
+
 }
