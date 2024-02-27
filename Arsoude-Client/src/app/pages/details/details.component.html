@@ -13,48 +13,35 @@
   <div class="main" *ngIf="hikeService.selectedHike is not undefined">
 
       <div class="left">
-        <div class="content-l">
-          <div class="titleTop">
-            <div class="boxTitle">
-              <h1>{{ hikeService.selectedHike.name }}</h1>
-              <p>{{ hikeService.selectedHike.location }}</p>
-            </div>
-            <div class="favBtnSmall">
-              <button
-                class="star-button"
-                *ngIf="isLoggedIn()"
-                (click)="onButtonClick(hikeService.selectedHike.id, hikeService.selectedHike)"
-              >
-                <i [class]="hikeService.isInFavourite(hikeService.selectedHike)"></i>
-              </button>
-            </div>
-          </div>
-          <div class="image">
-            <img src="{{ hikeService.selectedHike.image }}" alt="" />
-          </div>
-          <div class="infoSmall">
-            <div class="info">
-              <p class="infoTitle">{{ "all-trails.distance" | translate }}</p>
-              <p>{{ hikeService.selectedHike.distance }} Km</p>
-            </div>
-            <div class="info">
-              <p class="infoTitle">{{ "all-trails.type" | translate }}</p>
-              <span class="material-symbols-outlined">
-                {{ hikeService.selectedHike.type === 0 ? "directions_bike" : "directions_walk" }}
-              </span>
-            </div>
-            <div class="info">
-              <div class="infoTitle">
-                <p>{{ "all-trails.time" | translate }}</p>
-              </div>
-              <p *ngIf="hikeService.selectedHike.timeEstimated; else noTime">{{ hikeService.selectedHike.timeEstimated }} H</p>
-              <ng-template #noTime>N/D</ng-template>
-            </div>
-          </div>
-        </div>
+        
         <div class="content-r">
           <div class="top">
+            
+
+            <div class="titleTop">
+              <div class="boxTitle">
+                <h1>{{ hikeService.selectedHike.name }}</h1>
+                <p>{{ hikeService.selectedHike.location }}</p>
+              </div>
+              
+              <div class="favBtnSmall">
+                <button
+                  class="star-button"
+                  *ngIf="isLoggedIn()"
+                  (click)="onButtonClick(hikeService.selectedHike.id, hikeService.selectedHike)"
+                >
+                  <i [class]="hikeService.isInFavourite(hikeService.selectedHike)"></i>
+                </button>
+              </div>
+            </div>
+            <br>
+            <div class="image">
+              <img src="{{ hikeService.selectedHike.image }}" alt="" />
+            </div>
+            <br>
+            <br>
             <div class="descTop">
+              
               <div class="descTitle">
                 {{ "all-trails.description" | translate }}
               </div>
@@ -72,6 +59,7 @@
               <p>{{ hikeService.selectedHike.description }}</p>
             </div>
           </div>
+          <br>
           <div class="bottom">
             <div class="info">
               <div class="infoTitle">
@@ -95,19 +83,19 @@
               <ng-template #noTime>N/D</ng-template>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="right">
-        <div class="map-section">
-          <google-map
-            [center]="center"
-            [zoom]="zoom"
-            [width]="'100%'"
-            [height]="'100%'"
-          >
-            <map-marker *ngFor="let marker of markerPositions" [position]="marker">
-            </map-marker>
-          </google-map>
+          
+          <div class="map-section">
+            <google-map
+              [center]="center"
+              [zoom]="zoom"
+              [width]="'100%'"
+              [height]="'100%'"
+            >
+              <map-marker *ngFor="let marker of markerPositions" [position]="marker">
+              </map-marker>
+            </google-map>
+          </div>
+
         </div>
       </div>
       

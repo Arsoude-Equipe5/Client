@@ -16,13 +16,24 @@ export class DetailsComponent implements AfterViewInit {
   @Input() center: google.maps.LatLngLiteral = { lat: 42, lng: -4 }; // Use @Input decorator
   @Input() zoom: number = 5; // Use @Input decorator
   markerPositions: google.maps.LatLngLiteral[];
+  hike?:HikePathDTO = this.hikeService.selectedHike;
 
   constructor(
     public hikeService: HikeService,
     private authService: AuthService
   ) {
-    this.markerPositions = []; // Initialize as an empty array
+    this.markerPositions = [];
+    this.hike = this.hikeService.selectedHike;
   }
+
+
+
+  // updateMarkerPositions(): void {
+  //     this.markerPositions = [
+  //       { lat: this.hike.startPoint.latitude, lng: this.hike.startPoint.longitude },
+  //       { lat: this.hike.endPoint.latitude, lng: this.hike.endPoint.longitude }
+  //     ];
+  // }
 
   ngAfterViewInit(): void {}
 
@@ -65,4 +76,6 @@ export class DetailsComponent implements AfterViewInit {
       );
     }
   }
+
+  
 }
