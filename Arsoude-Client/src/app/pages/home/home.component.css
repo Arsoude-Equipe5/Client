@@ -13,7 +13,6 @@
 }
 
 .leftBox{
-    background-color: red;
     display: flex;
     height: 500px;
     width: 95%;
@@ -27,87 +26,73 @@
     display: flex;
     justify-content: left;
     align-items: center;
-
-
-
 }
+
 .contentBox{
     display: flex;
     flex-direction: column;
     width: 80%;
     gap: 10px;
-    
-    
-    
 }
 
-    .imgBox{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
-    }
-        
-    .rightPart{
-        width: 60%;
-    }
+.imgBox{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+    
+.rightPart{
+    width: 60%;
+}
 
-    .imgSection{
-        width: 100%;
-    }
+.imgSection{
+    width: 100%;
+}
 
-    .rightBox{
-        height: 500px;
-        width: 365px;
-        background-image: linear-gradient(  #347352,#193D2A);
-        border-radius: 20px 0 0 20px;
-    }
+.rightBox{
+    height: 500px;
+    width: 365px;
+    background-image: linear-gradient(  #347352,#193D2A);
+    border-radius: 20px 0 0 20px;
+}
 
-    .secondRow{
-
-padding-top: 25px;
+.secondRow{
+    padding-top: 25px;
     width: 100%;
     height: 400px;
     background-image: linear-gradient(  #347352,#193D2A);
+}
 
-
-    }
-
-
-    .titlePage{
-
-        font-family:'Lato';
-        font-weight: 500;
+.titlePage{
+    font-family:'Lato';
+    font-weight: 500;
     font-size: 35px;
     color: white;
-    }
-    .inputSearch{
+}
 
-        width:  38.300vh;
-        padding: 15px;
-        border-radius: 20px;
-    }
+.inputSearch{
+    width: 90%;
+    padding: 15px;
+    border-radius: 20px;
+}
 
-    .description{
+.description{
+    font-family:'Lato';
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 120%;
+    width: 80%;
+    color: white;
+    margin-top: 10px;
+}
 
-        
-        font-family:'Lato';
-        font-size: 19px;
-        font-weight: 400;
-        line-height: 120%;
-        width: 80%;
-       color: white;
-       margin-top: 10px;
-
-    }
-
-    .trailBtn{  
-
-        width: 240px;
+.trailBtn{
+    cursor: pointer;
     margin-top: 20px;
     background-color: #379271;
-   padding: 20px;
+    padding: 20px;
     margin-bottom: 20px;
     border-radius: 15px;
     border: none 10px;
@@ -115,7 +100,6 @@ padding-top: 25px;
     font-weight: 500;
     font-size: 23px;
     font-family: 'Lato';
-
 }
 
 .rightBox{
@@ -124,92 +108,88 @@ padding-top: 25px;
     flex-direction: column;
     justify-content: center;
     padding-left: 1.2%;
-    }
+}
 
-    .titleImages{
+.titleImages{
+    font-family: 'Lato';
+    font-size: 19px;
+    font-weight: 600;
+    color: white;
+    padding-top: 10px;
 
-            font-family: 'Lato';
-            font-size: 19px;
-        font-weight: 600;
-        color: white;
-        padding-top: 10px;
-  
-        
-    }
+    
+}
 
-    .imageBox{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
-    }
+.imageBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
 
-   
-    .secondRow{
-        display: flex;
-        justify-content: space-evenly;
 
-    }
+.secondRow{
+    display: flex;
+    justify-content: space-evenly;
+}
 
-    .square{
-        height: 15.7398vh;
-        width: 15.7398vh;
-        background-color: #379271;
-        border-radius: 10px;
+.square{
+    height: 15.7398vh;
+    width: 15.7398vh;
+    background-color: #379271;
+    border-radius: 10px;
     box-shadow: 5px 5px 1000px;
-    }
+}
 
- 
-    .topPart{
-        height: 13.116vh;
-        width: 28.3316vh;
-        background-color: #379271;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius:  15px 15px 0 0;
-        
-    }
-    .bottomPart{
-        height: 20.9864vh;
-        width: 28.3316vh;
-        background-color: #ffffff;
-        border-radius:  0 0 20px 20px;
-      
+.topPart{
+    height: 13.116vh;
+    width: 28.3316vh;
+    background-color: #379271;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:  15px 15px 0 0;
+}
 
-    }
-    .imageCard{
+.bottomPart{
+    height: 20.9864vh;
+    width: 28.3316vh;
+    background-color: #ffffff;
+    border-radius:  0 0 20px 20px;
+}
 
-        width: 100%;
-        height: 100%;
-    }
+.imageCard{
+    width: 100%;
+    height: 100%;
+}
 
-    .col1{
+.col1{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
 
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-        
-    }
-   
-
-    .titleCard{
-line-height: 110%;
-        text-align: center;
-        font-family:'Lato';
-        font-weight: 500;
+.titleCard{
+    line-height: 110%;
+    text-align: center;
+    font-family:'Lato';
+    font-weight: 500;
     font-size: 30px;
     color: white;
-    }
+}
 
 
 @media only screen and (max-width: 1400px) {
 
-     .firstRow{
+    .firstRow{
         flex-direction: column;
     }
     .imgBox{
         display: none;
+    }
+
+    .inputSearch{
+        width: 100%;
     }
 
     .leftBox{
@@ -218,9 +198,23 @@ line-height: 110%;
         align-items: center;
         width: 100%;
         height: 100%;
+        background-color: transparent;
+        background-position: center;
+        background-image: none;
+    }
+
+    .leftBox::after{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         background-image: url("/assets/images/2024-01-26_09_30_36-fc8c42d9-1012-4f31-9801-060789edc1041.png");
         background-position: center;
-        
+        background-size: cover;
+        filter: blur(5px); /* Adjust the blur radius as needed */
+        z-index: -1;
     }
 
     .titlePage,.titleImages {
@@ -229,9 +223,16 @@ line-height: 110%;
     }
 
     .rightPart{
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .leftPart{
+        padding: 0;
+        justify-content: center;
+        width: 80%;
     }
 
     .contentBox{
@@ -241,50 +242,47 @@ line-height: 110%;
         
     }
     .description{
-            width: 100%;
-            text-align: center;
-        }
+        width: 100%;
+        text-align: center;
+    }
 
-        .imgBox{
-            
-            width: 50%;
-            padding-bottom: 5vh;
-          
-        }
+    .imgBox{
+        width: 50%;
+        padding-bottom: 5vh;
+    }
 
     .rightBox{
         width: 100%;
         padding : 0vh;
         justify-content: center;
         align-items: center;
-
         height: 100%;
-            
+        border-radius: 0px;
     } 
     .imageBox{
-
-        flex-direction: row;
         width: 100%;
-        gap: 2vh;
         align-items: center;
         justify-content: center;
     }
     .images{width: 30%;}
 
     .secondRow{
-            flex-direction: column;
-            width: 100%;
-            height: 100%;
-            justify-content: center;
-            align-items: center;
-            gap: 3vh;
-            padding-bottom: 2vh;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 3vh;
+        padding-bottom: 2vh;
     }
 
     .col1{
         flex-direction: row;
     }
 
+    .trailBtn{
+        font-size: 1rem;
+    }
     
 }
 

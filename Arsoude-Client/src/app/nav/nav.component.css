@@ -61,7 +61,6 @@ li a:hover, .navBtn:active { text-decoration: none; color:#000; }
 }
 
 .menuMobile{
-
     display: none;
 }
 
@@ -104,15 +103,12 @@ li a:hover, .navBtn:active { text-decoration: none; color:#000; }
 cursor: pointer;
 }
 
-@media only screen and (max-width: 1000px) {
-   
-
+@media only screen and (max-width: 1300px) {
     .menuMobile{
-
-        display: block;
-        display: flex;
-        justify-content: end;
-        padding-right: 7vh;
+      display: block;
+      display: flex;
+      justify-content: end;
+      padding-right: 60px;
     }
 
     ul{
@@ -125,25 +121,16 @@ cursor: pointer;
   .linkMenu{text-decoration: none;
 color: white;}
 
-.logo{
-  display: inline;
+  .logo{
+    display: inline;
 
-} 
-
-
+  } 
 }
-@media only screen and (min-width: 1000px)  {
-   
-
-
+@media only screen and (min-width: 1300px)  {
     .strip{
-
-
         padding-left: 45vh;
         padding-right: 2%;
 
-
-        
     }
     
     ::ng-deep .cdk-overlay-container {
@@ -164,29 +151,11 @@ color: white;}
 }
 
 @media only screen and (max-width: 900px) {
-
-
-
     .logo{
-      
         left: 
-        60px;
-
+        30px;
     } 
-}
-
-@media only screen and (max-width: 1220px) {
-
-
-
-  .logo{
-    left:-5px;
-
-  } 
-}
-
-@media only screen and (min-width: 1000px) and (max-width: 1076px) {
-  .logo {
-    display: none;
-  } 
+    .menuMobile{
+      padding-right: 30px;
+    }
 }
