@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class MyHikesComponent implements OnInit {
   startPoint1 = new HikeCoordinatesDTO(37.7749, -122.4194, new Date());
   endPoint1 = new HikeCoordinatesDTO(40.7128, -74.006, new Date());
-
+  showStatus: boolean = true;
   constructor(
     public hikeService: HikeService,
     public authService: AuthService

@@ -13,7 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class TileComponent implements OnInit {
   startPoint1 = new HikeCoordinatesDTO(37.7749, -122.4194, new Date());
   endPoint1 = new HikeCoordinatesDTO(40.7128, -74.006, new Date());
-
+  @Input() showStatus:boolean=false;
   constructor(
     public hikeService: HikeService,
     private authService: AuthService
