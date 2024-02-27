@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { GoogleMap } from '@angular/google-maps';
+import { FollowedHikeDTO } from 'src/app/models/FollowedHikeDTO';
 import { HikeCoordinatesDTO } from 'src/app/models/HikeCoordinatesDTO';
 import { HikeDTO, hikeType } from 'src/app/models/HikeDTO';
 import { HikePathDTO, hikeStatus } from 'src/app/models/HikePathDTO';
@@ -14,6 +15,17 @@ import { AuthService } from 'src/app/services/auth.service';
 export class TileComponent implements OnInit{
   startPoint1 = new HikeCoordinatesDTO(37.7749, -122.4194, new Date());
   endPoint1 = new HikeCoordinatesDTO(40.7128, -74.0060, new Date());
+  pathCoordinates: HikeCoordinatesDTO[] = [
+    new HikeCoordinatesDTO(37.7749, -122.4194, new Date())
+];
+
+  recPath = new FollowedHikeDTO(
+    1, 
+    '2h 30m', 
+    15.5, 
+    this.pathCoordinates 
+);
+
 
   @Input() hike: HikePathDTO = new HikePathDTO(
     1,
@@ -26,7 +38,8 @@ export class TileComponent implements OnInit{
     10.2,
     "1.2",
     this.startPoint1,
-    this.endPoint1
+    this.endPoint1,
+    this.recPath
   );
 
   @Input() center: google.maps.LatLngLiteral = {lat: 42, lng: -4};

@@ -1,3 +1,4 @@
+import { FollowedHikeDTO } from "./FollowedHikeDTO";
 import { HikeCoordinatesDTO } from "./HikeCoordinatesDTO";
 
 export enum hikeType {
@@ -23,7 +24,8 @@ export class HikePathDTO{
         public distance : number,
         public timeEstimated : string,
         public startPoint : HikeCoordinatesDTO,
-        public endPoint : HikeCoordinatesDTO
+        public endPoint : HikeCoordinatesDTO,
+        public RecommendedPath? : FollowedHikeDTO
         ){} 
     }
 
