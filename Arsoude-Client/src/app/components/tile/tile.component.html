@@ -87,14 +87,19 @@
     <div class="right">
       <div class="map-section">
         <google-map
-          [center]="center"
-          [zoom]="zoom"
-          [width]="'100%'"
-          [height]="'100%'"
-        >
-          <map-marker *ngFor="let marker of markerPositions" [position]="marker">
-          </map-marker>
-        </google-map>
+        [center]="center"
+        [zoom]="zoom"
+        [width]="'100%'"
+        [height]="'100%'"
+      >
+        <!-- Render markers for start and end points -->
+        <map-marker *ngFor="let marker of markerPositions" [position]="marker">
+        </map-marker>
+      
+        <!-- Render polyline for recommended path -->
+        <map-polyline [path]="polylinePath" [options]="polylineOptions">
+        </map-polyline>
+      </google-map>
       </div>
     </div>
   </div>

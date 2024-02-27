@@ -50,9 +50,26 @@ export class TileComponent implements OnInit{
   //initialize markerPositions here
   markerPositions: google.maps.LatLngLiteral[];
 
+    polylinePath: google.maps.LatLngLiteral[] = [];
+    polylineOptions: google.maps.PolylineOptions = {
+    strokeColor: '#4CBB17',
+    strokeOpacity: 1.0,
+    strokeWeight: 5
+  };
+
 
   constructor(public hikeService: HikeService, private authService: AuthService) {
     this.markerPositions = []; // Initialize as an empty array
+  }
+
+  
+  ngOnInit(): void {
+    this.updateMarkerPositions();
+    this.updateRecommendedPathPolyline();
+  }
+
+  ngAfterViewInit(): void {
+    this.updateMapView();
   }
 
   isLoggedIn(): boolean {
@@ -106,14 +123,14 @@ export class TileComponent implements OnInit{
     }
   }
 
-
-
-  ngOnInit(): void {
-    this.updateMarkerPositions();
+  updateRecommendedPathPolyline(): void {
+    if (this.hike.recommendedPath && this.hike.recommendedPath.path) {
+      this.polylinePath = this.hike.recommendedPath.path.map(coordinate => {
+        return { lat: coordinate.latitude, lng: coordinate.longitude };
+      });
+    }
   }
 
-  ngAfterViewInit(): void {
-    this.updateMapView();
-  }
+
 }
 

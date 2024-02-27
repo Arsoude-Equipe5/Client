@@ -1,15 +1,15 @@
 import { HikeCoordinatesDTO } from './HikeCoordinatesDTO';
 
 export class FollowedHikeDTO {
-  HikeId: number;
-  Duration: string; 
-  Distance: number;
-  Path: HikeCoordinatesDTO[];
+  hikeId: number;
+  duration: string; 
+  distance: number;
+  path: HikeCoordinatesDTO[];
 
   constructor(hikeId: number, duration: string, distance: number, path: HikeCoordinatesDTO[]) {
-    this.HikeId = hikeId;
-    this.Duration = duration;
-    this.Distance = distance;
-    this.Path = path;
+    this.hikeId = hikeId;
+    this.duration = duration;
+    this.distance = distance;
+    this.path = path;
   }
 }

@@ -25,7 +25,7 @@ export class HikePathDTO{
         public timeEstimated : string,
         public startPoint : HikeCoordinatesDTO,
         public endPoint : HikeCoordinatesDTO,
-        public RecommendedPath? : FollowedHikeDTO
+        public recommendedPath? : FollowedHikeDTO
         ){} 
     }
 
