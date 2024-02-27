@@ -281,6 +281,48 @@ export class HikeService {
   }
 
 
+  searchMyHikes(keyword: string | null, type: string | null) {
+    this.hikeList = [];
+    let params = new HttpParams();
+
+    if (keyword !== null) {
+      params = params.append('keyword', keyword);
+    }
+
+    if (type !== null) {
+      params = params.append('type', type);
+    }
+
+    this.isWaiting = true;
+    return this.http
+      .get<HikePathDTO[]>(`${environment.apiUrl}/api/Hikes/SearchMyHikes`, {
+        params: params,
+      })
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+
+          this.hikeList = res;
+          this.isEmpty = false;
+          this.isWaiting = false;
+
+          if (this.hikeList.length === 0) {
+            this.isEmpty = true;
+          }
+
+          console.log(this.isEmpty);
+          
+        },
+        error: (err) => {
+          console.log(err);
+          this.isWaiting = false;
+          alert(err.statusText);
+        },
+      });
+  }
+  
+
+
 
 
 }

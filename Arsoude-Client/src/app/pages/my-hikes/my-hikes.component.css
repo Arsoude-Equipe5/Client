@@ -22,6 +22,8 @@ html, body {
   .container{
   
     margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
   
   }
   
@@ -31,3 +33,76 @@ html, body {
       margin-right: 30px;
     }
   }
+
+  .searchBar {
+    margin-left: 120px;
+    margin-right: 120px;
+    margin-bottom: 30px;
+    height: 8vh;
+    background-color: #235a46;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  
+  #searchInput {
+    width: 65%;
+    padding: 10px;
+    padding-left: 55px;
+    border-radius: 25px;
+    border-width: 0;
+  }
+  
+  .button-group {
+    display: flex;
+  }
+  
+  .button-group button {
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-color: #347a62;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  i {
+    color: white;
+  }
+  
+  .inputSearch {
+    width: 100%;
+  }
+  
+  .search-button {
+    width: auto;
+    height: auto;
+    border: none;
+    background-color: transparent; /* Transparent background */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    cursor: pointer;
+    position: relative;
+    left:3rem;
+  }
+  
+  .search-button i {
+    color: rgb(22, 22, 22); /* Icon color */
+    font-size: 1.5rem; /* Icon size */
+    cursor: pointer;
+  }
+  
+  .button-group button.selected {
+    background-color: #379271;
+  }
+  
+  .button-group i {
+    font-size: 2rem;
+  }
+  

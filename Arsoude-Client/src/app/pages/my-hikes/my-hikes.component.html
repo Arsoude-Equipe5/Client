@@ -8,11 +8,30 @@
 
 </head>
 
-<body>
+
 <div class="container">
+
+  <div class="searchBar">
+    <div class="inputSearch">
+      <button  (click)="onSubmit();" [disabled]="hikeService.isWaiting" class="search-button">
+        <i class="fas fa-search"></i>
+      </button>
+      <input placeholder="Ville,montage,coordinées" [(ngModel)]="searchKeyword" [formControl]="inputKeyword" class="input" type="text" id="searchInput">
+    </div>
+    <div class="button-group">
+      <button    [ngClass]="{'selected': type == 'Walk'}" (click)="toggleHikeType('Walk'); onSubmit()"  >
+        <i  class="fas fa-walking"></i>
+      </button>
+      <button   [ngClass]="{'selected': type == 'Bike'}" (click)="toggleHikeType('Bike'); onSubmit()" >
+        <i class="fas fa-bicycle"></i>
+      </button>
+    </div>
+
+
+
+</div>
+
 <div class="container-tile" *ngFor="let hike of hikeService.hikeList">
   <app-tile [hike]="hike" ></app-tile>
-</div></div>
+</div>
 
-
-</body>

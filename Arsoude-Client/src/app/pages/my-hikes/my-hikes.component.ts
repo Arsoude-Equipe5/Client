@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { HikeService } from 'src/app/services/HikeServices';
 
 @Component({
@@ -8,7 +9,11 @@ import { HikeService } from 'src/app/services/HikeServices';
 })
 export class MyHikesComponent implements OnInit {
 
+  inputKeyword = new FormControl('');
 
+  searchKeyword: string = '';
+
+  type: string | null = null;
 
   constructor(public hikeService:HikeService) { }
   ngOnInit(): void {
@@ -16,5 +21,26 @@ export class MyHikesComponent implements OnInit {
   }
 
  
+  onSubmit() {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      alert('You are not connected. Please log in to search hikes.');
+      return; // Stop further execution
+    }
+
+    this.hikeService.searchMyHikes(this.inputKeyword.value, this.type);
+  }
+
+
+  toggleHikeType(type: string) {
+    if (this.type === type) {
+      this.type = null; // Deselect if already selected
+    } else {
+      this.type = type; // Select if not selected
+    }
+  }
+
+
  
 }
