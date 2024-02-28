@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -7,7 +7,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   templateUrl: './doom.component.html',
   styleUrls: ['./doom.component.css']
 })
-export class DoomComponent implements OnInit {
+export class DoomComponent implements OnInit, AfterViewInit {
   iframeSrc: SafeResourceUrl;
   directLink: string; 
 
@@ -24,11 +24,26 @@ export class DoomComponent implements OnInit {
     this.loadDoomScript();
   }
 
+  ngAfterViewInit(): void {
+    this.focusIframe();
+  }
+
   loadDoomScript(): void {
     const script = document.createElement('script');
     script.src = './assets/doom/websockets-doom.js';
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
+  }
+
+  focusIframe(): void {
+    const iframe: HTMLIFrameElement = document.getElementById('doomIframe') as HTMLIFrameElement;
+    if (iframe) {
+      iframe.focus();
+      
+      iframe.addEventListener('click', () => {
+        iframe.focus();
+      });
+    }
   }
 }
