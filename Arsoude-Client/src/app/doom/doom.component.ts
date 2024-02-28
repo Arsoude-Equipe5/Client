@@ -8,15 +8,15 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrls: ['./doom.component.css']
 })
 export class DoomComponent {
-  iframeSrc: SafeResourceUrl; // Use SafeResourceUrl type
+  iframeSrc: SafeResourceUrl;
+  directLink: string; 
 
   constructor(private sanitizer: DomSanitizer) {
-    let url;
     if (environment.production) {
-      url = 'https://arsoude.ca/assets/doom/index.html';
+      this.directLink = 'https://arsoude.ca/assets/doom/index.html';
     } else {
-      url = 'http://localhost:4200/assets/doom/index.html';
+      this.directLink = 'http://localhost:4200/assets/doom/index.html';
     }
-    this.iframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(url); // Sanitize the URL
+    this.iframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.directLink);
   }
 }
