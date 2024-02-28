@@ -43,21 +43,21 @@
   
 
   },
-      "updateProfile": {
-        "title": "Update Profile"
-      },
-      "passwordSection": {
-        "profileupdate" : "Update your profile" ,
-        "passwordupdate" : "Update your password",
-        "title": "Update Password",
-        "currentPassword": "Current Password",
-        "newPassword": "New Password",
-        "confirmNewPassword": "Confirm New Password",
-        "passwordMismatch": "Passwords do not match",
-        "submitBtn": "Update Profile",
-        "profilePicture" : "Profile picture"
-      }
-    ,
+
+  "updateProfile": {
+     "title": "Update Profile"
+  },
+  "passwordSection": {
+      "profileupdate" : "Update your profile" ,
+      "passwordupdate" : "Update your password",
+      "title": "Update Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmNewPassword": "Confirm New Password",
+      "passwordMismatch": "Passwords do not match",
+      "submitBtn": "Update Profile",
+      "profilePicture" : "Profile picture"
+  },
     
 
   
@@ -110,14 +110,20 @@
 
   "home":{
 
-    "homeTitle" : "Explore like never!",
-    "hikePlaceholder" : "City, montage, coordinates...",
+    "homeTitle" : "Explore like never before!",
+    "hikePlaceholder" : "City, mountain, coordinates...",
     "hikeDescription": "Your ultimate outdoor adventure companion. Plan, create, and share your trails with a passionate community of hikers.",
     "findTrail": "Find a trail",
     "popularTrail" : "Popular trails",
     "trailMaking" : "Trail Making",
     "trackHike" : "Track your Explorations",
-    "community" : "Community"
+    "community" : "Community",
+    "detailedMap": "Detailed Maps",
+    "support": "Support",
+    "about": "About",
+    "discover": "Discover",
+    "followUs": "Follow us",
+    "credits" : "Credits: "
 
 
 
