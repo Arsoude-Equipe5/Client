@@ -1,111 +1,93 @@
-
-
-
 <div class="container">
-
-
-
-
     <div class="firstRow">
-
-
-<div class="leftBox">
-
-<div class="leftPart">
-
-    <div class="contentBox">
-    <h1 class="titlePage">{{'home.homeTitle' | translate}}</h1>
-    <input  type="text" class="inputSearch" [formControl]="inputKeyword" placeholder="{{'home.hikePlaceholder' | translate}}">
-    <p class="description" >{{'home.hikeDescription' | translate}}</p>
-    <button class="trailBtn">{{'home.findTrail' | translate}}</button>
-</div>
-
-
-</div>
-
-<div class="rightPart">
-
-
-        <img class="imgBox" src="assets/images/2024-01-26_09_30_36-fc8c42d9-1012-4f31-9801-060789edc1041.png" alt="Randonnée">
-    
-  
-
-</div>
-
-
-</div>
-
-
-
-
-
-<div class="rightBox">
-<div class="imageTitlebBox">
-<h3 class="titleImages" >{{'home.popularTrail' | translate}}</h3>
-<div class="imageBox"> 
-<img class="images" src="assets/images/Hikes-Ellinor2.png">
-<img class="images" src="assets/images/Toto-Creek2.png">
-<img class="images" src="assets/images/img_spot_009_012.png">
-</div>
-</div>
-</div>
-
-
-
-    </div>
-    <div class="secondRow">
-
-        <div class="col1">
-        <div class="square"></div>
-        <div class="square"></div>
-
+        <div class="leftBox">
+            <div class="leftPart">
+                <div class="contentBox">
+                    <h1 class="titlePage">{{'home.homeTitle' | translate}}</h1>
+                    <input  type="text" class="inputSearch" [formControl]="inputKeyword" placeholder="{{'home.hikePlaceholder' | translate}}">
+                    <p class="description" >{{'home.hikeDescription' | translate}}</p>
+                    <button class="trailBtn" routerLink="/alltrails">{{'home.findTrail' | translate}}</button>
+                </div>
+            </div>
+            <div class="rightPart">
+                <img class="imgBox" src="assets/images/2024-01-26_09_30_36-fc8c42d9-1012-4f31-9801-060789edc1041.png" alt="Randonnée">
+            </div>
         </div>
-        <div class="col2">
-
+    <div class="rightBox">
+        <h3 class="titleImages" >{{'home.popularTrail' | translate}}</h3>
+        <div class="imageBox" *ngFor="let h of hikeService.hikeList.slice(0, 3)"> 
+            <app-home-tile [img]="h.image" [name]="h.name" [type]="h.type"></app-home-tile>
+        </div>
+    </div>
+</div>
+    <div class="secondRow">
+        <div class="tileItem">
             <div class="topPart">
                <h4 class="titleCard">{{'home.trailMaking' | translate}}</h4>
             </div>
-
             <div class="bottomPart">
-                <img class="imageCard" style="  border-radius:  0 0 15px 15px;" src="assets/images/Hikes-Ellinor2.png">
+                <img class="imageCard" style="  border-radius:  0 0 15px 15px;" src="assets/images/tile_1.png">
             </div>
-
-
         </div>
-        <div class="col3"><div class="topPart">
-            <h4 class="titleCard" style="text-align: center; line-height: 120%;">Track your Explorations
-         </h4>
-         </div>
-
-         <div class="bottomPart">
-             <img class="imageCard" style="  border-radius:  0 0 15px 15px;" src="assets/images/Hikes-Ellinor2.png">
-         </div>
-</div>
-        <div class="col4">
-
+        <div class="tileItem">
+            <div class="topPart">
+                <h4 class="titleCard" style="text-align: center; line-height: 120%;">Cartes Détaillées</h4>
+            </div>
+            <div class="bottomPart">
+                <img class="imageCard" style="  border-radius:  0 0 15px 15px;" src="assets/images/tile_3.png">
+            </div>
+        </div>
+        <div class="tileItem">
             <div class="topPart">
                 <h4 class="titleCard">{{'home.trackHike' | translate}}</h4>
              </div>
- 
              <div class="bottomPart">
-                 <img class="imageCard" style="  border-radius:  0 0 15px 15px;" src="assets/images/Hikes-Ellinor2.png">
+                 <img class="imageCard" style="  border-radius:  0 0 15px 15px;" src="assets/images/tile_4.webp">
              </div>
- 
- 
         </div>
-        <div class="col5"><div class="topPart">
-            <h4 class="titleCard">{{'home.community' | translate}}</h4>
+        <div class="tileItem">
+            <div class="topPart">
+                <h4 class="titleCard">{{'home.community' | translate}}</h4>
          </div>
 
          <div class="bottomPart">
-             <img class="imageCard" style="  border-radius:  0 0 15px 15px;" src="assets/images/Hikes-Ellinor2.png">
+             <img class="imageCard" style="  border-radius:  0 0 15px 15px;" src="assets/images/tile_2.png">
          </div>
 </div>
-
-    </div>
-
-    <div class="thirdRow">
-
-    </div>
-
 </div>
+</div>
+<div class="footer">
+    <div class="footerTop">
+        <div class="footerLeft">
+            <div class="footerLogo">
+                <img class="footerLogo" src="assets/images/arsoude-logo.png" alt="">
+                <p>@ 2024 ARSOUDE</p>
+            </div>
+        </div>
+        <div class="footerRight">
+            <p>Support</p>
+            <p>A propos</p>
+            <p>Découvrir</p>
+            <p>Suivre</p>
+            <p>Communauté</p>
+        </div>
+    </div>
+    <div class="footerBottom">
+        <div class="appBtns">
+            <img class="playstore" src="assets/images/play-store.png" alt="">
+            <img class="appstore" src="assets/images/app-store.png" alt="">
+        </div>
+        <div class="credits">
+            <div class="creditsTxt">
+                <p>Credits:</p>
+            </div>
+            <p>Hugo Otth</p>
+            <p>Badreddine Smihy</p>
+            <p>Ghiles Kouaou</p>
+            <p>Ilyas El Haddadi</p>
+            <p>Laurence Brucher-Fafard</p>
+        </div>
+    </div>
+</div>
+
+<div class="topBtn" *ngIf="showScrollButton" (click)="scrollToTop()"><i class="fas fa-angle-up"></i></div>
