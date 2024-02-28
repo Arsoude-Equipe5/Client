@@ -1,0 +1,33 @@
+d_event.o: d_event.c \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdlib.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdlib.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/features.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/alltypes.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/alloca.h \
+  d_event.h doomtype.h ../config.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/strings.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/inttypes.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/inttypes.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/stdint.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdint.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/stdint.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/limits.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/limits.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/limits.h
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdlib.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdlib.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/features.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/alltypes.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/alloca.h:
+d_event.h:
+doomtype.h:
+../config.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/strings.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/inttypes.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/inttypes.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/stdint.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdint.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/stdint.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/limits.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/limits.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/limits.h:

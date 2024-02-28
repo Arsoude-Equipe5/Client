@@ -1,0 +1,190 @@
+i_input.o: i_input.c \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_main.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_stdinc.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_config.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_platform.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/begin_code.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/close_code.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_config_emscripten.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/sys/types.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/features.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/alltypes.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/endian.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/sys/select.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdio.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/wasi/api.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/stddef.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_ptrdiff_t.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_size_t.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_wchar_t.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_null.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_max_align_t.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_offsetof.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/stdint.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdint.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/stdint.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdlib.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdlib.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/alloca.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdarg.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/stdarg.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stdarg___gnuc_va_list.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stdarg_va_list.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stdarg_va_arg.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stdarg___va_copy.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stdarg_va_copy.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/string.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/string.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/strings.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/wchar.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/inttypes.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/inttypes.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/ctype.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/math.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/math.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_assert.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_atomic.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_audio.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_error.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_endian.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_mutex.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_thread.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_rwops.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_clipboard.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_cpuinfo.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_events.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_video.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_pixels.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_rect.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_surface.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_blendmode.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_keyboard.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_keycode.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_scancode.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_mouse.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_joystick.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_guid.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_gamecontroller.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_sensor.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_quit.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_gesture.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_touch.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_filesystem.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_haptic.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_hidapi.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_hints.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_loadso.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_log.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_messagebox.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_metal.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_power.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_render.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_shape.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_system.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_timer.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_version.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_locale.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_misc.h \
+  doomkeys.h doomtype.h ../config.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/limits.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/limits.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/limits.h \
+  d_event.h i_input.h m_argv.h m_config.h
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_main.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_stdinc.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_config.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_platform.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/begin_code.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/close_code.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_config_emscripten.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/sys/types.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/features.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/alltypes.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/endian.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/sys/select.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdio.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/wasi/api.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/stddef.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_ptrdiff_t.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_size_t.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_wchar_t.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_null.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_max_align_t.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_offsetof.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/stdint.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdint.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/stdint.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdlib.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdlib.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/alloca.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdarg.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/stdarg.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stdarg___gnuc_va_list.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stdarg_va_list.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stdarg_va_arg.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stdarg___va_copy.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stdarg_va_copy.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/string.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/string.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/strings.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/wchar.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/inttypes.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/inttypes.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/ctype.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/math.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/math.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_assert.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_atomic.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_audio.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_error.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_endian.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_mutex.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_thread.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_rwops.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_clipboard.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_cpuinfo.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_events.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_video.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_pixels.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_rect.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_surface.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_blendmode.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_keyboard.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_keycode.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_scancode.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_mouse.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_joystick.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_guid.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_gamecontroller.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_sensor.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_quit.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_gesture.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_touch.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_filesystem.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_haptic.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_hidapi.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_hints.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_loadso.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_log.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_messagebox.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_metal.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_power.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_render.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_shape.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_system.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_timer.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_version.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_locale.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_misc.h:
+doomkeys.h:
+doomtype.h:
+../config.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/limits.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/limits.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/limits.h:
+d_event.h:
+i_input.h:
+m_argv.h:
+m_config.h:

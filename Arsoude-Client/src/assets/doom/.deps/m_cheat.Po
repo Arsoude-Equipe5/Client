@@ -1,0 +1,32 @@
+m_cheat.o: m_cheat.c \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/string.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/string.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/features.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/alltypes.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/strings.h \
+  doomtype.h ../config.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/inttypes.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/inttypes.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/stdint.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdint.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/stdint.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/limits.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/limits.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/limits.h \
+  m_cheat.h
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/string.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/string.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/features.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/alltypes.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/strings.h:
+doomtype.h:
+../config.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/inttypes.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/inttypes.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/stdint.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdint.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/stdint.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/limits.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/limits.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/limits.h:
+m_cheat.h:

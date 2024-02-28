@@ -48,22 +48,45 @@ export class HikeCreationComponent implements OnInit {
     this.createForm();
   }
 
-
-  
-
   uploadFile(input: HTMLInputElement) {
-    if (!input.files) return
-
+    if (!input.files) return;
+  
     const files: FileList = input.files;
-
+  
     for (let i = 0; i < files.length; i++) {
-        const file = files.item(i);
-        if (file) {
-            const storageRef = ref(this.storage, file.name);
-            uploadBytesResumable(storageRef, file);
+      const file = files.item(i);
+      if (file) {
+        // Check if the file size exceeds the maximum limit (100 MB)
+        if (file.size > 50 * 1024 * 1024) {
+          console.error('File size exceeds the maximum limit of 100MB.');
+          this.imageSelected = false;
+          return;
         }
+        
+        // Continue with uploading the file if it passes the size limit check
+        const fileName = new Date().getTime().toString() + Math.random().toString(36).substring(2);
+        const filePath = `images/${fileName}`;
+        const storageRef = ref(this.storage, filePath);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+        
+        uploadTask.on('state_changed', 
+          (snapshot) => {
+            // Handle progress
+          },
+          (error) => {
+            // Handle unsuccessful upload
+            console.error('Error uploading image:', error);
+          },
+          async () => {
+            // Handle successful upload
+            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+            // Your further processing after successful upload
+          }
+        );
+      }
     }
   }
+  
 
   selectHikeType(type: string) {
     this.hikeForm.patchValue({ type: type });
@@ -97,20 +120,25 @@ export class HikeCreationComponent implements OnInit {
       if (!allowedTypes.includes(file.type)) {
         return { invalidFileType: true };
       }
+      console.log('validators')
       const reader = new FileReader();
-      reader.onloadend = (e: any) => {
-        const arr = new Uint8Array(e.target.result);
-        let header = '';
-        for (let i = 0; i < arr.length; i++) {
-          header += arr[i].toString(16);
-        }
-        if (!this.isValidImageHeader(header)) {
-          control.setErrors({ invalidFileContent: true });
-        } else {
-          control.setErrors(null);
-        }
-      };
-      reader.readAsArrayBuffer(file);
+        reader.onloadend = (e: any) => {
+          const arr = new Uint8Array(e.target.result);
+          let header = '';
+          for (let i = 0; i < arr.length; i++) {
+            header += arr[i].toString(16);
+          }
+          if(file.size > this.maxFileSize){
+            console.log('seterror');
+            control.setErrors({ imgTooBig: true });
+          }
+          if (!this.isValidImageHeader(header)) {
+            control.setErrors({ invalidFileContent: true });
+          } else {
+            control.setErrors(null);
+          }
+        };
+        reader.readAsArrayBuffer(file);
     }
     return null;
   }
@@ -122,18 +150,22 @@ export class HikeCreationComponent implements OnInit {
   }
 
   displayImage(event: any): void {
-    this.imageSelected = true; 
     const file = event.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.imagePreview = e.target.result; 
-        this.hikeForm.patchValue({
-          image: file 
-        });
-        this.hikeForm.get('image')?.markAsDirty(); 
-      };
-      reader.readAsDataURL(file);
+      if(file.size > this.maxFileSize){
+        console.log('imgtoobig');
+      }else{
+        this.imageSelected = true;
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.imagePreview = e.target.result; 
+          this.hikeForm.patchValue({
+            image: file 
+          });
+          this.hikeForm.get('image')?.markAsDirty(); 
+        };
+        reader.readAsDataURL(file);
+      }
     } else {
       this.imagePreview = undefined;
       this.hikeForm.patchValue({
@@ -174,6 +206,7 @@ export class HikeCreationComponent implements OnInit {
     this.markers.push({ position, point: this.selectedPoint });
   }
 
+  maxFileSize = 10 * 1024 * 1024; // 100 MB in bytes
 
   hikeType: string = '';
   setHikeType(type: string) {

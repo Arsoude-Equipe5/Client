@@ -1,0 +1,101 @@
+sha1.o: sha1.c \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdio.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/wasi/api.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/stddef.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_ptrdiff_t.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_size_t.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_wchar_t.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_null.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_max_align_t.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_offsetof.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/stdint.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdint.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/alltypes.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/stdint.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/features.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdlib.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdlib.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/alloca.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/string.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/string.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/strings.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/assert.h \
+  i_swap.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_endian.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_stdinc.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_config.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_platform.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/begin_code.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/close_code.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_config_emscripten.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/sys/types.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/endian.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/sys/select.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdarg.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/stdarg.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stdarg___gnuc_va_list.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stdarg_va_list.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stdarg_va_arg.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stdarg___va_copy.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stdarg_va_copy.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/wchar.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/inttypes.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/inttypes.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/ctype.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/math.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/math.h \
+  sha1.h doomtype.h ../config.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/limits.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/limits.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/limits.h
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdio.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/wasi/api.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/stddef.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_ptrdiff_t.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_size_t.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_wchar_t.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_null.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_max_align_t.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_offsetof.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/stdint.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdint.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/alltypes.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/stdint.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/features.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdlib.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdlib.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/alloca.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/string.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/string.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/strings.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/assert.h:
+i_swap.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_endian.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_stdinc.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_config.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_platform.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/begin_code.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/close_code.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_config_emscripten.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/sys/types.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/endian.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/sys/select.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdarg.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/stdarg.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stdarg___gnuc_va_list.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stdarg_va_list.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stdarg_va_arg.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stdarg___va_copy.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stdarg_va_copy.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/wchar.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/inttypes.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/inttypes.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/ctype.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/compat/math.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/math.h:
+sha1.h:
+doomtype.h:
+../config.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/limits.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/limits.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/limits.h:
