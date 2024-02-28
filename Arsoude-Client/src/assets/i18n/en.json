@@ -47,12 +47,15 @@
         "title": "Update Profile"
       },
       "passwordSection": {
+        "profileupdate" : "Update your profile" ,
+        "passwordupdate" : "Update your password",
         "title": "Update Password",
         "currentPassword": "Current Password",
         "newPassword": "New Password",
         "confirmNewPassword": "Confirm New Password",
         "passwordMismatch": "Passwords do not match",
-        "submitBtn": "Update Profile"
+        "submitBtn": "Update Profile",
+        "profilePicture" : "Profile picture"
       }
     ,
     

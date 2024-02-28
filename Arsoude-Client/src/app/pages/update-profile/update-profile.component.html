@@ -42,12 +42,12 @@
           <input class="formInput" id="birthdate" type="date" formControlName="birthdate" max="{{ today | date: 'yyyy-MM-dd' }}" >
         </div>           
         <div class="formInputContainer">
-          <label for="profilePicture">{{ 'register.profilePicture' | translate }}</label>
+          <label for="profilePicture">{{ 'passwordSection.profilePicture' | translate }}</label>
           <!-- Apply the "fileInput" class to the input element -->
           <input type="file" accept="image/*" (change)="displayImage($event)" class="fileInput">
           <div *ngIf="imagePreview" class="image-preview">
             <div class="circular-crop">
-              <img [src]="imagePreview" alt="{{ 'register.profilePicture' | translate }}">
+              <img [src]="imagePreview" alt="{{ 'passwordSection.profilePicture' | translate }}">
             </div>
           </div>
           <!-- Display error message under the image -->

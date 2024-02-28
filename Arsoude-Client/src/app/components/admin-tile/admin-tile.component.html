@@ -92,6 +92,9 @@
             <map-marker *ngFor="let marker of markerPositions"
                         [position]="marker">
             </map-marker>
+
+            <map-polyline [path]="polylinePath" [options]="polylineOptions">
+            </map-polyline>
             </google-map>
         </div>
     </div>
