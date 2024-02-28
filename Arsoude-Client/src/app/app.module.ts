@@ -83,7 +83,7 @@ const MY_DATE_FORMAT = {
     AdminComponent,
     AdminHikesComponent,
     AdminTileComponent,
-    HomeTileComponent
+    HomeTileComponent,
     DoomComponent
   ],
   imports: [
