@@ -21,52 +21,73 @@
     </div>
 </div>
     <div class="secondRow">
-        <div class="col1">
-            <div class="square"></div>
-            <div class="square"></div>
-        </div>
-        <div class="col2">
+        <div class="tileItem">
             <div class="topPart">
                <h4 class="titleCard">{{'home.trailMaking' | translate}}</h4>
             </div>
             <div class="bottomPart">
-                <img class="imageCard" style="  border-radius:  0 0 15px 15px;" src="assets/images/Hikes-Ellinor2.png">
+                <img class="imageCard" style="  border-radius:  0 0 15px 15px;" src="assets/images/tile_1.png">
             </div>
         </div>
-        <div class="col3">
+        <div class="tileItem">
             <div class="topPart">
-                <h4 class="titleCard" style="text-align: center; line-height: 120%;">Track your Explorations</h4>
+                <h4 class="titleCard" style="text-align: center; line-height: 120%;">Cartes Détaillées</h4>
             </div>
             <div class="bottomPart">
-                <img class="imageCard" style="  border-radius:  0 0 15px 15px;" src="assets/images/Hikes-Ellinor2.png">
+                <img class="imageCard" style="  border-radius:  0 0 15px 15px;" src="assets/images/tile_3.png">
             </div>
         </div>
-        <div class="col4">
+        <div class="tileItem">
             <div class="topPart">
                 <h4 class="titleCard">{{'home.trackHike' | translate}}</h4>
              </div>
              <div class="bottomPart">
-                 <img class="imageCard" style="  border-radius:  0 0 15px 15px;" src="assets/images/Hikes-Ellinor2.png">
+                 <img class="imageCard" style="  border-radius:  0 0 15px 15px;" src="assets/images/tile_4.webp">
              </div>
         </div>
-        <div class="col5">
+        <div class="tileItem">
             <div class="topPart">
                 <h4 class="titleCard">{{'home.community' | translate}}</h4>
          </div>
 
          <div class="bottomPart">
-             <img class="imageCard" style="  border-radius:  0 0 15px 15px;" src="assets/images/Hikes-Ellinor2.png">
+             <img class="imageCard" style="  border-radius:  0 0 15px 15px;" src="assets/images/tile_2.png">
          </div>
 </div>
 </div>
-    <div class="thirdRow">
-        <div id="HeroMap" class="test1" [style.opacity]="boxOpacity">
-            
+</div>
+<div class="footer">
+    <div class="footerTop">
+        <div class="footerLeft">
+            <div class="footerLogo">
+                <img class="footerLogo" src="assets/images/arsoude-logo.png" alt="">
+                <p>@ 2024 ARSOUDE</p>
+            </div>
+        </div>
+        <div class="footerRight">
+            <p>Support</p>
+            <p>A propos</p>
+            <p>Découvrir</p>
+            <p>Suivre</p>
+            <p>Communauté</p>
         </div>
     </div>
-</div>
-<div class="row4">
-
+    <div class="footerBottom">
+        <div class="appBtns">
+            <img class="playstore" src="assets/images/play-store.png" alt="">
+            <img class="appstore" src="assets/images/app-store.png" alt="">
+        </div>
+        <div class="credits">
+            <div class="creditsTxt">
+                <p>Credits:</p>
+            </div>
+            <p>Hugo Otth</p>
+            <p>Badreddine Smihy</p>
+            <p>Ghiles Kouaou</p>
+            <p>Ilyas El Haddadi</p>
+            <p>Laurence Brucher-Fafard</p>
+        </div>
+    </div>
 </div>
 
 <div class="topBtn" *ngIf="showScrollButton" (click)="scrollToTop()"><i class="fas fa-angle-up"></i></div>

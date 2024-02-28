@@ -130,35 +130,35 @@
 
 .secondRow{
     display: flex;
-    justify-content: space-evenly;
-}
-
-.square{
-    height: 15.7398vh;
-    width: 15.7398vh;
-    background-color: #379271;
-    border-radius: 10px;
-    box-shadow: 5px 5px 1000px;
+    justify-content: space-around;
 }
 
 .topPart{
-    height: 13.116vh;
-    width: 28.3316vh;
-    background-color: #379271;
+    padding-top: 20px;
+    height: 25%;
+    
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius:  15px 15px 0 0;
+}
+
+.tileItem{
+    width: 250px;
+    height: 300px;
+    background-color: #379271;
+    border-radius:  15px 15px 20px 20px;
+    box-shadow: 0 -10px 20px -10px rgba(0, 0, 0, 0.3),
+                0 10px 20px -10px rgba(0, 0, 0, 0.1),
+                -10px 0 20px -10px rgba(0, 0, 0, 0.1),
+                10px 0 20px -10px rgba(0, 0, 0, 0.1);
 }
 
 .bottomPart{
-    height: 20.9864vh;
-    width: 28.3316vh;
-    background-color: #ffffff;
-    border-radius:  0 0 20px 20px;
+    height: 75%;
 }
 
 .imageCard{
+    object-fit: cover;
     width: 100%;
     height: 100%;
 }
@@ -178,6 +178,64 @@
     color: white;
 }
 
+.footer{
+    color: rgb(138, 138, 138);
+    padding: 120px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Lato';
+    gap: 70px;
+}
+
+.footerTop{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footerBottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.footerRight{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.credits{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+.creditsTxt{
+    color: rgb(138, 138, 138);
+    font-weight: 400;
+}
+
+.footerLogo{
+    width: 200px;
+}
+
+.playstore{
+    width: 150px;
+}
+
+.appstore{
+    width: 150px;
+}
 
 @media only screen and (max-width: 1400px) {
 
@@ -260,20 +318,32 @@
         border-radius: 0px;
     } 
     .imageBox{
-        width: 100%;
+        flex-direction: row;
+        width: 90%;
         align-items: center;
         justify-content: center;
     }
-    .images{width: 30%;}
+    
+    .images{
+        width: 30%;
+    }
 
     .secondRow{
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         width: 100%;
         height: 100%;
         justify-content: center;
         align-items: center;
-        gap: 3vh;
-        padding-bottom: 2vh;
+        gap: 50px;
+        padding-bottom: 40px;
+    }
+
+    .tileItem{
+        width: 30%;
+    }
+    .titleCard{
+        font-size: 1.2rem;
     }
 
     .col1{
@@ -283,6 +353,22 @@
     .trailBtn{
         font-size: 1rem;
     }
+
+    .footerTop{
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .footerBottom{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    app-home-tile{
+        width: 400px;
+        margin-bottom: 30px;
+    }
     
 }
 
@@ -290,6 +376,17 @@
     .firstRow{
         flex-direction: column;
     }
+    app-home-tile{
+        width: 90%;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (max-width: 930px) {
+    .footerRight{
+        display: none;
+    }
+    
 }
 
 .thirdRow{
@@ -327,7 +424,7 @@
     height: 20px;
     margin-right: 40px;
     margin-bottom: 40px;
-    background-color: grey;
+    background-color: rgb(79, 184, 111);
     outline: none;
     cursor: pointer;
     padding: 20px;
