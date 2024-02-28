@@ -119,4 +119,6 @@ export class AllTrailsComponent implements AfterViewInit {
       this.tags = [];
     }
   }
+
+
 }

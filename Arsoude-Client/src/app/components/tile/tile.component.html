@@ -78,7 +78,7 @@
             <div class="infoTitle">
               {{ "all-trails.time" | translate }}
             </div>
-            <p *ngIf="hike.timeEstimated; else noTime">{{ hike.timeEstimated }} H</p>
+            <p *ngIf="hike.timeEstimated; else noTime">{{ hike.timeEstimated }}</p>
             <ng-template #noTime>N/D</ng-template>
           </div>
         </div>

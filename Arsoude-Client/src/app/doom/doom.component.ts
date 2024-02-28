@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Renderer2 } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -11,7 +11,7 @@ export class DoomComponent implements OnInit, AfterViewInit {
   iframeSrc: SafeResourceUrl;
   directLink: string; 
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor(private sanitizer: DomSanitizer, private renderer: Renderer2) {
     if (environment.production) {
       this.directLink = 'https://arsoude.ca/assets/doom/index.html';
     } else {
@@ -25,7 +25,7 @@ export class DoomComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.focusIframe();
+    this.setupIframeFocus();
   }
 
   loadDoomScript(): void {
@@ -36,13 +36,14 @@ export class DoomComponent implements OnInit, AfterViewInit {
     document.body.appendChild(script);
   }
 
-  focusIframe(): void {
-    const iframe: HTMLIFrameElement = document.getElementById('doomIframe') as HTMLIFrameElement;
-    if (iframe) {
-      iframe.focus();
-      
-      iframe.addEventListener('click', () => {
-        iframe.focus();
+  setupIframeFocus(): void {
+    const iframeContainer = document.querySelector('.iframe-container');
+    if (iframeContainer) {
+      this.renderer.listen(iframeContainer, 'click', () => {
+        const iframe: HTMLIFrameElement = document.getElementById('doomIframe') as HTMLIFrameElement;
+        if (iframe) {
+          iframe.focus();
+        }
       });
     }
   }

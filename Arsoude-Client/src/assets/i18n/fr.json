@@ -127,7 +127,8 @@
     "description": "Description",
     "distance": "Distance",
     "type":"Type",
-    "time":"Temps"
+    "time":"Temps",
+    "hours":"heures"
 
 
 
@@ -161,6 +162,7 @@
     "adminHikesList": "Liste de randonnées Admin",
     "selectStatus": "Selectionner le Status...",
     "noHikesAvailable": "Aucune Randonnée Disponible",
+    "hours":"heures",
 
     "pendingCaps": "EN ATTENTE",
     "validatedCaps": "VALIDÉ",

@@ -260,6 +260,25 @@ export class HikeCreationComponent implements OnInit {
             longitude: this.markers[1].position.lng,
             Time: new Date()
           };
+
+
+          var coord1 = new google.maps.LatLng(startPoint.latitude, startPoint.longitude);  // Latitude and Longitude of point 1
+          var coord2 = new google.maps.LatLng(endPoint.latitude, endPoint.longitude);
+
+          let distance: number;
+
+          if (google.maps.geometry) {
+              distance = (google.maps.geometry.spherical.computeDistanceBetween(coord1, coord2)/1000);
+              console.log('Distance between the two points:', distance.toFixed(2), 'meters');
+          } else {
+              console.error('Google Maps Geometry library is not loaded.');
+              distance =0;
+          }
+
+
+          const roundedDistance = Number(distance.toFixed(2));
+
+          const timeEstimated = this.convertHoursToTimeString(Number(this.calculateTime(roundedDistance)));
         
           const hikeData: HikeDTO = new HikeDTO(
             0,
@@ -268,11 +287,14 @@ export class HikeCreationComponent implements OnInit {
             description,
             downloadURL, // Use download URL as image URL
             type === 'vélo' ? hikeType.bike : hikeType.walk,
-            distance,
+            roundedDistance,
             timeEstimated,
             startPoint,
             endPoint
           );
+
+          
+          
         
           // Send HikeDTO to server
           this.hikeService.createHike(hikeData).subscribe(
@@ -332,7 +354,29 @@ showWarning() {
     this.toastr.warning(fullMessage, warningWord);
   });
 }
+
+
+calculateTime(distanceKm: number): any {
+  const averageKmHoursWalk = 4.55;
+  const timeHours = distanceKm / averageKmHoursWalk;
+  const roundedTime = Number(timeHours.toFixed(2)); // Round to two decimal places
+  return roundedTime;
 }
+
+
+convertHoursToTimeString(hours: number): string {
+  const totalSeconds = Math.floor(hours * 3600);
+  const hoursPart = Math.floor(totalSeconds / 3600);
+  const minutesPart = Math.floor((totalSeconds % 3600) / 60);
+  const secondsPart = totalSeconds % 60;
+
+  const formattedTime = `${String(hoursPart).padStart(2, '0')}:${String(minutesPart).padStart(2, '0')}:${String(secondsPart).padStart(2, '0')}`;
+  return formattedTime;
+}
+}
+
+
+
 
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
