@@ -112,13 +112,20 @@
   "home":{
 
     "homeTitle" : "Explorez comme jamais!",
-    "hikePlaceholder" : "Ville, montage, coordinées...",
+    "hikePlaceholder" : "Ville, montagne, coordonnées...",
     "hikeDescription": "Votre compagnon ultime pour l'aventure en plein air. Planifiez, créez et partagez vos sentiers avec une communauté passionnée de randonneurs.",
     "findTrail": "Trouver une randonnée",
     "popularTrail" : "Randonnées populaires",
     "trailMaking" : "Création de Randonnée",
     "trackHike" : "Suivez vos Explorations.",
-    "community" : "Communauté"
+    "community" : "Communauté",
+    "detailedMap": "Cartes Détaillées",
+    "support": "Support",
+    "about": "À propos",
+    "discover": "Découvrir",
+    "followUs": "Suivre",
+    "credits" : "Crédits: "
+
 
 
     

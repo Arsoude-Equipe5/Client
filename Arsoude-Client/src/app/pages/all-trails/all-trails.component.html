@@ -16,7 +16,7 @@
         <button  (click)="onSubmit(); splitKeywords()" [disabled]="hikeService.isWaiting" class="search-button">
           <i class="fas fa-search"></i>
         </button>
-        <input placeholder="Ville,montage,coordinées" [(ngModel)]="searchKeyword" [formControl]="inputKeyword" class="input" type="text" id="searchInput">
+        <input placeholder="{{ 'home.hikePlaceholder' | translate }}" [(ngModel)]="searchKeyword" [formControl]="inputKeyword" class="input" type="text" id="searchInput">
       </div>
       <div class="button-group">
         <button    [ngClass]="{'selected': type == 'Walk'}" (click)="toggleHikeType('Walk'); onSubmit()"  >
@@ -36,7 +36,7 @@
 </div>
     <div>
       <div *ngIf="hikeService.isEmpty===false">
-        <div class="title">Toutes les Randonnées</div>
+        <div class="title">{{ 'all-trails.allTrails' | translate }}</div>
         <div class="container-tile" *ngFor="let hike of hikeService.hikeList">
           <app-tile [hike]="hike"></app-tile>
         </div>
