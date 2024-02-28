@@ -49,12 +49,15 @@
       "title": "Mettre à jour le profil"
     },
     "passwordSection": {
+      "profileupdate" : "mettre a jour le profile",
+      "passwordupdate" : "Mettre à jour le mot de passe",
       "title": "Mettre à jour le mot de passe",
       "currentPassword": "Mot de passe actuel",
       "newPassword": "Nouveau mot de passe",
       "confirmNewPassword": "Confirmer le nouveau mot de passe",
       "passwordMismatch": "Les mots de passe ne correspondent pas",
-      "submitBtn": "Mettre à jour le profil"
+      "submitBtn": "Mettre à jour le profil",
+      "profilePicture" : "Photo de profile"
     }
 
 ,  
