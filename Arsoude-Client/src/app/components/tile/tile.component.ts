@@ -132,13 +132,5 @@ export class TileComponent implements OnInit{
   }
 
 
-  ngOnInit(): void {
-    this.updateMarkerPositions();
-  }
-
-  ngAfterViewInit(): void {
-    this.updateMapView();
-  }
-
 }
 
