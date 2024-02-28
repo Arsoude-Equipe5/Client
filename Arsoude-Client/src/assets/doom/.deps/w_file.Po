@@ -1,0 +1,47 @@
+w_file.o: w_file.c \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdio.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/wasi/api.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/stddef.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_ptrdiff_t.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_size_t.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_wchar_t.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_null.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_max_align_t.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/__stddef_offsetof.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/stdint.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdint.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/alltypes.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/stdint.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/features.h \
+  ../config.h doomtype.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/strings.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/inttypes.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/inttypes.h \
+  /home/roger/emsdk/upstream/lib/clang/19/include/limits.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/limits.h \
+  /home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/limits.h \
+  m_argv.h w_file.h
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdio.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/wasi/api.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/stddef.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_ptrdiff_t.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_size_t.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_wchar_t.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_null.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_max_align_t.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/__stddef_offsetof.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/stdint.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/stdint.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/alltypes.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/stdint.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/features.h:
+../config.h:
+doomtype.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/strings.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/inttypes.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/inttypes.h:
+/home/roger/emsdk/upstream/lib/clang/19/include/limits.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/limits.h:
+/home/roger/emsdk/upstream/emscripten/cache/sysroot/include/bits/limits.h:
+m_argv.h:
+w_file.h:
