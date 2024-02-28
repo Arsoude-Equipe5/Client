@@ -128,7 +128,8 @@
     "description": "Description",
     "distance": "Distance",
     "type":"Type",
-    "time":"Time"
+    "time":"Time",
+    "hours":"hours"
 
 
 
@@ -160,6 +161,7 @@
     "adminHikesList": "Admin Hikes List",
     "selectStatus": "Select Status...",
     "noHikesAvailable": "No Hikes Available",
+    "hours":"hours",
 
 
     "pendingCaps": "PENDING",
