@@ -11,11 +11,11 @@ export class DoomComponent {
   iframeSrc: SafeResourceUrl; // Use SafeResourceUrl type
 
   constructor(private sanitizer: DomSanitizer) {
-    let url: string;
+    let url;
     if (environment.production) {
-      url = 'https://arsoude.ca/doom/index.html';
+      url = 'https://arsoude.ca/assets/doom/index.html';
     } else {
-      url = 'http://localhost:8000/';
+      url = 'http://localhost:4200/assets/doom/index.html';
     }
     this.iframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(url); // Sanitize the URL
   }
